@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Aquaria.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/edu/uoregon/sticklebackdb/AquariaTests.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Beaker.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/edu/uoregon/sticklebackdb/BeakerTests.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Container.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/edu/uoregon/sticklebackdb/ContainerTests.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Genetics.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/edu/uoregon/sticklebackdb/GeneticsTests.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Line.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/edu/uoregon/sticklebackdb/LineTests.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/edu/uoregon/sticklebackdb/StockTests.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sticklebackdb.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sticklebackdb.ipr" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sticklebackdb.iws" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/doc/exports/genetics.xslx" afterPath="$PROJECT_DIR$/doc/exports/genetics.xlsx" />
-    </list>
+    <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="" />
     <ignored path="sticklebackdb.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$USER_HOME$/.grails/" />
@@ -138,7 +121,7 @@
       <file leaf-file-name="Stock.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="22" selection-start="221" selection-end="221" vertical-scroll-proportion="0.30882353">
+            <state line="21" column="20" selection-start="332" selection-end="332" vertical-scroll-proportion="0.4632353">
               <folding />
             </state>
           </provider>
@@ -512,7 +495,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="22" selection-start="221" selection-end="221" vertical-scroll-proportion="0.30882353">
+        <state line="21" column="20" selection-start="332" selection-end="332" vertical-scroll-proportion="0.4632353">
           <folding />
         </state>
       </provider>
