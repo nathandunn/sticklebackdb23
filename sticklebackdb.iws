@@ -511,6 +511,7 @@
           <value>
             <GrailsSettings>
               <option name="buildConfigCrc" value="524180338" />
+              <option name="pluginDependenciesCrc" value="-115733471" />
               <option name="properties">
                 <map>
                   <entry key="grails.global.plugins.dir" value="$USER_HOME$/.grails/2.1.1/global-plugins" />
@@ -520,6 +521,11 @@
                 </map>
               </option>
             </GrailsSettings>
+          </value>
+        </entry>
+        <entry key="sticklebackdb-grailsPlugins">
+          <value>
+            <GrailsSettings />
           </value>
         </entry>
       </map>
