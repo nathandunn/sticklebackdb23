@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.sticklebackdb.Aquaria" %>
+<%@ page import="edu.uoregon.StubData; edu.uoregon.sticklebackdb.Aquaria" %>
 
 
 
@@ -7,7 +7,7 @@
 		<g:message code="aquaria.container.label" default="Container" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="container" name="container.id" from="${edu.uoregon.sticklebackdb.Container.list()}" optionKey="id" required="" value="${aquariaInstance?.container?.id}" class="many-to-one"/>
+	<g:select id="container" name="container.id" from="${StubData.Container.list()}" optionKey="id" required="" value="${aquariaInstance?.container?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'fishTotal', 'error')} required">

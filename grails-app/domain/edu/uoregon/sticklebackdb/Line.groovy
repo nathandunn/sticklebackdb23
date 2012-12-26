@@ -15,7 +15,7 @@ class Line {
     String species
 
     // ??
-    Integer lineStatus
+    Integer status
 
     String storedLineName
     String storedLineNameAbbreviation

@@ -50,7 +50,7 @@
 					
 						<td>${fieldValue(bean: lineInstance, field: "comment")}</td>
 					
-						<td>${fieldValue(bean: lineInstance, field: "lineStatus")}</td>
+						<td>${fieldValue(bean: lineInstance, field: "status")}</td>
 					
 						<td>${fieldValue(bean: lineInstance, field: "name")}</td>
 					

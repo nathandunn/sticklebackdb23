@@ -59,11 +59,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${lineInstance?.lineStatus}">
+				<g:if test="${lineInstance?.status}">
 				<li class="fieldcontain">
 					<span id="lineStatus-label" class="property-label"><g:message code="line.lineStatus.label" default="Line Status" /></span>
 					
-						<span class="property-value" aria-labelledby="lineStatus-label"><g:fieldValue bean="${lineInstance}" field="lineStatus"/></span>
+						<span class="property-value" aria-labelledby="lineStatus-label"><g:fieldValue bean="${lineInstance}" field="status"/></span>
 					
 				</li>
 				</g:if>

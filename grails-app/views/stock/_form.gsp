@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.sticklebackdb.Stock" %>
+<%@ page import="edu.uoregon.StubData; edu.uoregon.sticklebackdb.Stock" %>
 
 
 
@@ -7,7 +7,7 @@
 		<g:message code="stock.barcode.label" default="Barcode" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="barcode" name="barcode.id" from="${edu.uoregon.sticklebackdb.Container.list()}" optionKey="id" required="" value="${stockInstance?.barcode?.id}" class="many-to-one"/>
+	<g:select id="barcode" name="barcode.id" from="${StubData.Container.list()}" optionKey="id" required="" value="${stockInstance?.barcode?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'crossDate', 'error')} required">
@@ -63,7 +63,7 @@
 		<g:message code="stock.line.label" default="Line" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.list()}" optionKey="id" required="" value="${stockInstance?.line?.id}" class="many-to-one"/>
+	<g:select id="line" name="line.id" from="${StubData.Line.list()}" optionKey="id" required="" value="${stockInstance?.line?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalStock', 'error')} required">
@@ -71,7 +71,7 @@
 		<g:message code="stock.maternalStock.label" default="Maternal Stock" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="maternalStock" name="maternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}" optionKey="id" required="" value="${stockInstance?.maternalStock?.id}" class="many-to-one"/>
+	<g:select id="maternalStock" name="maternalStock.id" from="${StubData.Stock.list()}" optionKey="id" required="" value="${stockInstance?.maternalStock?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery1InitialNumber', 'error')} required">
@@ -119,6 +119,6 @@
 		<g:message code="stock.stockType.label" default="Stock Type" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="stockType" name="stockType.id" from="${edu.uoregon.sticklebackdb.Genetics.list()}" optionKey="id" required="" value="${stockInstance?.stockType?.id}" class="many-to-one"/>
+	<g:select id="stockType" name="stockType.id" from="${StubData.Genetics.list()}" optionKey="id" required="" value="${stockInstance?.stockType?.id}" class="many-to-one"/>
 </div>
 
