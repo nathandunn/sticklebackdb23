@@ -7,27 +7,40 @@ class Stock {
 
     // TODO: group / index
     Container barcode
+    Stock maternalStock
+    String maternalStockLabel
+    Stock paternalStock
+    String paternalStockLabel
+    Line line
+    Genetics stockType
 
     Date crossDate
 
     // TODO: make enum
     Integer crossType
-    Genetics stockType
 
     Date fertilizationDateTime
-    String fertilizationDisplay
 
     Integer fishAgeDays
-
     Integer fishStock
 
-    Stock maternalStock
-    Line line
-
+    // TODO: seems incomplete
     Integer nursery1InitialNumber
     Integer nursery2Fertiles
     Integer nursery3Hatched
     Integer nursery5SecondStageSurvivors
     Integer nursery6Graduates
 
+    String comment
+
+    String breedingType
+
+    String name
+    String abbreviation
+
+
+    String containerStatus
+    String experimentStatus
+    String groupStatus
+    String individualStatus
 }

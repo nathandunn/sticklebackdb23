@@ -20,6 +20,14 @@ class StubData {
         return file
     }
 
+    def stubAll() {
+        stubLine()
+        stubContainer()
+        stubAquaria()
+        stubGenetics()
+        stubStock()
+    }
+
     def stubLine() {
 
 //        if (Line.count() > 0) return
@@ -48,6 +56,7 @@ class StubData {
 
             line.save(flush: true, insert: true)
         }
+        println "FINISHED stub line " + Line.count()
     }
 
     def stubContainer() {
@@ -62,6 +71,7 @@ class StubData {
 
             container.save(flush: true, insert: true)
         }
+        println "FINISHED stub container" + Container.count()
     }
 
     def stubGenetics() {
@@ -69,24 +79,27 @@ class StubData {
         println "start stub genetics"
         CSVReader csvReader = getImportFile("genetics.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
         csvReader.eachLine { tokens ->
-            Genetics genetics = new Genetics()
-            println "garsing genetics: " + tokens
+            if (tokens.size() > 2) {
 
-            try {
-                genetics.captureDate = tokens[0]?.size() > 0 ? Date.parse("mm/dd/yy", tokens[0]) : null
-                genetics.identification = tokens[1]
-                genetics.comments = tokens[5]
-                genetics.source = tokens[7]
-                genetics.species = tokens[8]
-            } catch (e) {
-                println "error parsing identifier " + e
+                Genetics genetics = new Genetics()
+
+                try {
+                    genetics.captureDate = tokens[0]?.size() > 0 ? Date.parse("mm/dd/yy", tokens[0]) : null
+                    genetics.identification = tokens[1]
+                    genetics.comments = tokens[5]
+                    genetics.source = tokens[7]
+                    genetics.species = tokens[8]
+                } catch (e) {
+                    println "error parsing identifier " + e
+                }
+
+                genetics.save(flush: true, insert: true)
             }
-
-
-            println "finishing stub genetics"
-            genetics.save(flush: true, insert: true)
+//            else {
+//                println "nothing to parse"
+//            }
         }
-        println "FINISHED stub genetics"
+        println "FINISHED stub genetics " + Genetics.count()
     }
 
     def stubAquaria() {
@@ -94,29 +107,94 @@ class StubData {
         println "start stub aquaria"
         CSVReader csvReader = getImportFile("sbAquaria.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
         csvReader.eachLine { tokens ->
+
             Aquaria aquaria = new Aquaria()
 
-            aquaria.fishTotal = tokens[9]?.size()>0 ? tokens[9].size().toInteger() : null
-            aquaria.fishUnsexed = tokens[10]?.size()>0 ? tokens[10].size().toInteger() : null
-            aquaria.statusContainer = tokens[12]?.size()>0 ? tokens[12].size().toInteger() : null
-            aquaria.statusFishQuantity =tokens[13]?.size()>0 ? tokens[13].size().toInteger() : null
-            aquaria.statusStock = tokens[14]?.size()>0 ? tokens[14].size().toInteger() : null
+            aquaria.fishTotal = tokens[9]?.size() > 0 ? tokens[9].size().toInteger() : null
+            aquaria.fishUnsexed = tokens[10]?.size() > 0 ? tokens[10].size().toInteger() : null
+            aquaria.statusContainer = tokens[12]?.size() > 0 ? tokens[12].size().toInteger() : null
+            aquaria.statusFishQuantity = tokens[13]?.size() > 0 ? tokens[13].size().toInteger() : null
+            aquaria.statusStock = tokens[14]?.size() > 0 ? tokens[14].size().toInteger() : null
 
 
             aquaria.container = Container.findByBarcode(tokens[2])
 
 
-            aquaria.save(flush: true, insert: true)
+            aquaria.save(flush: true, insert: true, failOnError: true)
         }
+        println "finished stub aquaria: " + Aquaria.count()
     }
 
     def stubStock() {
 //        Stock.deleteAll(Stock.all)
         CSVReader csvReader = getImportFile("stocks.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
+        println "start stub stocks"
         csvReader.eachLine { tokens ->
-            Stock stock = new Stock()
+            if (tokens.size() > 5) {
+                Stock stock = new Stock()
 
-            stock.save(flush: true, insert: true)
+                try {
+                    stock.barcode = Container.findByBarcode(tokens[0].replaceAll("\\*", ""))
+                    try {
+                        stock.crossDate = tokens[1]?.size() > 0 ? Date.parse("mm/dd/yyyy", tokens[1]) : null
+                    } catch (e) {
+                        println "error parsing crossDAte: " + e
+                    }
+                    stock.crossType = tokens[2]?.size() > 0 ? tokens[2].toInteger() : null
+
+                    try {
+                        // TODO . . . somehow capture fertilization time as well
+                        stock.fertilizationDateTime = tokens[3]?.size() > 0 ? Date.parse("mm/dd/yyyy", tokens[3]) : null
+                    } catch (e) {
+                        println "error parsing fertilization date/time: " + e
+                    }
+
+                    stock.fishAgeDays = tokens[7]?.size() > 0 ? tokens[7].toInteger() : null
+                    stock.fishStock = tokens[14]?.size() > 0 ? tokens[14].toInteger() : null
+
+
+                    if (tokens[15]?.size() > 2 && tokens[15]?.contains("\\.")) {
+                        stock.maternalStockLabel = tokens[15]
+                        String maternalStockID = tokens[15].substring(tokens[15].indexOf("\\."))
+                        stock.maternalStock = Stock.findByFishStock(maternalStockID)
+                    }
+
+                    if (tokens[18]?.size() > 2 && tokens[18]?.contains("\\.")) {
+                        stock.paternalStockLabel = tokens[15]
+                        String paternalStockID = tokens[18].substring(tokens[18].indexOf("\\."))
+                        stock.paternalStock = Stock.findByFishStock(paternalStockID)
+                    }
+
+                    stock.line = tokens[23]?.size() > 0 ? Line.findByName(tokens[23]) : null
+
+                    stock.nursery1InitialNumber = tokens[25]?.size() > 0 ? tokens[25].toInteger() : null
+                    stock.nursery2Fertiles = tokens[26]?.size() > 0 ? tokens[26].toInteger() : null
+                    stock.nursery3Hatched = tokens[28]?.size() > 0 ? tokens[28].toInteger() : null
+                    stock.nursery5SecondStageSurvivors = tokens[34]?.size() > 0 ? tokens[34].toInteger() : null
+                    stock.nursery6Graduates = tokens[35]?.size() > 0 ? tokens[35].toInteger() : null
+
+                    if (tokens.size() > 35) {
+                        stock.comment = tokens[36]
+                        stock.breedingType = tokens[37]?.size() > 0 ? tokens[37].toInteger() : null
+
+                        stock.name = tokens[38]
+                        stock.abbreviation = tokens[39]
+
+                        stock.containerStatus = tokens[41]
+                        stock.experimentStatus = tokens[42]
+                        stock.groupStatus = tokens[43]
+                        stock.individualStatus = tokens[44]
+
+                        stock.stockType = tokens[45]?.size() > 0 ? Genetics.findByIdentification(tokens[45]) : null
+                    }
+
+                    stock.save(flush: true, insert: true, failOnError: true)
+                }
+                catch (e) {
+                    println "error saving output: " + e
+                }
+            }
         }
+        println "finished stubbing stocks: " + Stock.count()
     }
 }
