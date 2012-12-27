@@ -9,8 +9,8 @@ class Aquaria {
 
     // TODO: make an enum
     String status
-    Float fishTotal
-    Float fishUnsexed
+    Integer fishTotal
+    Integer fishUnsexed
     Integer statusContainer
     Integer statusFishQuantity
     Integer statusStock

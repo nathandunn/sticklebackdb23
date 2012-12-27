@@ -6,6 +6,12 @@ class BootStrap {
 
         def stubData = new StubData()
         stubData.stubLine()
+        stubData.stubContainer()
+        stubData.stubGenetics()
+        stubData.stubAquaria()
+        stubData.stubStock()
+
+//        stubData.stubBeaker()
 
 
     }
