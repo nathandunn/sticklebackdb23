@@ -66,9 +66,11 @@ class StubData {
 
     def stubGenetics() {
 //        Genetics.deleteAll(Genetics.all)
+        println "start stub genetics"
         CSVReader csvReader = getImportFile("genetics.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
         csvReader.eachLine { tokens ->
             Genetics genetics = new Genetics()
+            println "garsing genetics: " + tokens
 
             try {
                 genetics.captureDate = tokens[0]?.size() > 0 ? Date.parse("mm/dd/yy", tokens[0]) : null
@@ -77,16 +79,19 @@ class StubData {
                 genetics.source = tokens[7]
                 genetics.species = tokens[8]
             } catch (e) {
-                println "error parsing identifier "
+                println "error parsing identifier " + e
             }
 
 
+            println "finishing stub genetics"
             genetics.save(flush: true, insert: true)
         }
+        println "FINISHED stub genetics"
     }
 
     def stubAquaria() {
 //        Aquaria.deleteAll(Aquaria.all)
+        println "start stub aquaria"
         CSVReader csvReader = getImportFile("sbAquaria.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
         csvReader.eachLine { tokens ->
             Aquaria aquaria = new Aquaria()

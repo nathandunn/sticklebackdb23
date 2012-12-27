@@ -7,8 +7,8 @@ class BootStrap {
         def stubData = new StubData()
         stubData.stubLine()
         stubData.stubContainer()
-        stubData.stubGenetics()
         stubData.stubAquaria()
+        stubData.stubGenetics()
         stubData.stubStock()
 
 //        stubData.stubBeaker()
