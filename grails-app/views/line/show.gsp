@@ -59,15 +59,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${lineInstance?.status}">
-				<li class="fieldcontain">
-					<span id="lineStatus-label" class="property-label"><g:message code="line.lineStatus.label" default="Line Status" /></span>
-					
-						<span class="property-value" aria-labelledby="lineStatus-label"><g:fieldValue bean="${lineInstance}" field="status"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${lineInstance?.name}">
 				<li class="fieldcontain">
 					<span id="name-label" class="property-label"><g:message code="line.name.label" default="Name" /></span>
@@ -82,6 +73,15 @@
 					<span id="species-label" class="property-label"><g:message code="line.species.label" default="Species" /></span>
 					
 						<span class="property-value" aria-labelledby="species-label"><g:fieldValue bean="${lineInstance}" field="species"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${lineInstance?.status}">
+				<li class="fieldcontain">
+					<span id="status-label" class="property-label"><g:message code="line.status.label" default="Status" /></span>
+					
+						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${lineInstance}" field="status"/></span>
 					
 				</li>
 				</g:if>

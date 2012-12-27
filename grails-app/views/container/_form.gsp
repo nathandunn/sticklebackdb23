@@ -18,19 +18,19 @@
 	<g:textField name="location" value="${containerInstance?.location}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: containerInstance, field: 'size', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: containerInstance, field: 'size', 'error')} ">
 	<label for="size">
 		<g:message code="container.size.label" default="Size" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="size" type="number" value="${containerInstance.size}" required=""/>
+	<g:field name="size" type="number" value="${containerInstance.size}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: containerInstance, field: 'total', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: containerInstance, field: 'total', 'error')} ">
 	<label for="total">
 		<g:message code="container.total.label" default="Total" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="total" type="number" value="${containerInstance.total}" required=""/>
+	<g:field name="total" type="number" value="${containerInstance.total}"/>
 </div>
 

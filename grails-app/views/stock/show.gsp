@@ -23,11 +23,47 @@
 			</g:if>
 			<ol class="property-list stock">
 			
+				<g:if test="${stockInstance?.abbreviation}">
+				<li class="fieldcontain">
+					<span id="abbreviation-label" class="property-label"><g:message code="stock.abbreviation.label" default="Abbreviation" /></span>
+					
+						<span class="property-value" aria-labelledby="abbreviation-label"><g:fieldValue bean="${stockInstance}" field="abbreviation"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${stockInstance?.barcode}">
 				<li class="fieldcontain">
 					<span id="barcode-label" class="property-label"><g:message code="stock.barcode.label" default="Barcode" /></span>
 					
 						<span class="property-value" aria-labelledby="barcode-label"><g:link controller="container" action="show" id="${stockInstance?.barcode?.id}">${stockInstance?.barcode?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${stockInstance?.breedingType}">
+				<li class="fieldcontain">
+					<span id="breedingType-label" class="property-label"><g:message code="stock.breedingType.label" default="Breeding Type" /></span>
+					
+						<span class="property-value" aria-labelledby="breedingType-label"><g:fieldValue bean="${stockInstance}" field="breedingType"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${stockInstance?.comment}">
+				<li class="fieldcontain">
+					<span id="comment-label" class="property-label"><g:message code="stock.comment.label" default="Comment" /></span>
+					
+						<span class="property-value" aria-labelledby="comment-label"><g:fieldValue bean="${stockInstance}" field="comment"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${stockInstance?.containerStatus}">
+				<li class="fieldcontain">
+					<span id="containerStatus-label" class="property-label"><g:message code="stock.containerStatus.label" default="Container Status" /></span>
+					
+						<span class="property-value" aria-labelledby="containerStatus-label"><g:fieldValue bean="${stockInstance}" field="containerStatus"/></span>
 					
 				</li>
 				</g:if>
@@ -50,20 +86,20 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${stockInstance?.experimentStatus}">
+				<li class="fieldcontain">
+					<span id="experimentStatus-label" class="property-label"><g:message code="stock.experimentStatus.label" default="Experiment Status" /></span>
+					
+						<span class="property-value" aria-labelledby="experimentStatus-label"><g:fieldValue bean="${stockInstance}" field="experimentStatus"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${stockInstance?.fertilizationDateTime}">
 				<li class="fieldcontain">
 					<span id="fertilizationDateTime-label" class="property-label"><g:message code="stock.fertilizationDateTime.label" default="Fertilization Date Time" /></span>
 					
 						<span class="property-value" aria-labelledby="fertilizationDateTime-label"><g:formatDate date="${stockInstance?.fertilizationDateTime}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${stockInstance?.fertilizationDisplay}">
-				<li class="fieldcontain">
-					<span id="fertilizationDisplay-label" class="property-label"><g:message code="stock.fertilizationDisplay.label" default="Fertilization Display" /></span>
-					
-						<span class="property-value" aria-labelledby="fertilizationDisplay-label"><g:fieldValue bean="${stockInstance}" field="fertilizationDisplay"/></span>
 					
 				</li>
 				</g:if>
@@ -86,6 +122,24 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${stockInstance?.groupStatus}">
+				<li class="fieldcontain">
+					<span id="groupStatus-label" class="property-label"><g:message code="stock.groupStatus.label" default="Group Status" /></span>
+					
+						<span class="property-value" aria-labelledby="groupStatus-label"><g:fieldValue bean="${stockInstance}" field="groupStatus"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${stockInstance?.individualStatus}">
+				<li class="fieldcontain">
+					<span id="individualStatus-label" class="property-label"><g:message code="stock.individualStatus.label" default="Individual Status" /></span>
+					
+						<span class="property-value" aria-labelledby="individualStatus-label"><g:fieldValue bean="${stockInstance}" field="individualStatus"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${stockInstance?.line}">
 				<li class="fieldcontain">
 					<span id="line-label" class="property-label"><g:message code="stock.line.label" default="Line" /></span>
@@ -100,6 +154,24 @@
 					<span id="maternalStock-label" class="property-label"><g:message code="stock.maternalStock.label" default="Maternal Stock" /></span>
 					
 						<span class="property-value" aria-labelledby="maternalStock-label"><g:link controller="stock" action="show" id="${stockInstance?.maternalStock?.id}">${stockInstance?.maternalStock?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${stockInstance?.maternalStockLabel}">
+				<li class="fieldcontain">
+					<span id="maternalStockLabel-label" class="property-label"><g:message code="stock.maternalStockLabel.label" default="Maternal Stock Label" /></span>
+					
+						<span class="property-value" aria-labelledby="maternalStockLabel-label"><g:fieldValue bean="${stockInstance}" field="maternalStockLabel"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${stockInstance?.name}">
+				<li class="fieldcontain">
+					<span id="name-label" class="property-label"><g:message code="stock.name.label" default="Name" /></span>
+					
+						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${stockInstance}" field="name"/></span>
 					
 				</li>
 				</g:if>
@@ -145,6 +217,24 @@
 					<span id="nursery6Graduates-label" class="property-label"><g:message code="stock.nursery6Graduates.label" default="Nursery6 Graduates" /></span>
 					
 						<span class="property-value" aria-labelledby="nursery6Graduates-label"><g:fieldValue bean="${stockInstance}" field="nursery6Graduates"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${stockInstance?.paternalStock}">
+				<li class="fieldcontain">
+					<span id="paternalStock-label" class="property-label"><g:message code="stock.paternalStock.label" default="Paternal Stock" /></span>
+					
+						<span class="property-value" aria-labelledby="paternalStock-label"><g:link controller="stock" action="show" id="${stockInstance?.paternalStock?.id}">${stockInstance?.paternalStock?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${stockInstance?.paternalStockLabel}">
+				<li class="fieldcontain">
+					<span id="paternalStockLabel-label" class="property-label"><g:message code="stock.paternalStockLabel.label" default="Paternal Stock Label" /></span>
+					
+						<span class="property-value" aria-labelledby="paternalStockLabel-label"><g:fieldValue bean="${stockInstance}" field="paternalStockLabel"/></span>
 					
 				</li>
 				</g:if>

@@ -1,69 +1,117 @@
-<%@ page import="edu.uoregon.StubData; edu.uoregon.sticklebackdb.Stock" %>
+<%@ page import="edu.uoregon.sticklebackdb.Stock" %>
 
 
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'barcode', 'error')} required">
-	<label for="barcode">
-		<g:message code="stock.barcode.label" default="Barcode" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="barcode" name="barcode.id" from="${StubData.Container.list()}" optionKey="id" required="" value="${stockInstance?.barcode?.id}" class="many-to-one"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'crossDate', 'error')} required">
-	<label for="crossDate">
-		<g:message code="stock.crossDate.label" default="Cross Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="crossDate" precision="day"  value="${stockInstance?.crossDate}"  />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'crossType', 'error')} required">
-	<label for="crossType">
-		<g:message code="stock.crossType.label" default="Cross Type" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="crossType" type="number" value="${stockInstance.crossType}" required=""/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'fertilizationDateTime', 'error')} required">
-	<label for="fertilizationDateTime">
-		<g:message code="stock.fertilizationDateTime.label" default="Fertilization Date Time" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="fertilizationDateTime" precision="day"  value="${stockInstance?.fertilizationDateTime}"  />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'fertilizationDisplay', 'error')} ">
-	<label for="fertilizationDisplay">
-		<g:message code="stock.fertilizationDisplay.label" default="Fertilization Display" />
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'abbreviation', 'error')} ">
+	<label for="abbreviation">
+		<g:message code="stock.abbreviation.label" default="Abbreviation" />
 		
 	</label>
-	<g:textField name="fertilizationDisplay" value="${stockInstance?.fertilizationDisplay}"/>
+	<g:textField name="abbreviation" value="${stockInstance?.abbreviation}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'fishAgeDays', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'barcode', 'error')} ">
+	<label for="barcode">
+		<g:message code="stock.barcode.label" default="Barcode" />
+		
+	</label>
+	<g:select id="barcode" name="barcode.id" from="${edu.uoregon.sticklebackdb.Container.list()}" optionKey="id" value="${stockInstance?.barcode?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'breedingType', 'error')} ">
+	<label for="breedingType">
+		<g:message code="stock.breedingType.label" default="Breeding Type" />
+		
+	</label>
+	<g:textField name="breedingType" value="${stockInstance?.breedingType}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'comment', 'error')} ">
+	<label for="comment">
+		<g:message code="stock.comment.label" default="Comment" />
+		
+	</label>
+	<g:textField name="comment" value="${stockInstance?.comment}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'containerStatus', 'error')} ">
+	<label for="containerStatus">
+		<g:message code="stock.containerStatus.label" default="Container Status" />
+		
+	</label>
+	<g:textField name="containerStatus" value="${stockInstance?.containerStatus}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'crossDate', 'error')} ">
+	<label for="crossDate">
+		<g:message code="stock.crossDate.label" default="Cross Date" />
+		
+	</label>
+	<g:datePicker name="crossDate" precision="day"  value="${stockInstance?.crossDate}" default="none" noSelection="['': '']" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'crossType', 'error')} ">
+	<label for="crossType">
+		<g:message code="stock.crossType.label" default="Cross Type" />
+		
+	</label>
+	<g:field name="crossType" type="number" value="${stockInstance.crossType}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'experimentStatus', 'error')} ">
+	<label for="experimentStatus">
+		<g:message code="stock.experimentStatus.label" default="Experiment Status" />
+		
+	</label>
+	<g:textField name="experimentStatus" value="${stockInstance?.experimentStatus}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'fertilizationDateTime', 'error')} ">
+	<label for="fertilizationDateTime">
+		<g:message code="stock.fertilizationDateTime.label" default="Fertilization Date Time" />
+		
+	</label>
+	<g:datePicker name="fertilizationDateTime" precision="day"  value="${stockInstance?.fertilizationDateTime}" default="none" noSelection="['': '']" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'fishAgeDays', 'error')} ">
 	<label for="fishAgeDays">
 		<g:message code="stock.fishAgeDays.label" default="Fish Age Days" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="fishAgeDays" type="number" value="${stockInstance.fishAgeDays}" required=""/>
+	<g:field name="fishAgeDays" type="number" value="${stockInstance.fishAgeDays}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'fishStock', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'fishStock', 'error')} ">
 	<label for="fishStock">
 		<g:message code="stock.fishStock.label" default="Fish Stock" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="fishStock" type="number" value="${stockInstance.fishStock}" required=""/>
+	<g:field name="fishStock" type="number" value="${stockInstance.fishStock}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'groupStatus', 'error')} ">
+	<label for="groupStatus">
+		<g:message code="stock.groupStatus.label" default="Group Status" />
+		
+	</label>
+	<g:textField name="groupStatus" value="${stockInstance?.groupStatus}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'individualStatus', 'error')} ">
+	<label for="individualStatus">
+		<g:message code="stock.individualStatus.label" default="Individual Status" />
+		
+	</label>
+	<g:textField name="individualStatus" value="${stockInstance?.individualStatus}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
 	<label for="line">
 		<g:message code="stock.line.label" default="Line" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:select id="line" name="line.id" from="${StubData.Line.list()}" optionKey="id" required="" value="${stockInstance?.line?.id}" class="many-to-one"/>
+	<g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.list()}" optionKey="id" value="${stockInstance?.line?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalStock', 'error')} required">
@@ -71,54 +119,86 @@
 		<g:message code="stock.maternalStock.label" default="Maternal Stock" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="maternalStock" name="maternalStock.id" from="${StubData.Stock.list()}" optionKey="id" required="" value="${stockInstance?.maternalStock?.id}" class="many-to-one"/>
+	<g:select id="maternalStock" name="maternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}" optionKey="id" required="" value="${stockInstance?.maternalStock?.id}" class="many-to-one"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery1InitialNumber', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalStockLabel', 'error')} ">
+	<label for="maternalStockLabel">
+		<g:message code="stock.maternalStockLabel.label" default="Maternal Stock Label" />
+		
+	</label>
+	<g:textField name="maternalStockLabel" value="${stockInstance?.maternalStockLabel}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'name', 'error')} ">
+	<label for="name">
+		<g:message code="stock.name.label" default="Name" />
+		
+	</label>
+	<g:textField name="name" value="${stockInstance?.name}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery1InitialNumber', 'error')} ">
 	<label for="nursery1InitialNumber">
 		<g:message code="stock.nursery1InitialNumber.label" default="Nursery1 Initial Number" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="nursery1InitialNumber" type="number" value="${stockInstance.nursery1InitialNumber}" required=""/>
+	<g:field name="nursery1InitialNumber" type="number" value="${stockInstance.nursery1InitialNumber}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery2Fertiles', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery2Fertiles', 'error')} ">
 	<label for="nursery2Fertiles">
 		<g:message code="stock.nursery2Fertiles.label" default="Nursery2 Fertiles" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="nursery2Fertiles" type="number" value="${stockInstance.nursery2Fertiles}" required=""/>
+	<g:field name="nursery2Fertiles" type="number" value="${stockInstance.nursery2Fertiles}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery3Hatched', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery3Hatched', 'error')} ">
 	<label for="nursery3Hatched">
 		<g:message code="stock.nursery3Hatched.label" default="Nursery3 Hatched" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="nursery3Hatched" type="number" value="${stockInstance.nursery3Hatched}" required=""/>
+	<g:field name="nursery3Hatched" type="number" value="${stockInstance.nursery3Hatched}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery5SecondStageSurvivors', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery5SecondStageSurvivors', 'error')} ">
 	<label for="nursery5SecondStageSurvivors">
 		<g:message code="stock.nursery5SecondStageSurvivors.label" default="Nursery5 Second Stage Survivors" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="nursery5SecondStageSurvivors" type="number" value="${stockInstance.nursery5SecondStageSurvivors}" required=""/>
+	<g:field name="nursery5SecondStageSurvivors" type="number" value="${stockInstance.nursery5SecondStageSurvivors}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery6Graduates', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery6Graduates', 'error')} ">
 	<label for="nursery6Graduates">
 		<g:message code="stock.nursery6Graduates.label" default="Nursery6 Graduates" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="nursery6Graduates" type="number" value="${stockInstance.nursery6Graduates}" required=""/>
+	<g:field name="nursery6Graduates" type="number" value="${stockInstance.nursery6Graduates}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'stockType', 'error')} required">
-	<label for="stockType">
-		<g:message code="stock.stockType.label" default="Stock Type" />
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalStock', 'error')} required">
+	<label for="paternalStock">
+		<g:message code="stock.paternalStock.label" default="Paternal Stock" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="stockType" name="stockType.id" from="${StubData.Genetics.list()}" optionKey="id" required="" value="${stockInstance?.stockType?.id}" class="many-to-one"/>
+	<g:select id="paternalStock" name="paternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}" optionKey="id" required="" value="${stockInstance?.paternalStock?.id}" class="many-to-one"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalStockLabel', 'error')} ">
+	<label for="paternalStockLabel">
+		<g:message code="stock.paternalStockLabel.label" default="Paternal Stock Label" />
+		
+	</label>
+	<g:textField name="paternalStockLabel" value="${stockInstance?.paternalStockLabel}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'stockType', 'error')} ">
+	<label for="stockType">
+		<g:message code="stock.stockType.label" default="Stock Type" />
+		
+	</label>
+	<g:select id="stockType" name="stockType.id" from="${edu.uoregon.sticklebackdb.Genetics.list()}" optionKey="id" value="${stockInstance?.stockType?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 

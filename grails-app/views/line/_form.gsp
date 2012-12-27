@@ -34,14 +34,6 @@
 	<g:textField name="comment" value="${lineInstance?.comment}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: lineInstance, field: 'lineStatus', 'error')} required">
-	<label for="lineStatus">
-		<g:message code="line.lineStatus.label" default="Line Status" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="lineStatus" type="number" value="${lineInstance.lineStatus}" required=""/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: lineInstance, field: 'name', 'error')} ">
 	<label for="name">
 		<g:message code="line.name.label" default="Name" />
@@ -56,6 +48,14 @@
 		
 	</label>
 	<g:textField name="species" value="${lineInstance?.species}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: lineInstance, field: 'status', 'error')} ">
+	<label for="status">
+		<g:message code="line.status.label" default="Status" />
+		
+	</label>
+	<g:field name="status" type="number" value="${lineInstance.status}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: lineInstance, field: 'storedLineName', 'error')} ">

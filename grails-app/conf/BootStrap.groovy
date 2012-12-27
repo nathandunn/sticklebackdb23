@@ -4,8 +4,7 @@ class BootStrap {
 
     def init = { servletContext ->
 
-//        def stubData = new StubData()
-//        stubData.stubAll()
+        new StubData().stubAll()
 
 
     }

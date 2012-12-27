@@ -2,12 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: geneticsInstance, field: 'captureDate', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: geneticsInstance, field: 'captureDate', 'error')} ">
 	<label for="captureDate">
 		<g:message code="genetics.captureDate.label" default="Capture Date" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:datePicker name="captureDate" precision="day"  value="${geneticsInstance?.captureDate}"  />
+	<g:datePicker name="captureDate" precision="day"  value="${geneticsInstance?.captureDate}" default="none" noSelection="['': '']" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: geneticsInstance, field: 'comments', 'error')} ">

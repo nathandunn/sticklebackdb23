@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/exports/stocks.xlsx" afterPath="$PROJECT_DIR$/doc/exports/stocks.xlsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/Config.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/Config.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" afterPath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/aquaria/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/aquaria/_form.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/container/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/container/_form.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/genetics/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/genetics/_form.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/line/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/line/_form.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/stock/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/stock/_form.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/line/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/line/list.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/stock/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/stock/list.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/line/show.gsp" afterPath="$PROJECT_DIR$/grails-app/views/line/show.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/stock/show.gsp" afterPath="$PROJECT_DIR$/grails-app/views/stock/show.gsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.iws" afterPath="$PROJECT_DIR$/sticklebackdb.iws" />
     </list>
     <ignored path="sticklebackdb.iws" />
@@ -20,13 +25,22 @@
     <file path="/Aquaria.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356631571209" ignored="false" />
     <file path="/a.dummy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356630123806" ignored="false" />
     <file path="/StubData.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632377265" ignored="false" />
-    <file path="/BootStrap.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632602539" ignored="false" />
-    <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/script/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356630260020" ignored="false" />
+    <file path="/BootStrap.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632886669" ignored="false" />
+    <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/script/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632993872" ignored="false" />
     <file path="/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356630255791" ignored="false" />
     <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/instantsearchmacro.vm" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356568053497" ignored="false" />
     <file path="/instantsearchmacro.vm" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356557983453" ignored="false" />
     <file path="$PROJECT_DIR$/../Instant-Search/pom.xml" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356567738509" ignored="false" />
     <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/instantsearchaction.vm" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356566936339" ignored="false" />
+    <file path="$PROJECT_DIR$/grails-app/views/aquaria/list.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632865239" ignored="false" />
+    <file path="$PROJECT_DIR$/grails-app/views/aquaria/show.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632865239" ignored="false" />
+    <file path="$PROJECT_DIR$/grails-app/views/container/list.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632865239" ignored="false" />
+    <file path="$PROJECT_DIR$/grails-app/views/container/show.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632865239" ignored="false" />
+    <file path="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/AquariaController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632865239" ignored="false" />
+    <file path="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/ContainerController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632865239" ignored="false" />
+    <file path="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/GeneticsController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632865239" ignored="false" />
+    <file path="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/LineController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632865240" ignored="false" />
+    <file path="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/StockController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632865240" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +140,7 @@
           <file leaf-file-name="BootStrap.groovy" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="6" column="24" selection-start="108" selection-end="108" vertical-scroll-proportion="0.070866145">
+                <state line="13" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="0.1563753">
                   <folding />
                 </state>
               </provider>
@@ -382,7 +396,7 @@
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925338" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925338" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -597,7 +611,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="24" selection-start="108" selection-end="108" vertical-scroll-proportion="0.070866145">
+        <state line="13" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="0.1563753">
           <folding />
         </state>
       </provider>

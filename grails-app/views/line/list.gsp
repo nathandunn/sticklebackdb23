@@ -32,9 +32,9 @@
 					
 						<g:sortableColumn property="comment" title="${message(code: 'line.comment.label', default: 'Comment')}" />
 					
-						<g:sortableColumn property="lineStatus" title="${message(code: 'line.lineStatus.label', default: 'Line Status')}" />
-					
 						<g:sortableColumn property="name" title="${message(code: 'line.name.label', default: 'Name')}" />
+					
+						<g:sortableColumn property="species" title="${message(code: 'line.species.label', default: 'Species')}" />
 					
 					</tr>
 				</thead>
@@ -50,9 +50,9 @@
 					
 						<td>${fieldValue(bean: lineInstance, field: "comment")}</td>
 					
-						<td>${fieldValue(bean: lineInstance, field: "status")}</td>
-					
 						<td>${fieldValue(bean: lineInstance, field: "name")}</td>
+					
+						<td>${fieldValue(bean: lineInstance, field: "species")}</td>
 					
 					</tr>
 				</g:each>

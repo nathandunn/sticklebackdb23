@@ -1,29 +1,29 @@
-<%@ page import="edu.uoregon.StubData; edu.uoregon.sticklebackdb.Aquaria" %>
+<%@ page import="edu.uoregon.sticklebackdb.Aquaria" %>
 
 
 
-<div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'container', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'container', 'error')} ">
 	<label for="container">
 		<g:message code="aquaria.container.label" default="Container" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:select id="container" name="container.id" from="${StubData.Container.list()}" optionKey="id" required="" value="${aquariaInstance?.container?.id}" class="many-to-one"/>
+	<g:select id="container" name="container.id" from="${edu.uoregon.sticklebackdb.Container.list()}" optionKey="id" value="${aquariaInstance?.container?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'fishTotal', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'fishTotal', 'error')} ">
 	<label for="fishTotal">
 		<g:message code="aquaria.fishTotal.label" default="Fish Total" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="fishTotal" value="${fieldValue(bean: aquariaInstance, field: 'fishTotal')}" required=""/>
+	<g:field name="fishTotal" type="number" value="${aquariaInstance.fishTotal}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'fishUnsexed', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'fishUnsexed', 'error')} ">
 	<label for="fishUnsexed">
 		<g:message code="aquaria.fishUnsexed.label" default="Fish Unsexed" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="fishUnsexed" value="${fieldValue(bean: aquariaInstance, field: 'fishUnsexed')}" required=""/>
+	<g:field name="fishUnsexed" type="number" value="${aquariaInstance.fishUnsexed}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'status', 'error')} ">
@@ -34,27 +34,27 @@
 	<g:textField name="status" value="${aquariaInstance?.status}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'statusContainer', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'statusContainer', 'error')} ">
 	<label for="statusContainer">
 		<g:message code="aquaria.statusContainer.label" default="Status Container" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="statusContainer" type="number" value="${aquariaInstance.statusContainer}" required=""/>
+	<g:field name="statusContainer" type="number" value="${aquariaInstance.statusContainer}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'statusFishQuantity', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'statusFishQuantity', 'error')} ">
 	<label for="statusFishQuantity">
 		<g:message code="aquaria.statusFishQuantity.label" default="Status Fish Quantity" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="statusFishQuantity" type="number" value="${aquariaInstance.statusFishQuantity}" required=""/>
+	<g:field name="statusFishQuantity" type="number" value="${aquariaInstance.statusFishQuantity}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'statusStock', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: aquariaInstance, field: 'statusStock', 'error')} ">
 	<label for="statusStock">
 		<g:message code="aquaria.statusStock.label" default="Status Stock" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field name="statusStock" type="number" value="${aquariaInstance.statusStock}" required=""/>
+	<g:field name="statusStock" type="number" value="${aquariaInstance.statusStock}"/>
 </div>
 
