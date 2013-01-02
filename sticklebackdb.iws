@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-app/images/threespine_stickleback.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/AquariaController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/AquariaController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/ContainerController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/ContainerController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/GeneticsController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/GeneticsController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/LineController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/LineController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/StockController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/StockController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application.properties" afterPath="$PROJECT_DIR$/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/aquaria/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/aquaria/list.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/container/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/container/list.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/line/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/line/list.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/stock/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/stock/list.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/layouts/main.gsp" afterPath="$PROJECT_DIR$/grails-app/views/layouts/main.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" afterPath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.iws" afterPath="$PROJECT_DIR$/sticklebackdb.iws" />
-    </list>
+    <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="" />
     <ignored path="sticklebackdb.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$USER_HOME$/.grails/" />
@@ -134,7 +118,7 @@
           <file leaf-file-name="list.gsp" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/grails-app/views/line/list.gsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="47" column="126" selection-start="2175" selection-end="2175" vertical-scroll-proportion="0.5875">
+                <state line="26" column="0" selection-start="1118" selection-end="1118" vertical-scroll-proportion="0.325">
                   <folding />
                 </state>
               </provider>
@@ -200,7 +184,7 @@
         <splitter split-orientation="vertical" split-proportion="0.5">
           <split-first>
             <leaf>
-              <file leaf-file-name="Stock.groovy" pinned="false" current="true" current-in-tab="true">
+              <file leaf-file-name="Stock.groovy" pinned="false" current="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy">
                   <provider selected="true" editor-type-id="text-editor">
                     <state line="34" column="0" selection-start="636" selection-end="636" vertical-scroll-proportion="0.41696113">
@@ -237,10 +221,10 @@
           </split-first>
           <split-second>
             <leaf>
-              <file leaf-file-name="Line.groovy" pinned="false" current="false" current-in-tab="true">
+              <file leaf-file-name="Line.groovy" pinned="false" current="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Line.groovy">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="3" column="0" selection-start="48" selection-end="48" vertical-scroll-proportion="0.079225354">
+                    <state line="12" column="0" selection-start="185" selection-end="185" vertical-scroll-proportion="-3.6">
                       <folding />
                     </state>
                   </provider>
@@ -249,14 +233,14 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="Aquaria.groovy" pinned="false" current="false" current-in-tab="false">
+              <file leaf-file-name="Aquaria.groovy" pinned="false" current="true" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Aquaria.groovy">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="12" column="22" selection-start="199" selection-end="199" vertical-scroll-proportion="-3.6">
+                  <provider editor-type-id="text-editor">
+                    <state line="9" column="24" selection-start="135" selection-end="135" vertical-scroll-proportion="-5.869565">
                       <folding />
                     </state>
                   </provider>
-                  <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+                  <provider selected="true" editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
                     <state />
                   </provider>
                 </entry>
@@ -585,16 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Aquaria.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="22" selection-start="199" selection-end="199" vertical-scroll-proportion="-3.6">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/aquaria/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="41" selection-start="904" selection-end="904" vertical-scroll-proportion="-6.06383">
@@ -619,9 +593,19 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="636" selection-end="636" vertical-scroll-proportion="0.41696113">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Line.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="48" selection-end="48" vertical-scroll-proportion="0.079225354">
+        <state line="12" column="0" selection-start="185" selection-end="185" vertical-scroll-proportion="-3.6">
           <folding />
         </state>
       </provider>
@@ -631,18 +615,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/line/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="126" selection-start="2175" selection-end="2175" vertical-scroll-proportion="0.5875">
+        <state line="26" column="0" selection-start="1118" selection-end="1118" vertical-scroll-proportion="0.325">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="636" selection-end="636" vertical-scroll-proportion="0.41696113">
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Aquaria.groovy">
+      <provider editor-type-id="text-editor">
+        <state line="9" column="24" selection-start="135" selection-end="135" vertical-scroll-proportion="-5.869565">
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+      <provider selected="true" editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
         <state />
       </provider>
     </entry>
