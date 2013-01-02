@@ -43,4 +43,8 @@ class Stock {
     String experimentStatus
     String groupStatus
     String individualStatus
+
+    String getFullStatus(){
+        return containerStatus + " " + experimentStatus + " " + groupStatus + " " + individualStatus
+    }
 }

@@ -6,6 +6,10 @@ class LineController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    static navigation = [
+            title:'Line',action: 'list',order:5
+    ]
+
     def index() {
         redirect(action: "list", params: params)
     }

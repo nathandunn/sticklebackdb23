@@ -23,36 +23,39 @@
 			<table>
 				<thead>
 					<tr>
-					
+                        <g:sortableColumn property="name" title="${message(code: 'line.name.label', default: 'Name')}" />
+
 						<g:sortableColumn property="abbreviation" title="${message(code: 'line.abbreviation.label', default: 'Abbreviation')}" />
 					
-						<g:sortableColumn property="captureKey" title="${message(code: 'line.captureKey.label', default: 'Capture Key')}" />
-					
-						<g:sortableColumn property="captured" title="${message(code: 'line.captured.label', default: 'Captured')}" />
-					
-						<g:sortableColumn property="comment" title="${message(code: 'line.comment.label', default: 'Comment')}" />
-					
-						<g:sortableColumn property="name" title="${message(code: 'line.name.label', default: 'Name')}" />
-					
-						<g:sortableColumn property="species" title="${message(code: 'line.species.label', default: 'Species')}" />
+						%{--<g:sortableColumn property="captureKey" title="${message(code: 'line.captureKey.label', default: 'Capture Key')}" />--}%
+					%{----}%
+						%{--<g:sortableColumn property="captured" title="${message(code: 'line.captured.label', default: 'Captured')}" />--}%
+					%{----}%
+						%{--<g:sortableColumn property="comment" title="${message(code: 'line.comment.label', default: 'Comment')}" />--}%
+					%{----}%
+
+						%{--<g:sortableColumn property="species" title="${message(code: 'line.species.label', default: 'Species')}" />--}%
 					
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${lineInstanceList}" status="i" var="lineInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                        <td>${fieldValue(bean: lineInstance, field: "name")}</td>
+
+						<td>
+                            <g:link action="show" id="${lineInstance.id}">${fieldValue(bean: lineInstance, field: "abbreviation")}</g:link>
+                        </td>
 					
-						<td><g:link action="show" id="${lineInstance.id}">${fieldValue(bean: lineInstance, field: "abbreviation")}</g:link></td>
-					
-						<td>${fieldValue(bean: lineInstance, field: "captureKey")}</td>
-					
-						<td><g:formatBoolean boolean="${lineInstance.captured}" /></td>
-					
-						<td>${fieldValue(bean: lineInstance, field: "comment")}</td>
-					
-						<td>${fieldValue(bean: lineInstance, field: "name")}</td>
-					
-						<td>${fieldValue(bean: lineInstance, field: "species")}</td>
+						%{--<td>${fieldValue(bean: lineInstance, field: "captureKey")}</td>--}%
+					%{----}%
+						%{--<td><g:formatBoolean boolean="${lineInstance.captured}" /></td>--}%
+					%{----}%
+						%{--<td>${fieldValue(bean: lineInstance, field: "comment")}</td>--}%
+					%{----}%
+
+						%{--<td>${fieldValue(bean: lineInstance, field: "species")}</td>--}%
 					
 					</tr>
 				</g:each>

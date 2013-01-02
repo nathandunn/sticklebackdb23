@@ -6,6 +6,10 @@ class StockController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    static navigation = [
+            title:'Stock',action: 'list',order:1
+    ]
+
     def index() {
         redirect(action: "list", params: params)
     }

@@ -24,9 +24,9 @@
 				<thead>
 					<tr>
 					
-						<th><g:message code="aquaria.container.label" default="Container" /></th>
-					
-						<g:sortableColumn property="fishTotal" title="${message(code: 'aquaria.fishTotal.label', default: 'Fish Total')}" />
+                        <g:sortableColumn property="container.barcode" title="${message(code: 'aquaria.fishTotal.label', default: 'Container')}" />
+
+						<g:sortableColumn property="container.size" title="${message(code: 'aquaria.fishTotal.label', default: 'Size (Gallons)')}" />
 					
 						<g:sortableColumn property="fishUnsexed" title="${message(code: 'aquaria.fishUnsexed.label', default: 'Fish Unsexed')}" />
 					
@@ -42,11 +42,12 @@
 				<g:each in="${aquariaInstanceList}" status="i" var="aquariaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${aquariaInstance.id}">${fieldValue(bean: aquariaInstance, field: "container")}</g:link></td>
+						%{--<td><g:link action="show" id="${aquariaInstance.id}">${fieldValue(bean: aquariaInstance, field: "container")}</g:link></td>--}%
+                        <td><g:link action="show" id="${aquariaInstance.id}">${aquariaInstance?.container?.barcode}</g:link></td>
+
+						<td>(${aquariaInstance?.container?.size})</td>
 					
-						<td>${fieldValue(bean: aquariaInstance, field: "fishTotal")}</td>
-					
-						<td>${fieldValue(bean: aquariaInstance, field: "fishUnsexed")}</td>
+						<td>${aquariaInstance?.container?.barcode}</td>
 					
 						<td>${fieldValue(bean: aquariaInstance, field: "status")}</td>
 					

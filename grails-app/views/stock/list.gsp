@@ -24,35 +24,42 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="abbreviation" title="${message(code: 'stock.abbreviation.label', default: 'Abbreviation')}" />
-					
-						<th><g:message code="stock.barcode.label" default="Barcode" /></th>
-					
-						<g:sortableColumn property="breedingType" title="${message(code: 'stock.breedingType.label', default: 'Breeding Type')}" />
-					
-						<g:sortableColumn property="comment" title="${message(code: 'stock.comment.label', default: 'Comment')}" />
-					
-						<g:sortableColumn property="containerStatus" title="${message(code: 'stock.containerStatus.label', default: 'Container Status')}" />
-					
-						<g:sortableColumn property="crossDate" title="${message(code: 'stock.crossDate.label', default: 'Cross Date')}" />
-					
+						<g:sortableColumn property="fishStock" title="${message(code: 'stock.abbreviation.label', default: 'Stock')}" />
+                        <g:sortableColumn property="abbreviation" title="${message(code: 'stock.abbreviation.label', default: 'Name')}" />
+
+
+						<g:sortableColumn property="fertilizationDateTime" title="${message(code: 'stock.breedingType.label', default: 'Fertilized')}" />
+
+                        <th>Expired</th>
+
+						<g:sortableColumn property="crossDate" title="${message(code: 'stock.crossDate.label', default: 'Stock Date')}" />
+
+                        <th>Status</th>
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${stockInstanceList}" status="i" var="stockInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${stockInstance.id}">${fieldValue(bean: stockInstance, field: "abbreviation")}</g:link></td>
+
+						<td><g:formatNumber number="${stockInstance.fishStock}"/></td>
+                        <td><g:link action="show" id="${stockInstance.id}">${fieldValue(bean: stockInstance, field: "abbreviation")}</g:link></td>
+
+						<td>
+                            <g:formatDate date="${stockInstance.fertilizationDateTime}" type="date" dateStyle="MEDIUM"/>
+                            %{--${fieldValue(bean: stockInstance, field: "breedingType")}--}%
+                        </td>
 					
-						<td>${fieldValue(bean: stockInstance, field: "barcode")}</td>
+						%{--<td>${fieldValue(bean: stockInstance, field: "comment")}</td>--}%
+                        <td>&nbsp;</td>
 					
-						<td>${fieldValue(bean: stockInstance, field: "breedingType")}</td>
+						<td>
+                            %{--${fieldValue(bean: stockInstance, field: "containerStatus")}--}%
+                            <g:formatDate date="${stockInstance.crossDate}" type="date" format="MEDIUM"/>
+                        </td>
 					
-						<td>${fieldValue(bean: stockInstance, field: "comment")}</td>
-					
-						<td>${fieldValue(bean: stockInstance, field: "containerStatus")}</td>
-					
-						<td><g:formatDate date="${stockInstance.crossDate}" /></td>
+						<td>${stockInstance.fullStatus}</td>
 					
 					</tr>
 				</g:each>

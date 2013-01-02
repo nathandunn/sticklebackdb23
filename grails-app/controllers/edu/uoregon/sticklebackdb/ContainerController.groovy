@@ -6,6 +6,10 @@ class ContainerController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    static navigation = [
+            title:'Container',action: 'list',order:3
+    ]
+
     def index() {
         redirect(action: "list", params: params)
     }

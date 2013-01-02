@@ -24,14 +24,12 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="barcode" title="${message(code: 'container.barcode.label', default: 'Barcode')}" />
-					
+						<g:sortableColumn property="barcode" title="${message(code: 'container.barcode.label', default: 'Container')}" />
+
+                        <g:sortableColumn property="size" title="${message(code: 'container.size.label', default: 'Size (Gallons)')}" />
+
 						<g:sortableColumn property="location" title="${message(code: 'container.location.label', default: 'Location')}" />
-					
-						<g:sortableColumn property="size" title="${message(code: 'container.size.label', default: 'Size')}" />
-					
-						<g:sortableColumn property="total" title="${message(code: 'container.total.label', default: 'Total')}" />
-					
+
 					</tr>
 				</thead>
 				<tbody>
@@ -40,12 +38,10 @@
 					
 						<td><g:link action="show" id="${containerInstance.id}">${fieldValue(bean: containerInstance, field: "barcode")}</g:link></td>
 					
-						<td>${fieldValue(bean: containerInstance, field: "location")}</td>
-					
 						<td>${fieldValue(bean: containerInstance, field: "size")}</td>
-					
-						<td>${fieldValue(bean: containerInstance, field: "total")}</td>
-					
+
+                        <td>${fieldValue(bean: containerInstance, field: "location")}</td>
+
 					</tr>
 				</g:each>
 				</tbody>
