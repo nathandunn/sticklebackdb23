@@ -6,7 +6,9 @@ class BootStrap {
     def init = { servletContext ->
 
         String bootstrapValue = System.properties["bootstrap"]
-        log.debug "bootstrapValue: " + bootstrapValue
+        println "bootstrapValue: " + bootstrapValue
+        println "stock count: " + Stock.count()
+
         if (bootstrapValue) {
             new StubData().stubAll()
         }
@@ -14,6 +16,9 @@ class BootStrap {
         if(Stock.count()==0)
         {
             new StubData().stubAll()
+        }
+        else{
+            println "not stubbing data"
         }
 
 

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" afterPath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" />
     </list>
     <ignored path="sticklebackdb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,7 +16,7 @@
     <file path="/Aquaria.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357320431936" ignored="false" />
     <file path="/a.dummy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356630123806" ignored="false" />
     <file path="/StubData.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357322761835" ignored="false" />
-    <file path="/BootStrap.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357341154757" ignored="false" />
+    <file path="/BootStrap.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357341517743" ignored="false" />
     <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/script/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632993872" ignored="false" />
     <file path="/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356630255791" ignored="false" />
     <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/instantsearchmacro.vm" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356568053497" ignored="false" />
@@ -29,7 +30,7 @@
     <file path="/ContainerController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357160560840" ignored="false" />
     <file path="/LineController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357160588361" ignored="false" />
     <file path="/show.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357323167051" ignored="false" />
-    <file path="$PROJECT_DIR$/web-app/WEB-INF/applicationContext.xml" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357340283635" ignored="false" />
+    <file path="$PROJECT_DIR$/web-app/WEB-INF/applicationContext.xml" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357341421771" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +146,7 @@
           <file leaf-file-name="StubData.groovy" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="22" column="0" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
+                <state line="199" column="0" selection-start="8032" selection-end="8032" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -154,7 +155,7 @@
           <file leaf-file-name="BootStrap.groovy" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="15" column="12" selection-start="381" selection-end="381" vertical-scroll-proportion="0.3182461">
+                <state line="6" column="0" selection-start="122" selection-end="122" vertical-scroll-proportion="0.12729844">
                   <folding>
                     <element signature="e#0#27#0" expanded="true" />
                   </folding>
@@ -653,14 +654,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
+        <state line="199" column="0" selection-start="8032" selection-end="8032" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="12" selection-start="381" selection-end="381" vertical-scroll-proportion="0.3182461">
+        <state line="6" column="0" selection-start="122" selection-end="122" vertical-scroll-proportion="0.12729844">
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
