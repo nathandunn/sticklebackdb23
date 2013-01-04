@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/exports/sbAquaria.xlsx" afterPath="$PROJECT_DIR$/doc/exports/sbAquaria.xlsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Aquaria.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Aquaria.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" afterPath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/aquaria/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/aquaria/list.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/exports/sbAquaria.csv" afterPath="$PROJECT_DIR$/doc/exports/sbAquaria.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/WEB-INF/import/sbAquaria.csv" afterPath="$PROJECT_DIR$/web-app/WEB-INF/import/sbAquaria.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/aquaria/show.gsp" afterPath="$PROJECT_DIR$/grails-app/views/aquaria/show.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/stock/show.gsp" afterPath="$PROJECT_DIR$/grails-app/views/stock/show.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.iws" afterPath="$PROJECT_DIR$/sticklebackdb.iws" />
     </list>
     <ignored path="sticklebackdb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -150,19 +141,19 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="StubData.groovy" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="StubData.groovy" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="108" column="37" selection-start="3746" selection-end="3746" vertical-scroll-proportion="0.0">
+                <state line="46" column="12" selection-start="1379" selection-end="1379" vertical-scroll-proportion="0.52927023">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="show.gsp" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="show.gsp" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/grails-app/views/aquaria/show.gsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="76" column="90" selection-start="3976" selection-end="3976" vertical-scroll-proportion="0.7961247">
+                <state line="54" column="12" selection-start="2816" selection-end="2816" vertical-scroll-proportion="-13.085107">
                   <folding />
                 </state>
               </provider>
@@ -311,8 +302,8 @@
         <option value="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/stock/show.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/aquaria/list.gsp" />
-        <option value="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/aquaria/show.gsp" />
+        <option value="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
       </list>
     </option>
   </component>
@@ -657,16 +648,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/views/aquaria/show.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="37" selection-start="3746" selection-end="3746" vertical-scroll-proportion="0.0">
+        <state line="54" column="12" selection-start="2816" selection-end="2816" vertical-scroll-proportion="-13.085107">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/aquaria/show.gsp">
+    <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="90" selection-start="3976" selection-end="3976" vertical-scroll-proportion="0.7961247">
+        <state line="46" column="12" selection-start="1379" selection-end="1379" vertical-scroll-proportion="0.52927023">
           <folding />
         </state>
       </provider>

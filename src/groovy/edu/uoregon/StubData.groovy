@@ -31,7 +31,7 @@ class StubData {
     def stubLine() {
 
 //        if (Line.count() > 0) return
-        Line.deleteAll(Line.all)
+//        Line.deleteAll(Line.all)
 
 //        file.eachCsvLine([skipLines:1,'charset':'UTF-8']) { tokens ->
         CSVReader csvReader = getImportFile("lines.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
