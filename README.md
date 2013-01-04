@@ -1,1 +1,1 @@
-Stickleback project 
+# This is my README
