@@ -28,13 +28,11 @@
 
 						<g:sortableColumn property="container.size" title="${message(code: 'aquaria.fishTotal.label', default: 'Size (Gallons)')}" />
 					
-						<g:sortableColumn property="fishUnsexed" title="${message(code: 'aquaria.fishUnsexed.label', default: 'Fish Unsexed')}" />
-					
-						<g:sortableColumn property="status" title="${message(code: 'aquaria.status.label', default: 'Status')}" />
-					
-						<g:sortableColumn property="statusContainer" title="${message(code: 'aquaria.statusContainer.label', default: 'Status Container')}" />
-					
-						<g:sortableColumn property="statusFishQuantity" title="${message(code: 'aquaria.statusFishQuantity.label', default: 'Status Fish Quantity')}" />
+						<g:sortableColumn property="stock?.label" title="${message(code: 'aquaria.fishUnsexed.label', default: 'Stock')}" />
+                        <g:sortableColumn property="stock?.name" title="${message(code: 'aquaria.fishUnsexed.label', default: 'Stock Name')}" />
+                        <g:sortableColumn property="stock?.stockType?.identification" title="${message(code: 'aquaria.fishUnsexed.label', default: 'Stock Type')}" />
+                        <g:sortableColumn property="stock?.fertilizationDateTime" title="${message(code: 'aquaria.fishUnsexed.label', default: 'Fertilization')}" />
+						<g:sortableColumn property="fishTotal" title="${message(code: 'aquaria.statusFishQuantity.label', default: 'Fish')}" />
 					
 					</tr>
 				</thead>
@@ -47,14 +45,13 @@
 
 						<td>(${aquariaInstance?.container?.size})</td>
 					
-						<td>${aquariaInstance?.container?.barcode}</td>
-					
-						<td>${fieldValue(bean: aquariaInstance, field: "status")}</td>
-					
-						<td>${fieldValue(bean: aquariaInstance, field: "statusContainer")}</td>
-					
-						<td>${fieldValue(bean: aquariaInstance, field: "statusFishQuantity")}</td>
-					
+						<td>${aquariaInstance.stock?.barcode}</td>
+                        <td>${aquariaInstance.stock?.name}</td>
+                        <td>${aquariaInstance.stock?.stockType?.identification}</td>
+                        <td>
+                            <g:formatDate date="${aquariaInstance.stock?.fertilizationDateTime}" type="date" dateStyle="MEDIUM"/></td>
+                        <td>${aquariaInstance.fishTotal}</td>
+
 					</tr>
 				</g:each>
 				</tbody>

@@ -32,15 +32,15 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${stockInstance?.barcode}">
 				<li class="fieldcontain">
 					<span id="barcode-label" class="property-label"><g:message code="stock.barcode.label" default="Barcode" /></span>
 					
-						<span class="property-value" aria-labelledby="barcode-label"><g:link controller="container" action="show" id="${stockInstance?.barcode?.id}">${stockInstance?.barcode?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="barcode-label">
+                            ${stockInstance.barcode}
+                        </span>
 					
 				</li>
-				</g:if>
-			
+
 				<g:if test="${stockInstance?.breedingType}">
 				<li class="fieldcontain">
 					<span id="breedingType-label" class="property-label"><g:message code="stock.breedingType.label" default="Breeding Type" /></span>
@@ -144,7 +144,7 @@
 				<li class="fieldcontain">
 					<span id="line-label" class="property-label"><g:message code="stock.line.label" default="Line" /></span>
 					
-						<span class="property-value" aria-labelledby="line-label"><g:link controller="line" action="show" id="${stockInstance?.line?.id}">${stockInstance?.line?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="line-label"><g:link controller="line" action="show" id="${stockInstance?.line?.id}">${stockInstance?.line?.name}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -243,7 +243,7 @@
 				<li class="fieldcontain">
 					<span id="stockType-label" class="property-label"><g:message code="stock.stockType.label" default="Stock Type" /></span>
 					
-						<span class="property-value" aria-labelledby="stockType-label"><g:link controller="genetics" action="show" id="${stockInstance?.stockType?.id}">${stockInstance?.stockType?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="stockType-label"><g:link controller="genetics" action="show" id="${stockInstance?.stockType?.id}">${stockInstance?.stockType?.identification}</g:link></span>
 					
 				</li>
 				</g:if>

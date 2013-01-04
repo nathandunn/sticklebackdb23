@@ -23,9 +23,9 @@ class StubData {
     def stubAll() {
         stubLine()
         stubContainer()
-        stubAquaria()
         stubGenetics()
         stubStock()
+        stubAquaria()
     }
 
     def stubLine() {
@@ -110,14 +110,17 @@ class StubData {
 
             Aquaria aquaria = new Aquaria()
 
-            aquaria.fishTotal = tokens[9]?.size() > 0 ? tokens[9].size().toInteger() : null
-            aquaria.fishUnsexed = tokens[10]?.size() > 0 ? tokens[10].size().toInteger() : null
-            aquaria.statusContainer = tokens[12]?.size() > 0 ? tokens[12].size().toInteger() : null
-            aquaria.statusFishQuantity = tokens[13]?.size() > 0 ? tokens[13].size().toInteger() : null
-            aquaria.statusStock = tokens[14]?.size() > 0 ? tokens[14].size().toInteger() : null
+            aquaria.container = Container.findByBarcode(tokens[0])
 
+            aquaria.fishTotal = tokens[3]?.size() > 0 ? tokens[3].toInteger() : null
 
-            aquaria.container = Container.findByBarcode(tokens[2])
+            aquaria.fishUnsexed = tokens[5]?.size() > 0 ? tokens[5].toInteger() : null
+
+            aquaria.statusContainer = tokens[7]?.size() > 0 ? tokens[7].toInteger() : null
+            aquaria.statusFishQuantity = tokens[8]?.size() > 0 ? tokens[8].toInteger() : null
+            aquaria.statusStock = tokens[9]?.size() > 0 ? tokens[9].toInteger() : null
+
+            aquaria.stock = tokens[4]?.size() > 0 ? Stock.findByBarcode(tokens[4]) : null
 
 
             aquaria.save(flush: true, insert: true, failOnError: true)
@@ -132,9 +135,9 @@ class StubData {
         csvReader.eachLine { tokens ->
             if (tokens.size() > 5) {
                 Stock stock = new Stock()
-
                 try {
-                    stock.barcode = Container.findByBarcode(tokens[0].replaceAll("\\*", ""))
+                    stock.barcode = tokens[13]
+
                     try {
                         stock.crossDate = tokens[1]?.size() > 0 ? Date.parse("mm/dd/yyyy", tokens[1]) : null
                     } catch (e) {

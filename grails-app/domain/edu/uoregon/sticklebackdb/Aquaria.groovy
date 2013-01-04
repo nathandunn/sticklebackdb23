@@ -6,6 +6,7 @@ class Aquaria {
     }
 
     Container container
+    Stock stock
 
     // TODO: make an enum
     String status
