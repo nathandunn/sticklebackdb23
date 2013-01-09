@@ -1,5 +1,8 @@
 package edu.uoregon.sticklebackdb
 
+/**
+ * Same as capture
+ */
 class Genetics {
 
     static constraints = {
