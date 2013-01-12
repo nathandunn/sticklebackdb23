@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-app/WEB-INF/import/individuals.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/IndividualController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/IndividualController.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" afterPath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.iws" afterPath="$PROJECT_DIR$/sticklebackdb.iws" />
     </list>
     <ignored path="sticklebackdb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,7 +16,7 @@
     <file path="/Stock.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357947472300" ignored="false" />
     <file path="/Aquaria.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357320431936" ignored="false" />
     <file path="/a.dummy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357948294313" ignored="false" />
-    <file path="/StubData.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357950458934" ignored="false" />
+    <file path="/StubData.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357950867534" ignored="false" />
     <file path="/BootStrap.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357949603565" ignored="false" />
     <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/script/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632993872" ignored="false" />
     <file path="/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356630255791" ignored="false" />
@@ -35,7 +34,6 @@
     <file path="$PROJECT_DIR$/web-app/WEB-INF/applicationContext.xml" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357341421771" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/grails-app/conf/DataSource.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357690815193" ignored="false" />
     <file path="$PROJECT_DIR$/../phoneme/test/unit/phoneme/AlignerTests.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357768990887" ignored="false" />
-    <file path="$PROJECT_DIR$/test/unit/edu/uoregon/sticklebackdb/IndividualTests.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357947320935" ignored="false" />
     <file path="/Individual.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357948480092" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +126,16 @@
           <file leaf-file-name="StubData.groovy" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="210" column="59" selection-start="8492" selection-end="8492" vertical-scroll-proportion="0.27121">
+                <state line="254" column="48" selection-start="10656" selection-end="10656" vertical-scroll-proportion="0.9179416">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="StockController.groovy" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/StockController.groovy">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="28" column="61" selection-start="761" selection-end="761" vertical-scroll-proportion="-18.26087">
                   <folding />
                 </state>
               </provider>
@@ -150,10 +157,19 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BootStrap.groovy" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="BootStrap.groovy" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="12" column="20" selection-start="350" selection-end="350" vertical-scroll-proportion="0.22540984">
+                <state line="22" column="0" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="IndividualController.groovy" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/IndividualController.groovy">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="9" column="25" selection-start="256" selection-end="256" vertical-scroll-proportion="0.20059435">
                   <folding />
                 </state>
               </provider>
@@ -189,7 +205,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/AquariaController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/StockController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/ContainerController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/LineController.groovy" />
@@ -204,6 +219,7 @@
         <option value="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Individual.groovy" />
         <option value="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/IndividualController.groovy" />
         <option value="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
       </list>
     </option>
@@ -436,20 +452,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/LineController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/GeneticsController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="50" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/stock/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="42" selection-start="473" selection-end="473" vertical-scroll-proportion="0.0">
@@ -554,14 +556,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="20" selection-start="350" selection-end="350" vertical-scroll-proportion="0.22540984">
+        <state line="22" column="0" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/IndividualController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="25" selection-start="256" selection-end="256" vertical-scroll-proportion="0.20059435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/StockController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="61" selection-start="761" selection-end="761" vertical-scroll-proportion="-18.26087">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="210" column="59" selection-start="8492" selection-end="8492" vertical-scroll-proportion="0.27121">
+        <state line="254" column="48" selection-start="10656" selection-end="10656" vertical-scroll-proportion="0.9179416">
           <folding />
         </state>
       </provider>

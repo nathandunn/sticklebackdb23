@@ -138,7 +138,6 @@ class StubData {
                 Stock stock = new Stock()
                 try {
                     stock.barcode = tokens[13]
-                    println "stubbing stock ${tokens[13]}"
 
                     try {
                         stock.crossDate = tokens[1]?.size() > 0 ? Date.parse("mm/dd/yyyy", tokens[1]) : null
@@ -212,7 +211,6 @@ class StubData {
 
                 Individual individual = new Individual()
                 individual.stock = Stock.findByBarcode(tokens[17])
-                println tokens[18]
                 individual.index = tokens[18] as Integer
 
                 def maternalId = tokens[22]
@@ -251,7 +249,9 @@ class StubData {
 //                individual.stockDate = tokens[28]
                 individual.stockDate = tokens[28]?.size() > 0 ? Date.parse("mm/dd/yy", tokens[28]) : null
                 individual.stockIndividualDate = tokens[29]?.size() > 0 ? Date.parse("mm/dd/yy", tokens[29]) : null
+                individual.save(flush: true,insert: true)
             }
         }
+        println "Individuals ${Individual.count()}"
     }
 }
