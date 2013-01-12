@@ -7,10 +7,10 @@ class Stock {
 
     String barcode
     // TODO: group / index
-    Stock maternalStock
-    String maternalStockLabel
-    Stock paternalStock
-    String paternalStockLabel
+    Individual maternalIndividual
+    String maternalIndividualLabel
+    Individual paternalIndividual
+    String paternalIndividualLabel
     Line line
     Genetics stockType
 

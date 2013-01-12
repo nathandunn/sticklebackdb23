@@ -26,6 +26,7 @@ class StubData {
         stubGenetics()
         stubStock()
         stubAquaria()
+        stubIndividuals()
     }
 
     def stubLine() {
@@ -157,15 +158,15 @@ class StubData {
 
 
                     if (tokens[15]?.size() > 2 && tokens[15]?.contains("\\.")) {
-                        stock.maternalStockLabel = tokens[15]
+                        stock.maternalIndividualLabel = tokens[15]
                         String maternalStockID = tokens[15].substring(tokens[15].indexOf("\\."))
-                        stock.maternalStock = Stock.findByFishStock(maternalStockID)
+                        stock.maternalIndividual = Stock.findByFishStock(maternalStockID)
                     }
 
                     if (tokens[18]?.size() > 2 && tokens[18]?.contains("\\.")) {
-                        stock.paternalStockLabel = tokens[15]
+                        stock.paternalIndividualLabel = tokens[15]
                         String paternalStockID = tokens[18].substring(tokens[18].indexOf("\\."))
-                        stock.paternalStock = Stock.findByFishStock(paternalStockID)
+                        stock.paternalIndividual = Stock.findByFishStock(paternalStockID)
                     }
 
                     stock.line = tokens[23]?.size() > 0 ? Line.findByName(tokens[23]) : null
@@ -199,5 +200,49 @@ class StubData {
             }
         }
         println "finished stubbing stocks: " + Stock.count()
+    }
+
+
+    def stubIndividuals() {
+        CSVReader csvReader = getImportFile("individuals.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
+        println "start stub individuals"
+        csvReader.eachLine { tokens ->
+            if (tokens.size() > 5) {
+                Individual individual = new Individual()
+                individual.stock = Stock.findByBarcode(tokens[18])
+                individual.index = tokens[19] as Integer
+
+                def maternalId = tokens[22]
+                if(maternalId){
+                    if(maternalId.contains(".")){
+                        def maternalStockId = maternalId.split(".")[0]
+                        def maternalIndexId = maternalId.split(".")[1] as Integer
+                        Stock stock = Stock.findByBarcode(maternalStockId)
+                        individual.maternal = Individual.findByIndexAndStock(maternalIndexId,stock)
+                    }
+                    else{
+                        Stock stock = Stock.findByBarcode(maternalId)
+                        individual.maternal =  Individual.findAllByStock(stock)[0]
+                    }
+                }
+                def paternalId = tokens[23]
+                if(paternalId){
+                    if(paternalId.contains(".")){
+                        def paternalStockId = paternalId.split(".")[0]
+                        def paternalIndexId = paternalId.split(".")[1] as Integer
+                        Stock stock = Stock.findByBarcode(paternalStockId)
+                        individual.paternal = Individual.findByIndexAndStock(paternalIndexId,stock)
+                    }
+                    else{
+                        Stock stock = Stock.findByBarcode(paternalId)
+                        individual.paternal =  Individual.findAllByStock(stock)[0]
+                    }
+                }
+
+//                individual.stockDate = tokens[28]
+                individual.stockDate = tokens[28]?.size() > 0 ? Date.parse("mm/dd/yy", tokens[28]) : null
+                individual.stockIndividualDate = tokens[29]?.size() > 0 ? Date.parse("mm/dd/yy", tokens[29]) : null
+            }
+        }
     }
 }

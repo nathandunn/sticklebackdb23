@@ -149,20 +149,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${stockInstance?.maternalStock}">
+				<g:if test="${stockInstance?.maternalIndividual}">
 				<li class="fieldcontain">
 					<span id="maternalStock-label" class="property-label"><g:message code="stock.maternalStock.label" default="Maternal Stock" /></span>
 					
-						<span class="property-value" aria-labelledby="maternalStock-label"><g:link controller="stock" action="show" id="${stockInstance?.maternalStock?.id}">${stockInstance?.maternalStock?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="maternalStock-label"><g:link controller="stock" action="show" id="${stockInstance?.maternalIndividual?.id}">${stockInstance?.maternalIndividual?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${stockInstance?.maternalStockLabel}">
+				<g:if test="${stockInstance?.maternalIndividualLabel}">
 				<li class="fieldcontain">
 					<span id="maternalStockLabel-label" class="property-label"><g:message code="stock.maternalStockLabel.label" default="Maternal Stock Label" /></span>
 					
-						<span class="property-value" aria-labelledby="maternalStockLabel-label"><g:fieldValue bean="${stockInstance}" field="maternalStockLabel"/></span>
+						<span class="property-value" aria-labelledby="maternalStockLabel-label"><g:fieldValue bean="${stockInstance}" field="maternalIndividualLabel"/></span>
 					
 				</li>
 				</g:if>
@@ -221,20 +221,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${stockInstance?.paternalStock}">
+				<g:if test="${stockInstance?.paternalIndividual}">
 				<li class="fieldcontain">
 					<span id="paternalStock-label" class="property-label"><g:message code="stock.paternalStock.label" default="Paternal Stock" /></span>
 					
-						<span class="property-value" aria-labelledby="paternalStock-label"><g:link controller="stock" action="show" id="${stockInstance?.paternalStock?.id}">${stockInstance?.paternalStock?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="paternalStock-label"><g:link controller="stock" action="show" id="${stockInstance?.paternalIndividual?.id}">${stockInstance?.paternalIndividual?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${stockInstance?.paternalStockLabel}">
+				<g:if test="${stockInstance?.paternalIndividualLabel}">
 				<li class="fieldcontain">
 					<span id="paternalStockLabel-label" class="property-label"><g:message code="stock.paternalStockLabel.label" default="Paternal Stock Label" /></span>
 					
-						<span class="property-value" aria-labelledby="paternalStockLabel-label"><g:fieldValue bean="${stockInstance}" field="paternalStockLabel"/></span>
+						<span class="property-value" aria-labelledby="paternalStockLabel-label"><g:fieldValue bean="${stockInstance}" field="paternalIndividualLabel"/></span>
 					
 				</li>
 				</g:if>
