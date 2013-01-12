@@ -9,6 +9,7 @@ class BootStrap {
         println "bootstrapValue: " + bootstrapValue
         println "stock count: " + Stock.count()
 
+//        new StubData().stubIndividuals()
         if (bootstrapValue) {
             new StubData().stubAll()
         }

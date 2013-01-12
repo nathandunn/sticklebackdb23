@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Individual.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-app/WEB-INF/import/individuals.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" afterPath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/stock/show.gsp" afterPath="$PROJECT_DIR$/grails-app/views/stock/show.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" afterPath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.iws" afterPath="$PROJECT_DIR$/sticklebackdb.iws" />
     </list>
     <ignored path="sticklebackdb.iws" />
@@ -19,8 +17,8 @@
     <file path="/Stock.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357947472300" ignored="false" />
     <file path="/Aquaria.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357320431936" ignored="false" />
     <file path="/a.dummy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357948294313" ignored="false" />
-    <file path="/StubData.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357949070247" ignored="false" />
-    <file path="/BootStrap.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357341517743" ignored="false" />
+    <file path="/StubData.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357950458934" ignored="false" />
+    <file path="/BootStrap.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357949603565" ignored="false" />
     <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/script/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632993872" ignored="false" />
     <file path="/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356630255791" ignored="false" />
     <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/instantsearchmacro.vm" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356568053497" ignored="false" />
@@ -130,7 +128,7 @@
           <file leaf-file-name="StubData.groovy" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="243" column="105" selection-start="10247" selection-end="10247" vertical-scroll-proportion="0.8970793">
+                <state line="210" column="59" selection-start="8492" selection-end="8492" vertical-scroll-proportion="0.27121">
                   <folding />
                 </state>
               </provider>
@@ -140,10 +138,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="Individual.groovy" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="Individual.groovy" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Individual.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="13" column="6" selection-start="241" selection-end="241" vertical-scroll-proportion="0.28592375">
+                <state line="13" column="6" selection-start="241" selection-end="241" vertical-scroll-proportion="-3.9">
                   <folding />
                 </state>
               </provider>
@@ -152,10 +150,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BootStrap.groovy" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="BootStrap.groovy" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="12" column="29" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0">
+                <state line="12" column="20" selection-start="350" selection-end="350" vertical-scroll-proportion="0.22540984">
                   <folding />
                 </state>
               </provider>
@@ -202,10 +200,10 @@
         <option value="$PROJECT_DIR$/grails-app/views/stock/show.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/aquaria/show.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/aquaria/list.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Genetics.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Individual.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
         <option value="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
       </list>
     </option>
@@ -534,23 +532,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="29" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Individual.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="6" selection-start="241" selection-end="241" vertical-scroll-proportion="0.28592375">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="22" selection-start="255" selection-end="255" vertical-scroll-proportion="-3.6">
@@ -561,9 +542,26 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Individual.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="6" selection-start="241" selection-end="241" vertical-scroll-proportion="-3.9">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="20" selection-start="350" selection-end="350" vertical-scroll-proportion="0.22540984">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="243" column="105" selection-start="10247" selection-end="10247" vertical-scroll-proportion="0.8970793">
+        <state line="210" column="59" selection-start="8492" selection-end="8492" vertical-scroll-proportion="0.27121">
           <folding />
         </state>
       </provider>
