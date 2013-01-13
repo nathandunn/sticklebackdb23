@@ -121,7 +121,7 @@ class StubData {
             aquaria.statusFishQuantity = tokens[8]?.size() > 0 ? tokens[8].toInteger() : null
             aquaria.statusStock = tokens[9]?.size() > 0 ? tokens[9].toInteger() : null
 
-            aquaria.stock = tokens[4]?.size() > 0 ? Stock.findByBarcode(tokens[4]) : null
+            aquaria.stock = tokens[4]?.size() > 0 ? Stock.findByBarcode(tokens[4].split("\\.")[0]) : null
 
 
             aquaria.save(flush: true, insert: true, failOnError: true)
@@ -207,11 +207,11 @@ class StubData {
         CSVReader csvReader = getImportFile("individuals.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
         println "start stub individuals"
         csvReader.eachLine { tokens ->
-            if (tokens.size() > 15 && tokens[18]?.length()>1) {
+            if (tokens.size() > 15 && tokens[18]?.length()>1 && tokens[19]?.length()>1) {
 
                 Individual individual = new Individual()
-                individual.stock = Stock.findByBarcode(tokens[17] as Integer)
-                individual.index = tokens[18] as Integer
+                individual.stock = Stock.findByBarcode(tokens[18] as Integer)
+                individual.index = tokens[19] as Integer
 
                 def maternalId = tokens[22]
                 if (maternalId) {

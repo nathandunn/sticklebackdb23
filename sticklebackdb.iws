@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" afterPath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" afterPath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.iws" afterPath="$PROJECT_DIR$/sticklebackdb.iws" />
     </list>
     <ignored path="sticklebackdb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -18,7 +14,7 @@
     <file path="/Stock.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358057670124" ignored="false" />
     <file path="/Aquaria.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357320431936" ignored="false" />
     <file path="/a.dummy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031607370" ignored="false" />
-    <file path="/StubData.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358057716908" ignored="false" />
+    <file path="/StubData.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358101595535" ignored="false" />
     <file path="/BootStrap.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358056887755" ignored="false" />
     <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/script/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632993872" ignored="false" />
     <file path="/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356630255791" ignored="false" />
@@ -132,7 +128,7 @@
           <file leaf-file-name="StubData.groovy" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="246" column="78" selection-start="10559" selection-end="10559" vertical-scroll-proportion="0.8995816">
+                <state line="224" column="24" selection-start="9352" selection-end="9352" vertical-scroll-proportion="0.24686192">
                   <folding />
                 </state>
               </provider>
@@ -596,7 +592,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="246" column="78" selection-start="10559" selection-end="10559" vertical-scroll-proportion="0.8995816">
+        <state line="224" column="24" selection-start="9352" selection-end="9352" vertical-scroll-proportion="0.24686192">
           <folding />
         </state>
       </provider>
