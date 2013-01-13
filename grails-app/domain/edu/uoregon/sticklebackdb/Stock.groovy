@@ -5,7 +5,7 @@ class Stock {
     static constraints = {
     }
 
-    String barcode
+    Integer barcode
     // TODO: group / index
     Individual maternalIndividual
     String maternalIndividualLabel

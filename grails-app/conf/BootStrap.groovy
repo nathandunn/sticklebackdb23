@@ -1,4 +1,5 @@
 import edu.uoregon.StubData
+import edu.uoregon.sticklebackdb.Individual
 import edu.uoregon.sticklebackdb.Stock
 
 class BootStrap {
@@ -20,6 +21,10 @@ class BootStrap {
         else{
             println "not stubbing data"
         }
+
+        Individual.deleteAll(Individual.list())
+        new StubData().stubIndividuals()
+
 
 
     }

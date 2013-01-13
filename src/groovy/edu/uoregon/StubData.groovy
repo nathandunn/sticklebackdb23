@@ -137,7 +137,7 @@ class StubData {
             if (tokens.size() > 5) {
                 Stock stock = new Stock()
                 try {
-                    stock.barcode = tokens[13]
+                    stock.barcode = tokens[14] as Integer
 
                     try {
                         stock.crossDate = tokens[1]?.size() > 0 ? Date.parse("mm/dd/yyyy", tokens[1]) : null
@@ -210,36 +210,41 @@ class StubData {
             if (tokens.size() > 15 && tokens[18]?.length()>1) {
 
                 Individual individual = new Individual()
-                individual.stock = Stock.findByBarcode(tokens[17])
+                individual.stock = Stock.findByBarcode(tokens[17] as Integer)
                 individual.index = tokens[18] as Integer
 
                 def maternalId = tokens[22]
                 if (maternalId) {
                     if (maternalId.contains(".")) {
-                        def maternalStockId = maternalId.split("\\.")[0]
+                        def maternalStockId = maternalId.split("\\.")[0] as Integer
                         def maternalIndexId = maternalId.split("\\.")[1] as Integer
                         Stock stock = Stock.findByBarcode(maternalStockId)
+                        println "maternal - ${maternalId} found stock ${stock} with ${maternalStockId} and ${maternalIndexId}"
                         if(stock){
-                            individual.maternal = Individual.findByIndexAndStock(maternalIndexId, stock)
+                            Individual individual1 = Individual.findByIndexAndStock(maternalIndexId, stock)
+                            println "found individual ${individual1} with stock ${stock} and maternalIndexId ${maternalIndexId}"
+                            individual.maternal =  Individual.findByIndexAndStock(maternalIndexId, stock)
                         }
                     } else {
-                        Stock stock = Stock.findByBarcode(maternalId)
+                        Stock stock = Stock.findByBarcode(maternalId as Integer)
                         if(stock){
                             individual.maternal = Individual.findAllByStock(stock)[0]
                         }
                     }
+                    println "added maternal ${individual.maternal}"
                 }
+
                 def paternalId = tokens[23]
                 if (paternalId) {
                     if (paternalId.contains(".")) {
-                        def paternalStockId = paternalId.split("\\.")[0]
+                        def paternalStockId = paternalId.split("\\.")[0] as Integer
                         def paternalIndexId = paternalId.split("\\.")[1] as Integer
                         Stock stock = Stock.findByBarcode(paternalStockId)
                         if(stock){
                             individual.paternal = Individual.findByIndexAndStock(paternalIndexId, stock)
                         }
                     } else {
-                        Stock stock = Stock.findByBarcode(paternalId)
+                        Stock stock = Stock.findByBarcode(paternalId as Integer)
                         if (stock) {
                             individual.paternal = Individual.findAllByStock(stock)[0]
                         }
