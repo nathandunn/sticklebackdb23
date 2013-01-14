@@ -6,10 +6,6 @@ class IndividualController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    static navigation = [
-            title:'Individual',action: 'list',order:10
-    ]
-
     def index() {
         redirect(action: "list", params: params)
     }

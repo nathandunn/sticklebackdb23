@@ -22,11 +22,6 @@ class BootStrap {
             println "not stubbing data"
         }
 
-        Individual.deleteAll(Individual.list())
-        new StubData().stubIndividuals()
-
-
-
     }
     def destroy = {
     }

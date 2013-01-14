@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/IndividualController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/IndividualController.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" afterPath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" afterPath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.iml" afterPath="$PROJECT_DIR$/sticklebackdb.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.ipr" afterPath="$PROJECT_DIR$/sticklebackdb.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.iws" afterPath="$PROJECT_DIR$/sticklebackdb.iws" />
     </list>
     <ignored path="sticklebackdb.iws" />
@@ -14,9 +19,9 @@
     <file path="/Line.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356539356913" ignored="false" />
     <file path="/Stock.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358057670124" ignored="false" />
     <file path="/Aquaria.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357320431936" ignored="false" />
-    <file path="/a.dummy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031607370" ignored="false" />
-    <file path="/StubData.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358173980400" ignored="false" />
-    <file path="/BootStrap.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358056887755" ignored="false" />
+    <file path="/a.dummy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358189160957" ignored="false" />
+    <file path="/StubData.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358187363284" ignored="false" />
+    <file path="/BootStrap.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358187265478" ignored="false" />
     <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/script/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632993872" ignored="false" />
     <file path="/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356630255791" ignored="false" />
     <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/instantsearchmacro.vm" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356568053497" ignored="false" />
@@ -29,12 +34,12 @@
     <file path="/StockController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357160532625" ignored="false" />
     <file path="/ContainerController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357160560840" ignored="false" />
     <file path="/LineController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357160588361" ignored="false" />
-    <file path="/show.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357323167051" ignored="false" />
+    <file path="/show.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358186953770" ignored="false" />
     <file path="$PROJECT_DIR$/web-app/WEB-INF/applicationContext.xml" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357341421771" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/grails-app/conf/DataSource.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357690815193" ignored="false" />
     <file path="$PROJECT_DIR$/../phoneme/test/unit/phoneme/AlignerTests.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357768990887" ignored="false" />
     <file path="/Individual.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357948480092" ignored="false" />
-    <file path="$PROJECT_DIR$/../htseq-grails/grails-app/conf/Config.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031599098" ignored="false" />
+    <file path="$PROJECT_DIR$/../htseq-grails/grails-app/conf/Config.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358185828533" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/test/unit/edu/uoregon/htseq/JobControllerTests.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586191" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/scripts/dump.sql" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586191" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/grails-app/services/edu/uoregon/htseq/HtseqMailService.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586191" ignored="false" />
@@ -42,7 +47,7 @@
     <file path="$PROJECT_DIR$/../htseq-grails/grails-app/taglib/edu/uoregon/htseq/UserTagLib.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586191" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/test/unit/edu/uoregon/htseq/ProfileControllerTests.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586191" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/grails-app/domain/edu/uoregon/htseq/Job.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586191" ignored="false" />
-    <file path="$PROJECT_DIR$/../htseq-grails/grails-app/controllers/edu/uoregon/htseq/JobController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586191" ignored="false" />
+    <file path="$PROJECT_DIR$/../htseq-grails/grails-app/controllers/edu/uoregon/htseq/JobController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358186066291" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/grails-app/domain/edu/uoregon/htseq/Price.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586191" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/test/unit/edu/uoregon/htseq/MailListControllerTests.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586191" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/test/unit/edu/uoregon/htseq/AccountControllerTests.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586191" ignored="false" />
@@ -50,6 +55,12 @@
     <file path="$PROJECT_DIR$/../htseq-grails/grails-app/domain/edu/uoregon/htseq/SecUser.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586192" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/grails-app/controllers/edu/uoregon/htseq/ProfileController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586192" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/grails-app/controllers/edu/uoregon/htseq/RegisterController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031586192" ignored="false" />
+    <file path="$PROJECT_DIR$/../htseq-grails/grails-app/views/job/show.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358186962615" ignored="false" />
+    <file path="$PROJECT_DIR$/../htseq-grails/grails-app/conf/BootStrap.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358187267812" ignored="false" />
+    <file path="$PROJECT_DIR$/../htseq-grails/grails-app/services/edu/uoregon/htseq/JobService.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358187445449" ignored="false" />
+    <file path="/JobService.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358187444552" ignored="false" />
+    <file path="$PROJECT_DIR$/../htseq-grails/grails-app/controllers/edu/uoregon/htseq/RunController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358189194094" ignored="false" />
+    <file path="/RunController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358189148024" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +75,36 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" line="120" class="edu.uoregon.StubData" package="edu.uoregon">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" line="215" class="edu.uoregon.StubData" package="edu.uoregon">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -98,22 +139,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" line="120" class="edu.uoregon.StubData" package="edu.uoregon">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
@@ -126,11 +151,13 @@
     <splitter split-orientation="horizontal" split-proportion="0.49136066">
       <split-first>
         <leaf>
-          <file leaf-file-name="StubData.groovy" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="StubData.groovy" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="215" column="60" selection-start="8835" selection-end="8835" vertical-scroll-proportion="0.22594142">
-                  <folding />
+                <state line="26" column="8" selection-start="780" selection-end="780" vertical-scroll-proportion="0.4710145">
+                  <folding>
+                    <element signature="e#20#60#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -148,28 +175,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="Individual.groovy" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Individual.groovy">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="13" column="6" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="BootStrap.groovy" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="BootStrap.groovy" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="10" column="8" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IndividualController.groovy" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/IndividualController.groovy">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="15" column="0" selection-start="366" selection-end="366" vertical-scroll-proportion="-1.9565217">
+                <state line="24" column="0" selection-start="572" selection-end="572" vertical-scroll-proportion="0.39239">
                   <folding />
                 </state>
               </provider>
@@ -178,7 +187,7 @@
           <file leaf-file-name="Genetics.groovy" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Genetics.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="3" column="17" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
+                <state line="6" column="17" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -199,10 +208,22 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Stock.groovy" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="Stock.groovy" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="12" column="33" selection-start="267" selection-end="267" vertical-scroll-proportion="0.2795031">
+                <state line="7" column="18" selection-start="102" selection-end="102" vertical-scroll-proportion="-2.1">
+                  <folding />
+                </state>
+              </provider>
+              <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+                <state />
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Individual.groovy" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Individual.groovy">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="21" column="0" selection-start="405" selection-end="405" vertical-scroll-proportion="-6.3">
                   <folding />
                 </state>
               </provider>
@@ -236,16 +257,16 @@
         <option value="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Genetics.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Individual.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/IndividualController.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" />
         <option value="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1436" />
-    <option name="height" value="878" />
+    <option name="width" value="2497" />
+    <option name="height" value="1418" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -258,10 +279,10 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
+    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -272,19 +293,35 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sticklebackdb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
   <component name="RunManager" selected="Grails.Grails:sticklebackdb">
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
@@ -373,6 +410,24 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="DETECT_NESTED_COPIES" value="true" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="" />
@@ -382,18 +437,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1436" height="878" extended-state="6" />
+    <frame x="0" y="22" width="2497" height="1418" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33050847" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328777" sideWeight="0.67105263" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32802936" sideWeight="0.6715385" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -401,16 +460,12 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964029" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24928601" sideWeight="0.6694915" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32846153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -469,7 +524,18 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="33" selection-start="237" selection-end="237" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/stock/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="42" selection-start="473" selection-end="473" vertical-scroll-proportion="0.0">
@@ -532,7 +598,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Genetics.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="17" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
+        <state line="6" column="17" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -550,16 +616,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Individual.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="6" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/StockController.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="61" selection-start="761" selection-end="761" vertical-scroll-proportion="0.0">
@@ -567,23 +623,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/IndividualController.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Individual.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="366" selection-end="366" vertical-scroll-proportion="-1.9565217">
+        <state line="21" column="0" selection-start="405" selection-end="405" vertical-scroll-proportion="-6.3">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="8" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="33" selection-start="267" selection-end="267" vertical-scroll-proportion="0.2795031">
+        <state line="7" column="18" selection-start="102" selection-end="102" vertical-scroll-proportion="-2.1">
           <folding />
         </state>
       </provider>
@@ -593,7 +645,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="60" selection-start="8835" selection-end="8835" vertical-scroll-proportion="0.22594142">
+        <state line="26" column="8" selection-start="780" selection-end="780" vertical-scroll-proportion="0.4710145">
+          <folding>
+            <element signature="e#20#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="572" selection-end="572" vertical-scroll-proportion="0.39239">
           <folding />
         </state>
       </provider>
@@ -625,6 +686,94 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Hibernate</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>grails-2.2.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>sticklebackdb</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
 
