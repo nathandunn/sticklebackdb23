@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" afterPath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.iws" afterPath="$PROJECT_DIR$/sticklebackdb.iws" />
     </list>
     <ignored path="sticklebackdb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -14,7 +15,7 @@
     <file path="/Stock.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358057670124" ignored="false" />
     <file path="/Aquaria.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357320431936" ignored="false" />
     <file path="/a.dummy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358031607370" ignored="false" />
-    <file path="/StubData.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358101595535" ignored="false" />
+    <file path="/StubData.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358173980400" ignored="false" />
     <file path="/BootStrap.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358056887755" ignored="false" />
     <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/script/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356632993872" ignored="false" />
     <file path="/instantsearch.js" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356630255791" ignored="false" />
@@ -128,7 +129,7 @@
           <file leaf-file-name="StubData.groovy" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="224" column="24" selection-start="9352" selection-end="9352" vertical-scroll-proportion="0.24686192">
+                <state line="215" column="60" selection-start="8835" selection-end="8835" vertical-scroll-proportion="0.22594142">
                   <folding />
                 </state>
               </provider>
@@ -201,7 +202,7 @@
           <file leaf-file-name="Stock.groovy" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="7" column="11" selection-start="95" selection-end="95" vertical-scroll-proportion="0.16304348">
+                <state line="12" column="33" selection-start="267" selection-end="267" vertical-scroll-proportion="0.2795031">
                   <folding />
                 </state>
               </provider>
@@ -582,7 +583,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="11" selection-start="95" selection-end="95" vertical-scroll-proportion="0.16304348">
+        <state line="12" column="33" selection-start="267" selection-end="267" vertical-scroll-proportion="0.2795031">
           <folding />
         </state>
       </provider>
@@ -592,7 +593,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="224" column="24" selection-start="9352" selection-end="9352" vertical-scroll-proportion="0.24686192">
+        <state line="215" column="60" selection-start="8835" selection-end="8835" vertical-scroll-proportion="0.22594142">
           <folding />
         </state>
       </provider>

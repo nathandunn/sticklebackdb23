@@ -211,7 +211,9 @@ class StubData {
 
                 Individual individual = new Individual()
                 individual.stock = Stock.findByBarcode(tokens[18] as Integer)
+                println "stock found ${individual.stock} for individual for ${tokens[18]}"
                 individual.index = tokens[19] as Integer
+                println "individual ${individual.index} from  ${tokens[19]}"
 
                 def maternalId = tokens[22]
                 if (maternalId) {
