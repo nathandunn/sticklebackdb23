@@ -72,7 +72,7 @@
 				<li class="fieldcontain">
 					<span id="stock-label" class="property-label"><g:message code="individual.stock.label" default="Stock" /></span>
 					
-						<span class="property-value" aria-labelledby="stock-label"><g:link controller="stock" action="show" id="${individualInstance?.stock?.id}">${individualInstance?.stock?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="stock-label"><g:link controller="stock" action="show" id="${individualInstance?.stock?.id}">${individualInstance?.stock?.barcode}</g:link></span>
 					
 				</li>
 				</g:if>

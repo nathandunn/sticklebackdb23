@@ -15,7 +15,7 @@
 		<g:message code="stock.barcode.label" default="Barcode" />
 		
 	</label>
-	<g:select id="barcode" name="barcode.id" from="${edu.uoregon.sticklebackdb.Container.list()}" optionKey="id" value="${stockInstance?.barcode?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:field name="barcode" type="number" value="${stockInstance.barcode}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'breedingType', 'error')} ">
@@ -114,20 +114,20 @@
 	<g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.list()}" optionKey="id" value="${stockInstance?.line?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalStock', 'error')} required">
-	<label for="maternalStock">
-		<g:message code="stock.maternalStock.label" default="Maternal Stock" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="maternalStock" name="maternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}" optionKey="id" required="" value="${stockInstance?.maternalStock?.id}" class="many-to-one"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalStockLabel', 'error')} ">
-	<label for="maternalStockLabel">
-		<g:message code="stock.maternalStockLabel.label" default="Maternal Stock Label" />
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalIndividual', 'error')} ">
+	<label for="maternalIndividual">
+		<g:message code="stock.maternalIndividual.label" default="Maternal Individual" />
 		
 	</label>
-	<g:textField name="maternalStockLabel" value="${stockInstance?.maternalStockLabel}"/>
+	<g:select id="maternalIndividual" name="maternalIndividual.id" from="${edu.uoregon.sticklebackdb.Individual.list()}" optionKey="id" value="${stockInstance?.maternalIndividual?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalIndividualLabel', 'error')} ">
+	<label for="maternalIndividualLabel">
+		<g:message code="stock.maternalIndividualLabel.label" default="Maternal Individual Label" />
+		
+	</label>
+	<g:textField name="maternalIndividualLabel" value="${stockInstance?.maternalIndividualLabel}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'name', 'error')} ">
@@ -178,20 +178,20 @@
 	<g:field name="nursery6Graduates" type="number" value="${stockInstance.nursery6Graduates}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalStock', 'error')} required">
-	<label for="paternalStock">
-		<g:message code="stock.paternalStock.label" default="Paternal Stock" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="paternalStock" name="paternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}" optionKey="id" required="" value="${stockInstance?.paternalStock?.id}" class="many-to-one"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalStockLabel', 'error')} ">
-	<label for="paternalStockLabel">
-		<g:message code="stock.paternalStockLabel.label" default="Paternal Stock Label" />
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalIndividual', 'error')} ">
+	<label for="paternalIndividual">
+		<g:message code="stock.paternalIndividual.label" default="Paternal Individual" />
 		
 	</label>
-	<g:textField name="paternalStockLabel" value="${stockInstance?.paternalStockLabel}"/>
+	<g:select id="paternalIndividual" name="paternalIndividual.id" from="${edu.uoregon.sticklebackdb.Individual.list()}" optionKey="id" value="${stockInstance?.paternalIndividual?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalIndividualLabel', 'error')} ">
+	<label for="paternalIndividualLabel">
+		<g:message code="stock.paternalIndividualLabel.label" default="Paternal Individual Label" />
+		
+	</label>
+	<g:textField name="paternalIndividualLabel" value="${stockInstance?.paternalIndividualLabel}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'stockType', 'error')} ">

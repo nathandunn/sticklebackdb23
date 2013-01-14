@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/IndividualController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/IndividualController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" afterPath="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" afterPath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.iml" afterPath="$PROJECT_DIR$/sticklebackdb.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.ipr" afterPath="$PROJECT_DIR$/sticklebackdb.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sticklebackdb.iws" afterPath="$PROJECT_DIR$/sticklebackdb.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/individual/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/individual/list.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/individual/show.gsp" afterPath="$PROJECT_DIR$/grails-app/views/individual/show.gsp" />
     </list>
     <ignored path="sticklebackdb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,11 +25,11 @@
     <file path="$PROJECT_DIR$/../Instant-Search/src/main/resources/org/precog/instantsearch/instantsearchaction.vm" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1356566936339" ignored="false" />
     <file path="/main.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357159088488" ignored="false" />
     <file path="/AquariaController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357160502192" ignored="false" />
-    <file path="/list.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357340745091" ignored="false" />
+    <file path="/list.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358190062161" ignored="false" />
     <file path="/StockController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357160532625" ignored="false" />
     <file path="/ContainerController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357160560840" ignored="false" />
     <file path="/LineController.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357160588361" ignored="false" />
-    <file path="/show.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358186953770" ignored="false" />
+    <file path="/show.gsp" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1358190133221" ignored="false" />
     <file path="$PROJECT_DIR$/web-app/WEB-INF/applicationContext.xml" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357341421771" ignored="false" />
     <file path="$PROJECT_DIR$/../htseq-grails/grails-app/conf/DataSource.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357690815193" ignored="false" />
     <file path="$PROJECT_DIR$/../phoneme/test/unit/phoneme/AlignerTests.groovy" changelist="6f34ba95-71b2-4a9b-90da-59c9c7f465ce" time="1357768990887" ignored="false" />
@@ -151,13 +146,31 @@
     <splitter split-orientation="horizontal" split-proportion="0.49136066">
       <split-first>
         <leaf>
-          <file leaf-file-name="StubData.groovy" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="StubData.groovy" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="26" column="8" selection-start="780" selection-end="780" vertical-scroll-proportion="0.4710145">
+                <state line="26" column="24" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0">
                   <folding>
                     <element signature="e#20#60#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="list.gsp" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/grails-app/views/individual/list.gsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="50" column="14" selection-start="2101" selection-end="2101" vertical-scroll-proportion="-9.893617">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="show.gsp" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/grails-app/views/individual/show.gsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="74" column="198" selection-start="3641" selection-end="3641" vertical-scroll-proportion="0.90268886">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -175,7 +188,7 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="BootStrap.groovy" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="BootStrap.groovy" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="24" column="0" selection-start="572" selection-end="572" vertical-scroll-proportion="0.39239">
@@ -244,8 +257,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/StockController.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/ContainerController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/LineController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/edu/uoregon/sticklebackdb/GeneticsController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/container/list.gsp" />
@@ -260,6 +271,8 @@
         <option value="$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy" />
         <option value="$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy" />
         <option value="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/views/individual/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/individual/show.gsp" />
       </list>
     </option>
   </component>
@@ -529,20 +542,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/edu/uoregon/sticklebackdb/Stock.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="33" selection-start="237" selection-end="237" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/stock/list.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="42" selection-start="473" selection-end="473" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/stock/show.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="206" column="40" selection-start="9179" selection-end="9179" vertical-scroll-proportion="0.0">
@@ -643,18 +642,32 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="572" selection-end="572" vertical-scroll-proportion="0.39239">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/groovy/edu/uoregon/StubData.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="8" selection-start="780" selection-end="780" vertical-scroll-proportion="0.4710145">
+        <state line="26" column="24" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#20#60#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/views/individual/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="572" selection-end="572" vertical-scroll-proportion="0.39239">
+        <state line="50" column="14" selection-start="2101" selection-end="2101" vertical-scroll-proportion="-9.893617">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/individual/show.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="198" selection-start="3641" selection-end="3641" vertical-scroll-proportion="0.90268886">
           <folding />
         </state>
       </provider>
