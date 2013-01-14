@@ -34,17 +34,22 @@
             %{--<g:message code="individual.stock.label" default="Stock"/>--}%
         %{--</th>--}%
 
-            <g:sortableColumn property="fertilization"
-                              title="${message(code: 'individual.fertilization.label', default: 'Fertilization')}"/>
 
             <g:sortableColumn property="fishLocation"
                               title="${message(code: 'individual.fishLocation.label', default: 'Fish Location')}"/>
 
 
-            <th><g:message code="individual.maternal.label" default="Maternal"/></th>
+            %{--<th><g:message code="individual.maternal.label" default="Maternal"/></th>--}%
+            %{--<th><g:message code="individual.maternal.label" default="Maternal"/></th>--}%
+            <g:sortableColumn property="maternal"
+                              title="${message(code: 'individual.maternal.label', default: 'Maternal')}"/>
 
-            <th><g:message code="individual.paternal.label" default="Paternal"/></th>
+            %{--<th><g:message code="individual.paternal.label" default="Paternal"/></th>--}%
+            <g:sortableColumn property="paternal"
+                              title="${message(code: 'individual.paternal.label', default: 'Paternal')}"/>
 
+            <g:sortableColumn property="fertilization"
+                              title="${message(code: 'individual.fertilization.label', default: 'Fertilization')}"/>
 
         </tr>
         </thead>
@@ -54,7 +59,8 @@
 
                 <td>
                     <g:link action="show" id="${individualInstance.id}">
-                        <g:formatNumber number="${individualInstance.index}"/>
+                        ${individualInstance.barcode}
+                        %{--<g:formatNumber number="${individualInstance.index}"/>--}%
                     </g:link>
                 </td>
                 <td>
@@ -63,16 +69,25 @@
                     </g:link>
                 </td>
 
-                <td>
-                    ${fieldValue(bean: individualInstance, field: "fertilization")}
-                </td>
 
                 <td>${fieldValue(bean: individualInstance, field: "fishLocation")}</td>
 
 
-                <td>${fieldValue(bean: individualInstance, field: "maternal")}</td>
+                <td>
+                    <g:link action="show" id="${individualInstance?.maternal?.id}">
+                        ${individualInstance?.maternal?.barcode}
+                    </g:link>
+                </td>
 
-                <td>${fieldValue(bean: individualInstance, field: "paternal")}</td>
+                <td>
+                    <g:link action="show" id="${individualInstance?.paternal?.id}">
+                        ${individualInstance?.paternal?.barcode}
+                    </g:link>
+                </td>
+
+                <td>
+                    ${fieldValue(bean: individualInstance, field: "fertilization")}
+                </td>
 
             </tr>
         </g:each>

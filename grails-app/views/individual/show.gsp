@@ -54,7 +54,7 @@
 				<li class="fieldcontain">
 					<span id="maternal-label" class="property-label"><g:message code="individual.maternal.label" default="Maternal" /></span>
 					
-						<span class="property-value" aria-labelledby="maternal-label"><g:link controller="individual" action="show" id="${individualInstance?.maternal?.id}">${individualInstance?.maternal?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="maternal-label"><g:link controller="individual" action="show" id="${individualInstance?.maternal?.id}">${individualInstance?.maternal?.barcode}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -63,7 +63,7 @@
 				<li class="fieldcontain">
 					<span id="paternal-label" class="property-label"><g:message code="individual.paternal.label" default="Paternal" /></span>
 					
-						<span class="property-value" aria-labelledby="paternal-label"><g:link controller="individual" action="show" id="${individualInstance?.paternal?.id}">${individualInstance?.paternal?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="paternal-label"><g:link controller="individual" action="show" id="${individualInstance?.paternal?.id}">${individualInstance?.paternal?.barcode}</g:link></span>
 					
 				</li>
 				</g:if>

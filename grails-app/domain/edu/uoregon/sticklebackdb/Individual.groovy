@@ -3,6 +3,7 @@ package edu.uoregon.sticklebackdb
 class Individual {
 
     static constraints = {
+        index nullable: false
     }
 
 
@@ -16,7 +17,7 @@ class Individual {
     Date stockIndividualDate
 
 
-    Integer getBarcode(){
-        stock.getBarcode() + ".00."+(index as String).padLeft(4)
+    String getBarcode() {
+        (stock?.barcode as String) + ".00." + (index as String)?.padLeft(4,"0")
     }
 }
