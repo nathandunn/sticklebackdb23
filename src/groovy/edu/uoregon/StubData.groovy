@@ -20,10 +20,8 @@ class StubData {
 
     def stubAll() {
         stubLine()
-        stubContainer()
         stubGenetics()
         stubStock()
-        stubAquaria()
         stubIndividuals()
         processIndividualLineage()
         processStockLineage()
@@ -60,20 +58,6 @@ class StubData {
         println "FINISHED stub line " + Line.count()
     }
 
-    def stubContainer() {
-//        Container.deleteAll(Container.all)
-        CSVReader csvReader = getImportFile("containerData.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
-        csvReader.eachLine { tokens ->
-            Container container = new Container()
-            container.barcode = tokens[1]
-            container.location = tokens[2]
-            container.size = tokens[4]?.size() > 0 ? tokens[4]?.toInteger() : null
-            container.total = tokens[5]?.size() > 0 ? tokens[5]?.toInteger() : null
-
-            container.save(flush: true, insert: true)
-        }
-        println "FINISHED stub container" + Container.count()
-    }
 
     def stubGenetics() {
 //        Genetics.deleteAll(Genetics.all)
@@ -101,32 +85,6 @@ class StubData {
 //            }
         }
         println "FINISHED stub genetics " + Genetics.count()
-    }
-
-    def stubAquaria() {
-//        Aquaria.deleteAll(Aquaria.all)
-        println "start stub aquaria"
-        CSVReader csvReader = getImportFile("sbAquaria.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
-        csvReader.eachLine { tokens ->
-
-            Aquaria aquaria = new Aquaria()
-
-            aquaria.container = Container.findByBarcode(tokens[0])
-
-            aquaria.fishTotal = tokens[3]?.size() > 0 ? tokens[3].toInteger() : null
-
-            aquaria.fishUnsexed = tokens[5]?.size() > 0 ? tokens[5].toInteger() : null
-
-            aquaria.statusContainer = tokens[7]?.size() > 0 ? tokens[7].toInteger() : null
-            aquaria.statusFishQuantity = tokens[8]?.size() > 0 ? tokens[8].toInteger() : null
-            aquaria.statusStock = tokens[9]?.size() > 0 ? tokens[9].toInteger() : null
-
-            aquaria.stock = tokens[4]?.size() > 0 ? Stock.findByBarcode(tokens[4].split("\\.")[0]) : null
-
-
-            aquaria.save(flush: true, insert: true, failOnError: true)
-        }
-        println "finished stub aquaria: " + Aquaria.count()
     }
 
     def stubStock() {
@@ -170,12 +128,6 @@ class StubData {
                     }
 
                     stock.line = tokens[23]?.size() > 0 ? Line.findByName(tokens[23]) : null
-
-                    stock.nursery1InitialNumber = tokens[25]?.size() > 0 ? tokens[25].toInteger() : null
-                    stock.nursery2Fertiles = tokens[26]?.size() > 0 ? tokens[26].toInteger() : null
-                    stock.nursery3Hatched = tokens[28]?.size() > 0 ? tokens[28].toInteger() : null
-                    stock.nursery5SecondStageSurvivors = tokens[34]?.size() > 0 ? tokens[34].toInteger() : null
-                    stock.nursery6Graduates = tokens[35]?.size() > 0 ? tokens[35].toInteger() : null
 
                     if (tokens.size() > 35) {
                         stock.comment = tokens[36]

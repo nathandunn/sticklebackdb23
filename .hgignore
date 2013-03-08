@@ -7,6 +7,7 @@ stacktrace.log
 *.zip
 plugin.xml
 *.log
+*.iws
 *DB.*
 cobertura.ser
 .DS_Store

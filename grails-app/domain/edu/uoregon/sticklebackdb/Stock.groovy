@@ -5,13 +5,17 @@ class Stock {
     static constraints = {
     }
 
+
+
+    Line line
+
+    // should be S.NNNNN
     Integer barcode
     // TODO: group / index
     Individual maternalIndividual
     String maternalIndividualLabel
     Individual paternalIndividual
     String paternalIndividualLabel
-    Line line
     Genetics stockType
 
     Date crossDate
@@ -23,13 +27,6 @@ class Stock {
 
     Integer fishAgeDays
     Integer fishStock
-
-    // TODO: seems incomplete
-    Integer nursery1InitialNumber
-    Integer nursery2Fertiles
-    Integer nursery3Hatched
-    Integer nursery5SecondStageSurvivors
-    Integer nursery6Graduates
 
     String comment
 

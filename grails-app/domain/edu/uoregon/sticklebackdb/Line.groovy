@@ -5,6 +5,10 @@ class Line {
     static constraints = {
     }
 
+    static hasMany = [
+            stocks:Stock
+    ]
+
     Boolean captured
     String captureKey
     String comment

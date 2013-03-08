@@ -18,6 +18,6 @@ class Individual {
 
 
     String getBarcode() {
-        (stock?.barcode as String) + ".00." + (index as String)?.padLeft(4,"0")
+        (stock?.barcode as String) + (index as String)?.padLeft(4,"0")
     }
 }

@@ -138,45 +138,6 @@
 	<g:textField name="name" value="${stockInstance?.name}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery1InitialNumber', 'error')} ">
-	<label for="nursery1InitialNumber">
-		<g:message code="stock.nursery1InitialNumber.label" default="Nursery1 Initial Number" />
-		
-	</label>
-	<g:field name="nursery1InitialNumber" type="number" value="${stockInstance.nursery1InitialNumber}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery2Fertiles', 'error')} ">
-	<label for="nursery2Fertiles">
-		<g:message code="stock.nursery2Fertiles.label" default="Nursery2 Fertiles" />
-		
-	</label>
-	<g:field name="nursery2Fertiles" type="number" value="${stockInstance.nursery2Fertiles}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery3Hatched', 'error')} ">
-	<label for="nursery3Hatched">
-		<g:message code="stock.nursery3Hatched.label" default="Nursery3 Hatched" />
-		
-	</label>
-	<g:field name="nursery3Hatched" type="number" value="${stockInstance.nursery3Hatched}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery5SecondStageSurvivors', 'error')} ">
-	<label for="nursery5SecondStageSurvivors">
-		<g:message code="stock.nursery5SecondStageSurvivors.label" default="Nursery5 Second Stage Survivors" />
-		
-	</label>
-	<g:field name="nursery5SecondStageSurvivors" type="number" value="${stockInstance.nursery5SecondStageSurvivors}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'nursery6Graduates', 'error')} ">
-	<label for="nursery6Graduates">
-		<g:message code="stock.nursery6Graduates.label" default="Nursery6 Graduates" />
-		
-	</label>
-	<g:field name="nursery6Graduates" type="number" value="${stockInstance.nursery6Graduates}"/>
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalIndividual', 'error')} ">
 	<label for="paternalIndividual">

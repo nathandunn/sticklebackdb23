@@ -176,51 +176,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${stockInstance?.nursery1InitialNumber}">
-				<li class="fieldcontain">
-					<span id="nursery1InitialNumber-label" class="property-label"><g:message code="stock.nursery1InitialNumber.label" default="Nursery1 Initial Number" /></span>
-					
-						<span class="property-value" aria-labelledby="nursery1InitialNumber-label"><g:fieldValue bean="${stockInstance}" field="nursery1InitialNumber"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${stockInstance?.nursery2Fertiles}">
-				<li class="fieldcontain">
-					<span id="nursery2Fertiles-label" class="property-label"><g:message code="stock.nursery2Fertiles.label" default="Nursery2 Fertiles" /></span>
-					
-						<span class="property-value" aria-labelledby="nursery2Fertiles-label"><g:fieldValue bean="${stockInstance}" field="nursery2Fertiles"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${stockInstance?.nursery3Hatched}">
-				<li class="fieldcontain">
-					<span id="nursery3Hatched-label" class="property-label"><g:message code="stock.nursery3Hatched.label" default="Nursery3 Hatched" /></span>
-					
-						<span class="property-value" aria-labelledby="nursery3Hatched-label"><g:fieldValue bean="${stockInstance}" field="nursery3Hatched"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${stockInstance?.nursery5SecondStageSurvivors}">
-				<li class="fieldcontain">
-					<span id="nursery5SecondStageSurvivors-label" class="property-label"><g:message code="stock.nursery5SecondStageSurvivors.label" default="Nursery5 Second Stage Survivors" /></span>
-					
-						<span class="property-value" aria-labelledby="nursery5SecondStageSurvivors-label"><g:fieldValue bean="${stockInstance}" field="nursery5SecondStageSurvivors"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${stockInstance?.nursery6Graduates}">
-				<li class="fieldcontain">
-					<span id="nursery6Graduates-label" class="property-label"><g:message code="stock.nursery6Graduates.label" default="Nursery6 Graduates" /></span>
-					
-						<span class="property-value" aria-labelledby="nursery6Graduates-label"><g:fieldValue bean="${stockInstance}" field="nursery6Graduates"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${stockInstance?.paternalIndividual}">
 				<li class="fieldcontain">
 					<span id="paternalStock-label" class="property-label"><g:message code="stock.paternalStock.label" default="Paternal Stock" /></span>
