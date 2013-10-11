@@ -3,21 +3,42 @@ package edu.uoregon.sticklebackdb
 class Individual {
 
     static constraints = {
-        index nullable: false
+         individualID nullable: false
     }
+    
+    // Individual ID (column U)
+    Double individualID
+     
+    // Stock ID (column S)
+    Double stockID
 
-
-    Stock stock       // the group
-    Integer index   // the individual
+    // Stock (derived from column S)
+    Stock stock    
+    
+    // Fertilization date (column H)
+    Date fertilizationDate
+      
+    // Maternal ID (column W)
+    Double maternalID
+       
+    // Maternal Stock (derived from column W)
+    Stock maternalStock
+    
+    // Maternal Individual (derived from column W)
+    Individual maternalIndividual
+    
+    // Paternal ID (column X)
+    Double paternalID
+    
+    // Paternal Stock (derived from column X)
+    Stock paternalStock
+    
+    // Paternal Individual (derived from column X)
+    Individual paternalIndividual 
+    
+    // Researcher comments (column AA)
+    String comments
+    
+    // Fish location (column Q)
     String fishLocation
-    Individual maternal
-    Individual paternal
-    Date fertilization
-    Date stockDate
-    Date stockIndividualDate
-
-
-    String getBarcode() {
-        (stock?.barcode as String) + (index as String)?.padLeft(4,"0")
-    }
 }

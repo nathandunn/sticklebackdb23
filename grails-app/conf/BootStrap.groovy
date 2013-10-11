@@ -21,7 +21,6 @@ class BootStrap {
         else{
             println "not stubbing data"
         }
-
     }
     def destroy = {
     }

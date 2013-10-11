@@ -1,351 +1,1 @@
-sbGeneticsConstant::captureDate,sbGeneticsConstant::identification,sbGeneticsConstant::materialTransferAgreement,sbGeneticsConstant::mutantAllele,sbGeneticsConstant::phenotype,sbGeneticsConstant::researcherCommentsGenetics,sbGeneticsConstant::researcherInitials,sbGeneticsConstant::source,sbGeneticsConstant::species,sbGeneticsConstant::transgenes
-06/15/1999,stock-GlennHighway,,,,,,wild;   Glenn Highway,"Gasterosteus aculeatus
-",
-06/15/1999,stock - Bear Paw Lake,,,,,,wild;  Bear Paw Lake,Gasterosteus aculeatus,
-06/15/1999,stock - Boot Lake,,,,,,wild;  Boot Lake,Gasterosteus aculeatus,
-06/15/1999,stock - Whale Lake,,,,,,wild;  Whale Lake,Gasterosteus aculeatus,
-,F1 QTL; Boot by RS,,,,Mike Bell Cross #1,,,Gasterosteus aculeatus,
-,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #2,,,Gasterosteus aculeatus,
-,F1 QTL; Boot by RS,,,,Mike Bell Cross #3,,,Gasterosteus aculeatus,
-,F1 QTL; Boot by RS,,,,Mike Bell Cross #4,,,Gasterosteus aculeatus,
-,F1 QTL; Boot by RS,,,,Mike Bell Cross #5,,,Gasterosteus aculeatus,
-,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #6,,,Gasterosteus aculeatus,
-,F1 QTL; Boot by RS,,,,Mike Bell Cross #7,,,Gasterosteus aculeatus,
-,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #8,,,Gasterosteus aculeatus,
-,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #9,,,Gasterosteus aculeatus,
-,F1 QTL; Boot by RS,,,,Mike Bell Cross #10,,,Gasterosteus aculeatus,
-,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #11,,,Gasterosteus aculeatus,
-,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #12,,,Gasterosteus aculeatus
-,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #13,,,Gasterosteus aculeatus
-,F1 QTL; Boot by RS,,,,Mike Bell Cross #14,,,Gasterosteus aculeatus
-,F1 QTL; Bear Paw by RS,,,,MB cross #15,,,Gasterosteus aculeatus
-,F1 QTL; Boot by RS,,,,MB Cross #16,,,Gasterosteus aculeatus
-,F1 QTL; Bear Paw by RS,,,,MB Cross #17,,,Gasterosteus aculeatus
-,F1 QTL; RS by RS,,,,MB Cross #18,,,Gasterosteus aculeatus
-,F1 QTL; Whale by RS,,,,MB Cross # 19,,,Gasterosteus aculeatus
-,F1 QTL; Whale by RS,,,,MB Cross #20,,,Gasterosteus aculeatus
-,F1 QTL; RS by RS,,,,MB Cross #21,,,Gasterosteus aculeatus
-,F1 QTL; Whale by RS,,,,MB Cross #22,,,Gasterosteus aculeatus
-,F1 QTL; Boot by RS,,,,MB Cross #23,,,Gasterosteus aculeatus
-,F1 QTL; Boot by RS,,,,MB Cross #24,,,Gasterosteus aculeatus
-,F1 QTL; RS by RS,,,,MB Cross #25,,,Gasterosteus aculeatus
-,F1 QTL; RS by RS,,,,MB Cross #26,,,Gasterosteus aculeatus
-,F1 QTL; RS by RS,,,,MB Cross #27,,,Gasterosteus aculeatus
-06/10/2000,stock - Boot Lake,,,,,,wild;  Boot Lake,Gasterosteus aculeatus
-06/10/2000,stock - Bear Paw Lake,,,,06/10/00,,wild;  Bear Paw Lake,Gasterosteus aculeatus
-,F1 QTL; Boot by RS,,,,MB Cross #28,,,Gasterosteus aculeatus
-,F1 QTL; Boot by RS,,,,MB Cross #29,,,Gasterosteus aculeatus
-,F1 QTL; Boot by RS,,,,MB Cross #30,,,Gasterosteus aculeatus
-,F1 QTL; Boot by RS,,,,MB Cross #31,,,Gasterosteus aculeatus
-,F1 QTL; Boot by RS,,,,MB Cross #32,,,Gasterosteus aculeatus
-,F1 QTL; Bear Paw by RS,,,,MB Cross #33,,,Gasterosteus aculeatus
-,F1 QTL; Bear Paw by RS,,,,MB Cross #34,,,Gasterosteus aculeatus
-,F1 QTL; Boot by RS,,,,MB Cross #35,,,Gasterosteus aculeatus
-,F1 QTL; Bear Paw by RS,,,,MB Cross #36,,,Gasterosteus aculeatus
-,F1 QTL; Bear Paw by RS,,,,MB Cross #37,,,Gasterosteus aculeatus
-,F1 QTL; Bear Paw by RS,,,,MB Cross #38,,,Gasterosteus aculeatus
-,F1 QTL; Bear Paw by RS,,,,MB Cross #39,,,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,"born at 10:30 am 
-Sacrificed and DNA extracted on 26Apr02",,,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,born at 10:30 am,,,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,born at 11:46 am,,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,born at 9:45 am,,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,found 17 July 2001,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,fertilized at 1:25 pm,,,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus
-06/10/2001,stock - Rabbit Slough,,,,,,wild;  Glenn Highway,Gasterosteus aculeatus
-06/10/2001,stock - Bear Paw Lake,,,,,,wild;  Bear Paw Lake,Gasterosteus aculeatus
-06/10/2001,stock - Boot Lake,,,,,,wild;  Boot Lake,Gasterosteus aculeatus
-06/10/2001,stock - Whale Lake,,,,,,wild;  Whale Lake,Gasterosteus aculeatus
-04/01/2001,stock - Siltcoos,,,,,,wild;  Siltcoos River,Gasterosteus aculeatus
-06/10/2001,stock - Airolo Pungitius,,,,,,wild;  Airolo Lake,Pungitius pungitius
-06/10/2001,stock - Stephen Pungitius,,,,,,wild;  Stephen Lake,Pungitius pungitius
-04/01/2001,stock - Sutton Creek,,,,,,wild;  Sutton Creek,Gasterosteus aculeatus
-,Stock - Siltcoos by Sutton,,,,"-fertilized at 4:00 pm
--individual parents unknown",,,Gasterosteus aculeatus
-,stock - Siltcoos,,,,"- fertilized at 3:30 pm
-- individual parents unknown",,,Gasterosteus aculeatus
-,stock - Siltcoos,,,,"- fertilized at 9:45 am
-- individual parents unknown",,,Gasterosteus aculeatus
-,complementation cross,,,,"- born at 3 am
-- mass cross--individual parents unknown
-",,,Gasterosteus aculeatus
-,complementation cross,,,,mass cross-- individual parents unknown,,,Gasterosteus aculeatus
-,complementation cross,,,,mass cross--individual parents unknown,,,Gasterosteus aculeatus
-,complementation cross,,,,mass cross-- individual parents unknown,,,Gasterosteus aculeatus
-,complementation cross,,,,mass cross-- individual parents unknown,,,Gasterosteus aculeatus
-,stock - Siltcoos,,,,Four Females,,,Gasterosteus aculeatus
-,In situ,,,,"1 male and 1 female
-All fish will be fixed on 23Feb02",,,
-,In situ,,,,1 male and 1 female,,,Gasterosteus aculeatus
-,In situ,,,,1 male and 1 female,,,Gasterosteus aculeatus
-,In situ,,,,1 male and 4 females,,,Gasterosteus aculeatus
-,,,,,2 males and 2 females,,,Gasterosteus aculeatus
-,In situ,,,,1 male and 1 female,,,Gasterosteus aculeatus
-,stock - Siltcoos,,,,1 male and 1 female,,,Gasterosteus aculeatus
-,stock - Siltcoos,,,,Mike Bell Cross #4,,,Gasterosteus aculeatus
-,"alcian
-",,,,1 male and 1 female,,,Gasterosteus aculeatus
-,stock - Siltcoos,,,,1 male and 1 female,,,Gasterosteus aculeatus
-,F1 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,
-,stock - Siltcoos,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,F1 QTL; Boot by RS,,,,Mike Bell Cross #4,,,Gasterosteus aculeatus
-,F1 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,stock - Siltcoos,,,,1 male and 1 female,,,Gasterosteus aculeatus
-,F1 QTL; Bear Paw by RS,,,,,,,
-,F1 QTL; Bear Paw by RS,,,,,,,
-,F1 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,3 females,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,F1 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus
-,F1 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,stock - Siltcoos,,,,1 male and 2 females,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,2 females,,,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,"3 females;  f56.0011. f56.0012, f56.0013",,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,stock - Siltcoos,,,,1 male and 1 female,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,F1 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,stock - Siltcoos,,,,1 male and 1 female,,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,,,,
-,F2 QTL; Whale by RS,,,,,,,
-,F2 QTL; Whale by RS,,,,,,,
-,stock - Boot Lake,,,,,,,
-,stock - Boot Lake,,,,,,,
-,stock - Bear Paw Lake,,,,,,,
-,F2 QTL; Boot by RS,,,,,,,
-,stock - Inbred Boot Lake,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,F2 QTL; Boot by RS,,,,,,,
-,stock - Boot Lake,,,,4 females,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,F2 QTL; Whale by RS,,,,,,,
-,F2 QTL; Whale by RS,,,,,,,
-,stock - Bear Paw Lake,,,,,,,
-,F2 QTL; Whale by RS,,,,,,,
-,F1 QTL; Bear Paw by RS,,,,2 females,,,
-,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,??F2 QTL; Whale by RS??,,,,***It is possible that this is cross 148!  The phenotype distribution does not match an inbred cross.,,,Gasterosteus aculeatus
-,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,###############################################################################################################################################################################################################################################################,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,F2 QTL Back; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL Back; Boot by RS,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,2 females,,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,###############################################################################################################################################################################################################################################################,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus
-,stock - Inbred Boot Lake,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,,,,
-,F2 QTL Back; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL Back; Boot by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,F2 QTL; Boot by RS,,,,,,,
-,F2 QTL Back; Boot by RS,,,,,,,
-,F2 QTL Back; Boot by RS,,,,,,,
-,stock - Bear Paw Lake,,,,2 females,,,
-,stock - Boot Lake,,,,2 females,,,
-,F2 QTL; Boot by RS,,,,,,,
-,F2 QTL; Whale by RS,,,,,,,
-,F2 QTL; Whale by RS,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,F2 QTL; Whale by RS,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,F2 QTL Back; Boot by RS,,,,,,,
-,stock - Boot Lake,,,,,,,
-,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL Back; Boot by RS,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,F2 QTL Back; Boot by RS,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,2 females,,,Gasterosteus aculeatus
-
-
-
-
-,F2 QTL; Boot by RS,,,,###############################################################################################################################################################################################################################################################,,,
-,stock - Boot Lake,,,,3 females,,,Gasterosteus aculeatus
-,F2 QTL Back; Bear Paw by RS,,,,,,,
-,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL Back; Whale by RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,,,,
-,F2 QTL; Boot by RS,,,,,,,
-,F2 QTL Back; Boot by RS,,,,,,,
-,F2 QTL; Whale by RS,,,,,,,
-,F2 QTL Back; Boot by RS,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,stock - Bear Paw Lake,,,,2 females,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,1 male and 1 female,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,stock - Whale Lake,,,,,,,
-,stock-inbreeding; Boot,,,,,,,
-,stock - Siltcoos,,,,1 male and 1 female,,,
-,F1 QTL; Siltcoos by RS,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,stock-inbreeding; Bear Paw,,,,,,,
-,complement; Boot by Whale,,,,,,,
-,F1 QTL; Siltcoos by RS,,,,,,,
-,stock - Siltcoos,,,,2 females,,,
-,F1 QTL; Siltcoos by Whale,,,,,,,
-,F1 QTL; Siltcoos by Whale,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,F2 QTL; Whale by RS,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,stock-inbreeding; Bear Paw,,,,,,,
-,F2 QTL; Bear Paw by RS,,,,,,,
-,complement; Boot by Whale,,,,,,,
-07/20/2002,stock - Rabbit Slough,,,,,,wild;  Rabbit Slough,Gasterosteus aculeatus
-07/20/2002,stock - Bear Paw Lake,,,,,,wild;  Bear Paw Lake,Gasterosteus aculeatus
-07/20/2002,stock - Boot Lake,,,,,,wild;  Boot Lake,Gasterosteus aculeatus
-07/20/2002,stock - Whale Lake,,,,,,wild;  Whale Lake,Gasterosteus aculeatus
-07/20/2002,stock - Bolo Lake,,,,,,wild; Bolo Lake,Gasterosteus aculeatus
-07/20/2002,stock - Florence Lake,,,,,,wild; Florence Lake,Gasterosteus aculeatus
-07/30/2002,stock - Millrace South,,,,,,wild; Mill Race: South of Willamette,Gasterosteus aculeatus
-07/30/2002,stock - Millrace North,,,,,,wild; Mill Race: North of Willamette,Gasterosteus aculeatus
-08/01/2002,stock - South Slough,,,,,,wild; South Slough: Winchester Creek,Gasterosteus aculeatus
-,stock - Rabbit Slough,,,,These are the offspring of a rabbit slough by RS cross that was the first attempt at GbyE experiment,,,Gasterosteus aculeatus
-10/20/2002,Wild Caught - Cushman Creek,,,,Chuck caught these fish with Rebecca,,Wild; Cushman Creek,Gasterosteus aculeatus
-,GFP threespine,,,,"These were injected with alpha-actin GFP, zebrafish promoter",,,Gasterosteus aculeatus
-,stock - ? Oregon,,,,"These were extra fish from Oregon, but I don't know where they're from.....",,,
-,South Slough Full Plate,,,,These are fish separated into classes from collection 240,,wild; South Slough-Full,Gasterosteus aculeatus
-,South Slough Low Plate,,,,These are fish separated into classes from collection 240,,wild; South Slough: Winchester Creek,Gasterosteus aculeatus
-,South Slough Partial Plate,,,,These are fish grouped from collection 240,,wild; South Slough: Winchester Creek,Gasterosteus aculeatus
-,South Slough Partial/Full Plate,,,,Fish grouped from collection 240,,wild; South Slough: Winchester Creek,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,"This is the combined family of crosses 88, 108, 126",,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,"This is the combined family of crosses 115, 138, 168, 189",,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,"This the combined family of crosses 121, 185",,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,"This is the combined family of crosses 122, 148, 173",,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,"This is the combined family of 129, 143",,,Gasterosteus aculeatus
-,F2 QTL; Boot by RS,,,,"This is the combined family of 130, 147",,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,"This is the combined family of 132, 184",,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,"This is the combined family of crosses 134, 182",,,Gasterosteus aculeatus
-,F2 QTL; Whale by RS,,,,"This is the combined family of crosses 153, 202",,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,"This is the combined family of crosses 160, 174",,,Gasterosteus aculeatus
-,F2 QTL; Bear Paw by RS,,,,"This is the combined family of crosses 101, 128",,,Gasterosteus aculeatus
-,F2 QTL Back; Bear Paw by RS,,,,"This is the combined family of crosses 156, 171",,,Gasterosteus aculeatus
-,F2 QTL Back; Boot by RS,,,,"This is the combined family from crosses 172, 190",,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,"This is pooling outcrossed fish from Bear Paw collections and crosses 85, 99, 135, 98, 117, 125, 116, 212, 191, 179",,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,"This is pooled outcrossed fish from Boot Lake collections and crosses 164, 180, 192, 162, 194, 109, 131, 107, 100, 188, 141",,,Gasterosteus aculeatus
-01/07/2003,stock; Cushman@Hill's rd,,,,Chuck caught these in traps set at Hill's creek road.  A few died in transit and were fixed,,Wild; Cushman Creek,Gasterosteus aculeatus
-01/07/2003,stock; Cushman@Mile 4,,,,Chuck caught these at mile 4 on Cushman Creek,,Wild; Cushman Creek,Gasterosteus aculeatus
-,Cushman@Hill's rd-Full,,,,This is a subdivision of 264,,Wild; Cushman@Hill's rd,Gasterosteus aculeatus
-,Cushman@Hill's rd-Partial,,,,This is a subdivision of collection 264,,Wild; Cushman@Hill's rd,
-,Cushman@Hill's rd-Low,,,,This is a subdivision of 264,,Wild; Cushman@Hill's rd,Gasterosteus aculeatus
-,Cushman@Mile4-Full,,,,This is a subdivision of collection 265,,Wild; Cushman@Mile 4,Gasterosteus aculeatus
-,Cushman@Mile4-Partial,,,,This is a subdivision of 265,,Wild; Cushman@Mile 4,Gasterosteus aculeatus
-,Cushman@Mile4-Low,,,,This is a subdivision of 265,,Wild; Cushman@Mile 4,Gasterosteus aculeatus
-,Morpholino Injection,,,,,,,Gasterosteus aculeatus
-
-
-
-,stock - Siltcoos,,,,"Combination of stocks 63, 111 and 119",,,Gasterosteus aculeatus
-06/12/2003,stock - Rabbit Slough,,,,These were fish shipped by Mike Bell on 14June03,,wild;  Rabbit Slough,Gasterosteus aculeatus
-06/12/2003,stock - Whale Lake,,,,Sent by Mike Bell on 14June03,,wild;  Whale Lake,Gasterosteus aculeatus
-06/12/2003,stock - Mud Lake Pungitius,,,,Shipped by Mike Bell on 14June03,,Wild; Mud Lake,Pungitius pungitius
-,stock - Rabbit Slough,,,,"This is a mass cross done by Mike Bell in Alaska
-MAB03-1",,,Gasterosteus aculeatus
-,stock - Rabbit Slough,,,,Cross for Alcian/Alizarin series,,,Gasterosteus aculeatus
-,complementation cross,,,,High Armor Siltcoos Father,,,Gasterosteus aculeatus
-,complementation cross,,,,High Armor Siltcoos Father,,,Gasterosteus aculeatus
-,GFP threespine,,,,GFP,,,
-,stock - Rabbit Slough,,,,,,,
-
-,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus
-,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus
-
-
-
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus
-,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus
-,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus
-,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,stock - Inbred Boot Lake,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus
-,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus
-,stock - Siltcoos,,,,,,,Gasterosteus aculeatus
-,stock - Siltcoos,,,,,,,Gasterosteus aculeatus
-,stock - Inbred Boot Lake,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,stock - Inbred Boot Lake,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,EXTHYB,,,,This is a mass crossing between many different families of fish. ,,,Gasterosteus aculeatus
-,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,F3 QTL; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,
-,RNA,,,,,,,
-,complementation cross,,,,,,,Gasterosteus aculeatus
-,complementation cross,,,,,,,Gasterosteus aculeatus
-,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,F2 QTL Back; Bear Paw by RS,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Siltcoos x Whale lake,,,,,,,Gasterosteus aculeatus
-,stock - Inbred Boot Lake,,,,,,,Gasterosteus aculeatus
-,stock - Inbred Boot Lake,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus
-,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus
-,F3 QTL Back; Bear P x RS,,,,,,,Gasterosteus aculeatus
-,F2 QTL; Siltcoos x Whale lake,,,,,,,Gasterosteus aculeatus
-,stock - Boot Lake,,,,Bonnies fish ,,,Gasterosteus aculeatus
+sbGeneticsConstant::captureDate,sbGeneticsConstant::identification,sbGeneticsConstant::materialTransferAgreement,sbGeneticsConstant::mutantAllele,sbGeneticsConstant::phenotype,sbGeneticsConstant::researcherCommentsGenetics,sbGeneticsConstant::researcherInitials,sbGeneticsConstant::source,sbGeneticsConstant::species,sbGeneticsConstant::transgenes6/15/99,stock-GlennHighway,,,,,,wild;   Glenn Highway,"Gasterosteus aculeatus",6/15/99,stock - Bear Paw Lake,,,,,,wild;  Bear Paw Lake,Gasterosteus aculeatus,6/15/99,stock - Boot Lake,,,,,,wild;  Boot Lake,Gasterosteus aculeatus,6/15/99,stock - Whale Lake,,,,,,wild;  Whale Lake,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,Mike Bell Cross #1,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #2,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,Mike Bell Cross #3,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,Mike Bell Cross #4,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,Mike Bell Cross #5,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #6,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,Mike Bell Cross #7,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #8,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #9,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,Mike Bell Cross #10,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #11,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #12,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,Mike Bell Cross #13,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,Mike Bell Cross #14,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,MB cross #15,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,MB Cross #16,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,MB Cross #17,,,Gasterosteus aculeatus,,F1 QTL; RS by RS,,,,MB Cross #18,,,Gasterosteus aculeatus,,F1 QTL; Whale by RS,,,,MB Cross # 19,,,Gasterosteus aculeatus,,F1 QTL; Whale by RS,,,,MB Cross #20,,,Gasterosteus aculeatus,,F1 QTL; RS by RS,,,,MB Cross #21,,,Gasterosteus aculeatus,,F1 QTL; Whale by RS,,,,MB Cross #22,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,MB Cross #23,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,MB Cross #24,,,Gasterosteus aculeatus,,F1 QTL; RS by RS,,,,MB Cross #25,,,Gasterosteus aculeatus,,F1 QTL; RS by RS,,,,MB Cross #26,,,Gasterosteus aculeatus,,F1 QTL; RS by RS,,,,MB Cross #27,,,Gasterosteus aculeatus,6/10/00,stock - Boot Lake,,,,,,wild;  Boot Lake,Gasterosteus aculeatus,6/10/00,stock - Bear Paw Lake,,,,6/10/00,,wild;  Bear Paw Lake,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,MB Cross #28,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,MB Cross #29,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,MB Cross #30,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,MB Cross #31,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,MB Cross #32,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,MB Cross #33,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,MB Cross #34,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,MB Cross #35,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,MB Cross #36,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,MB Cross #37,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,MB Cross #38,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,MB Cross #39,,,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,"born at 10:30 am Sacrificed and DNA extracted on 26Apr02",,,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,born at 10:30 am,,,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,born at 11:46 am,,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,born at 9:45 am,,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,found 17 July 2001,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,fertilized at 1:25 pm,,,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus,6/10/01,stock - Rabbit Slough,,,,,,wild;  Glenn Highway,Gasterosteus aculeatus,6/10/01,stock - Bear Paw Lake,,,,,,wild;  Bear Paw Lake,Gasterosteus aculeatus,6/10/01,stock - Boot Lake,,,,,,wild;  Boot Lake,Gasterosteus aculeatus,6/10/01,stock - Whale Lake,,,,,,wild;  Whale Lake,Gasterosteus aculeatus,4/1/01,stock - Siltcoos,,,,,,wild;  Siltcoos River,Gasterosteus aculeatus,6/10/01,stock - Airolo Pungitius,,,,,,wild;  Airolo Lake,Pungitius pungitius,6/10/01,stock - Stephen Pungitius,,,,,,wild;  Stephen Lake,Pungitius pungitius,4/1/01,stock - Sutton Creek,,,,,,wild;  Sutton Creek,Gasterosteus aculeatus,,Stock - Siltcoos by Sutton,,,,"-fertilized at 4:00 pm-individual parents unknown",,,Gasterosteus aculeatus,,stock - Siltcoos,,,,#NAME?,,,Gasterosteus aculeatus,,stock - Siltcoos,,,,#NAME?,,,Gasterosteus aculeatus,,complementation cross,,,,"- born at 3 am- mass cross--individual parents unknown",,,Gasterosteus aculeatus,,complementation cross,,,,mass cross-- individual parents unknown,,,Gasterosteus aculeatus,,complementation cross,,,,mass cross--individual parents unknown,,,Gasterosteus aculeatus,,complementation cross,,,,mass cross-- individual parents unknown,,,Gasterosteus aculeatus,,complementation cross,,,,mass cross-- individual parents unknown,,,Gasterosteus aculeatus,,stock - Siltcoos,,,,Four Females,,,Gasterosteus aculeatus,,In situ,,,,"1 male and 1 femaleAll fish will be fixed on 23Feb02",,,,,In situ,,,,1 male and 1 female,,,Gasterosteus aculeatus,,In situ,,,,1 male and 1 female,,,Gasterosteus aculeatus,,In situ,,,,1 male and 4 females,,,Gasterosteus aculeatus,,,,,,2 males and 2 females,,,Gasterosteus aculeatus,,In situ,,,,1 male and 1 female,,,Gasterosteus aculeatus,,stock - Siltcoos,,,,1 male and 1 female,,,Gasterosteus aculeatus,,stock - Siltcoos,,,,Mike Bell Cross #4,,,Gasterosteus aculeatus,,"alcian",,,,1 male and 1 female,,,Gasterosteus aculeatus,,stock - Siltcoos,,,,1 male and 1 female,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,,,stock - Siltcoos,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,Mike Bell Cross #4,,,Gasterosteus aculeatus,,F1 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,stock - Siltcoos,,,,1 male and 1 female,,,Gasterosteus aculeatus,,F1 QTL; Bear Paw by RS,,,,,,,,,F1 QTL; Bear Paw by RS,,,,,,,,,F1 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,3 females,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,F1 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus,,F1 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,stock - Siltcoos,,,,1 male and 2 females,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,2 females,,,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,"3 females;  f56.0011. f56.0012, f56.0013",,,Gasterosteus aculeatus,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,stock - Siltcoos,,,,1 male and 1 female,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,F1 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,stock - Siltcoos,,,,1 male and 1 female,,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,,,,,,F2 QTL; Whale by RS,,,,,,,,,F2 QTL; Whale by RS,,,,,,,,,stock - Boot Lake,,,,,,,,,stock - Boot Lake,,,,,,,,,stock - Bear Paw Lake,,,,,,,,,F2 QTL; Boot by RS,,,,,,,,,stock - Inbred Boot Lake,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,F2 QTL; Boot by RS,,,,,,,,,stock - Boot Lake,,,,4 females,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,F2 QTL; Whale by RS,,,,,,,,,F2 QTL; Whale by RS,,,,,,,,,stock - Bear Paw Lake,,,,,,,,,F2 QTL; Whale by RS,,,,,,,,,F1 QTL; Bear Paw by RS,,,,2 females,,,,,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,??F2 QTL; Whale by RS??,,,,***It is possible that this is cross 148!  The phenotype distribution does not match an inbred cross.,,,Gasterosteus aculeatus,,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,###############################################################################################################################################################################################################################################################,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,F2 QTL Back; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL Back; Boot by RS,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,2 females,,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,###############################################################################################################################################################################################################################################################,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus,,stock - Inbred Boot Lake,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,,,,,,F2 QTL Back; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL Back; Boot by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,F2 QTL; Boot by RS,,,,,,,,,F2 QTL Back; Boot by RS,,,,,,,,,F2 QTL Back; Boot by RS,,,,,,,,,stock - Bear Paw Lake,,,,2 females,,,,,stock - Boot Lake,,,,2 females,,,,,F2 QTL; Boot by RS,,,,,,,,,F2 QTL; Whale by RS,,,,,,,,,F2 QTL; Whale by RS,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,F2 QTL; Whale by RS,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,F2 QTL Back; Boot by RS,,,,,,,,,stock - Boot Lake,,,,,,,,,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL Back; Boot by RS,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,F2 QTL Back; Boot by RS,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,2 females,,,Gasterosteus aculeatus,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,F2 QTL; Boot by RS,,,,###############################################################################################################################################################################################################################################################,,,,,stock - Boot Lake,,,,3 females,,,Gasterosteus aculeatus,,F2 QTL Back; Bear Paw by RS,,,,,,,,,F2 QTL; Whale by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL Back; Whale by RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,,,,,,F2 QTL; Boot by RS,,,,,,,,,F2 QTL Back; Boot by RS,,,,,,,,,F2 QTL; Whale by RS,,,,,,,,,F2 QTL Back; Boot by RS,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,stock - Bear Paw Lake,,,,2 females,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,1 male and 1 female,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,stock - Whale Lake,,,,,,,,,stock-inbreeding; Boot,,,,,,,,,stock - Siltcoos,,,,1 male and 1 female,,,,,F1 QTL; Siltcoos by RS,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,stock-inbreeding; Bear Paw,,,,,,,,,complement; Boot by Whale,,,,,,,,,F1 QTL; Siltcoos by RS,,,,,,,,,stock - Siltcoos,,,,2 females,,,,,F1 QTL; Siltcoos by Whale,,,,,,,,,F1 QTL; Siltcoos by Whale,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,F2 QTL; Whale by RS,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,stock-inbreeding; Bear Paw,,,,,,,,,F2 QTL; Bear Paw by RS,,,,,,,,,complement; Boot by Whale,,,,,,,,7/20/02,stock - Rabbit Slough,,,,,,wild;  Rabbit Slough,Gasterosteus aculeatus,7/20/02,stock - Bear Paw Lake,,,,,,wild;  Bear Paw Lake,Gasterosteus aculeatus,7/20/02,stock - Boot Lake,,,,,,wild;  Boot Lake,Gasterosteus aculeatus,7/20/02,stock - Whale Lake,,,,,,wild;  Whale Lake,Gasterosteus aculeatus,7/20/02,stock - Bolo Lake,,,,,,wild; Bolo Lake,Gasterosteus aculeatus,7/20/02,stock - Florence Lake,,,,,,wild; Florence Lake,Gasterosteus aculeatus,7/30/02,stock - Millrace South,,,,,,wild; Mill Race: South of Willamette,Gasterosteus aculeatus,7/30/02,stock - Millrace North,,,,,,wild; Mill Race: North of Willamette,Gasterosteus aculeatus,8/1/02,stock - South Slough,,,,,,wild; South Slough: Winchester Creek,Gasterosteus aculeatus,,stock - Rabbit Slough,,,,These are the offspring of a rabbit slough by RS cross that was the first attempt at GbyE experiment,,,Gasterosteus aculeatus,10/20/02,Wild Caught - Cushman Creek,,,,Chuck caught these fish with Rebecca,,Wild; Cushman Creek,Gasterosteus aculeatus,,GFP threespine,,,,"These were injected with alpha-actin GFP, zebrafish promoter",,,Gasterosteus aculeatus,,stock - ? Oregon,,,,"These were extra fish from Oregon, but I don't know where they're from.....",,,,,South Slough Full Plate,,,,These are fish separated into classes from collection 240,,wild; South Slough-Full,Gasterosteus aculeatus,,South Slough Low Plate,,,,These are fish separated into classes from collection 240,,wild; South Slough: Winchester Creek,Gasterosteus aculeatus,,South Slough Partial Plate,,,,These are fish grouped from collection 240,,wild; South Slough: Winchester Creek,Gasterosteus aculeatus,,South Slough Partial/Full Plate,,,,Fish grouped from collection 240,,wild; South Slough: Winchester Creek,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,"This is the combined family of crosses 88, 108, 126",,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,"This is the combined family of crosses 115, 138, 168, 189",,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,"This the combined family of crosses 121, 185",,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,"This is the combined family of crosses 122, 148, 173",,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,"This is the combined family of 129, 143",,,Gasterosteus aculeatus,,F2 QTL; Boot by RS,,,,"This is the combined family of 130, 147",,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,"This is the combined family of 132, 184",,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,"This is the combined family of crosses 134, 182",,,Gasterosteus aculeatus,,F2 QTL; Whale by RS,,,,"This is the combined family of crosses 153, 202",,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,"This is the combined family of crosses 160, 174",,,Gasterosteus aculeatus,,F2 QTL; Bear Paw by RS,,,,"This is the combined family of crosses 101, 128",,,Gasterosteus aculeatus,,F2 QTL Back; Bear Paw by RS,,,,"This is the combined family of crosses 156, 171",,,Gasterosteus aculeatus,,F2 QTL Back; Boot by RS,,,,"This is the combined family from crosses 172, 190",,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,"This is pooling outcrossed fish from Bear Paw collections and crosses 85, 99, 135, 98, 117, 125, 116, 212, 191, 179",,,Gasterosteus aculeatus,,stock - Boot Lake,,,,"This is pooled outcrossed fish from Boot Lake collections and crosses 164, 180, 192, 162, 194, 109, 131, 107, 100, 188, 141",,,Gasterosteus aculeatus,1/7/03,stock; Cushman@Hill's rd,,,,Chuck caught these in traps set at Hill's creek road.  A few died in transit and were fixed,,Wild; Cushman Creek,Gasterosteus aculeatus,1/7/03,stock; Cushman@Mile 4,,,,Chuck caught these at mile 4 on Cushman Creek,,Wild; Cushman Creek,Gasterosteus aculeatus,,Cushman@Hill's rd-Full,,,,This is a subdivision of 264,,Wild; Cushman@Hill's rd,Gasterosteus aculeatus,,Cushman@Hill's rd-Partial,,,,This is a subdivision of collection 264,,Wild; Cushman@Hill's rd,,,Cushman@Hill's rd-Low,,,,This is a subdivision of 264,,Wild; Cushman@Hill's rd,Gasterosteus aculeatus,,Cushman@Mile4-Full,,,,This is a subdivision of collection 265,,Wild; Cushman@Mile 4,Gasterosteus aculeatus,,Cushman@Mile4-Partial,,,,This is a subdivision of 265,,Wild; Cushman@Mile 4,Gasterosteus aculeatus,,Cushman@Mile4-Low,,,,This is a subdivision of 265,,Wild; Cushman@Mile 4,Gasterosteus aculeatus,,Morpholino Injection,,,,,,,Gasterosteus aculeatus,,,,,,,,,,,,,,,,,,,,,,,,,,,,,stock - Siltcoos,,,,"Combination of stocks 63, 111 and 119",,,Gasterosteus aculeatus,6/12/03,stock - Rabbit Slough,,,,These were fish shipped by Mike Bell on 14June03,,wild;  Rabbit Slough,Gasterosteus aculeatus,6/12/03,stock - Whale Lake,,,,Sent by Mike Bell on 14June03,,wild;  Whale Lake,Gasterosteus aculeatus,6/12/03,stock - Mud Lake Pungitius,,,,Shipped by Mike Bell on 14June03,,Wild; Mud Lake,Pungitius pungitius,,stock - Rabbit Slough,,,,"This is a mass cross done by Mike Bell in AlaskaMAB03-1",,,Gasterosteus aculeatus,,stock - Rabbit Slough,,,,Cross for Alcian/Alizarin series,,,Gasterosteus aculeatus,,complementation cross,,,,High Armor Siltcoos Father,,,Gasterosteus aculeatus,,complementation cross,,,,High Armor Siltcoos Father,,,Gasterosteus aculeatus,,GFP threespine,,,,GFP,,,,,stock - Rabbit Slough,,,,,,,,,,,,,,,,,,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus,,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus,,,,,,,,,,,,,,,,,,,,,,,,,,,,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus,,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus,,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus,,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,stock - Inbred Boot Lake,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus,,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,F3 QTL Back; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus,,stock - Siltcoos,,,,,,,Gasterosteus aculeatus,,stock - Siltcoos,,,,,,,Gasterosteus aculeatus,,stock - Inbred Boot Lake,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,stock - Inbred Boot Lake,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,EXTHYB,,,,This is a mass crossing between many different families of fish. ,,,Gasterosteus aculeatus,,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,F3 QTL; Boot x Rabbit Slough,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,,,RNA,,,,,,,,,complementation cross,,,,,,,Gasterosteus aculeatus,,complementation cross,,,,,,,Gasterosteus aculeatus,,stock - Bear Paw Lake,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,F2 QTL Back; Bear Paw by RS,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,F2 QTL; Siltcoos x Whale lake,,,,,,,Gasterosteus aculeatus,,stock - Inbred Boot Lake,,,,,,,Gasterosteus aculeatus,,stock - Inbred Boot Lake,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Bear Paw,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus,,stock-inbreeding; Boot,,,,,,,Gasterosteus aculeatus,,F3 QTL Back; Bear P x RS,,,,,,,Gasterosteus aculeatus,,F2 QTL; Siltcoos x Whale lake,,,,,,,Gasterosteus aculeatus,,stock - Boot Lake,,,,Bonnies fish ,,,Gasterosteus aculeatus,

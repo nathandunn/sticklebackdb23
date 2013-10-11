@@ -7,7 +7,7 @@ class IndividualController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     static navigation = [
-            title:'Individuals',action: 'list',order:2
+        title:'Individuals',action: 'list',order:1
     ]
 
     def index() {
@@ -19,6 +19,10 @@ class IndividualController {
         [individualInstanceList: Individual.list(params), individualInstanceTotal: Individual.count()]
     }
 
+    def query(Double pStockID){
+        render(view:"list", model:[individualInstanceList: Individual.findAllByStockID(pStockID), individualInstanceTotal: Individual.findAllByStockID(pStockID).size()] ) 
+    }
+    
     def create() {
         [individualInstance: new Individual(params)]
     }
@@ -67,7 +71,7 @@ class IndividualController {
         if (version != null) {
             if (individualInstance.version > version) {
                 individualInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'individual.label', default: 'Individual')] as Object[],
+                    [message(code: 'individual.label', default: 'Individual')] as Object[],
                           "Another user has updated this Individual while you were editing")
                 render(view: "edit", model: [individualInstance: individualInstance])
                 return
