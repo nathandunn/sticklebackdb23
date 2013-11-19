@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.sticklebackdb.Population" %>
+<%@ page import="edu.uoregon.sticklebackdb.Line" %>
 
 %{-- Name --}%
 <div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'name', 'error')} ">
@@ -29,5 +29,5 @@
   <label for="comment">
     <g:message code="population.comment.label" default="Comment" />
   </label>
-  <g:textField name="comment" value="${populationInstance?.comment}"/>
+  <g:textArea name="comment" value="${populationInstance?.comment}"/>
 </div>

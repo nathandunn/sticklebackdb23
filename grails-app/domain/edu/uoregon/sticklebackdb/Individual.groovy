@@ -7,34 +7,40 @@ class Individual {
     }
     
     // Individual ID (column U)
-    Double individualID
-     
+    String individualID
+      
     // Stock ID (column S)
-    Double stockID
-
+    String stockID
+   
     // Stock (derived from column S)
     Stock stock    
     
     // Fertilization date (column H)
     Date fertilizationDate
       
-    // Maternal ID (column W)
-    Double maternalID
-       
-    // Maternal Stock (derived from column W)
+    // Maternal Stock ID (column W)
+    String maternalStockID
+    
+    // Maternal Stock
     Stock maternalStock
     
-    // Maternal Individual (derived from column W)
+    // Maternal Individual ID (column W)
+    String maternalIndividualID
+    
+    // Maternal Individual
     Individual maternalIndividual
     
     // Paternal ID (column X)
-    Double paternalID
+    String paternalStockID
     
-    // Paternal Stock (derived from column X)
+    // PaternalStock
     Stock paternalStock
     
-    // Paternal Individual (derived from column X)
-    Individual paternalIndividual 
+    // Paternal Individual ID (column X)
+    String paternalIndividualID
+    
+    // Paternal individual
+    Individual paternalIndividual
     
     // Researcher comments (column AA)
     String comments

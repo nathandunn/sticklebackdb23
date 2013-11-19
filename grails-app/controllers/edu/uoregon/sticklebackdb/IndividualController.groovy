@@ -46,7 +46,7 @@ class IndividualController {
             return
         }
 
-        [individualInstance: individualInstance]
+        [individualInstance: individualInstance, Stock: Stock, Individual: Individual, Line: Line]
     }
 
     def edit(Long id) {
@@ -57,7 +57,7 @@ class IndividualController {
             return
         }
 
-        [individualInstance: individualInstance]
+        [individualInstance: individualInstance, Individual: Individual, Stock: Stock]
     }
 
     def update(Long id, Long version) {

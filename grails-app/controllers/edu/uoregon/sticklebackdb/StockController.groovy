@@ -7,7 +7,7 @@ class StockController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     static navigation = [
-            title:'Stocks',action: 'list',order:1
+        title:'Stocks',action: 'list',order:1, 
     ]
 
     def index() {
@@ -20,7 +20,7 @@ class StockController {
     }
 
     def create() {
-        [stockInstance: new Stock(params)]
+        [stockInstance: new Stock(params), Individual: Individual, Stock: Stock, maxStock : Stock.list(max:1, sort:"stockID", order: "desc")[0]]
     }
 
     def save() {
@@ -42,7 +42,7 @@ class StockController {
             return
         }
 
-        [stockInstance: stockInstance]
+        [stockInstance: stockInstance, Individual: Individual]
     }
 
     def edit(Long id) {
@@ -53,7 +53,7 @@ class StockController {
             return
         }
 
-        [stockInstance: stockInstance]
+        [stockInstance: stockInstance, Line: Line, Stock: Stock, Individual: Individual]
     }
 
     def update(Long id, Long version) {
@@ -67,7 +67,7 @@ class StockController {
         if (version != null) {
             if (stockInstance.version > version) {
                 stockInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'stock.label', default: 'Stock')] as Object[],
+                    [message(code: 'stock.label', default: 'Stock')] as Object[],
                           "Another user has updated this Stock while you were editing")
                 render(view: "edit", model: [stockInstance: stockInstance])
                 return
@@ -102,5 +102,11 @@ class StockController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'stock.label', default: 'Stock'), id])
             redirect(action: "show", id: id)
         }
+    }
+    
+    def getNextStockID(){
+        //        List stocks = Stock.list()
+        def nextID = 7.0000
+        render  nextID  
     }
 }

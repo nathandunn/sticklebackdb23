@@ -1,4 +1,3 @@
-
 <%@ page import="edu.uoregon.sticklebackdb.Stock" %>
 <!DOCTYPE html>
 <html>
@@ -23,137 +22,154 @@
     </g:if>
     <ol class="property-list stock">
 
-%{-- * * * Stock ID formatted to X.0000 * * * --}%
+      %{-- * * * Stock ID * * * --}%
       <li class="fieldcontain">
-        <span id="fishStock-label" class="property-label"><g:message code="stock.stockID.label" default="ID" /></span>
+        <span id="fishStock-label" class="property-label"><g:message code="stock.stockID.label" default="Stock ID" /></span>
       <g:if test="${stockInstance?.stockID}">
-        <span class="property-value" aria-labelledby="stockID-label"><g:formatNumber number="${stockInstance?.stockID}" minFractionDigits="4"/></span>          
+        <span class="property-value" aria-labelledby="stockID-label">${stockInstance?.stockID}</span>
       </g:if>
-       <g:else>
-        <span class="property-value" aria-labelledby="paternalStock-label"> ---- </span>
-        </g:else>
+      <g:else>
+        <span class="property-value" aria-labelledby="stockID-label"> ---- </span>
+      </g:else>
       </li>
 
-%{-- * * * Stock Name * * * --}%
+      %{-- * * * Stock Name * * * --}%
       <li class="fieldcontain">
-        <span id="name-label" class="property-label"><g:message code="stock.stockName.label" default="Name" /></span>
+        <span id="name-label" class="property-label"><g:message code="stock.stockName.label" default="Stock Name" /></span>
       <g:if test="${stockInstance?.stockName}">
         <span class="property-value" aria-labelledby="stockName-label"><g:fieldValue bean="${stockInstance}" field="stockName"/></span>
       </g:if>
-       <g:else>
-        <span class="property-value" aria-labelledby="paternalStock-label"> ---- </span>
-        </g:else>
+      <g:else>
+        <span class="property-value" aria-labelledby="stockName-label"> ---- </span>
+      </g:else>
       </li>
 
-%{-- * * * Stock Population (with link) * * * --}%
+      %{-- * * * Stock Line (with link) * * * --}%
       <li class="fieldcontain">
-        <span id="population-label" class="property-label"><g:message code="stock.population.label" default="Population" /></span>
-      <g:if test="${stockInstance?.population}">
-        <span class="property-value" aria-labelledby="population-label"><g:link controller="population" action="show" id="${stockInstance?.population?.id}">${stockInstance?.population?.name}</g:link></span>
+        <span id="line-label" class="property-label"><g:message code="stock.line.label" default="Line" /></span>
+      <g:if test="${stockInstance?.line}">
+        <span class="property-value" aria-labelledby="line-label"><g:link controller="line" action="show" id="${stockInstance?.line?.id}">${stockInstance?.line?.name}</g:link></span>
       </g:if>
-       <g:else>
-        <span class="property-value" aria-labelledby="paternalStock-label"> ---- </span>
-        </g:else>
+      <g:else>
+        <span class="property-value" aria-labelledby="line-label"> ---- </span>
+      </g:else>
       </li>
 
-%{-- * * * Stock fertilization date * * * --}%
+      %{-- * * * Stock fertilization date * * * --}%
       <li class="fieldcontain">
         <span id="fertilizationDate-label" class="property-label"><g:message code="stock.fertilizationDate.label" default="Fertilization Date" /></span>
       <g:if test="${stockInstance?.fertilizationDate}">
-        <span class="property-value" aria-labelledby="fertilizationDate-label"><g:formatDate date="${stockInstance?.fertilizationDate}" /></span>
+        <span class="property-value" aria-labelledby="fertilizationDate-label"><g:formatDate type="datetime" style="MEDIUM"date="${stockInstance?.fertilizationDate}" /></span>
       </g:if>
-       <g:else>
-        <span class="property-value" aria-labelledby="paternalStock-label"> ---- </span>
-        </g:else>
-      </li>
-
-%{-- * * * Stock researcher comments * * * --}%
-      <li class="fieldcontain">
-        <span id="comment-label" class="property-label"><g:message code="stock.comment.label" default="Comment" /></span>
-      <g:if test="${stockInstance?.comment}">
-        <span class="property-value" aria-labelledby="comment-label"><g:fieldValue bean="${stockInstance}" field="comment"/></span>  
-      </g:if>
-       <g:else>
-        <span class="property-value" aria-labelledby="paternalStock-label"> ---- </span>
-        </g:else>
-      </li>
-
-%{-- * * * Maternal Lineage * * * --}%
-      <li class="fieldcontain">
-        <span id="maternalStockID-label" class="property-label"><g:message code="stock.maternalID.label" default="Maternal Stock ID" /></span>
-      <g:if test="${stockInstance?.maternalStockID}">
-        <span class="property-value" aria-labelledby="maternalStockID-label"><g:formatNumber number="${stockInstance?.maternalStockID}" minFractionDigits="4"/></span>
-      </g:if>
-       <g:else>
-        <span class="property-value" aria-labelledby="maternalStock-label"> ---- </span>
-        </g:else>
+      <g:else>
+        <span class="property-value" aria-labelledby="fertilizationDate-label"> ---- </span>
+      </g:else>
       </li>
       
-       <li class="fieldcontain">
-        <span id="maternalStock-label" class="property-label"><g:message code="stock.maternalStock.label" default="Maternal Stock" /></span>
+      <br>
+      <hr>
+      
+      %{-- * * * Maternal Stock ID * * * --}%
+      <li class="fieldcontain">
+        <span id="maternalStockID-label" class="property-label"><g:message code="stock.maternalStockID.label" default="Maternal Stock ID" /></span>
       <g:if test="${stockInstance?.maternalStock}">
-        <span class="property-value" aria-labelledby="maternalStock-label"><g:link controller="stock" action="show" id="${stockInstance?.maternalStock?.id}"><g:fieldValue bean="${stockInstance.maternalStock}" field="stockName"/></g:link></span>
+        <span class="property-value" aria-labelledby="maternalStockID-label"><g:link controller="stock" action="show" id="${stockInstance?.maternalStock?.id}">${stockInstance?.maternalStock?.stockID}</g:link></span>
       </g:if>
-       <g:else>
+      <g:elseif test ="${stockInstance.maternalStockID}">
+        <span class="property-value" aria-labelledby="maternalStockID-label">${stockInstance.maternalStockID}</span>   
+      </g:elseif> 
+      <g:else>
         <span class="property-value" aria-labelledby="maternalStock-label"> ---- </span>
-        </g:else>
-      </li>      
-
-      <li class="fieldcontain">
-        <span id="maternalID-label" class="property-label"><g:message code="stock.maternalID.label" default="Maternal Individual" /></span>
-      <g:if test="${stockInstance?.maternalIndividual}">
-  <span class="property-value" aria-labelledby="maternalIndividual-label"><g:link controller="individual" action="show" id="${stockInstance?.maternalIndividual?.id}"><g:formatNumber number="${stockInstance?.maternalID}" minFractionDigits="4"/></g:link></span>
-         </g:if>
-      <g:elseif  test="${stockInstance?.maternalID}">
-        <span class="property-value" aria-labelledby="maternalID-label"><g:formatNumber number="${stockInstance?.maternalID}" minFractionDigits="4"/></span>
-      </g:elseif>
-       <g:else>
-        <span class="property-value" aria-labelledby="maternalStock-label"> ---- </span>
-        </g:else>
+      </g:else>
       </li>
-
-
-%{-- * * * Paternal Lineage * * * --}%
-    <li class="fieldcontain">
-        <span id="paternalStockID-label" class="property-label"><g:message code="stock.paternalID.label" default="Paternal Stock ID" /></span>
-      <g:if test="${stockInstance?.paternalStockID}">
-        <span class="property-value" aria-labelledby="paternalStockID-label"><g:formatNumber number="${stockInstance?.paternalStockID}" minFractionDigits="4"/></span>
+     
+      %{-- * * * Maternal Individual ID * * * --}%
+      <li class="fieldcontain">
+        <span id="maternalID-label" class="property-label"><g:message code="stock.maternalIndividualID" default="Maternal Individual ID" /></span>
+      <g:if test="${stockInstance?.maternalIndividual}">
+        <span class="property-value" aria-labelledby="maternalIndividual-label"><g:link controller="individual" action="show" id="${Individual.findByIndividualID(stockInstance?.maternalIndividualID)?.id}">${stockInstance?.maternalIndividualID}</g:link></span>
       </g:if>
-       <g:else>
-        <span class="property-value" aria-labelledby="paternalStock-label"> ---- </span>
-        </g:else>
+      <g:elseif test="${stockInstance?.maternalIndividualID}">
+                <span class="property-value" aria-labelledby="maternalIndividual-label">${stockInstance?.maternalIndividualID}</span>
+      </g:elseif>
+      <g:else>
+        <span class="property-value" aria-labelledby="maternalStock-label"> ---- </span>
+      </g:else>
       </li>
       
-       <li class="fieldcontain">
-        <span id="paternalStock-label" class="property-label"><g:message code="stock.paternalStock.label" default="Paternal Stock" /></span>
-      <g:if test="${stockInstance?.paternalStock}">
-        <span class="property-value" aria-labelledby="paternalStock-label"><g:link controller="stock" action="show" id="${stockInstance?.paternalStock?.id}"><g:fieldValue bean="${stockInstance.paternalStock}" field="stockName"/></g:link></span>
-      </g:if>
-       <g:else>
-        <span class="property-value" aria-labelledby="paternalStock-label"> ---- </span>
-        </g:else>
-      </li>      
-
+      %{-- * * * Maternal Line * * * --}%
       <li class="fieldcontain">
-        <span id="paternalID-label" class="property-label"><g:message code="stock.paternalID.label" default="Paternal Individual" /></span>
-      <g:if test="${stockInstance?.paternalIndividual}">
-  <span class="property-value" aria-labelledby="paternalIndividual-label"><g:link controller="individual" action="show" id="${stockInstance?.paternalIndividual?.id}"><g:formatNumber number="${stockInstance?.paternalID}" minFractionDigits="4"/></g:link></span>
-         </g:if>
-      <g:elseif  test="${stockInstance?.paternalID}">
-        <span class="property-value" aria-labelledby="paternalID-label"><g:formatNumber number="${stockInstance?.paternalID}" minFractionDigits="4"/></span>
+        <span id="maternalLine-label" class="property-label"><g:message code="stock.maternalLine" default="Maternal Line" /></span>
+      <g:if test="${stockInstance?.maternalStock}">
+        <span class="property-value" ><g:link controller="line" action="show" id="${stockInstance?.maternalStock?.line?.id}">${stockInstance?.maternalStock?.line?.name}</g:link></span>
+      </g:if>
+      <g:else>
+        <span class="property-value" aria-labelledby="maternalLine-label"> ---- </span>
+      </g:else>
+      </li>
+      
+      <br>
+      <hr>
+      
+      %{-- * * * Paternal Stock ID * * * --}%
+      <li class="fieldcontain">
+        <span id="paternalStockID-label" class="property-label"><g:message code="stock.paternalID.label" default="Paternal Stock ID" /></span>
+      <g:if test="${stockInstance?.paternalStock}">
+        <span class="property-value" aria-labelledby="paternalStockID-label"><g:link controller="stock" action="show" id="${stockInstance?.paternalStock?.id}">${stockInstance?.paternalStock?.stockID}</g:link></span>
+      </g:if>
+      <g:elseif test="${stockInstance?.paternalStockID}">
+        <span class="property-value" aria-labelledby="paternalStockID-label">${stockInstance?.paternalStockID}</span>
       </g:elseif>
-       <g:else>
-        <span class="property-value" aria-labelledby="paternalStock-label"> ---- </span>
-        </g:else>
+      <g:else>
+        <span class="property-value" aria-labelledby="paternalStockID-label"> ---- </span>
+      </g:else>
       </li>
 
+       %{-- * * * Paternal Individual ID * * * --}%
+      <li class="fieldcontain">
+        <span id="paternalID-label" class="property-label"><g:message code="stock.paternalIndividualID.label" default="Paternal Individual ID" /></span>
+      <g:if test="${stockInstance?.paternalIndividual}">
+        <span class="property-value" aria-labelledby="paternalIndividual-label"><g:link controller="individual" action="show" id="${Individual.findByIndividualID(stockInstance?.paternalIndividualID)?.id}">${stockInstance?.paternalIndividualID}</g:link></span>
+      </g:if>
+      <g:elseif  test="${stockInstance?.paternalIndividualID}">
+        <span class="property-value" aria-labelledby="paternalIndividual-label">${stockInstance?.paternalIndividualID}</span>
+      </g:elseif>
+      <g:else>
+        <span class="property-value" aria-labelledby="paternalStock-label"> ---- </span>
+      </g:else>
+      </li>
+      
+      %{-- * * * Paternal Line * * * --}%
+      <li class="fieldcontain">
+        <span id="paternalLine-label" class="property-label"><g:message code="stock.paternalLine" default="Paternal Line" /></span>
+      <g:if test="${stockInstance?.paternalStock}">
+        <span class="property-value" ><g:link controller="line" action="show" id="${stockInstance?.paternalStockID}">${stockInstance?.paternalStock?.line?.name}</g:link></span>
+      </g:if>
+      <g:else>
+        <span class="property-value" aria-labelledby="paternalLine-label"> ---- </span>
+      </g:else>
+      </li>
+      
+      <br>
+      <hr>
+      
+      %{-- * * * Stock researcher comments * * * --}%
+      <li class="fieldcontain">
+        <span id="comment-label" class="property-label"><g:message code="stock.comments.label" default="Comments" /></span>
+      <g:if test="${stockInstance?.comments}">
+        <span class="property-value" aria-labelledby="comments-label"><g:fieldValue bean="${stockInstance}" field="comments"/></span>  
+      </g:if>
+      <g:else>
+        <span class="property-value" aria-labelledby="comments-label"> ---- </span>
+      </g:else>
+      </li>
+ 
+      %{-- * * * List Individuals within this Stock * * * --}%
       <li class="fieldcontain">    
-         <span class="property-value" aria-labelledby="paternalStock-label"> <g:link controller="individual" action="query" params="[pStockID: stockInstance.stockID]">Show Stock Individuals</g:link></span>
-        </li>
+        <span class="property-value" aria-labelledby="stock-label"> <g:link controller="individual" action="query" params="[pStockID: stockInstance.stockID]">Show Stock Individuals</g:link></span>
+      </li>
       
     </ol>
-   
-  
     <g:form>
       <fieldset class="buttons">
         <g:hiddenField name="id" value="${stockInstance?.id}" />

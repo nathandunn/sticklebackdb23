@@ -2,102 +2,60 @@ package edu.uoregon.sticklebackdb
 
 class Stock {
 
+    // Initialize variables
+    Stock(){
+        comments = null
+        fertilizationDate = null
+        maternalIndividualID = null
+        maternalStockID = null
+        maternalStock = null
+        paternalIndividualID = null
+        paternalStockID = null
+        paternalStock = null
+    }
+    
     static constraints = {
     }
 
-
-    // Population name or abbrv (column X)
-    Population population
+    // Line name (column X)
+    Line line
     
     // Fish stock (column O)
-    Double stockID 
+    String stockID 
 
+    // Displayable stock ID
+    //String displayStockID
+    
     // Stock name (column AM)
     String stockName
     
     // Researcher comments (column AK)
-    String comment
+    String comments
 
     // Fertilization date (column D)
     Date fertilizationDate
     
-    // Lineage, maternal ID (column Q)
-    Double maternalID
+    // Lineage, maternal Individual ID (column Q)
+    String maternalIndividualID
     
-    // Lineage, maternal individual (from column Q)
+    // Lineage, maternal Individual (from column Q)
     Individual maternalIndividual
     
     // Lineage, maternal stock ID (column R)
-    Double maternalStockID
+    String maternalStockID
     
     // Lineage, maternal stock (from column R)
     Stock maternalStock
     
-    // Lineage, paternal ID (column T)
-    Double paternalID
+    // Lineage, paternal Individual ID (column T)
+    String paternalIndividualID
     
-    // Lineage, paternal individual (from column T)
+    // Lineage, paternal Individual (from column T)
     Individual paternalIndividual
-    
+      
     // Lineage, paternal stock ID (column U)
-    Double paternalStockID
+    String paternalStockID
     
-     // Lineage, maternal stock (from column U)
-    Stock paternalStock
-    
-    
-    
-    
-    // Barcode (column A) TODO: should be S.NNNNN
-   // Integer barcode
-    
-    // TODO: group / index
-    //Individual maternalIndividual
-    
-    // Lineage, maternal ID label (column S)
-   // String maternalIndividualLabel
-    
-    // Lineage, paternal ID (column T)
-   // Individual paternalIndividual
-    
-    // Lineage, paternal ID label (column V)
-    //String paternalIndividualLabel
-    
-    // Stock breeding type (column  AL) ---???
-    //Genetics stockType
-
-    // Cross date (column B)
-   // Date crossDate
-
-    // Cross type (column C) TODO: make enum - 0 or 1?
-   // Integer crossType
-
-    // Fertilization date & time (columns D & F - G?)
-//    Date fertilizationDateTime
-
-    // Fish age days (column I)
-  //  Integer fishAgeDays
-    
- 
-    // Stock breeding type (column AL)
-   // String breedingType
-    
-    // Stock name abbreviation (column AN)
-   // String abbreviation
-
-    // Stock status containers (column AP) 
-  //  String containerStatus
-    
-    // Stock status exp (column AQ)
-   // String experimentStatus
-    
-    // Stock status grps (column AR)
-   // String groupStatus
-    
-    // Stock status inds (column AS)
-   // String individualStatus
-
-   // String getFullStatus(){
-  //      return containerStatus + " " + experimentStatus + " " + groupStatus + " " + individualStatus
-   // }
+    // Lineage, maternal stock (from column U)
+    Stock paternalStock   
 }

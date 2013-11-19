@@ -1,6 +1,6 @@
 package edu.uoregon.sticklebackdb
 
-class Population {
+class Line {
 
     static constraints = {
     }
