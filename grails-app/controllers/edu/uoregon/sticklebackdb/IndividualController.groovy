@@ -1,6 +1,7 @@
 package edu.uoregon.sticklebackdb
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.converters.JSON
 
 class IndividualController {
 
@@ -106,5 +107,20 @@ class IndividualController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'individual.label', default: 'Individual'), id])
             redirect(action: "show", id: id)
         }
+    }
+    
+    def findIndividualsForStock(String stockID){
+        
+        List<Individual> individuals = Individual.findAllByStockID(stockID, [order:"desc", sort:"individualID"]) 
+        
+//        List<String> strings = new ArrayList<>()
+//        strings.add(12)
+        
+        Map<String,Long> strings = new HashMap<>()
+        strings.put("asdf",2)
+        strings.put("sdfdsf",4)
+        
+        println "FindForStock"
+        render strings
     }
 }

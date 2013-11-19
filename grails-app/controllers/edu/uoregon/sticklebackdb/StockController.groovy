@@ -20,7 +20,10 @@ class StockController {
     }
 
     def create() {
-        [stockInstance: new Stock(params), Individual: Individual, Stock: Stock, maxStock : Stock.list(max:1, sort:"stockID", order: "desc")[0]]
+        params.stockID = getNextStockID()
+        def model= [stockInstance: new Stock(params), Individual: Individual, Stock: Stock, maxStock : Stock.list(max:1, sort:"stockID", order: "desc")[0]]
+        render(view: "create", model: model)
+            
     }
 
     def save() {
@@ -105,8 +108,15 @@ class StockController {
     }
     
     def getNextStockID(){
-        //        List stocks = Stock.list()
-        def nextID = 7.0000
-        render  nextID  
+        List stocks = Stock.listOrderByStockID()    
+        double max = 0
+        stocks.each(){
+            double tmp = it.stockID.toDouble()
+            
+           if(tmp > max) 
+            max = tmp
+        }
+        def nextID = max + 1.0    
+        return String.format("%.4f", nextID)
     }
 }
