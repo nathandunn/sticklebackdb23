@@ -110,17 +110,29 @@ class IndividualController {
     }
     
     def findIndividualsForStock(String stockID){
-        
-        List<Individual> individuals = Individual.findAllByStockID(stockID, [order:"desc", sort:"individualID"]) 
-        
-//        List<String> strings = new ArrayList<>()
-//        strings.add(12)
+        //print "stockIF " + stockID
+        List individuals = Individual.findAllByStockID(stockID, [order:"desc", sort:"individualID"]) 
         
         Map<String,Long> strings = new HashMap<>()
-        strings.put("asdf",2)
-        strings.put("sdfdsf",4)
-        
-        println "FindForStock"
+        individuals.each{
+            def id = it.id
+            def indivID = it.individualID
+           // println " id: " + id + " indivID " + indivID
+            strings.put(id, indivID)
+        }
         render strings
+    }
+    
+    def getNextIndividualID(String stockID){
+        
+        List ids = Individual.findAllByStockID(stockID)
+        double max = stockID.toDouble()
+        ids.each(){
+            double tmp = it.individualID.toDouble()
+            if(tmp > max) 
+            max = tmp
+        }
+        double nextID = max + 0.0001  
+        render String.format("%.4f", nextID)
     }
 }

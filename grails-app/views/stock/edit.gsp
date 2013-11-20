@@ -5,6 +5,7 @@
     <meta name="layout" content="main">
   <g:set var="entityName" value="${message(code: 'stock.label', default: 'Stock')}" />
   <title><g:message code="default.edit.label" args="[entityName]" /></title>
+  <g:javascript library="jquery" plugin="jquery"/>
 </head>
 <body>
   <a href="#edit-stock" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>

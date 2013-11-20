@@ -6,9 +6,8 @@
   <label for="stockID">
     <g:message code="stock.stockID.label" default="Stock ID" />
   </label>
-    <g:textField name="stockID"  value="${stockInstance?.stockID}" readonly="true"/>  
+  <g:textField name="stockID"  value="${stockInstance?.stockID}" readonly="true"/>  
 </div>
-
 
 %{-- Name --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'stockName', 'error')} ">
@@ -38,7 +37,6 @@
   <g:datePicker name="fertilizationDate" precision="day"  value="${stockInstance?.fertilizationDate}" default="none" noSelection="['': '']" />
 </div>
 
-
 %{-- Maternal Stock ID --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalStockID', 'error')} ">
   <label for="maternalStockID">
@@ -47,47 +45,36 @@
   <script>
     function setMaternalIds(data){
                   alert(data);
-                  var select = $("#maternalIndividualIDSelect");
+                  var select = $("#matIndivIDSelect");
                   select.empty();                
-               //   select.add(new Option("two", 2));
-                  
+                  select.add(new Option(data[0]));             
     }
-    </script>
-    <g:select id="stock" name="stock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}" optionKey="id"
-              value="${Stock.findByStockID(stockInstance?.maternalStockID)?.stockID}"
-              class="many-to-one" noSelection="['null': '- Choose Stock -']"
-              optionValue="stockID" optionKey="stockID"  
-              onchange="
-              ${remoteFunction( action: 'findIndividualsForStock'
-                  , controller: 'individual'
-                  , params: '\'stockId=\' + this.value '
-                  , method: 'POST'
-                  , onSuccess: 'setMaternalIds(data);'
-                  , onError: 'alert(\'error\');'
-                  )}"  
-              />
+  </script>
+  <g:select id="stock" name="stock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}"
+            value="${stockInstance?.maternalStockID}"
+            class="many-to-one" noSelection="['null': '- Choose Stock -']"
+            optionValue="stockID" optionKey="stockID"  
+            onchange="
+${remoteFunction( action: 'findIndividualsForStock'
+  , controller: 'individual'
+  , params: '\'stockID=\' + this.value '
+  , method: 'POST'
+  , onSuccess: 'setMaternalIds(data);'
+  , onError: 'alert(\'error\');'
+)}"  
+            />
 </div>
-    
+
 %{-- Maternal Individual ID --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalIndividualID', 'error')} ">
   <label for="maternalIndividual">
     <g:message code="stock.maternalIndividualID.label" default="Maternal Individual ID" />
   </label>
-<g:if test="${stockInstance?.maternalIndividualID}"> 
-  <g:select id="maternalIndividualIDSelect" name="maternalIndividualIDSelect.id" from="${edu.uoregon.sticklebackdb.Individual.list()}" 
-            value="${Individual.findByIndividualID(stockInstance?.maternalIndividualID)?.individualID}"  style="width:200px;font-size: 12px"
-            class="many-to-one" noSelection="['null': '- Choose Individual -']"
-            optionValue="individualID"
-            />  
-  
-   </g:if>
-  <g:else>
-  <g:select id="maternalIndividualIDSelect" name="maternalIndividualIDSelect.id"  optionKey="id" from="${edu.uoregon.sticklebackdb.Individual.list()}" 
+  <g:select id="matIndivIDSelect" name="matIndivIDSelect.id"  from="${edu.uoregon.sticklebackdb.Individual.list()}" 
             value="${stockInstance?.maternalIndividualID}"  style="width:200px;font-size: 12px"
             class="many-to-one" noSelection="['null': '- Choose Individual -']"
-            optionValue="individualID"
+            optionValue="individualID"  optionKey="individualID"
             />  
-  </g:else>
 </div>
 
 %{-- Paternal Stock ID --}%
@@ -95,11 +82,27 @@
   <label for="paternalStockID">
     <g:message code="stock.paternalStockID.label" default="Paternal Stock ID" />
   </label>
+  <script>
+   function setPaternalIds(data){
+        alert(data);
+        var select = $("#patIndivIDSelect");
+        select.empty();                
+        select.add(new Option(data[0])); 
+   }
+  </script>
 
-  <g:select id="stock" name="stock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}" optionKey="id"
-            value="${Stock.findByStockID(stockInstance?.paternalStockID)?.stockID}"
+  <g:select id="paternalStockIDSelect" name="paternalStockIDSelect.id" from="${edu.uoregon.sticklebackdb.Stock.list()}" optionKey="id"
+            value="${stockInstance?.paternalStockID}"
             class="many-to-one" noSelection="['null': '- Choose Stock -']"
             optionValue="stockID" optionKey="stockID"
+            onchange="
+${remoteFunction( action: 'findIndividualsForStock'
+  , controller: 'individual'
+  , params: '\'stockID=\' + this.value '
+  , method: 'POST'
+  , onSuccess: 'setPaternalIds(data);'
+  , onError: 'alert(\'error\');'
+)}" 
             />
 </div>
 
@@ -107,11 +110,11 @@
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalIndividual', 'error')} ">
   <label for="paternalIndividual">
     <g:message code="stock.paternalIndividual.label" default="Paternal Individual" />
-  </label>
-  <g:select id="paternalIndividual" name="paternalIndividual.id" from="${edu.uoregon.sticklebackdb.Individual.list()}" optionKey="id"
-            value="${Individual.findByIndividualID(stockInstance?.paternalIndividualID)?.id}"  style="width:200px;font-size: 12px"
+  </label> 
+  <g:select id="patIndivIDSelect" name="patIndivIDSelect.id" from="${edu.uoregon.sticklebackdb.Individual.list()}" optionKey="id"
+            value="${stockInstance?.paternalIndividualID}"  style="width:200px;font-size: 12px"
             class="many-to-one" noSelection="['null': '- Choose Individual -']"
-            optionValue="individualID"
+            optionValue="individualID" optionKey="individualID"
             />  
 </div>
 
