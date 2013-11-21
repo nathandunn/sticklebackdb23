@@ -45,9 +45,32 @@
   <script>
     function setMaternalIds(data){
                   alert(data);
+
                   var select = $("#matIndivIDSelect");
-                  select.empty();                
-                  select.add(new Option(data[0]));             
+                  select.empty(); 
+                 
+                  //for(var i = 0; i < data.length; i++) {
+                   //  alert(data[i].key);
+ //   $('.yourClass').append(incomingData[i].name + '<br />');
+//}}
+                   // print "HERE MOO!!" 
+                 // if(data != null){
+                 // for(var key in data){
+                   
+                  //alert(key + " -> " + data[key])
+                    var obj = data[i];
+                    for(var key in obj){
+                      
+                      print "HERE!!"
+                      var name = key;
+                      var value = obj[key];
+                      select.append('<option value=1>' + value + '</option>');
+                  }
+                 //  select.append('<option value=key>"data[key]"</option>'); 
+                 // }
+                // }
+                  //$("#matIndivIDSelect").clear;
+                 // $("#matIndivIDSelect").append('<option value=1> Test</option>')           
     }
   </script>
   <g:select id="stock" name="stock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}"
