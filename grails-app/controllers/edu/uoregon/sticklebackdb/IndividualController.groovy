@@ -120,7 +120,7 @@ class IndividualController {
            // println " id: " + id + " indivID " + indivID
             strings.put(id, indivID)
         }
-        render strings
+        render strings as JSON
     }
     
     def getNextIndividualID(String stockID){
