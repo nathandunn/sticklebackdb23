@@ -110,14 +110,12 @@ class IndividualController {
     }
     
     def findIndividualsForStock(String stockID){
-        //print "stockIF " + stockID
         List individuals = Individual.findAllByStockID(stockID, [order:"desc", sort:"individualID"]) 
         
         Map<String,Long> strings = new HashMap<>()
         individuals.each{
             def id = it.id
             def indivID = it.individualID
-           // println " id: " + id + " indivID " + indivID
             strings.put(id, indivID)
         }
         render strings as JSON
@@ -134,5 +132,9 @@ class IndividualController {
         }
         double nextID = max + 0.0001  
         render String.format("%.4f", nextID)
+    }
+    
+    def getFormattedID(String individualID){
+        render individualID
     }
 }

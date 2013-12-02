@@ -76,9 +76,9 @@ class StubData {
                         // Population (find using column X)
                         stock.line = tokens[23]?.size() > 0 ? Line.findByName(tokens[23]) : null
 
-                        // Stock ID (column O)          
-                        def stockID = tokens[14]?.size() > 0 ? tokens[14].toDouble() : null 
-                        stock.stockID = String.format("%.4f", stockID)
+                        // Stock ID (column O)    
+                        stock.stockID = tokens[14]?.size() > 0 ? tokens[14].toDouble() : null
+                        stock.stockIDLabel = String.format("%.4f", stock.stockID)
                              
                         // Fertilization date (column D)
                         try {
@@ -95,31 +95,44 @@ class StubData {
                                                             
                         // Maternal Individual ID (column Q)
                         def maternalIndividualID = tokens[16].size() > 0 ? tokens[16].toDouble() : null
-                        if(maternalIndividualID != null)
-                        stock.maternalIndividualID = String.format("%.4f", maternalIndividualID)
-                        else 
-                        stock.maternalIndividualID = null
-                        
+                        if(maternalIndividualID != null){
+                          stock.maternalIndividualID = maternalIndividualID
+                          stock.maternalIndividualIDLabel = String.format("%.4f", maternalIndividualID)
+                        }
+                        else{
+                            stock.maternalIndividualID = null
+                            stock.maternalIndividualIDLabel = null
+                        }
                         // Maternal stock ID (column R)
                         def maternalStockID = tokens[17].size() > 0 ? tokens[17].toDouble() : null
-                        if(maternalStockID != null)
-                        stock.maternalStockID = String.format("%.4f", maternalStockID)
-                        else
-                        stock.maternalStockID = null
-                        
-                        // Paternal ID (column T)
+                        if(maternalStockID != null){
+                            stock.maternalStockID = maternalStockID
+                            stock.maternalStockIDLabel = String.format("%.4f", maternalStockID)
+                        }
+                        else{
+                            stock.maternalStockID = null
+                            stock.maternalStockIDLabel = null
+                        }                   
+                        // Paternal Individual ID (column T)
                         def paternalIndividualID = tokens[19].size() > 0? tokens[19].toDouble() : null
-                        if(paternalIndividualID != null)
-                        stock.paternalIndividualID = String.format("%.4f",  paternalIndividualID)                    
-                        else
-                        stock.paternalIndividualID = null
-                        
+                        if(paternalIndividualID != null){
+                            stock.paternalIndividualID = paternalIndividualID
+                            stock.paternalIndividualIDLabel = String.format("%.4f",  paternalIndividualID)                    
+                        }
+                        else{
+                            stock.paternalIndividualID = null
+                            stock.paternalIndividualIDLabel = null
+                        }
                         // Paternal stock ID (column U)
                         def paternalStockID = tokens[20].size() > 0 ? tokens[20].toDouble() : null
-                        if(paternalStockID != null)
-                        stock.paternalStockID = String.format("%.4f", paternalStockID)
-                        else
-                        stock.paternalStockID = null
+                        if(paternalStockID != null){
+                            stock.paternalStockID = paternalStockID                            
+                            stock.paternalStockIDLabel = String.format("%.4f", paternalStockID)
+                        }
+                        else{
+                            stock.paternalStockID = null
+                            stock.paternalStockIDLabel = null
+                        }
                         
                         stock.save(flush: true, insert: true, failOnError: true)
                     }
@@ -146,13 +159,13 @@ class StubData {
                
                 // Individual ID (column U)
                 if(tokens[20]?.length() > 1){
-                    def individualID = tokens[20].toDouble()
-                    individual.individualID = String.format("%.4f", individualID)
+                    individual.individualID = tokens[20].toDouble()
+                    individual.individualIDLabel = String.format("%.4f", individual.individualID)
                 }
                 
                 // Stock ID (column S)
-                def stockID = tokens[18].toDouble()
-                individual.stockID =  String.format("%.4f", stockID)
+                individual.stockID = tokens[18].toDouble()
+                individual.stockIDLabel =  String.format("%.4f", individual.stockID)
                  
                 // Stock (from column S)
                 individual.stock = Stock.findByStockID(individual.stockID) 
@@ -171,12 +184,16 @@ class StubData {
                     def iID = maternalStockID as Double
                                                         
                    // set the values in the individual
-                   individual.maternalStockID = String.format("%.4f", sID)
-                   individual.maternalIndividualID = String.format("%.4f",  iID)                    
+                   individual.maternalStockID = sID
+                   individual.maternalStockIDLabel = String.format("%.4f", sID)
+                   individual.maternalIndividualID = iID
+                   individual.maternalIndividualIDLabel = String.format("%.4f",  iID)                    
                 }
                 else{
                     individual.maternalStockID = null
+                    individual.maternalStockIDLabel = null
                     individual.maternalIndividualID = null
+                    individual.maternalIndividualIDLabel = null
                 }
                            
                 // Paternal stock lineage (column X)
@@ -190,12 +207,16 @@ class StubData {
                     def iID = paternalStockID as Double
                     
                     // set the values in the individual
-                   individual.paternalStockID = String.format("%.4f", sID)
-                   individual.paternalIndividualID = String.format("%.4f",  iID)                   
+                    individual.paternalStockID = sID
+                    individual.paternalStockIDLabel = String.format("%.4f", sID)
+                     individual.paternalIndividualID = iID
+                    individual.paternalIndividualIDLabel = String.format("%.4f",  iID)                   
                 }
                 else{
                     individual.paternalStockID = null
+                    individual.paternalStockIDLabel = null
                     individual.paternalIndividualID = null
+                    individual.paternalIndividualIDLabel = null
                 }
                 
                 // Fish location (column Q)
@@ -203,6 +224,9 @@ class StubData {
                 
                 // Researcher comments
                 individual.comments = tokens[26]?.size() > 0 ? tokens[26] : null
+                
+                // Fish sex (column R)
+                individual.fishSex = tokens[17]?.size() > 0 ? tokens[17] : null
                 
                 individual.save(flush: true, insert: true)
             }
@@ -226,7 +250,7 @@ class StubData {
                 // Get the individual
                 if(tokens[20]?.length() > 1){     
                     def individualID = tokens[20].toDouble()
-                    individual = Individual.findByIndividualID(String.format("%.4f", individualID)) 
+                    individual = Individual.findByIndividualID(individualID) 
                 }
                 
                 // If we have an individual
@@ -284,7 +308,7 @@ class StubData {
                     
                     // Get the stock object
                     def stockID = tokens[14]?.size() > 0 ? tokens[14].toDouble() : null 
-                    Stock stock = Stock.findByStockID(String.format("%.4f", stockID))
+                    Stock stock = Stock.findByStockID(stockID)
                     
                     // If we have a stock
                     if (stock) {

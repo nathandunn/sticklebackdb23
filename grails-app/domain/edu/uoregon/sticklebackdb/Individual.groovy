@@ -7,10 +7,12 @@ class Individual {
     }
     
     // Individual ID (column U)
-    String individualID
+    Double individualID
+    String individualIDLabel
       
     // Stock ID (column S)
-    String stockID
+    Double stockID
+    String stockIDLabel
    
     // Stock (derived from column S)
     Stock stock    
@@ -19,25 +21,29 @@ class Individual {
     Date fertilizationDate
       
     // Maternal Stock ID (column W)
-    String maternalStockID
+    Double maternalStockID
+    String maternalStockIDLabel
     
     // Maternal Stock
     Stock maternalStock
     
     // Maternal Individual ID (column W)
-    String maternalIndividualID
+    Double maternalIndividualID
+    String maternalIndividualIDLabel
     
     // Maternal Individual
     Individual maternalIndividual
     
     // Paternal ID (column X)
-    String paternalStockID
+    Double paternalStockID
+    String paternalStockIDLabel
     
     // PaternalStock
     Stock paternalStock
     
     // Paternal Individual ID (column X)
-    String paternalIndividualID
+    Double paternalIndividualID
+    String paternalIndividualIDLabel
     
     // Paternal individual
     Individual paternalIndividual
@@ -47,4 +53,7 @@ class Individual {
     
     // Fish location (column Q)
     String fishLocation
+    
+    // Fish sex (column R)
+    String fishSex
 }

@@ -21,11 +21,9 @@ class Stock {
     Line line
     
     // Fish stock (column O)
-    String stockID 
-
-    // Displayable stock ID
-    //String displayStockID
-    
+    Double stockID
+    String stockIDLabel 
+   
     // Stock name (column AM)
     String stockName
     
@@ -36,25 +34,29 @@ class Stock {
     Date fertilizationDate
     
     // Lineage, maternal Individual ID (column Q)
-    String maternalIndividualID
+    Double maternalIndividualID
+    String maternalIndividualIDLabel
     
     // Lineage, maternal Individual (from column Q)
     Individual maternalIndividual
     
     // Lineage, maternal stock ID (column R)
-    String maternalStockID
+    Double maternalStockID
+    String maternalStockIDLabel
     
     // Lineage, maternal stock (from column R)
     Stock maternalStock
     
     // Lineage, paternal Individual ID (column T)
-    String paternalIndividualID
+    Double paternalIndividualID
+    String paternalIndividualIDLabel
     
     // Lineage, paternal Individual (from column T)
     Individual paternalIndividual
       
     // Lineage, paternal stock ID (column U)
-    String paternalStockID
+    Double paternalStockID
+    String paternalStockIDLabel
     
     // Lineage, maternal stock (from column U)
     Stock paternalStock   

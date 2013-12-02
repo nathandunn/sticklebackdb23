@@ -29,6 +29,15 @@ ${remoteFunction( action: 'getNextIndividualID'
             />
 </div>
 
+%{-- Fish Sex --}%
+<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'fishSex', 'error')} ">
+  <label for="fishSex">
+    <g:message code="individual.fertilizationDate.label" default="Fertilization Date"/>
+  </label>
+  <g:datePicker name="fertilizationDate" precision="day" value="${individualInstance?.fertilizationDate}" default="none"
+                noSelection="['': '']"/>
+</div>
+
 %{-- Fertilization Date --}%
 <div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'fertilizationDate', 'error')} ">
   <label for="fertilizationDate">
