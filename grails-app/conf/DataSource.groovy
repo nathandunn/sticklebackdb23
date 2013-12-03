@@ -1,7 +1,7 @@
 dataSource {
     pooled = true
     driverClassName = "org.postgresql.Driver"
-    username = "ndunn"
+    username = "ubuntu"
     password = ""
     dialect = "org.hibernate.dialect.PostgreSQLDialect"
 }

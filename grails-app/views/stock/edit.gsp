@@ -5,7 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'stock.label', default: 'Stock')}"/>
     <title><g:message code="default.edit.label" args="[entityName]"/></title>
-    <g:javascript library="jquery" plugins="jquery,jquery-ui"/>
+    %{--<g:javascript library="jquery" plugins="jquery,jquery-ui"/>--}%
 </head>
 
 <body>

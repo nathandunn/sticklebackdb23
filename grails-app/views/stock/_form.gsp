@@ -1,25 +1,25 @@
 <%@ page import="edu.uoregon.sticklebackdb.Stock" %>
 
+<r:require modules="jquery,jquery-ui"/>
+
 
 %{-- stockID --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'stockID', 'error')} ">
   <label for="stockID">
     <g:message code="stock.stockID.label" default="Stock ID" />
   </label>
-  <g:textField name="stockID"  value="${stockInstance?.stockID}" readonly="true"/>  
+  <g:textField name="stockID"  value="${stockInstance?.stockID}" />
+
 </div>
 
-%{-- Name --}%
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'stockName', 'error')} ">
-  <label for="stockName">
-    <g:message code="stock.stockName.label" default="Stock Name" />
-  </label>
-  <g:textField is="stockName" name="stockName" value="${stockInstance?.stockName}"/>
-</div>
 
 <script>
-    $(function() {
+    $(document).ready(function() {
         var availableTags = [
+            <g:each var="stock" in="${edu.uoregon.sticklebackdb.Stock.listOrderByStockName(order: "asc",sort:"stockName").unique(false)}" status="iter">
+                "${stock.stockName}"
+                ,
+            </g:each>
             "ActionScript",
             "AppleScript",
             "Asp",
@@ -43,11 +43,22 @@
             "Scala",
             "Scheme"
         ];
-        $( "#stockName" ).autocomplete({
+//        $("#stockName").click(function(){
+//            alert('ouch')
+//        });
+        $("#stockName").autocomplete({
             source: availableTags
         });
     });
 </script>
+
+%{-- Name --}%
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'stockName', 'error')} ">
+  <label for="stockName">
+    <g:message code="stock.stockName.label" default="Stock Name" />
+  </label>
+  <g:textField id="stockName" class="ui-autocomplete-input" name="stockName" value="${stockInstance?.stockName}" autocomplete="off"/>
+</div>
 
 %{-- Line --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
