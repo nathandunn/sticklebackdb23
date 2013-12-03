@@ -4,6 +4,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class StockController {
 
+    def stockService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     static navigation = [
@@ -20,10 +21,12 @@ class StockController {
     }
 
     def create() {
-        params.stockID = getNextStockID()
+        params.stockID = stockService.getNextStockID()
+        params.stockIDLabel = stockService.createLabelForId(params.stockID as Double)
+        Stock stock = new Stock(params)
 
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
-        def model= [stockInstance: new Stock(params), maxStock : Stock.list(max:1, sort:"stockID", order: "desc")[0],stockNames: stockNames]
+        def model= [stockInstance: stock, maxStock : Stock.list(max:1, sort:"stockID", order: "desc")[0],stockNames: stockNames]
         render(view: "create", model: model)
             
     }
@@ -112,16 +115,16 @@ class StockController {
         }
     }
     
-    def getNextStockID(){
-        List stocks = Stock.listOrderByStockID()    
-        double max = 0
-        stocks.each(){
-            double tmp = it.stockID.toDouble()
-            
-           if(tmp > max) 
-            max = tmp
-        }
-        def nextID = max + 1.0    
-        return String.format("%.4f", nextID)
-    }
+//    String getNextStockID(){
+//        List stocks = Stock.listOrderByStockID()
+//        double max = 0
+//        stocks.each(){
+//            double tmp = it.stockID.toDouble()
+//
+//           if(tmp > max)
+//            max = tmp
+//        }
+//        def nextID = max + 1.0
+//        return String.format("%.4f", nextID)
+//    }
 }

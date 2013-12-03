@@ -21,9 +21,6 @@
                 ,
             </g:each>
         ];
-//        $("#stockName").click(function(){
-//            alert('ouch')
-//        });
         $("#stockName").autocomplete({
             source: availableTags
         });
@@ -43,7 +40,7 @@
   <label for="line">
     <g:message code="stock.line.label" default="Line" />
   </label>
-  <g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.list()}" optionKey="id"
+  <g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.listOrderByName()}" optionKey="id"
             value="${stockInstance.line?.id}"  style="width:200px;font-size: 12px"
             class="many-to-one"  noSelection="['null': '- Choose Line -']"
             optionValue="name"
@@ -87,10 +84,10 @@
                    select.append('<option value=1>My Option</option>');            
     }
   </script>
-  <g:select id="stock" name="stock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}"
+  <g:select id="stock" name="stock.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order:"desc")}"
             value="${stockInstance?.maternalStockID}"
             class="many-to-one" noSelection="['null': '- Choose Stock -']"
-            optionValue="stockID" optionKey="stockID"  
+            optionValue="stockIDLabel" optionKey="id"
             onchange="
 ${remoteFunction( action: 'findIndividualsForStock'
   , controller: 'individual'
