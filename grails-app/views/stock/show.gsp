@@ -27,7 +27,7 @@
       <li class="fieldcontain">
         <span id="fishStock-label" class="property-label"><g:message code="stock.stockID.label" default="Stock ID" /></span>
       <g:if test="${stockInstance?.stockID}">
-        <span class="property-value" aria-labelledby="stockID-label">${stockInstance?.stockIDLabel}</span>
+        <span class="property-value" aria-labelledby="stockID-label">${stockInstance?.stockIdLabel}</span>
       </g:if>
       <g:else>
         <span class="property-value" aria-labelledby="stockID-label"> ---- </span>
