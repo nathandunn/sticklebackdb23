@@ -14,8 +14,40 @@
   <label for="stockName">
     <g:message code="stock.stockName.label" default="Stock Name" />
   </label>
-  <g:textField name="stockName" value="${stockInstance?.stockName}"/>
+  <g:textField is="stockName" name="stockName" value="${stockInstance?.stockName}"/>
 </div>
+
+<script>
+    $(function() {
+        var availableTags = [
+            "ActionScript",
+            "AppleScript",
+            "Asp",
+            "BASIC",
+            "C",
+            "C++",
+            "Clojure",
+            "COBOL",
+            "ColdFusion",
+            "Erlang",
+            "Fortran",
+            "Groovy",
+            "Haskell",
+            "Java",
+            "JavaScript",
+            "Lisp",
+            "Perl",
+            "PHP",
+            "Python",
+            "Ruby",
+            "Scala",
+            "Scheme"
+        ];
+        $( "#stockName" ).autocomplete({
+            source: availableTags
+        });
+    });
+</script>
 
 %{-- Line --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
