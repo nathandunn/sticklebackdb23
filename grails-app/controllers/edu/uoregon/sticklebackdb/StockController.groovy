@@ -21,7 +21,9 @@ class StockController {
 
     def create() {
         params.stockID = getNextStockID()
-        def model= [stockInstance: new Stock(params), Individual: Individual, Stock: Stock, maxStock : Stock.list(max:1, sort:"stockID", order: "desc")[0]]
+
+        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+        def model= [stockInstance: new Stock(params), maxStock : Stock.list(max:1, sort:"stockID", order: "desc")[0],stockNames: stockNames]
         render(view: "create", model: model)
             
     }
@@ -45,7 +47,8 @@ class StockController {
             return
         }
 
-        [stockInstance: stockInstance, Individual: Individual]
+
+        [stockInstance: stockInstance]
     }
 
     def edit(Long id) {
@@ -56,7 +59,9 @@ class StockController {
             return
         }
 
-        [stockInstance: stockInstance, Line: Line, Stock: Stock, Individual: Individual]
+        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+
+        [stockInstance: stockInstance, stockNames:stockNames]
     }
 
     def update(Long id, Long version) {

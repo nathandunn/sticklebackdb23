@@ -16,32 +16,10 @@
 <script>
     $(document).ready(function() {
         var availableTags = [
-            <g:each var="stock" in="${edu.uoregon.sticklebackdb.Stock.listOrderByStockName(order: "asc",sort:"stockName").unique(false)}" status="iter">
-                "${stock.stockName}"
+            <g:each var="stockName" in="${stockNames}" status="iter">
+                "${stockName}"
                 ,
             </g:each>
-            "ActionScript",
-            "AppleScript",
-            "Asp",
-            "BASIC",
-            "C",
-            "C++",
-            "Clojure",
-            "COBOL",
-            "ColdFusion",
-            "Erlang",
-            "Fortran",
-            "Groovy",
-            "Haskell",
-            "Java",
-            "JavaScript",
-            "Lisp",
-            "Perl",
-            "PHP",
-            "Python",
-            "Ruby",
-            "Scala",
-            "Scheme"
         ];
 //        $("#stockName").click(function(){
 //            alert('ouch')
@@ -57,7 +35,7 @@
   <label for="stockName">
     <g:message code="stock.stockName.label" default="Stock Name" />
   </label>
-  <g:textField id="stockName" class="ui-autocomplete-input" name="stockName" value="${stockInstance?.stockName}" autocomplete="off"/>
+  <g:textField id="stockName" class="ui-autocomplete-input" name="stockName" value="${stockInstance?.stockName}" autocomplete="off" size="60"/>
 </div>
 
 %{-- Line --}%
