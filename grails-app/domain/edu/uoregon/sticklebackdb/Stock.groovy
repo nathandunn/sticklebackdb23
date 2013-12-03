@@ -21,6 +21,7 @@ class Stock {
     Line line
 
     // TODO remove one of these
+    // TODO make stockID an Integer
     // Fish stock (column O)
     Double stockID
     String stockIDLabel

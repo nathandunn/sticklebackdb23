@@ -9,6 +9,7 @@
     <g:message code="stock.stockID.label" default="Stock ID" />
   </label>
   <g:textField name="stockID"  value="${stockInstance?.stockID}" />
+  <g:hiddenField name="stockIDLabel"  value="${stockInstance?.stockIDLabel}" />
 
 </div>
 
@@ -52,7 +53,7 @@
   <label for="fertilizationDate">
     <g:message code="stock.fertilizationDate.label" default="Fertilization Date" />
   </label>
-  <g:datePicker name="fertilizationDate" precision="day"  value="${stockInstance?.fertilizationDate}" default="none" noSelection="['': '']" />
+  <g:datePicker name="fertilizationDate" precision="day"  relativeYears="[-20..0]"  value="${stockInstance?.fertilizationDate}" default="none" noSelection="['': '']" />
 </div>
 
 %{-- Maternal Stock ID --}%
@@ -84,7 +85,7 @@
                    select.append('<option value=1>My Option</option>');            
     }
   </script>
-  <g:select id="stock" name="stock.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order:"desc")}"
+  <g:select id="maternalStock.id" name="maternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order:"desc")}"
             value="${stockInstance?.maternalStockID}"
             class="many-to-one" noSelection="['null': '- Choose Stock -']"
             optionValue="stockIDLabel" optionKey="id"
@@ -125,10 +126,10 @@ ${remoteFunction( action: 'findIndividualsForStock'
    }
   </script>
 
-  <g:select id="paternalStockIDSelect" name="paternalStockIDSelect.id" from="${edu.uoregon.sticklebackdb.Stock.list()}" optionKey="id"
+  <g:select id="paternalStock.id" name="paternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}"
             value="${stockInstance?.paternalStockID}"
             class="many-to-one" noSelection="['null': '- Choose Stock -']"
-            optionValue="stockID" optionKey="stockID"
+            optionValue="stockIDLabel" optionKey="id"
             onchange="
 ${remoteFunction( action: 'findIndividualsForStock'
   , controller: 'individual'
