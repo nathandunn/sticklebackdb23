@@ -127,7 +127,7 @@
         }
     </script>
 
-    <g:select id="paternalStock.id" name="paternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}"
+    <g:select id="paternalStock.id" name="paternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order: "desc")}"
               value="${stockInstance?.paternalStock?.id}"
               class="many-to-one" noSelection="['null': '- Choose Stock -']"
               optionValue="stockIDLabel" optionKey="id"
