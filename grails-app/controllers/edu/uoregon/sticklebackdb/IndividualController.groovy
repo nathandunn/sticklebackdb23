@@ -109,15 +109,18 @@ class IndividualController {
         }
     }
     
-    def findIndividualsForStock(String stockID){
-        List individuals = Individual.findAllByStockID(stockID, [order:"desc", sort:"individualID"]) 
+    def findIndividualsForStock(Long stockId){
+        Stock stock = Stock.findById(stockId)
+        println "foudn stock ${stock} for ${stockId}"
+        List<Individual> individuals = Individual.findAllByStock(stock, [order:"desc", sort:"individualID"])
+        println "# of individuals ${individuals.size()}"
         
-        Map<String,Long> strings = new HashMap<>()
-        individuals.each{
-            def id = it.id
-            def indivID = it.individualID
-            strings.put(id, indivID)
+        Map<Long,String> strings = new HashMap<>()
+        individuals.each{ Individual it ->
+            strings.put(it.id, it.individualIDLabel)
         }
+        println "# of strings ${strings.size()}"
+
         render strings as JSON
     }
     
