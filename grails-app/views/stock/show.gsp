@@ -76,9 +76,6 @@
       <g:if test="${stockInstance?.maternalStock}">
         <span class="property-value" aria-labelledby="maternalStockID-label"><g:link controller="stock" action="show" id="${stockInstance?.maternalStock?.id}">${stockInstance?.maternalStock?.stockIDLabel}</g:link></span>
       </g:if>
-      <g:elseif test ="${stockInstance.maternalStockID}">
-        <span class="property-value" aria-labelledby="maternalStockID-label">${stockInstance.maternalStockID}</span>   
-      </g:elseif> 
       <g:else>
         <span class="property-value" aria-labelledby="maternalStock-label"> ---- </span>
       </g:else>
@@ -90,9 +87,6 @@
       <g:if test="${stockInstance?.maternalIndividual}">
         <span class="property-value" aria-labelledby="maternalIndividual-label"><g:link controller="individual" action="show" id="${stockInstance?.maternalIndividual?.id}">${stockInstance?.maternalIndividual?.individualIDLabel}</g:link></span>
       </g:if>
-      <g:elseif test="${stockInstance?.maternalIndividualID}">
-                <span class="property-value" aria-labelledby="maternalIndividual-label">${stockInstance?.maternalIndividualID}</span>
-      </g:elseif>
       <g:else>
         <span class="property-value" aria-labelledby="maternalStock-label"> ---- </span>
       </g:else>
@@ -118,9 +112,6 @@
       <g:if test="${stockInstance?.paternalStock}">
         <span class="property-value" aria-labelledby="paternalStockID-label"><g:link controller="stock" action="show" id="${stockInstance?.paternalStock?.id}">${stockInstance?.paternalStock?.stockIDLabel}</g:link></span>
       </g:if>
-      <g:elseif test="${stockInstance?.paternalStockID}">
-        <span class="property-value" aria-labelledby="paternalStockID-label">${stockInstance?.paternalStockID}</span>
-      </g:elseif>
       <g:else>
         <span class="property-value" aria-labelledby="paternalStockID-label"> ---- </span>
       </g:else>

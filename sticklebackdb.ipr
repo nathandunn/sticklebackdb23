@@ -34,6 +34,9 @@
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
   <component name="IdProvider" IDEtalkID="5F414BE838D9E7E71740493035D157F3" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />
