@@ -12,7 +12,7 @@ class Individual {
 
     String getIndividualIDLabel(){
         if(individualID){
-            return String.valueOf(stock.stockID) + String.format("%4f", individualID as Float)
+            return String.valueOf(stock.stockID) +"."+ String.valueOf(individualID).padLeft(4,"0")
         }
         return ""
     }

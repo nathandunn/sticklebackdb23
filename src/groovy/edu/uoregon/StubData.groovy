@@ -234,7 +234,6 @@ class StubData {
 
                 // Get the individual
                 if (tokens[20]?.length() > 1 && tokens[20].contains(".")) {
-                    println "tokens 20 [${tokens[20]}]"
                     Integer individualID = tokens[20].split("\\.")[1] as Integer
                     individual = Individual.findByIndividualID(individualID)
                 }

@@ -27,7 +27,8 @@
       <li class="fieldcontain">
         <span id="index-label" class="property-label"><g:message code="individual.individualID.label" default="Individual ID" /></span>
       <g:if test="${individualInstance?.individualID}">
-        <span class="property-value" aria-labelledby="individualID-label">${individualInstance?.individualIDLabel}
+        <span class="property-value" aria-labelledby="individualID-label">${individualInstance?.individualID}
+            (${individualInstance?.individualIDLabel})
         </span>
       </g:if>
       <g:else>
