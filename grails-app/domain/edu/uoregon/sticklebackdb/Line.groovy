@@ -3,15 +3,22 @@ package edu.uoregon.sticklebackdb
 class Line {
 
     static constraints = {
+        name unique: true, nullable: false,blank: false
     }
 
     static hasMany = [
         stocks:Stock
     ]
 
+    static mapping = {
+        comment type: "text"
+        geneticNote type: "text"
+    }
+
     String name
     String species
     String comment
+    String geneticNote
     String gps
        
     // Boolean captured
