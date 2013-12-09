@@ -8,8 +8,9 @@
     <label for="stockID">
         <g:message code="stock.stockID.label" default="Stock ID"/>
     </label>
-    <g:textField name="stockID" value="${stockInstance?.stockID}"/>
-    <g:hiddenField name="stockIDLabel" value="${stockInstance?.stockIDLabel}"/>
+    %{--<g:textField name="stockID" value="${stockInstance?.stockID}" />--}%
+    <div class="locked-field">${stockInstance?.stockIDLabel}</div>
+    %{--<g:hiddenField name="stockIDLabel" value="${stockInstance?.stockIDLabel}"/>--}%
 
 </div>
 
@@ -45,7 +46,7 @@
     <g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.listOrderByName()}" optionKey="id"
               value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Line -']"
-              optionValue="name"/>
+              optionValue="name" />
 </div>
 
 %{-- Fertilization Date --}%
@@ -99,7 +100,7 @@
         <g:message code="stock.maternalIndividualID.label" default="Maternal Individual ID"/>
     </label>
     %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
-    <g:select id="maternalIndividual" name="maternalIndividual.id" from="${edu.uoregon.sticklebackdb.Individual.listOrderByIndividualIDLabel(order:"desc")}"
+    <g:select id="maternalIndividual" name="maternalIndividual.id" from="${edu.uoregon.sticklebackdb.Individual.listOrderByIndividualID(order:"desc")}"
               value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Individual -']"
               optionValue="individualIDLabel" optionKey="id"/>
@@ -147,7 +148,7 @@
         <g:message code="stock.paternalIndividual.label" default="Paternal Individual"/>
     </label>
     %{--<g:select id="paternalIndividual" name="paternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
-    <g:select id="paternalIndividual" name="paternalIndividual.id" from="${edu.uoregon.sticklebackdb.Individual.listOrderByIndividualIDLabel(order:"desc")}"
+    <g:select id="paternalIndividual" name="paternalIndividual.id" from="${edu.uoregon.sticklebackdb.Individual.listOrderByIndividualID(order:"desc")}"
               optionKey="id"
               value="${stockInstance?.paternalIndividual?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Individual -']"
