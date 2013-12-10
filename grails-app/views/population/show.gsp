@@ -81,6 +81,25 @@
             </li>
         </g:if>
 
+        <li class="fieldcontain">
+            <span id="capture-label" class="property-label"><g:message code="population.capture.label"
+                                                                       default="Captures"/></span>
+
+            <span class="property-value" aria-labelledby="capture-label">
+                %{--<g:fieldValue bean="${populationInstance}" field="capture"/>--}%
+                <ul style="margin-left: 10px;">
+                    <g:each in="${populationInstance.captures}" var="capture">
+                        <li>
+                            <g:link action="show" id="${capture.id}" controller="capture">
+                                ${capture.display}
+                            </g:link>
+                        </li>
+                    </g:each>
+                </ul>
+            </span>
+
+        </li>
+
     </ol>
     <g:form>
         <fieldset class="buttons">

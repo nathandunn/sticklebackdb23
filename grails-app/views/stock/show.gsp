@@ -203,14 +203,27 @@
         </g:else>
     </li>
 
-    <g:each in="${stockInstance.individuals}" var="individual">
-        ${individual.stockID}
-    </g:each>
+    <br>
+    <hr>
 
     %{-- * * * List Individuals within this Stock * * * --}%
     <li class="fieldcontain">
-        <span class="property-value" aria-labelledby="stock-label"><g:link controller="individual" action="query"
-                                                                           params="[pStockID: stockInstance.stockID]">Show Stock Individuals</g:link></span>
+        <span id="individuals-label" class="property-label">
+            <g:message code="stock.individuals.label" default="Individuals"/>
+        </span>
+        <span class="property-value" aria-labelledby="stock-label">
+            %{--<g:link controller="individual" action="query" params="[pStockID: stockInstance.stockID]">Show Stock Individuals</g:link>--}%
+                <g:each in="${stockInstance.individuals}" var="individual" status="st">
+                        <g:link action="show" controller="individual" id="${individual.id}">
+                            ${individual.individualIDLabel}
+                        </g:link>
+                    <g:if test="${st.intValue() < stockInstance.individuals.size()-1}">
+                        ,
+                    </g:if>
+                </g:each>
+            </ul>
+        </span>
+
     </li>
 
 </ol>
