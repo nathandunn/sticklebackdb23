@@ -68,7 +68,7 @@ class PopulationController {
             if (populationInstance.version > version) {
                 populationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'population.label', default: 'Genetics')] as Object[],
-                          "Another user has updated this Genetics while you were editing")
+                          "Another user has updated this Population while you were editing")
                 render(view: "edit", model: [populationInstance: populationInstance])
                 return
             }

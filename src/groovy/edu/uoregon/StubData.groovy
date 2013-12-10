@@ -1,13 +1,10 @@
 package edu.uoregon
-
 import au.com.bytecode.opencsv.CSVReader
-import edu.uoregon.sticklebackdb.Population
 import edu.uoregon.sticklebackdb.Individual
 import edu.uoregon.sticklebackdb.Line
+import edu.uoregon.sticklebackdb.Population
 import edu.uoregon.sticklebackdb.Stock
-import groovy.transform.CompileStatic
 import org.apache.log4j.Logger
-
 /**
  */
 //@CompileStatic

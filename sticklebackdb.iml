@@ -75,7 +75,7 @@
         <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="sticklebackdb-grailsPlugins" />
+    <orderEntry type="library" name="grails-2.3.4" level="application" />
     <orderEntry type="library" name="grails-2.3.4" level="application" />
   </component>
 </module>

@@ -16,6 +16,10 @@ class Stock {
         paternalStockID = null
         paternalStock = null
     }
+
+    static hasMany = [
+            individuals: Individual
+    ]
     
     static constraints = {
         capture nullable: true

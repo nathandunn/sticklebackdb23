@@ -16,13 +16,18 @@
   <g:textField name="species" value="${lineInstance?.species}"/>
 </div>
 
-%{-- GPS --}%
-<div class="fieldcontain ${hasErrors(bean: lineInstance, field: 'gps', 'error')} ">
-  <label for="species">
-    <g:message code="population.gps.label" default="GPS" />
-  </label>
-  <g:textField name="gps" value="${lineInstance?.gps}"/>
+<div class="fieldcontain ${hasErrors(bean: lineInstance, field: 'population', 'error')} required">
+    <label for="population">
+        <g:message code="line.capture.label" default="Capture" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:select id="capture" name="capture.id" from="${edu.uoregon.sticklebackdb.Capture.listOrderByCaptureDate()}"
+              optionKey="id" required=""
+              optionValue="captureDate"
+              value="${lineInstance?.capture?.id}" class="many-to-one" noSelection="['null':'None']"/>
 </div>
+
+
 
 %{-- Comments --}%
 <div class="fieldcontain ${hasErrors(bean: lineInstance, field: 'comment', 'error')} ">

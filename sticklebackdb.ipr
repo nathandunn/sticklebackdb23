@@ -198,7 +198,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/sticklebackdb.iml" filepath="$PROJECT_DIR$/sticklebackdb.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" filepath="$PROJECT_DIR$/sticklebackdb-grailsPlugins.iml" />
     </modules>
   </component>
   <component name="ProjectReloadState">

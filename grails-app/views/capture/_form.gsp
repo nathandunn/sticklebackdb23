@@ -2,9 +2,9 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: captureInstance, field: 'line', 'error')} required">
-	<label for="line">
-		<g:message code="capture.line.label" default="Line" />
+<div class="fieldcontain ${hasErrors(bean: captureInstance, field: 'capture', 'error')} required">
+	<label for="capture">
+		<g:message code="capture.capture.label" default="Line" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.listOrderByName()}"
@@ -36,6 +36,13 @@
 		<g:message code="capture.comment.label" default="Comment" />
 		
 	</label>
-	<g:textField name="comment" value="${captureInstance?.comment}"/>
+	<g:textArea name="comment" value="${captureInstance?.comment}"/>
 </div>
 
+%{-- GPS --}%
+%{--<div class="fieldcontain ${hasErrors(bean: captureInstance, field: 'gps', 'error')} ">--}%
+    %{--<label for="species">--}%
+        %{--<g:message code="population.gps.label" default="GPS" />--}%
+    %{--</label>--}%
+    %{--<g:textField name="gps" value="${captureInstance?.gps?.id}"/>--}%
+%{--</div>--}%

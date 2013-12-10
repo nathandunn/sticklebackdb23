@@ -50,6 +50,21 @@
                 <span class="property-value" aria-labelledby="paternalStock-label">----</span>
             </g:else>
         </li>
+
+        <li class="fieldcontain">
+            <span id="capture-label" class="property-label"><g:message code="line.capture.label"
+                                                                       default="Capture"/></span>
+            <g:if test="${lineInstance?.capture}">
+                <span class="property-value" aria-labelledby="capture-label">
+                    <g:link action="show" controller="capture" id="${lineInstance?.capture?.id}">${lineInstance?.capture?.display()}</g:link>
+                </span>
+            </g:if>
+            <g:else>
+                <span class="property-value" aria-labelledby="paternalStock-label">----</span>
+            </g:else>
+        </li>
+
+
         <li class="fieldcontain">
             <span id="comment-label" class="property-label"><g:message code="line.comment.label"
                                                                        default="Comments"/></span>
