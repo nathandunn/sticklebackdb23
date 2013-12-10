@@ -10,7 +10,7 @@
     </label>
     %{--<g:textField name="stockID" value="${stockInstance?.stockID}" />--}%
     <div class="locked-field">${stockInstance?.stockIDLabel}</div>
-    %{--<g:hiddenField name="stockIDLabel" value="${stockInstance?.stockIDLabel}"/>--}%
+    <g:hiddenField name="stockID" value="${stockInstance?.stockID}"/>
 
 </div>
 
