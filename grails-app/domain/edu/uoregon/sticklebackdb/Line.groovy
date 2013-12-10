@@ -4,6 +4,7 @@ class Line {
 
     static constraints = {
         name unique: true, nullable: false,blank: false
+        capture nullable: true
     }
 
     static hasMany = [
@@ -15,12 +16,13 @@ class Line {
         geneticNote type: "text"
     }
 
+    Capture capture
+
     String name
     String species
     String comment
     String geneticNote
-    String gps
-       
+
     // Boolean captured
     // String captureKey
     // String abbreviation

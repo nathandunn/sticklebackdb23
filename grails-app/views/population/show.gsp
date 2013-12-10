@@ -1,5 +1,5 @@
 
-<%@ page import="edu.uoregon.sticklebackdb.Genetics" %>
+<%@ page import="edu.uoregon.sticklebackdb.Population" %>
 <!DOCTYPE html>
 <html>
 	<head>

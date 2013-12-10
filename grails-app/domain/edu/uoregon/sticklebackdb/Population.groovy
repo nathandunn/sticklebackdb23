@@ -3,19 +3,30 @@ package edu.uoregon.sticklebackdb
 /**
  * Same as capture
  */
-class Genetics {
+class Population {
 
     static constraints = {
     }
 
-    Date captureDate
+    static hasMany = [
+            captures: Capture
+    ]
+
+    static mapping = {
+        comment type: "text"
+    }
+
     String identification
-    String comments
+
+    // includes geographic data
+    String comment
 
     // TODO: change into object
     String source
 
     // TODO: convert to object
     String species
+
+    String gps
 
 }

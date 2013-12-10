@@ -1,5 +1,8 @@
 package edu.uoregon.sticklebackdb
 
+/**
+ * TODO: implement may not have both a capture and a parent stock / individual
+ */
 class Stock {
 
     // Initialize variables
@@ -15,10 +18,14 @@ class Stock {
     }
     
     static constraints = {
+        capture nullable: true
+//        line nullable: false
+        line nullable: true
     }
 
     // Line name (column X)
     Line line
+    Capture capture
 
     // TODO remove one of these
     // TODO make stockID an Integer
@@ -43,11 +50,14 @@ class Stock {
     Date fertilizationDate
 
 
+    // TODO: REMOVE AFTER DEPLOYMENT (just create new individual)
     // Lineage, maternal Individual (from column Q)
     Individual maternalIndividual
     // Lineage, maternal stock (from column R)
     // we keep the stock in the case we don't know the Individual
     Stock maternalStock
+
+    // TODO: REMOVE AFTER DEPLOYMENT (just create new individual)
     // Lineage, paternal Individual (from column T)
     Individual paternalIndividual
     // Lineage, maternal stock (from column U)

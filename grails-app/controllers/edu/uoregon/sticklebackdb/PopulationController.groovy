@@ -2,12 +2,12 @@ package edu.uoregon.sticklebackdb
 
 import org.springframework.dao.DataIntegrityViolationException
 
-class GeneticsController {
+class PopulationController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     static navigation = [
-            title:'Genetics',action: 'list',order:6
+            title:'Population',action: 'list',order:6
     ]
 
     def index() {
@@ -16,15 +16,15 @@ class GeneticsController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [geneticsInstanceList: Genetics.list(params), geneticsInstanceTotal: Genetics.count()]
+        [geneticsInstanceList: Population.list(params), geneticsInstanceTotal: Population.count()]
     }
 
     def create() {
-        [geneticsInstance: new Genetics(params)]
+        [geneticsInstance: new Population(params)]
     }
 
     def save() {
-        def geneticsInstance = new Genetics(params)
+        def geneticsInstance = new Population(params)
         if (!geneticsInstance.save(flush: true)) {
             render(view: "create", model: [geneticsInstance: geneticsInstance])
             return
@@ -35,7 +35,7 @@ class GeneticsController {
     }
 
     def show(Long id) {
-        def geneticsInstance = Genetics.get(id)
+        def geneticsInstance = Population.get(id)
         if (!geneticsInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'genetics.label', default: 'Genetics'), id])
             redirect(action: "list")
@@ -46,7 +46,7 @@ class GeneticsController {
     }
 
     def edit(Long id) {
-        def geneticsInstance = Genetics.get(id)
+        def geneticsInstance = Population.get(id)
         if (!geneticsInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'genetics.label', default: 'Genetics'), id])
             redirect(action: "list")
@@ -57,7 +57,7 @@ class GeneticsController {
     }
 
     def update(Long id, Long version) {
-        def geneticsInstance = Genetics.get(id)
+        def geneticsInstance = Population.get(id)
         if (!geneticsInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'genetics.label', default: 'Genetics'), id])
             redirect(action: "list")
@@ -86,7 +86,7 @@ class GeneticsController {
     }
 
     def delete(Long id) {
-        def geneticsInstance = Genetics.get(id)
+        def geneticsInstance = Population.get(id)
         if (!geneticsInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'genetics.label', default: 'Genetics'), id])
             redirect(action: "list")

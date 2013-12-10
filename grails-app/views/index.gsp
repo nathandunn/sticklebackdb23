@@ -88,7 +88,7 @@ display: none;
         <li><g:link controller="stock" action="create" > Add New Stock</g:link></li>
         <li><g:link controller="individual" action="create"> Add New Individual</g:link></li>
         <li><g:link controller="population" action="create" > Add New Population</g:link></li>
-        <li><g:link controller="genetics" action="create" > Add New Genetics</g:link></li>
+        <li><g:link controller="population" action="create" > Add New Genetics</g:link></li>
       </ul>
     </div>
     <div id="page-body" role="main">
