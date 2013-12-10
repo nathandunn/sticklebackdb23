@@ -56,7 +56,7 @@
                                                                        default="Capture"/></span>
             <g:if test="${lineInstance?.capture}">
                 <span class="property-value" aria-labelledby="capture-label">
-                    <g:link action="show" controller="capture" id="${lineInstance?.capture?.id}">${lineInstance?.capture?.display()}</g:link>
+                    <g:link action="show" controller="capture" id="${lineInstance?.capture?.id}">${lineInstance?.capture?.getDisplay()}</g:link>
                 </span>
             </g:if>
             <g:else>

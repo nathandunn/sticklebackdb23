@@ -17,7 +17,7 @@ class Capture {
     Date captureDate
     String comment
 
-    String display(){
+    String getDisplay(){
         line.name + " " + population.source + " "+captureDate.timeString
     }
 }

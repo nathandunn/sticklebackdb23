@@ -58,6 +58,17 @@
                   value="${stockInstance?.fertilizationDate}" default="none" noSelection="['': '']"/>
 </div>
 
+%{-- Capture --}%
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'capture', 'error')} ">
+    <label for="capture">
+        <g:message code="stock.capture.label" default="Capture "/>
+    </label>
+    <g:select id="capture" name="capture.id" from="${edu.uoregon.sticklebackdb.Capture.listOrderByCaptureDate()}" optionKey="id"
+              value="${stockInstance.capture?.id}" style="width:200px;font-size: 12px"
+              class="many-to-one" noSelection="['null': '- None -']"
+              optionValue="display" />
+</div>
+
 %{-- Maternal Stock ID --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalStockID', 'error')} ">
     <label for="maternalStockID">
