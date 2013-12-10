@@ -7,7 +7,9 @@
 		<g:message code="capture.line.label" default="Line" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.list()}" optionKey="id" required="" value="${captureInstance?.line?.id}" class="many-to-one"/>
+	<g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.listOrderByName()}"
+        optionValue="name"
+              optionKey="id" required="" value="${captureInstance?.line?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: captureInstance, field: 'population', 'error')} required">
@@ -15,7 +17,10 @@
 		<g:message code="capture.population.label" default="Population" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="population" name="population.id" from="${edu.uoregon.sticklebackdb.Population.list()}" optionKey="id" required="" value="${captureInstance?.population?.id}" class="many-to-one"/>
+	<g:select id="population" name="population.id" from="${edu.uoregon.sticklebackdb.Population.listOrderByIdentification()}"
+              optionKey="id" required=""
+        optionValue="identification"
+              value="${captureInstance?.population?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: captureInstance, field: 'captureDate', 'error')} ">

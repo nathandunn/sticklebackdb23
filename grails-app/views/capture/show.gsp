@@ -27,7 +27,7 @@
 				<li class="fieldcontain">
 					<span id="line-label" class="property-label"><g:message code="capture.line.label" default="Line" /></span>
 					
-						<span class="property-value" aria-labelledby="line-label"><g:link controller="line" action="show" id="${captureInstance?.line?.id}">${captureInstance?.line?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="line-label"><g:link controller="line" action="show" id="${captureInstance?.line?.id}">${captureInstance?.line?.name}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -36,7 +36,7 @@
 				<li class="fieldcontain">
 					<span id="population-label" class="property-label"><g:message code="capture.population.label" default="Population" /></span>
 					
-						<span class="property-value" aria-labelledby="population-label"><g:link controller="population" action="show" id="${captureInstance?.population?.id}">${captureInstance?.population?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="population-label"><g:link controller="population" action="show" id="${captureInstance?.population?.id}">${captureInstance?.population?.identification}</g:link></span>
 					
 				</li>
 				</g:if>
