@@ -20,7 +20,7 @@ class IndividualController {
         [individualInstanceList: Individual.list(params), individualInstanceTotal: Individual.count()]
     }
 
-    def query(Double pStockID){
+    def query(Long pStockID){
         render(view:"list", model:[individualInstanceList: Individual.findAllByStockID(pStockID), individualInstanceTotal: Individual.findAllByStockID(pStockID).size()] ) 
     }
     
@@ -124,20 +124,21 @@ class IndividualController {
         render strings as JSON
     }
     
-    def getNextIndividualID(String stockID){
+    def getNextIndividualID(Integer stockID){
         
-        List ids = Individual.findAllByStockID(stockID)
-        double max = stockID.toDouble()
-        ids.each(){
-            double tmp = it.individualID.toDouble()
-            if(tmp > max) 
-            max = tmp
+        List<Individual> ids = Individual.findAllByStockID(stockID)
+        Integer max = stockID
+        ids.each(){ it ->
+            Integer tmp = it.individualID
+            if(tmp > max) {
+                max = tmp
+            }
         }
-        double nextID = max + 0.0001  
+        Integer nextID = ++max
         render String.format("%.4f", nextID)
     }
     
-    def getFormattedID(String individualID){
-        render individualID
-    }
+//    def getFormattedID(String individualID){
+//        render individualID
+//    }
 }

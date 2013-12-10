@@ -1,5 +1,8 @@
 package edu.uoregon.sticklebackdb
 
+/**
+ * TODO: implement may not have both a capture and a parent stock / individual
+ */
 class Stock {
 
     // Initialize variables
@@ -13,19 +16,34 @@ class Stock {
         paternalStockID = null
         paternalStock = null
     }
+
+    static hasMany = [
+            individuals: Individual
+    ]
     
     static constraints = {
+        capture nullable: true
+//        line nullable: false
+        line nullable: true
     }
 
     // Line name (column X)
     Line line
+    Capture capture
 
     // TODO remove one of these
     // TODO make stockID an Integer
     // Fish stock (column O)
-    Double stockID
-    String stockIDLabel
-   
+    Integer stockID
+//    String stockIDLabel
+
+    String getStockIDLabel(){
+        if(stockID){
+            return String.format("%.4f", stockID as Float)
+        }
+        return ""
+    }
+
     // Stock name (column AM)
     String stockName
     
@@ -35,38 +53,37 @@ class Stock {
     // Fertilization date (column D)
     Date fertilizationDate
 
-    // TODO: REMOVE AFTER DEPLOYMENT
-    // Lineage, maternal Individual ID (column Q)
-    Double maternalIndividualID
-    String maternalIndividualIDLabel
-    
+
+    // TODO: REMOVE AFTER DEPLOYMENT (just create new individual)
     // Lineage, maternal Individual (from column Q)
     Individual maternalIndividual
+    // Lineage, maternal stock (from column R)
+    // we keep the stock in the case we don't know the Individual
+    Stock maternalStock
+
+    // TODO: REMOVE AFTER DEPLOYMENT (just create new individual)
+    // Lineage, paternal Individual (from column T)
+    Individual paternalIndividual
+    // Lineage, maternal stock (from column U)
+    // we keep the stock in the case we don't know the Individual
+    Stock paternalStock
+
+
+    // TODO: REMOVE AFTER DEPLOYMENT
+    // Lineage, maternal Individual ID (column Q)
+    Integer maternalIndividualID
 
     // TODO: REMOVE AFTER DEPLOYMENT
     // Lineage, maternal stock ID (column R)
-    Double maternalStockID
-    String maternalStockIDLabel
-    
-    // Lineage, maternal stock (from column R)
-    Stock maternalStock
+    Integer maternalStockID
 
     // TODO: REMOVE AFTER DEPLOYMENT
     // Lineage, paternal Individual ID (column T)
-    Double paternalIndividualID
-    String paternalIndividualIDLabel
-    
-    // Lineage, paternal Individual (from column T)
-    Individual paternalIndividual
+    Integer paternalIndividualID
 
     // TODO: REMOVE AFTER DEPLOYMENT
     // Lineage, paternal stock ID (column U)
-    Double paternalStockID
-    String paternalStockIDLabel
-    
-    // Lineage, maternal stock (from column U)
-    Stock paternalStock
-
+    Integer paternalStockID
 
     @Override
     public String toString() {
@@ -77,17 +94,9 @@ class Stock {
                 ", stockName='" + stockName + '\'' +
                 ", comments='" + comments + '\'' +
                 ", fertilizationDate=" + fertilizationDate +
-                ", maternalIndividualID=" + maternalIndividualID +
-                ", maternalIndividualIDLabel='" + maternalIndividualIDLabel + '\'' +
                 ", maternalIndividual=" + maternalIndividual +
-                ", maternalStockID=" + maternalStockID +
-                ", maternalStockIDLabel='" + maternalStockIDLabel + '\'' +
                 ", maternalStock=" + maternalStock +
-                ", paternalIndividualID=" + paternalIndividualID +
-                ", paternalIndividualIDLabel='" + paternalIndividualIDLabel + '\'' +
                 ", paternalIndividual=" + paternalIndividual +
-                ", paternalStockID=" + paternalStockID +
-                ", paternalStockIDLabel='" + paternalStockIDLabel + '\'' +
                 ", paternalStock=" + paternalStock +
                 '}';
     }

@@ -5,7 +5,16 @@
   <label for="individualID">
     <g:message code="individual.individualID.label" default="Individual ID"/>
   </label>
-  <g:textField id="individualID" name="individualID" value="${individualInstance?.individualID}"  readonly="true"/>
+  %{--<g:textField id="individualID" name="individualID" value="${individualInstance?.individualID}"  readonly="true"/>--}%
+
+    <div class="locked-field">
+    <g:if test="${individualInstance.individualID}">
+        ${individualInstance?.individualIDLabel}
+    </g:if>
+    <g:else>
+        NOT CREATED
+    </g:else>
+</div>
 </div>
 
 %{-- Stock --}%
@@ -13,10 +22,10 @@
   <label for="stock">
     <g:message code="individual.stock.label" default="Stock"/>
   </label>  
-  <g:select id="stock" name="stock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}" optionKey="stockID"
-            value="${individualInstance?.stockID}"
+  <g:select id="stock" name="stock.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order:"desc")}" optionKey="id"
+            value="${individualInstance?.stock?.id}"
             class="many-to-one" noSelection="['null': '- Choose Stock -']"
-            optionValue="stockID" 
+            optionValue="stockIDLabel"
             onchange="
 ${remoteFunction( action: 'getNextIndividualID'
   , controller: 'individual'
@@ -32,10 +41,9 @@ ${remoteFunction( action: 'getNextIndividualID'
 %{-- Fish Sex --}%
 <div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'fishSex', 'error')} ">
   <label for="fishSex">
-    <g:message code="individual.fertilizationDate.label" default="Fertilization Date"/>
+    <g:message code="individual.fertilizationDate.label" default="Fish Sex"/>
   </label>
-  <g:datePicker name="fertilizationDate" precision="day" value="${individualInstance?.fertilizationDate}" default="none"
-                noSelection="['': '']"/>
+  <g:textField name="fishSex" value="${individualInstance?.fishSex}" />
 </div>
 
 %{-- Fertilization Date --}%
@@ -61,10 +69,10 @@ ${remoteFunction( action: 'getNextIndividualID'
                   select.add(new Option(data[0]));             
     }
   </script>
-  <g:select id="stock" name="stock.id" from="${edu.uoregon.sticklebackdb.Stock.list()}"
-            value="${individualInstance?.maternalStockID}"
+  <g:select id="stock" name="stock.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order:"desc")}"
+            value="${individualInstance?.maternalStock?.id}"
             class="many-to-one" noSelection="['null': '- Choose Stock -']"
-            optionValue="stockID" optionKey="stockID"  
+            optionValue="stockIDLabel" optionKey="id"
             onchange="
 ${remoteFunction( action: 'findIndividualsForStock'
   , controller: 'individual'
@@ -82,10 +90,10 @@ ${remoteFunction( action: 'findIndividualsForStock'
   <label for="maternalIndividual">
     <g:message code="stock.maternalIndividualID.label" default="Maternal Individual ID" />
   </label>
-  <g:select id="matIndivIDSelect" name="matIndivIDSelect.id"  from="${edu.uoregon.sticklebackdb.Individual.list()}" 
-            value="${individualInstance?.maternalIndividualID}"  style="width:200px;font-size: 12px"
+  <g:select id="matIndivIDSelect" name="matIndivIDSelect.id"  from="${edu.uoregon.sticklebackdb.Individual.listOrderByStockID()}"
+            value="${individualInstance?.maternalIndividual?.id}"  style="width:200px;font-size: 12px"
             class="many-to-one" noSelection="['null': '- Choose Individual -']"
-            optionValue="individualID"  optionKey="individualID"
+            optionValue="individualIDLabel"  optionKey="id"
             />  
 </div>
 
@@ -105,10 +113,10 @@ ${remoteFunction( action: 'findIndividualsForStock'
    }
   </script>
 
-  <g:select id="paternalStockIDSelect" name="paternalStockIDSelect.id" from="${edu.uoregon.sticklebackdb.Stock.list()}" optionKey="id"
-            value="${individualInstance?.paternalStockID}"
+  <g:select id="paternalStockIDSelect" name="paternalStockIDSelect.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID()}"
+            value="${individualInstance?.paternalStock?.id}"
             class="many-to-one" noSelection="['null': '- Choose Stock -']"
-            optionValue="stockID" optionKey="stockID"
+            optionValue="stockIDLabel" optionKey="id"
             onchange="
 ${remoteFunction( action: 'findIndividualsForStock'
   , controller: 'individual'
@@ -126,9 +134,9 @@ ${remoteFunction( action: 'findIndividualsForStock'
     <g:message code="stock.paternalIndividual.label" default="Paternal Individual" />
   </label> 
   <g:select id="patIndivIDSelect" name="patIndivIDSelect.id" from="${edu.uoregon.sticklebackdb.Individual.list()}" optionKey="id"
-            value="${individualInstance?.paternalIndividualID}"  style="width:200px;font-size: 12px"
+            value="${individualInstance?.paternalIndividual?.id}"  style="width:200px;font-size: 12px"
             class="many-to-one" noSelection="['null': '- Choose Individual -']"
-            optionValue="individualID" optionKey="individualID"
+            optionValue="individualIDLabel"
             />  
 </div>
 
@@ -137,7 +145,7 @@ ${remoteFunction( action: 'findIndividualsForStock'
   <label for="fishLocation">
     <g:message code="individual.fishLocation.label" default="Fish Location"/>
   </label>
-  <g:textField name="fishLocation" value="${individualInstance?.fishLocation}"/>
+  <g:textField name="fishLocation" value="${individualInstance?.fishLocation}" size="40"/>
 </div>
 
 %{-- Comments --}%

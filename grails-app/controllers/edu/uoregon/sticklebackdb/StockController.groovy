@@ -22,7 +22,6 @@ class StockController {
 
     def create() {
         params.stockID = stockService.getNextStockID()
-        params.stockIDLabel = stockService.createLabelForId(params.stockID as Double)
         Stock stock = new Stock(params)
 
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")

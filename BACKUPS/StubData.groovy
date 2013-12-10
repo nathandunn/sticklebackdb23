@@ -1,10 +1,11 @@
 package edu.uoregon
-import au.com.bytecode.opencsv.CSVReader
+
 import edu.uoregon.sticklebackdb.Individual
 import edu.uoregon.sticklebackdb.Line
 import edu.uoregon.sticklebackdb.Population
 import edu.uoregon.sticklebackdb.Stock
 import org.apache.log4j.Logger
+
 /**
  */
 //@CompileStatic
@@ -16,9 +17,21 @@ class StubData {
      * Return the file to import    
      */
 
-    def getImportFile(String name) {
+    def getImportInputStream(String name) {
         def servletContext = org.codehaus.groovy.grails.web.context.ServletContextHolder.servletContext
         def file = servletContext.getResourceAsStream("/WEB-INF/import/" + name)
+        if (!file) {
+            throw new RuntimeException("File does not exist: " + file)
+        }
+        return file
+    }
+
+    def getImportFile(String name) {
+        def servletContext = org.codehaus.groovy.grails.web.context.ServletContextHolder.servletContext
+//        def file = servletContext.getResourceAsStream("/WEB-INF/import/" + name)
+//        servletContext.contextPath
+//        println "current path ${new File('.').absolutePath}"
+        def file = new File("./web-app/WEB-INF/import/" + name)
         if (!file) {
             throw new RuntimeException("File does not exist: " + file)
         }
@@ -44,8 +57,15 @@ class StubData {
 
     def stubLine() {
 
-        CSVReader csvReader = getImportFile("lines.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
-        csvReader.eachLine { tokens ->
+        int lineNumber = 0
+        getImportFile("lines.csv").splitEachLine(",") { List<String> tokens ->
+            if (lineNumber == 0) {
+                ++lineNumber
+                return
+            }
+//        }
+//        CSVReader csvReader = getImportFile("lines.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
+//        csvReader.eachLine { tokens ->
             Line line = new Line()
 
             // Read in the needed line information
@@ -62,11 +82,14 @@ class StubData {
      */
 
     def stubStock() {
-        //        Stock.deleteAll(Stock.all)
-        CSVReader csvReader = getImportFile("stocks.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
         println "start stub stocks"
-
-        csvReader.eachLine { tokens ->
+        int lineNumber = 0
+        getImportFile("stocks.csv").splitEachLine(",") { List<String> tokens ->
+            if (lineNumber == 0) {
+                ++lineNumber
+                return
+            }
+//        csvReader.eachLine { tokens ->
 
             if (tokens.size() > 5) {
                 // Create a new stock
@@ -74,8 +97,9 @@ class StubData {
 
                 try {
 
-                    if (tokens.size() < 38)
-                        println "Error reading stock # " + tokens[0] + ", skipping, not enough information."
+                    if (tokens.size() < 38){
+                        println "Error reading stock # " + tokens[0] + ", skipping, not enough information. ${tokens.size()}"
+                    }
                     else {
                         // Population (find using column X)
                         stock.line = tokens[23]?.size() > 0 ? Line.findByName(tokens[23]) : null
@@ -142,9 +166,15 @@ class StubData {
      */
 
     def stubIndividuals() {
-        CSVReader csvReader = getImportFile("individuals.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
+//        CSVReader csvReader = getImportFile("individuals.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
         println "start stub individuals"
-        csvReader.eachLine { tokens ->
+//        csvReader.eachLine { tokens ->
+        int lineNumber = 0
+        getImportFile("individuals.csv").splitEachLine(",") { List<String> tokens ->
+            if (lineNumber == 0) {
+                ++lineNumber
+                return
+            }
 
             if (tokens.size() > 15 && tokens[18]?.length() > 1 && tokens[19]?.length() > 1) {
 
@@ -156,7 +186,7 @@ class StubData {
                 }
 
                 // Stock ID (column S)
-                individual.stockID = tokens[18].toDouble()
+                individual.stockID = Math.round(tokens[18].toDouble())
 
                 // Stock (from column S)
                 individual.stock = Stock.findByStockID(individual.stockID)
@@ -169,10 +199,11 @@ class StubData {
                 if (maternalStockID != null) {
 
                     // get the stock ID
-                    def sID = maternalStockID.split("\\.")[0] as Double
+                    String[] stockIds = maternalStockID.split("\\.")
+                    def sID = stockIds[0] as Integer
 
                     // get the individual ID
-                    def iID = maternalStockID as Double
+                    def iID = stockIds[stockIds.length-1] as Integer
 
                     // set the values in the individual
                     individual.maternalStockID = sID
@@ -187,10 +218,12 @@ class StubData {
                 if (paternalStockID != null) {
 
                     // get the stock ID
-                    def sID = paternalStockID.split("\\.")[0] as Double
+                   String[] stockIds = paternalStockID.split("\\.")
+                    def sID = stockIds[0] as Integer
 
                     // get the individual ID
-                    def iID = paternalStockID as Double
+                    def iID = stockIds[stockIds.length-1] as Integer
+//                    def iID = paternalStockID as Double
 
                     // set the values in the individual
                     individual.paternalStockID = sID
@@ -220,10 +253,13 @@ class StubData {
      */
 
     def processIndividualLineage() {
-        CSVReader csvReader = getImportFile("individuals.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
-
-        println "start processing individuals"
-        csvReader.eachLine { tokens ->
+        int lineNumber = 0
+        println "processing individual lineage"
+        getImportFile("individuals.csv").splitEachLine(",") { List<String> tokens ->
+            if (lineNumber == 0) {
+                ++lineNumber
+                return
+            }
             if (tokens.size() > 15 && tokens[18]?.length() > 1 && tokens[19]?.length() > 1) {
 
                 // Get the individual object, if one exists
@@ -282,9 +318,14 @@ class StubData {
      */
 
     def processStockLineage() {
-        CSVReader csvReader = getImportFile("stocks.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
-        println "start processing stocks"
-        csvReader.eachLine { tokens ->
+        int lineNumber = 0
+        println "processing stock lineage"
+        getImportFile("stocks.csv").splitEachLine(",") { List<String> tokens ->
+            if (lineNumber == 0) {
+                ++lineNumber
+                return
+            }
+
             try {
 
                 if (tokens.size() > 5) {
@@ -333,9 +374,8 @@ class StubData {
     // !! Not Used !!
     def stubGenetics() {
         //        Genetics.deleteAll(Genetics.all)
-        println "start stub population"
-        CSVReader csvReader = getImportFile("genetics.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
-        csvReader.eachLine { tokens ->
+        println "start stub genetics"
+        getImportFile("genetics.csv").splitEachLine(",") { List<String> tokens ->
             if (tokens.size() > 2) {
 
                 Population population = new Population()
@@ -356,6 +396,6 @@ class StubData {
             //                println "nothing to parse"
             //            }
         }
-        println "FINISHED stub population " + Population.count()
+        println "FINISHED stub genetics " + Population.count()
     }
 }

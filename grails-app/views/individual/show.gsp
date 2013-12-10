@@ -27,7 +27,8 @@
       <li class="fieldcontain">
         <span id="index-label" class="property-label"><g:message code="individual.individualID.label" default="Individual ID" /></span>
       <g:if test="${individualInstance?.individualID}">
-        <span class="property-value" aria-labelledby="individualID-label">${individualInstance?.individualIDLabel}
+        <span class="property-value" aria-labelledby="individualID-label">${individualInstance?.individualID}
+            (${individualInstance?.individualIDLabel})
         </span>
       </g:if>
       <g:else>
@@ -112,11 +113,8 @@
       <li class="fieldcontain"> 
         <span id="maternalStockID-label" class="property-label"><g:message code="individual.maternalStockID.label" default="Maternal Stock ID" /></span>
       <g:if test="${individualInstance?.maternalStock}">
-        <span class="property-value" aria-labelledby="maternalStockID-label"><g:link controller="stock" action="show" id="${Stock.findByStockID(individualInstance?.maternalStockID)?.id}">${individualInstance?.maternalStockIDLabel}</g:link></span>
+        <span class="property-value" aria-labelledby="maternalStockID-label"><g:link controller="stock" action="show" id="${individualInstance?.maternalStock?.id}">${individualInstance?.maternalStock?.stockIDLabel}</g:link></span>
       </g:if>
-      <g:elseif test="${individualInstance?.maternalStockID}">
-        <span class="property-value" aria-labelledby="maternalStockID-label">${individualInstance?.maternalStockIDLabel}</span>
-      </g:elseif>
       <g:else>
         <span class="property-value" aria-labelledby="maternalStockID-label"> ---- </span>
       </g:else>
@@ -126,11 +124,8 @@
       <li class="fieldcontain">
         <span id="maternalIndividualID-label" class="property-label"><g:message code="individual.maternalIndividualID.label" default="Maternal Individual ID" /></span>
       <g:if test="${individualInstance?.maternalIndividual}">
-        <span class="property-value" aria-labelledby="maternalIndividualID-label"><g:link controller="individual" action="show" id="${Individual.findByIndividualID(individualInstance?.maternalIndividualID)?.id}">${individualInstance?.maternalIndividualIDLabel}</g:link></span>
+        <span class="property-value" aria-labelledby="maternalIndividualID-label"><g:link controller="individual" action="show" id="${individualInstance?.maternalIndividual?.id}">${individualInstance?.maternalIndividual?.individualIDLabel}</g:link></span>
       </g:if>
-      <g:elseif test="${individualInstance?.maternalIndividualID}">
-        <span class="property-value" aria-labelledby="maternalIndividualID-label">${individualInstance?.maternalIndividualIDLabel}</span>
-      </g:elseif>
       <g:else>
         <span class="property-value" aria-labelledby="maternalSIndividualID-label"> ---- </span>
       </g:else>
@@ -140,7 +135,7 @@
       <li class="fieldcontain">
         <span id="maternalLine-label" class="property-label"><g:message code="individual.maternalLine" default="Maternal Line" /></span>
       <g:if test="${individualInstance?.maternalStock}">
-        <span class="property-value" ><g:link controller="line" action="show" id="${Stock.findByStockID(individualInstance?.maternalStockID)?.line?.id}">${Stock.findByStockID(individualInstance?.maternalStockID)?.line?.name}</g:link></span>
+        <span class="property-value" ><g:link controller="line" action="show" id="${individualInstance?.maternalStock?.line?.id}">${individualInstance?.maternalStock?.line?.name}</g:link></span>
       </g:if>
       <g:else>
         <span class="property-value" aria-labelledby="maternalLine-label"> ---- </span>
@@ -153,11 +148,8 @@
       <li class="fieldcontain"> 
         <span id="paternalStockID-label" class="property-label"><g:message code="individual.paternalStockID.label" default="Paternal Stock ID" /></span>
       <g:if test="${individualInstance?.paternalStock}">
-        <span class="property-value" aria-labelledby="paternalStockID-label"><g:link controller="stock" action="show" id="${Stock.findByStockID(individualInstance?.paternalStockID)?.id}">${individualInstance?.paternalStockIDLabel}</g:link></span>
+        <span class="property-value" aria-labelledby="paternalStockID-label"><g:link controller="stock" action="show" id="${individualInstance?.paternalStock?.id}">${individualInstance?.paternalStock.stockIDLabel}</g:link></span>
       </g:if>
-      <g:elseif test ="${individualInstance?.paternalStockID}">
-         <span class="property-value" aria-labelledby="paternalStockID-label">${individualInstance?.paternalStockIDLabel}</span>
-      </g:elseif>
       <g:else>
         <span class="property-value" aria-labelledby="paternalStockID-label"> ---- </span>
       </g:else>
@@ -167,11 +159,8 @@
       <li class="fieldcontain">
         <span id="paternalIndividualID-label" class="property-label"><g:message code="individual.paternalIndividualID.label" default="Paternal Individual ID" /></span>
       <g:if test="${individualInstance?.paternalIndividual}">
-        <span class="property-value" aria-labelledby="paternalIndividualID-label"><g:link controller="individual" action="show" id="${Individual.findByIndividualID(individualInstance?.paternalIndividualID)?.id}">${individualInstance?.paternalIndividualIDLabel}</g:link></span>
+        <span class="property-value" aria-labelledby="paternalIndividualID-label"><g:link controller="individual" action="show" id="${individualInstance?.paternalIndividual?.id}">${individualInstance?.paternalIndividual?.individualIDLabel}</g:link></span>
       </g:if>
-      <g:elseif test="${individualInstance?.paternalIndividualID}">
-        <span class="property-value" aria-labelledby="paternalIndividualID-label">${individualInstance?.paternalIndividualIDLabel}</span>
-      </g:elseif>
       <g:else>
         <span class="property-value" aria-labelledby="paternalSIndividualID-label"> ---- </span>
       </g:else>
@@ -181,7 +170,7 @@
       <li class="fieldcontain">
         <span id="paternalLine-label" class="property-label"><g:message code="individual.paternalLine" default="Paternal Line" /></span>
       <g:if test="${individualInstance?.paternalStockID}">
-        <span class="property-value" ><g:link controller="line" action="show" id="${Stock.findByStockID(individualInstance?.paternalStockID)?.line?.id}">${Stock.findByStockID(individualInstance?.paternalStockID)?.line?.name}</g:link></span>
+        <span class="property-value" ><g:link controller="line" action="show" id="${individualInstance?.paternalStock?.line?.id}">${individualInstance?.paternalStock?.line?.name}</g:link></span>
       </g:if>
       <g:else>
         <span class="property-value" aria-labelledby="paternalLine-label"> ---- </span>
