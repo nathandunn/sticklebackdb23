@@ -336,7 +336,7 @@ class StubData {
     // !! Not Used !!
     def stubGenetics() {
         //        Genetics.deleteAll(Genetics.all)
-        println "start stub genetics"
+        println "start stub population"
         CSVReader csvReader = getImportFile("genetics.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
         csvReader.eachLine { tokens ->
             if (tokens.size() > 2) {
@@ -359,6 +359,6 @@ class StubData {
             //                println "nothing to parse"
             //            }
         }
-        println "FINISHED stub genetics " + Population.count()
+        println "FINISHED stub population " + Population.count()
     }
 }

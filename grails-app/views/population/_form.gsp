@@ -2,43 +2,44 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: geneticsInstance, field: 'captureDate', 'error')} ">
-	<label for="captureDate">
-		<g:message code="genetics.captureDate.label" default="Capture Date" />
-		
-	</label>
-	<g:datePicker name="captureDate" precision="day"  value="${geneticsInstance?.captureDate}" default="none" noSelection="['': '']" />
-</div>
+%{--<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'captureDate', 'error')} ">--}%
+	%{--<label for="captureDate">--}%
+		%{--<g:message code="population.captureDate.label" default="Capture Date" />--}%
+		%{----}%
+	%{--</label>--}%
+	%{--<g:datePicker name="captureDate" precision="day"  value="${populationInstance?.captureDate}" default="none" noSelection="['': '']" />--}%
+%{--</div>--}%
 
-<div class="fieldcontain ${hasErrors(bean: geneticsInstance, field: 'comments', 'error')} ">
-	<label for="comments">
-		<g:message code="genetics.comments.label" default="Comments" />
-		
-	</label>
-	<g:textField name="comments" value="${geneticsInstance?.comments}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: geneticsInstance, field: 'identification', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'identification', 'error')} ">
 	<label for="identification">
-		<g:message code="genetics.identification.label" default="Identification" />
+		<g:message code="population.identification.label" default="Identification" />
 		
 	</label>
-	<g:textField name="identification" value="${geneticsInstance?.identification}"/>
+	<g:textField name="identification" value="${populationInstance?.identification}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: geneticsInstance, field: 'source', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'source', 'error')} ">
 	<label for="source">
-		<g:message code="genetics.source.label" default="Source" />
+		<g:message code="population.source.label" default="Source" />
 		
 	</label>
-	<g:textField name="source" value="${geneticsInstance?.source}"/>
+	<g:textField name="source" value="${populationInstance?.source}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: geneticsInstance, field: 'species', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'species', 'error')} ">
 	<label for="species">
-		<g:message code="genetics.species.label" default="Species" />
+		<g:message code="population.species.label" default="Species" />
 		
 	</label>
-	<g:textField name="species" value="${geneticsInstance?.species}"/>
+	<g:textField name="species" value="${populationInstance?.species}"/>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'comment', 'error')} ">
+    <label for="comment">
+        <g:message code="population.comment.label" default="Comments" />
+
+    </label>
+    <g:textArea name="comment" value="${populationInstance?.comment}"/>
+</div>
+
 
