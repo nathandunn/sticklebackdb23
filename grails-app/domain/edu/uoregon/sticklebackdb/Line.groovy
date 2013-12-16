@@ -2,10 +2,13 @@ package edu.uoregon.sticklebackdb
 
 class Line {
 
+//    static transients = ['stockCount']
+
     static constraints = {
         name unique: true, nullable: false,blank: false
         capture nullable: true
     }
+
 
     static hasMany = [
         stocks:Stock
@@ -22,6 +25,13 @@ class Line {
     String species
     String comment
     String geneticNote
+
+//    Integer getStockCount(){
+//        if(stocks){
+//            return stocks.size()
+//        }
+//        return 0
+//    }
 
     // Boolean captured
     // String captureKey

@@ -56,7 +56,8 @@
                                                                        default="Capture"/></span>
             <g:if test="${lineInstance?.capture}">
                 <span class="property-value" aria-labelledby="capture-label">
-                    <g:link action="show" controller="capture" id="${lineInstance?.capture?.id}">${lineInstance?.capture?.getDisplay()}</g:link>
+                    <g:link action="show" controller="capture"
+                            id="${lineInstance?.capture?.id}">${lineInstance?.capture?.getDisplay()}</g:link>
                 </span>
             </g:if>
             <g:else>
@@ -87,6 +88,18 @@
             <g:else>
                 <span class="property-value" aria-labelledby="paternalStock-label">----</span>
             </g:else>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="stocks-comment-label" class="property-label"><g:message code="line.comment.label"
+                                                                              default="Stocks"/></span>
+
+            <span class="property-value" aria-labelledby="comment-label">
+                %{--<g:fieldValue bean="${lineInstance}" field="stocksNote"/>--}%
+                <g:each in="${stocks}" var="stock">
+                    <g:link action="show" id="${stock.id}" controller="stock">${stock.stockID}</g:link>
+                </g:each>
+            </span>
         </li>
 
     </ol>

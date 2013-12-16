@@ -42,7 +42,9 @@ class LineController {
             return
         }
 
-        [lineInstance: lineInstance]
+        List<Stock> stocks = Stock.findAllByLine(lineInstance,[sort:"stockID",order: "asc"])
+
+        [lineInstance: lineInstance,stocks:stocks]
     }
 
     def edit(Long id) {

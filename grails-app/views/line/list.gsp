@@ -26,6 +26,8 @@
       <thead>
         <tr>
       <g:sortableColumn property="name" title="${message(code: 'line.name.label', default: 'Name')}" />
+      %{--<g:sortableColumn property="stockCount" title="${message(code: 'line.name.label', default: '# Stocks')}" />--}%
+      <th># Stocks</th>
       %{--<g:sortableColumn property="gps" title="${message(code: 'line.gps.label', default: 'GPS')}" />--}%
       </tr>
       </thead>
@@ -33,6 +35,9 @@
       <g:each in="${lineInstanceList}" status="i" var="lineInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
           <td><g:link action="show" id="${lineInstance.id}">${fieldValue(bean: lineInstance, field: "name")}</g:link></td>
+            <td>
+                ${lineInstance.stocks.size()}
+            </td>
         %{--<td>${fieldValue(bean: lineInstance, field: "gps")}</td>--}%
         </tr>
       </g:each>
