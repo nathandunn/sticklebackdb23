@@ -1,14 +1,14 @@
 package edu.uoregon.sticklebackdb
 
-import org.springframework.dao.DataIntegrityViolationException
 import grails.converters.JSON
+import org.springframework.dao.DataIntegrityViolationException
 
 class IndividualController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     static navigation = [
-        title:'Individuals',action: 'list',order:1
+            title: 'Individuals', action: 'list', order: 1
     ]
 
     def index() {
@@ -20,12 +20,31 @@ class IndividualController {
         [individualInstanceList: Individual.list(params), individualInstanceTotal: Individual.count()]
     }
 
-    def query(Long pStockID){
-        render(view:"list", model:[individualInstanceList: Individual.findAllByStockID(pStockID), individualInstanceTotal: Individual.findAllByStockID(pStockID).size()] ) 
+    def query(Long pStockID) {
+        render(view: "list", model: [individualInstanceList: Individual.findAllByStockID(pStockID), individualInstanceTotal: Individual.findAllByStockID(pStockID).size()])
     }
-    
+
     def create() {
         [individualInstance: new Individual(params)]
+    }
+
+    def search(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        String query = params.q
+
+        if(query.contains("\\.")){
+            List<Individual> individualList = Individual.findAllByIndividualID
+            def model = [individualInstanceList: individuals, individualInstanceTotal: individualCount]
+            [stockInstanceList: Stock.list(params), stockInstanceTotal: Stock.count()]
+            render(view: "list", model:model)
+        }
+        else{
+            List<Individual> individualList = Individual.findAllByIndividualID
+            def model = [individualInstanceList: individuals, individualInstanceTotal: individualCount]
+            [stockInstanceList: Stock.list(params), stockInstanceTotal: Stock.count()]
+
+            render(view: "list", model:model)
+        }
     }
 
     def save() {
@@ -72,8 +91,8 @@ class IndividualController {
         if (version != null) {
             if (individualInstance.version > version) {
                 individualInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                    [message(code: 'individual.label', default: 'Individual')] as Object[],
-                          "Another user has updated this Individual while you were editing")
+                        [message(code: 'individual.label', default: 'Individual')] as Object[],
+                        "Another user has updated this Individual while you were editing")
                 render(view: "edit", model: [individualInstance: individualInstance])
                 return
             }
@@ -108,36 +127,36 @@ class IndividualController {
             redirect(action: "show", id: id)
         }
     }
-    
-    def findIndividualsForStock(Long stockId){
+
+    def findIndividualsForStock(Long stockId) {
         Stock stock = Stock.findById(stockId)
         println "foudn stock ${stock} for ${stockId}"
-        List<Individual> individuals = Individual.findAllByStock(stock, [order:"desc", sort:"individualID"])
+        List<Individual> individuals = Individual.findAllByStock(stock, [order: "desc", sort: "individualID"])
         println "# of individuals ${individuals.size()}"
-        
-        Map<Long,String> strings = new HashMap<>()
-        individuals.each{ Individual it ->
+
+        Map<Long, String> strings = new HashMap<>()
+        individuals.each { Individual it ->
             strings.put(it.id, it.individualIDLabel)
         }
         println "# of strings ${strings.size()}"
 
         render strings as JSON
     }
-    
-    def getNextIndividualID(Integer stockID){
-        
+
+    def getNextIndividualID(Integer stockID) {
+
         List<Individual> ids = Individual.findAllByStockID(stockID)
         Integer max = stockID
-        ids.each(){ it ->
+        ids.each() { it ->
             Integer tmp = it.individualID
-            if(tmp > max) {
+            if (tmp > max) {
                 max = tmp
             }
         }
         Integer nextID = ++max
         render String.format("%.4f", nextID)
     }
-    
+
 //    def getFormattedID(String individualID){
 //        render individualID
 //    }

@@ -20,6 +20,23 @@ class StockController {
         [stockInstanceList: Stock.list(params), stockInstanceTotal: Stock.count()]
     }
 
+    def search(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        String query = params.q
+
+        if(query.contains("\\.")){
+            // search for individual
+            redirect(action: "search", controller: "individual")
+        }
+        else{
+            List<Stock> stockList = Stock.findAllByStockID(query,params)
+            Integer stockCount = Stock.countByStockID(query)
+            def model = [stockInstanceList: stockList, stockInstanceTotal: stockCount]
+            render(view:"list",model:model)
+        }
+
+    }
+
     def create() {
         params.stockID = stockService.getNextStockID()
         Stock stock = new Stock(params)

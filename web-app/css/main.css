@@ -605,3 +605,15 @@ a.skip {
     -webkit-border-radius: 0.3em;
     border-radius: 0.3em;
 }
+
+.search-box{
+    display: inline;
+    /*padding-bottom: 50px;*/
+    /*margin-bottom: 50px;*/
+}
+
+.search-watermark{
+    color: gray;
+    font-style: italic;
+    font-size: small;
+}
