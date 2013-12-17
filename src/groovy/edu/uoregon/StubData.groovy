@@ -211,11 +211,11 @@ class StubData {
                 // Fish sex (column R)
                 individual.fishSex = tokens[17]?.size() > 0 ? tokens[17] : null
 
-                individual.save(flush: true, insert: true)
+                individual.save(flush: true, insert: true,failOnError: true)
             }
-//            else{
-//                println "ignore line ${count} ${tokens?.size()} ,  ${tokens[18]?.length()} = ${tokens[19]?.length()}"
-//            }
+            else{
+                println "ignore line ${count} ${tokens?.size()} ,  ${tokens[0]} ${tokens}"
+            }
             ++count
         }
         println "Individuals ${Individual.count()} added "
