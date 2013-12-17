@@ -144,9 +144,11 @@ class StubData {
     def stubIndividuals() {
         CSVReader csvReader = getImportFile("individuals.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
         println "start stub individuals"
+        Integer count = 0 ;
         csvReader.eachLine { tokens ->
 
-            if (tokens.size() > 15 && tokens[18]?.length() > 1 && tokens[19]?.length() > 1) {
+//            if (tokens.size() > 15 && tokens[18]?.length() > 0 && tokens[19]?.length() > 0) {
+                if (tokens.size() > 15 && tokens[18]?.length() > 0) {
 
                 Individual individual = new Individual()
 
@@ -211,6 +213,10 @@ class StubData {
 
                 individual.save(flush: true, insert: true)
             }
+//            else{
+//                println "ignore line ${count} ${tokens?.size()} ,  ${tokens[18]?.length()} = ${tokens[19]?.length()}"
+//            }
+            ++count
         }
         println "Individuals ${Individual.count()} added "
     }
@@ -224,7 +230,8 @@ class StubData {
 
         println "start processing individuals"
         csvReader.eachLine { tokens ->
-            if (tokens.size() > 15 && tokens[18]?.length() > 1 && tokens[19]?.length() > 1) {
+//            if (tokens.size() > 15 && tokens[18]?.length() > 1 && tokens[19]?.length() > 1) {
+                if (tokens.size() > 15 && tokens[18]?.length() > 0 ) {
 
                 // Get the individual object, if one exists
                 Individual individual
