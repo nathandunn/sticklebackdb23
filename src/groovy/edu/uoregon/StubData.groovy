@@ -1,10 +1,12 @@
 package edu.uoregon
+
 import au.com.bytecode.opencsv.CSVReader
 import edu.uoregon.sticklebackdb.Individual
 import edu.uoregon.sticklebackdb.Line
 import edu.uoregon.sticklebackdb.Population
 import edu.uoregon.sticklebackdb.Stock
 import org.apache.log4j.Logger
+
 /**
  */
 //@CompileStatic
@@ -53,7 +55,7 @@ class StubData {
             line.comment = tokens[3]  // lineComments
             line.species = tokens[6]  // lineSpecies
 
-            line.save(flush: true, insert: true)
+            line.save(flush: true, insert: true,failOnError: true)
         }
     }
 
@@ -144,17 +146,21 @@ class StubData {
     def stubIndividuals() {
         CSVReader csvReader = getImportFile("individuals.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
         println "start stub individuals"
-        Integer count = 0 ;
+        Integer count = 0;
         csvReader.eachLine { tokens ->
 
 //            if (tokens.size() > 15 && tokens[18]?.length() > 0 && tokens[19]?.length() > 0) {
-                if (tokens.size() > 15 && tokens[18]?.length() > 0) {
+            if (tokens.size() > 15 && tokens[18]?.length() > 0) {
 
                 Individual individual = new Individual()
 
                 // Individual ID (column U)
-                if (tokens[20]?.length() > 1 && tokens[20].contains(".")) {
-                    individual.individualID = (tokens[20].split("\\.")[1]) as Integer
+//                if (tokens[20]?.length() > 0 && tokens[20].contains(".")) {
+                if (tokens[19]?.length() > 0) {
+//                    individual.individualID = (tokens[20].split("\\.")[1]) as Integer
+                    individual.individualID = tokens[19] as Integer
+                } else {
+                    return
                 }
 
                 // Stock ID (column S)
@@ -211,9 +217,8 @@ class StubData {
                 // Fish sex (column R)
                 individual.fishSex = tokens[17]?.size() > 0 ? tokens[17] : null
 
-                individual.save(flush: true, insert: true,failOnError: true)
-            }
-            else{
+                individual.save(flush: true, insert: true, failOnError: true)
+            } else {
                 println "ignore line ${count} ${tokens?.size()} ,  ${tokens[0]} ${tokens}"
             }
             ++count
@@ -231,7 +236,7 @@ class StubData {
         println "start processing individuals"
         csvReader.eachLine { tokens ->
 //            if (tokens.size() > 15 && tokens[18]?.length() > 1 && tokens[19]?.length() > 1) {
-                if (tokens.size() > 15 && tokens[18]?.length() > 0 ) {
+            if (tokens.size() > 15 && tokens[18]?.length() > 0) {
 
                 // Get the individual object, if one exists
                 Individual individual
