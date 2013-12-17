@@ -34,7 +34,7 @@
       <g:each in="${individualInstanceList}" status="i" var="individualInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
           <td><g:link action="show" id="${individualInstance.id}">
-          <g:formatNumber number="${individualInstance?.individualID}" minFractionDigits="4"/></g:link>
+          <g:formatNumber number="${individualInstance?.individualIDLabel}" minFractionDigits="4"/></g:link>
         </td>
         <td>
         <g:link action="show" id="${individualInstance?.stock?.id}" controller="stock">${individualInstance?.stock?.stockName}

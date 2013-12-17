@@ -30,20 +30,19 @@ class IndividualController {
 
     def search(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        println "${params}"
         String query = params.q
 
-        if(query.contains("\\.")){
-            List<Individual> individualList = Individual.findAllByIndividualID
+        if(query.contains(".")){
+            Integer stockID = query.split("\\.")[0] as Integer
+            Integer individualID = query.split("\\.")[1] as Integer
+            List<Individual> individuals = Individual.findAllByIndividualIDAndStockID(individualID,stockID,params)
+            Integer individualCount = Individual.countByIndividualID(individualID)
             def model = [individualInstanceList: individuals, individualInstanceTotal: individualCount]
-            [stockInstanceList: Stock.list(params), stockInstanceTotal: Stock.count()]
             render(view: "list", model:model)
         }
         else{
-            List<Individual> individualList = Individual.findAllByIndividualID
-            def model = [individualInstanceList: individuals, individualInstanceTotal: individualCount]
-            [stockInstanceList: Stock.list(params), stockInstanceTotal: Stock.count()]
-
-            render(view: "list", model:model)
+            redirect(view:"list")
         }
     }
 

@@ -24,9 +24,9 @@ class StockController {
         params.max = Math.min(max ?: 10, 100)
         String query = params.q
 
-        if(query.contains("\\.")){
+        if(query.contains(".")){
             // search for individual
-            redirect(action: "search", controller: "individual")
+            redirect(action: "search", controller: "individual",params:params)
         }
         else{
             List<Stock> stockList = Stock.findAllByStockID(query,params)
