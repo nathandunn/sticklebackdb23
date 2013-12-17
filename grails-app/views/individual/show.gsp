@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.sticklebackdb.Individual" %>
+<%@ page import="edu.uoregon.sticklebackdb.Stock; edu.uoregon.sticklebackdb.Individual" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -182,6 +182,7 @@
     <g:form>
       <fieldset class="buttons">
         <g:hiddenField name="id" value="${individualInstance?.id}" />
+        <g:link class="ui-icon-print" action="print" id="${individualInstance?.id}"><g:message code="default.button.print.label" default="Print" /></g:link>
         <g:link class="edit" action="edit" id="${individualInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
         <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
       </fieldset>

@@ -65,7 +65,7 @@ class IndividualController {
             return
         }
 
-        [individualInstance: individualInstance, Stock: Stock, Individual: Individual, Line: Line]
+        [individualInstance: individualInstance]
     }
 
     def edit(Long id) {
@@ -154,6 +154,17 @@ class IndividualController {
         }
         Integer nextID = ++max
         render String.format("%.4f", nextID)
+    }
+
+    def print(Integer id){
+        def individualInstance = Individual.get(id)
+        if (!individualInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'individual.label', default: 'Individual'), id])
+            redirect(action: "list")
+            return
+        }
+
+        render (view:"label",model:[individualInstance:individualInstance])
     }
 
 //    def getFormattedID(String individualID){

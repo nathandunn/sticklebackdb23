@@ -71,6 +71,8 @@ grails.project.dependency.resolution = {
         compile ":navigation:1.3.2"
 
         compile ":scaffolding:2.0.1"
+        compile ":rendering:0.4.4"
+
 
 
         // Uncomment these (or add new ones) to enable additional resources capabilities

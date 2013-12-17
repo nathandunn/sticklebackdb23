@@ -70,6 +70,9 @@
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.42/tomcat-embed-logging-log4j-7.0.42.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.42/tomcat-embed-jasper-7.0.42.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina-ant/7.0.42/tomcat-catalina-ant-7.0.42.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/bouncycastle/bcprov-jdk14/136/bcprov-jdk14-136.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/bouncycastle/bcmail-jdk14/136/bcmail-jdk14-136.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/lowagie/itext/2.1.0/itext-2.1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
