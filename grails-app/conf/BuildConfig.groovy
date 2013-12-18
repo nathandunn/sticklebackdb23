@@ -83,7 +83,11 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.3.8"
         compile ":csv:0.3.1"
 
+        compile ":mail:1.0.1"
+        // plugins.shiro=1.1.4
+        compile ":shiro:1.2.0"
+        compile ":crypto:2.0"
 
-        compile ':cache:1.1.1'
+//        compile ':cache:1.1.1'
     }
 }

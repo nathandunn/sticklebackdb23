@@ -40,6 +40,7 @@
       <sourceFolder url="file://$MODULE_DIR$/grails-app/domain" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/grails-app/services" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/grails-app/taglib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/realms" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -70,6 +71,18 @@
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.42/tomcat-embed-logging-log4j-7.0.42.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.42/tomcat-embed-jasper-7.0.42.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina-ant/7.0.42/tomcat-catalina-ant-7.0.42.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1/commons-logging-1.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/jasig/cas/client/cas-client-core/3.2.1/cas-client-core-3.2.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-cas/1.2.2/shiro-cas-1.2.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/opensymphony/quartz/quartz/1.6.1/quartz-1.6.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-quartz/1.2.2/shiro-quartz-1.2.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.2.2/shiro-core-1.2.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-ehcache/1.2.2/shiro-ehcache-1.2.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-spring/1.2.2/shiro-spring-1.2.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-web/1.2.2/shiro-web-1.2.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/javax/activation/activation/1.1/activation-1.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/javax/mail/mail/1.4.3/mail-1.4.3.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/bouncycastle/bcprov-jdk14/136/bcprov-jdk14-136.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/bouncycastle/bcmail-jdk14/136/bcmail-jdk14-136.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/com/lowagie/itext/2.1.0/itext-2.1.0.jar!/" />
