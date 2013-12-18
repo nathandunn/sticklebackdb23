@@ -20,12 +20,17 @@ class Stock {
     static hasMany = [
             individuals: Individual
     ]
-    
+
+    static mapping = {
+        comments type: "text"
+    }
+
     static constraints = {
         capture nullable: true
 //        line nullable: false
         line nullable: true
     }
+
 
     // Line name (column X)
     Line line
