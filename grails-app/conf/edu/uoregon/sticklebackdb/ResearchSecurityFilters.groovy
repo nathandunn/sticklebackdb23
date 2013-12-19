@@ -12,7 +12,9 @@ class ResearchSecurityFilters {
                 if (!controllerName) return true
 
                 // Access control by convention.
-                accessControl()
+//                accessControl()
+
+                accessControl(auth: false)
             }
         }
     }

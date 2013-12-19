@@ -1,6 +1,9 @@
+import cr.co.arquetipos.password.PasswordTools
+import edu.uoregon.sticklebackdb.Researcher
 import org.apache.shiro.SecurityUtils
 import org.apache.shiro.authc.AuthenticationException
 import org.apache.shiro.authc.UsernamePasswordToken
+import org.apache.shiro.crypto.hash.Sha256Hash
 import org.apache.shiro.web.util.SavedRequest
 import org.apache.shiro.web.util.WebUtils
 
@@ -73,7 +76,41 @@ class AuthController {
         redirect(uri: "/")
     }
 
+//    def unauthorized = {
+//        render "You do not have permission to access this page."
+//    }
+
     def unauthorized = {
-        render "You do not have permission to access this page."
+//        render "You do not have permission to access this page."
+        render(view:"/unauthorized")
     }
+
+    def forgotPassword = {
+        println "mapped forgotten password "
+    }
+
+    def resetPassword(String username) {
+        log.warn "resetting forgotten password ${username}"
+        Researcher user = Researcher.findByUsername(username)
+        if (user) {
+            // TODO: create a new password
+            // mail the password
+            String randomPassword = PasswordTools.generateRandomPassword()
+            user.passwordHash = new Sha256Hash(randomPassword).toHex()
+
+
+            stockMailService.sendPasswordReset(user, randomPassword)
+            flash.message = "Password email sent to ${user.username}"
+            params.username = username
+            redirect(action: "login", params: params)
+            return
+        } else {
+            flash.message = "Could not find user with that email [${user}]"
+            params.username = username
+            redirect(action: "forgotPassword", params: params)
+            return
+        }
+
+    }
+
 }
