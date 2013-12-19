@@ -48,13 +48,15 @@ class ResearcherController {
                 researcherInstance.passwordHash = params.passwordHash
             } else {
                 researcherInstance.errors.rejectValue("passwordHash", "default.password.doesnotmatch", "Passwords do not match")
-                render(view: "create", model: [researcherInstance: researcherInstance])
+//                render(view: "create", model: [researcherInstance: researcherInstance])
+//                respond researcherInstance.errors, view:'create'
                 return
             }
         }
         else{
             researcherInstance.errors.rejectValue("passwordHash", "", passwordErrorString)
-            render(view: "create", model: [researcherInstance: researcherInstance])
+//            render(view: "create", model: [researcherInstance: researcherInstance])
+//            respond researcherInstance.errors, view:'create'
             return
         }
 
@@ -104,16 +106,18 @@ class ResearcherController {
                     researcherInstance.passwordHash = new Sha256Hash(params.password1).toHex()
                 } else {
                     researcherInstance.errors.rejectValue("passwordHash", "default.password.doesnotmatch", "Passwords do not match")
-                    render(view: "edit", model: [researcherInstance: researcherInstance])
+//                    render(view: "edit", model: [researcherInstance: researcherInstance])
+                    respond researcherInstance.errors, view:'edit'
                     return
                 }
             }
             else{
                 researcherInstance.errors.rejectValue("passwordHash", "", passwordErrorString)
-                render(view: "edit", model: [researcherInstance: researcherInstance])
+//                render(view: "edit", model: [researcherInstance: researcherInstance])
+                respond researcherInstance.errors, view:'edit'
                 return
             }
-
+es
         } else {
             params.passwordHash = researcherInstance.passwordHash
         }
