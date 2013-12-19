@@ -1,3 +1,4 @@
+<%@ page import="edu.uoregon.sticklebackdb.Researcher" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
@@ -26,6 +27,21 @@
     <g:form action="search" controller="stock" class="search-box" method="get">
         <input class="search-watermark" name="q" type="text" value="${params.q ?: 'Search stocks...'}" onclick="if (this.value=='Search stocks...') {this.value = '';}" />
     </g:form>
+
+
+    <div class="user-menu">
+        <shiro:notUser>
+            <g:link controller="auth" action="login">Login</g:link>
+        </shiro:notUser>
+
+        <shiro:user>
+            <g:set var="researcherId"
+                   value="${Researcher.findByUsername(org.apache.shiro.SecurityUtils.subject.principal).id}"/>
+            <g:link controller="researcher" action="edit" id="${researcherId}">Edit <shiro:principal/></g:link>
+        %{--&nbsp;&nbsp;--}%
+            <g:link controller="auth" action="signOut">Logout</g:link>
+        </shiro:user>
+    </div>
 </div>
 
 <div id="menu">

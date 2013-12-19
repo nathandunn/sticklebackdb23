@@ -617,3 +617,27 @@ a.skip {
     font-style: italic;
     font-size: small;
 }
+
+.user-menu {
+    float: right;
+    display: inline;
+    border-color: black;
+    border-width: 2px;
+    margin: 10px;
+    padding: 60px 20px 10px 10px;
+}
+
+.external {
+    background: url(../images/external.png) center right no-repeat;
+    padding-right: 13px;
+}
+
+a.external-link {
+    background: url(../images/external.png) center right no-repeat;
+    padding-right: 13px;
+}
+
+a.external {
+    background: url(../images/external.png) center right no-repeat;
+    padding-right: 23px;
+}

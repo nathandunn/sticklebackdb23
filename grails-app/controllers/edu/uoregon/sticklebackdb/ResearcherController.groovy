@@ -1,6 +1,6 @@
 package edu.uoregon.sticklebackdb
 
-
+import org.apache.shiro.crypto.hash.Sha256Hash
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -27,6 +27,13 @@ class ResearcherController {
         respond new Researcher(params)
     }
 
+    String isValidPassword(String password) {
+        if(!password || password.length()<6){
+            return "Password length must be greater than 6"
+        }
+        return null;
+    }
+
     @Transactional
     def save(Researcher researcherInstance) {
         if (researcherInstance == null) {
@@ -34,12 +41,35 @@ class ResearcherController {
             return
         }
 
+        String passwordErrorString = isValidPassword(params.password1)
+        if (passwordErrorString==null) {
+            if (params.password1.equals(params.password2)) {
+                params.passwordHash = new Sha256Hash(params.password1).toHex()
+                researcherInstance.passwordHash = params.passwordHash
+            } else {
+                researcherInstance.errors.rejectValue("passwordHash", "default.password.doesnotmatch", "Passwords do not match")
+                render(view: "create", model: [researcherInstance: researcherInstance])
+                return
+            }
+        }
+        else{
+            researcherInstance.errors.rejectValue("passwordHash", "", passwordErrorString)
+            render(view: "create", model: [researcherInstance: researcherInstance])
+            return
+        }
+
+
         if (researcherInstance.hasErrors()) {
             respond researcherInstance.errors, view:'create'
             return
         }
 
         researcherInstance.save flush:true
+
+        ResearchRole userRole = ResearchRole.findByName(ResearcherService.ROLE_USER)
+        if(researcherInstance){
+            researcherInstance.addToRoles( userRole )
+        }
 
         request.withFormat {
             form {
@@ -65,6 +95,30 @@ class ResearcherController {
             respond researcherInstance.errors, view:'edit'
             return
         }
+        if (params.password1) {
+
+            String passwordErrorString = isValidPassword(params.password1)
+            if (passwordErrorString==null) {
+                if (params.password1.equals(params.password2)) {
+                    researcherInstance.passwordHash = new Sha256Hash(params.password1).toHex()
+                } else {
+                    researcherInstance.errors.rejectValue("passwordHash", "default.password.doesnotmatch", "Passwords do not match")
+                    render(view: "edit", model: [researcherInstance: researcherInstance])
+                    return
+                }
+            }
+            else{
+                researcherInstance.errors.rejectValue("passwordHash", "", passwordErrorString)
+                render(view: "edit", model: [researcherInstance: researcherInstance])
+                return
+            }
+
+        } else {
+            params.passwordHash = researcherInstance.passwordHash
+        }
+
+        researcherInstance.properties = params
+
 
         researcherInstance.save flush:true
 
