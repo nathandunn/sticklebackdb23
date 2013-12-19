@@ -10,6 +10,10 @@ class ResearcherController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    static navigation = [
+            title:'Researchers',action: 'index',order:10,
+    ]
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Researcher.list(params), model:[researcherInstanceCount: Researcher.count()]

@@ -85,6 +85,7 @@ class StubData {
         addAdminResearcher("Kate Ituarte", "cituarte@uoregon.edu")
         addAdminResearcher("Kat Milligan-Myhre", "kmilliga@uoregon.edu")
         addAdminResearcher("Erik S Parker", "eparker@uoregon.edu")
+        addAdminResearcher("Nathan Dunn", "ndunn@cas.uoregon.edu")
 
 //
 //        new Researcher(
@@ -96,9 +97,14 @@ class StubData {
 //
     }
 
+    String generatePassword(){
+//        return RandomStringUtils.random(10)
+        return "testpass123"
+    }
+
     def addAdminResearcher(String name, String email) {
 
-        println "Adding admin researcher ${name}"
+//        println "Adding admin researcher ${name}"
 
         ResearchRole researchRole = ResearchRole.findByName(ResearcherService.ROLE_ADMINISTRATOR)
 
@@ -111,15 +117,16 @@ class StubData {
         Researcher researcher = new Researcher(
                 name: name
                 , username: email
-                , passwordHash: new Sha256Hash(RandomStringUtils.random(10)).toHex()
+                , passwordHash: new Sha256Hash(generatePassword()).toHex()
         ).save(insert:true,flush:true)
-        println "Added admin researcher ${name}"
 
         researcher.addToRoles(researchRole)
 
         researcher.save(flush: true)
 
-        println "Added role ${name}"
+        println "Added admin researcher ${name}"
+
+//        println "Added role ${name}"
 
     }
 /*

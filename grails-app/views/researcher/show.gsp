@@ -40,31 +40,15 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${researcherInstance?.passwordHash}">
-				<li class="fieldcontain">
-					<span id="passwordHash-label" class="property-label"><g:message code="researcher.passwordHash.label" default="Password Hash" /></span>
-					
-						<span class="property-value" aria-labelledby="passwordHash-label"><g:fieldValue bean="${researcherInstance}" field="passwordHash"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${researcherInstance?.permissions}">
-				<li class="fieldcontain">
-					<span id="permissions-label" class="property-label"><g:message code="researcher.permissions.label" default="Permissions" /></span>
-					
-						<span class="property-value" aria-labelledby="permissions-label"><g:fieldValue bean="${researcherInstance}" field="permissions"/></span>
-					
-				</li>
-				</g:if>
-			
+
 				<g:if test="${researcherInstance?.roles}">
 				<li class="fieldcontain">
 					<span id="roles-label" class="property-label"><g:message code="researcher.roles.label" default="Roles" /></span>
 					
 						<g:each in="${researcherInstance.roles}" var="r">
-						<span class="property-value" aria-labelledby="roles-label"><g:link controller="researchRole" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="roles-label">
+                            ${r?.name}
+                        </span>
 						</g:each>
 					
 				</li>
