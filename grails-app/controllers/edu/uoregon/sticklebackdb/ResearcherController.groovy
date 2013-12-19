@@ -98,6 +98,7 @@ class ResearcherController {
         if (params.password1) {
 
             String passwordErrorString = isValidPassword(params.password1)
+            println "pasword Error string ? ${passwordErrorString}"
             if (passwordErrorString==null) {
                 if (params.password1.equals(params.password2)) {
                     researcherInstance.passwordHash = new Sha256Hash(params.password1).toHex()

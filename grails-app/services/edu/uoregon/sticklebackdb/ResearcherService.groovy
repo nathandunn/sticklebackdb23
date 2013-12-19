@@ -16,4 +16,17 @@ class ResearcherService {
         }
         return null
     }
+
+    boolean isAdmin() {
+        String currentUserName = SecurityUtils?.subject?.principal
+        if(currentUserName){
+            Researcher researcher = Researcher.findByUsername(currentUserName)
+            for(ResearchRole role in researcher.roles){
+                if(role.name==ROLE_ADMINISTRATOR){
+                    return true
+                }
+            }
+        }
+        return false
+    }
 }

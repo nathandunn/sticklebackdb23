@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class StockController {
 
     def stockService
+    def researcherService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     static navigation = [
@@ -49,6 +50,16 @@ class StockController {
 
     def save() {
         def stockInstance = new Stock(params)
+
+        if(false==researcherService.isAdmin()){
+            Stock previousStock = Stock.findByStockName(stockInstance.stockName)
+            if(previousStock==null){
+                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist","Stock use previous stock name")
+                render(view: "edit", model: [stockInstance: stockInstance])
+                return
+            }
+        }
+
         if (!stockInstance.save(flush: true)) {
             render(view: "create", model: [stockInstance: stockInstance])
             return
@@ -102,6 +113,15 @@ class StockController {
         }
 
         stockInstance.properties = params
+
+        if(false==researcherService.isAdmin()){
+            Stock previousStock = Stock.findByStockName(stockInstance.stockName)
+            if(previousStock==null){
+                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist","Stock use previous stock name")
+                render(view: "edit", model: [stockInstance: stockInstance])
+                return
+            }
+        }
 
         if (!stockInstance.save(flush: true)) {
             render(view: "edit", model: [stockInstance: stockInstance])

@@ -50,8 +50,11 @@ class StubData {
         println "saved admin role ${ResearchRole.count}"
 
         def userRole = new ResearchRole(name: ResearcherService.ROLE_USER)
-        userRole.addToPermissions("*:list")
-        userRole.addToPermissions("*:show")
+        userRole.addToPermissions("*:*")
+
+//        userRole.addToPermissions("*:list")
+//        userRole.addToPermissions("*:show")
+
 //        userRole.addToPermissions("experiment:edit")
 //        userRole.addToPermissions("experiment:update")
 //        userRole.addToPermissions("researcher:edit")
