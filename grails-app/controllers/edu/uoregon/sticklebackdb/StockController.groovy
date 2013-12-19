@@ -4,7 +4,6 @@ import static org.springframework.http.HttpStatus.*
 import org.springframework.dao.DataIntegrityViolationException
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
 class StockController {
 
     def stockService
