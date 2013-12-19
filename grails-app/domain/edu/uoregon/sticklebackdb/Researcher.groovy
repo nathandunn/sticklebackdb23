@@ -1,6 +1,7 @@
 package edu.uoregon.sticklebackdb
 
 class Researcher {
+    String name
     String username
     String passwordHash
     

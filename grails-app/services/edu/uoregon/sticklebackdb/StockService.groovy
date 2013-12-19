@@ -1,4 +1,4 @@
-package sticklebackdb
+package edu.uoregon.sticklebackdb
 
 import edu.uoregon.sticklebackdb.Stock
 import grails.transaction.Transactional
