@@ -11,7 +11,7 @@ class Individual {
 //    String individualIDLabel
 
     String getIndividualIDLabel(){
-        if(individualID){
+        if(individualID && stock){
             return String.valueOf(stock.stockID) +"."+ String.valueOf(individualID).padLeft(4,"0")
         }
         return ""

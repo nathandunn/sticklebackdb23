@@ -1,11 +1,10 @@
 package edu.uoregon
 
 import au.com.bytecode.opencsv.CSVReader
-import edu.uoregon.sticklebackdb.Individual
-import edu.uoregon.sticklebackdb.Line
-import edu.uoregon.sticklebackdb.Population
-import edu.uoregon.sticklebackdb.Stock
+import edu.uoregon.sticklebackdb.*
+import org.apache.commons.lang.RandomStringUtils
 import org.apache.log4j.Logger
+import org.apache.shiro.crypto.hash.Sha256Hash
 
 /**
  */
@@ -32,6 +31,7 @@ class StubData {
      */
 
     def stubAll() {
+        stubUsers()
         stubLine()
         // stubGenetics()
         stubStock()
@@ -40,7 +40,99 @@ class StubData {
         processStockLineage()
     }
 
-    /*
+    def stubUsers() {
+        println "evaluating researchers: ${Researcher.count}"
+        if (Researcher.count > 0) return
+//
+        def adminRole = new ResearchRole(name: ResearcherService.ROLE_ADMINISTRATOR)
+        adminRole.addToPermissions("*:*")
+        adminRole.save(failOnError: true,insert:true,flush:true)
+        println "saved admin role ${ResearchRole.count}"
+
+        def userRole = new ResearchRole(name: ResearcherService.ROLE_USER)
+        userRole.addToPermissions("*:*")
+
+//        userRole.addToPermissions("*:list")
+//        userRole.addToPermissions("*:show")
+
+//        userRole.addToPermissions("experiment:edit")
+//        userRole.addToPermissions("experiment:update")
+//        userRole.addToPermissions("researcher:edit")
+//        userRole.addToPermissions("researcher:update")
+//        userRole.addToPermissions("strain:addFilter")
+//        userRole.addToPermissions("strain:showFilter")
+        userRole.save(failOnError: true,insert:true,flush:true)
+        println "saved user role ${ResearchRole.count}"
+
+//        "William A. Cresko <wcresko@uoregon.edu>\n" +
+//                "Catchen Julian <jcatchen@uoregon.edu>\n" +
+//                "Susan Bassham <sbassham@uoregon.edu>\n" +
+//                "Mark Currey <mcurrey@uoregon.edu>\n" +
+//                "Clay Small <csmall@uoregon.edu>\n" +
+//                "Ann Petersen <annp@uoregon.edu>\n" +
+//                "Kristin Sikkink <ksikkink@uoregon.edu>\n" +
+//                "Kristin Alligood <kristin.alligood@gmail.com>\n" +
+//                "Thom Nelson <tcn@uoregon.edu>\n" +
+//                "Kate Ituarte <cituarte@uoregon.edu>\n" +
+//                "Kat Milligan-Myhre <kmilliga@uoregon.edu>\n" +
+//                "Erik S Parker <eparker@uoregon.edu>"
+        addAdminResearcher("William A. Cresko", "wcresko@uoregon.edu")
+        addAdminResearcher("Julian Catchen", "jcatchen@uoregon.edu")
+        addAdminResearcher("Susan Bassham", "sbassham@uoregon.edu")
+        addAdminResearcher("Mark Currey", "mcurrey@uoregon.edu")
+        addAdminResearcher("Clay Small", "csmall@uoregon.edu")
+        addAdminResearcher("Ann Petersen", "annp@uoregon.edu")
+        addAdminResearcher("Kristin Sikkink", "ksikkink@uoregon.edu")
+        addAdminResearcher("Kristin Alligood", "kristin.alligood@gmail.com")
+        addAdminResearcher("Thom Nelson", "tcn@uoregon.edu")
+        addAdminResearcher("Kate Ituarte", "cituarte@uoregon.edu")
+        addAdminResearcher("Kat Milligan-Myhre", "kmilliga@uoregon.edu")
+        addAdminResearcher("Erik S Parker", "eparker@uoregon.edu")
+        addAdminResearcher("Nathan Dunn", "ndunn@cas.uoregon.edu")
+
+//
+//        new Researcher(
+//                firstName: "Adam"
+//                , lastName: "Burns"
+//                , username: "aburns2@uoregon.edu"
+//                , passwordHash: new Sha256Hash("ilikesr16").toHex()
+//        ).addToRoles(adminRole).save()
+//
+    }
+
+    String generatePassword(){
+//        return RandomStringUtils.random(10)
+        return "testpass123"
+    }
+
+    def addAdminResearcher(String name, String email) {
+
+//        println "Adding admin researcher ${name}"
+
+        ResearchRole researchRole = ResearchRole.findByName(ResearcherService.ROLE_ADMINISTRATOR)
+
+//        new Researcher(
+//                name: name
+//                , username: email
+//                , passwordHash: new Sha256Hash(RandomStringUtils.random(10)).toHex()
+//        ).addToRoles(researchRole).save()
+
+        Researcher researcher = new Researcher(
+                name: name
+                , username: email
+                , passwordHash: new Sha256Hash(generatePassword()).toHex()
+        ).save(insert:true,flush:true)
+
+        researcher.addToRoles(researchRole)
+
+        researcher.save(flush: true)
+
+        println "Added admin researcher ${name}"
+
+//        println "Added role ${name}"
+
+    }
+/*
      * Grab the line data 
      */
 
@@ -55,7 +147,7 @@ class StubData {
             line.comment = tokens[3]  // lineComments
             line.species = tokens[6]  // lineSpecies
 
-            line.save(flush: true, insert: true,failOnError: true)
+            line.save(flush: true, insert: true, failOnError: true)
         }
     }
 

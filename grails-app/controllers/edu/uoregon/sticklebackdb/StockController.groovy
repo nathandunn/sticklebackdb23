@@ -1,10 +1,14 @@
 package edu.uoregon.sticklebackdb
 
+import static org.springframework.http.HttpStatus.*
 import org.springframework.dao.DataIntegrityViolationException
+import grails.transaction.Transactional
 
+@Transactional(readOnly = true)
 class StockController {
 
     def stockService
+    def researcherService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     static navigation = [
@@ -49,8 +53,21 @@ class StockController {
 
     def save() {
         def stockInstance = new Stock(params)
+
+        if(false==researcherService.isAdmin()){
+            Stock previousStock = Stock.findByStockName(stockInstance.stockName)
+            if(previousStock==null){
+                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist","Stock use previous stock name")
+//                respond stockInstance.errors, view:'edit'
+                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+                render(view: "create", model: [stockInstance: stockInstance,stockNames: stockNames])
+                return
+            }
+        }
+
         if (!stockInstance.save(flush: true)) {
-            render(view: "create", model: [stockInstance: stockInstance])
+            List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+            render(view: "create", model: [stockInstance: stockInstance,stockNames: stockNames])
             return
         }
 
@@ -83,6 +100,7 @@ class StockController {
         [stockInstance: stockInstance, stockNames:stockNames]
     }
 
+    @Transactional
     def update(Long id, Long version) {
         def stockInstance = Stock.get(id)
         if (!stockInstance) {
@@ -96,15 +114,32 @@ class StockController {
                 stockInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                     [message(code: 'stock.label', default: 'Stock')] as Object[],
                           "Another user has updated this Stock while you were editing")
-                render(view: "edit", model: [stockInstance: stockInstance])
+                respond stockInstance.errors, view:'edit'
                 return
             }
         }
 
         stockInstance.properties = params
 
+        if(false==researcherService.isAdmin()){
+            Stock previousStock = Stock.findByStockName(stockInstance.stockName)
+            if(previousStock==null){
+                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist","Stock use previous stock name")
+
+//                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+
+                println "should be responding with some errors: ${stockInstance.errors}"
+//                respond stockInstance.errors, view:'edit'
+                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+                render(view: "edit", model: [stockInstance: stockInstance,stockNames: stockNames])
+                return
+            }
+        }
+
         if (!stockInstance.save(flush: true)) {
-            render(view: "edit", model: [stockInstance: stockInstance])
+//            render(view: "edit", model: [stockInstance: stockInstance])
+            List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+            render(view: "edit", model: [stockInstance: stockInstance,stockNames: stockNames])
             return
         }
 

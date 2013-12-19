@@ -30,7 +30,7 @@
       <g:each in="${stockInstanceList}" status="i" var="stockInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
           <td>
-              ${stockInstance.id}
+              %{--${stockInstance.id}--}%
               <g:link action="show" id="${stockInstance.id}" controller="stock">${stockInstance?.stockIDLabel}
         </g:link></td>
         <td>${fieldValue(bean: stockInstance, field: "stockName")}</td>
