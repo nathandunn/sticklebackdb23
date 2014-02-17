@@ -76,7 +76,15 @@ class IndividualController {
             return
         }
 
-        [individualInstance: individualInstance, Individual: Individual, Stock: Stock]
+        String fishSexString
+        if(individualInstance.fishSex == "Male" ||individualInstance.fishSex == "Female" ){
+            fishSexString = individualInstance.fishSex
+        }
+        else{
+            fishSexString = 'N/A'
+        }
+
+        [individualInstance: individualInstance, Individual: Individual, Stock: Stock,fishSexString:fishSexString]
     }
 
     def update(Long id, Long version) {
@@ -97,7 +105,12 @@ class IndividualController {
             }
         }
 
+        params.fishSex = params.fishSexString
+
         individualInstance.properties = params
+
+        println "fishSex: ${params.fishSex}"
+        println "fishSexString: ${params.fishSexString}"
 
         if (!individualInstance.save(flush: true)) {
             render(view: "edit", model: [individualInstance: individualInstance])
