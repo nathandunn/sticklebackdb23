@@ -50,7 +50,7 @@
                     </g:link>
                 </td>
 
-                <td>${fieldValue(bean: populationInstance, field: "source")}</td>
+                <td>${fieldValue(bean: populationInstance, field: "sourceDisplay")}</td>
 
                 <td>${fieldValue(bean: populationInstance, field: "species")}</td>
 

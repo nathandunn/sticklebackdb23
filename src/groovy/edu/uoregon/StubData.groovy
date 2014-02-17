@@ -448,7 +448,7 @@ class StubData {
                     // genetics.captureDate = tokens[0]?.size() > 0 ? Date.parse("mm/dd/yy", tokens[0]) : null // captureDate
                     population.identification = tokens[1]   // identification
                     population.comment = tokens[5]  // researcherCommentsGenetics
-                    population.source = tokens[7]  // source
+//                    population.source = tokens[7]  // source
                     population.species = tokens[8]  // species
                 } catch (e) {
                     println "error parsing identifier " + e

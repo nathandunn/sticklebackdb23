@@ -23,10 +23,19 @@ class Population {
 
     // TODO: change into object
     String source
+    Double sourceLat
+    Double sourceLong
 
     // TODO: convert to object
     String species
 
     String gps
+
+    String getSourceDisplay(){
+        if(sourceLat && sourceLong){
+            return sourceLat + "," + sourceLong
+        }
+        return 'N/A'
+    }
 
 }

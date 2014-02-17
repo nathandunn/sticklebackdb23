@@ -47,13 +47,13 @@
             </li>
         </g:if>
 
-        <g:if test="${populationInstance?.source}">
+        <g:if test="${populationInstance?.sourceLat}">
             <li class="fieldcontain">
                 <span id="source-label" class="property-label"><g:message code="population.source.label"
                                                                           default="Source"/></span>
 
                 <span class="property-value" aria-labelledby="source-label"><g:fieldValue bean="${populationInstance}"
-                                                                                          field="source"/></span>
+                                                                                          field="sourceDisplay"/></span>
 
             </li>
         </g:if>

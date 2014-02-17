@@ -18,12 +18,22 @@
 	<g:textField name="identification" value="${populationInstance?.identification}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'source', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'sourceLat', 'error')} ">
 	<label for="source">
 		<g:message code="population.source.label" default="Source" />
 		
 	</label>
-	<g:textField name="source" value="${populationInstance?.source}"/>
+    Lat:
+	<g:textField name="sourceLat" value="${populationInstance?.sourceLat}"/>
+    Long:
+    <g:textField name="sourceLong" value="${populationInstance?.sourceLong}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'sourceLong', 'error')} ">
+    <label for="source">
+        <g:message code="population.source.label" default="Source Longitude" />
+
+    </label>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'species', 'error')} ">
