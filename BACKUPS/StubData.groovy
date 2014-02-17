@@ -192,7 +192,7 @@ class StubData {
                 individual.stock = Stock.findByStockID(individual.stockID)
 
                 // Fertlization date (column H)
-                individual.fertilizationDate = tokens[7]?.size() > 0 ? Date.parse("mm/dd/yy", tokens[7]) : null
+//                individual.fertilizationDate = tokens[7]?.size() > 0 ? Date.parse("mm/dd/yy", tokens[7]) : null
 
                 // Maternal stock & individual lineage (column W)
                 def maternalStockID = tokens[22]?.size() > 0 ? tokens[22].toString() : null

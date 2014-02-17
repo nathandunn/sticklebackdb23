@@ -19,7 +19,7 @@ class Individual {
 
     // Stock (derived from column S)
     Stock stock    
-    
+
     // Fertilization date (column H)
     Date fertilizationDate
 

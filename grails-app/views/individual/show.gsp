@@ -85,15 +85,15 @@
 
       
 %{-- Fertilization Date --}%    
-      <li class="fieldcontain">
-        <span id="fertilizationDate-label" class="property-label"><g:message code="individual.fertilizationDate.label" default="Fertilization Date" /></span>
-      <g:if test="${individualInstance?.fertilizationDate}">
-        <span class="property-value" aria-labelledby="fertilizationDate-label"><g:formatDate type="datetime" style="MEDIUM" date="${individualInstance?.fertilizationDate}" /></span>
-      </g:if>
-      <g:else>
-        <span class="property-value" aria-labelledby="fertilizationDate-label"> ---- </span>
-      </g:else>
-      </li>
+      %{--<li class="fieldcontain">--}%
+        %{--<span id="fertilizationDate-label" class="property-label"><g:message code="individual.fertilizationDate.label" default="Fertilization Date" /></span>--}%
+      %{--<g:if test="${individualInstance?.stock?.fertilizationDate}">--}%
+        %{--<span class="property-value" aria-labelledby="fertilizationDate-label"><g:formatDate type="datetime" style="MEDIUM" date="${individualInstance?.stock?.fertilizationDate}" /></span>--}%
+      %{--</g:if>--}%
+      %{--<g:else>--}%
+        %{--<span class="property-value" aria-labelledby="fertilizationDate-label"> ---- </span>--}%
+      %{--</g:else>--}%
+      %{--</li>--}%
 
 %{-- Fish Location --}%
       <li class="fieldcontain">

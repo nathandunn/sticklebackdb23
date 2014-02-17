@@ -53,17 +53,6 @@
     </g:radioGroup>
 </div>
 
-%{-- Fertilization Date --}%
-<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'fertilizationDate', 'error')} ">
-    <label for="fertilizationDate">
-        <g:message code="individual.fertilizationDate.label" default="Fertilization Date"/>
-    </label>
-    <g:datePicker name="fertilizationDate" precision="day" value="${individualInstance?.fertilizationDate}"
-                  default="none"
-                  noSelection="['': '']"/>
-</div>
-
-
 %{-- Maternal Stock ID --}%
 <div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'maternalStockID', 'error')} ">
     <label for="maternalStockID">
