@@ -1,9 +1,6 @@
 package edu.uoregon.sticklebackdb
-
-
-
-import org.junit.*
-import grails.test.mixin.*
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
 
 @TestFor(LineController)
 @Mock(Line)
@@ -11,8 +8,10 @@ class LineControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["name"] = 'someValidName'
+        params["species"] = 'Stickleback'
+        params["comment"] = 'what?'
+        params["geneticNote"] = 'xn?'
     }
 
     void testIndex() {
@@ -101,7 +100,7 @@ class LineControllerTests {
 
         // test invalid parameters in update
         params.id = line.id
-        //TODO: add invalid values to params object
+        params.name = null
 
         controller.update()
 

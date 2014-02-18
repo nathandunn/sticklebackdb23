@@ -8,8 +8,10 @@ class PopulationControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["comment"] = 'someValidName'
+        params["sourceLat"] = 13.3
+        params["sourceLong"] = 12.2
+        params["identification"] = 'somewhere'
     }
 
     void testIndex() {
@@ -98,7 +100,7 @@ class PopulationControllerTests {
 
         // test invalid parameters in update
         params.id = population.id
-        //TODO: add invalid values to params object
+        params.identification = null
 
         controller.update()
 

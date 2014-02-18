@@ -11,6 +11,13 @@ import grails.test.mixin.*
 class PopulationTests {
 
     void testSomething() {
-       fail "Implement me"
+        Population population =new Population(
+                comment:'asdf'
+                ,sourceLat: 12.2
+                ,sourceLong: 13.3
+                ,identification: 'asdfa'
+        )
+        .save(failOnError: true )
+        assert population!=null
     }
 }

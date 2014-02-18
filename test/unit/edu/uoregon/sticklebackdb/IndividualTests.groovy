@@ -1,10 +1,6 @@
 package edu.uoregon.sticklebackdb
 
-
-
-import grails.test.mixin.*
-import org.junit.*
-
+import grails.test.mixin.TestFor
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
@@ -12,6 +8,14 @@ import org.junit.*
 class IndividualTests {
 
     void testSomething() {
-        fail "Implement me"
+        Individual individual = new Individual(
+           individualID: 12
+                ,fertilizationDate: new Date()
+                ,fishLocation: "ASDF"
+                ,fishSex: "male"
+
+        )
+        .save(failOnError: true )
+        assert individual!=null
     }
 }

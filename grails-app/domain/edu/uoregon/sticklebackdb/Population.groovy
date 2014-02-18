@@ -6,6 +6,7 @@ package edu.uoregon.sticklebackdb
 class Population {
 
     static constraints = {
+        identification nullable: false,unique: true
     }
 
     static hasMany = [
@@ -21,15 +22,11 @@ class Population {
     // includes geographic data
     String comment
 
-    // TODO: change into object
-    String source
     Double sourceLat
     Double sourceLong
 
     // TODO: convert to object
     String species
-
-    String gps
 
     String getSourceDisplay(){
         if(sourceLat && sourceLong){
