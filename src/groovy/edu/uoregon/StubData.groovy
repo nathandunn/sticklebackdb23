@@ -1,11 +1,8 @@
 package edu.uoregon
-
 import au.com.bytecode.opencsv.CSVReader
 import edu.uoregon.sticklebackdb.*
-import org.apache.commons.lang.RandomStringUtils
 import org.apache.log4j.Logger
 import org.apache.shiro.crypto.hash.Sha256Hash
-
 /**
  */
 //@CompileStatic
@@ -53,6 +50,7 @@ class StubData {
 //        userRole.addToPermissions("*:*")
         userRole.addToPermissions("*:list")
         userRole.addToPermissions("*:show")
+        userRole.addToPermissions("*:index")
         userRole.addToPermissions("stock:*")
         userRole.addToPermissions("individual:*")
 
@@ -80,10 +78,11 @@ class StubData {
 //                "Kate Ituarte <cituarte@uoregon.edu>\n" +
 //                "Kat Milligan-Myhre <kmilliga@uoregon.edu>\n" +
 //                "Erik S Parker <eparker@uoregon.edu>"
-        addAdminResearcher("William A. Cresko", "wcresko@uoregon.edu")
+        addAdminResearcher("Mark Currey", "mcurrey@uoregon.edu")
+        addAdminResearcher("Nathan Dunn", "ndunn@cas.uoregon.edu")
+        addUserResearcher("William A. Cresko", "wcresko@uoregon.edu")
         addUserResearcher("Julian Catchen", "jcatchen@uoregon.edu")
         addUserResearcher("Susan Bassham", "sbassham@uoregon.edu")
-        addUserResearcher("Mark Currey", "mcurrey@uoregon.edu")
         addUserResearcher("Clay Small", "csmall@uoregon.edu")
         addUserResearcher("Ann Petersen", "annp@uoregon.edu")
         addUserResearcher("Kristin Sikkink", "ksikkink@uoregon.edu")
@@ -92,7 +91,6 @@ class StubData {
         addUserResearcher("Kate Ituarte", "cituarte@uoregon.edu")
         addUserResearcher("Kat Milligan-Myhre", "kmilliga@uoregon.edu")
         addUserResearcher("Erik S Parker", "eparker@uoregon.edu")
-        addAdminResearcher("Nathan Dunn", "ndunn@cas.uoregon.edu")
 
 //
 //        new Researcher(
