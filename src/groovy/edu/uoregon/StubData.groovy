@@ -77,17 +77,17 @@ class StubData {
 //                "Kat Milligan-Myhre <kmilliga@uoregon.edu>\n" +
 //                "Erik S Parker <eparker@uoregon.edu>"
         addAdminResearcher("William A. Cresko", "wcresko@uoregon.edu")
-        addAdminResearcher("Julian Catchen", "jcatchen@uoregon.edu")
-        addAdminResearcher("Susan Bassham", "sbassham@uoregon.edu")
-        addAdminResearcher("Mark Currey", "mcurrey@uoregon.edu")
-        addAdminResearcher("Clay Small", "csmall@uoregon.edu")
-        addAdminResearcher("Ann Petersen", "annp@uoregon.edu")
-        addAdminResearcher("Kristin Sikkink", "ksikkink@uoregon.edu")
-        addAdminResearcher("Kristin Alligood", "kristin.alligood@gmail.com")
-        addAdminResearcher("Thom Nelson", "tcn@uoregon.edu")
-        addAdminResearcher("Kate Ituarte", "cituarte@uoregon.edu")
-        addAdminResearcher("Kat Milligan-Myhre", "kmilliga@uoregon.edu")
-        addAdminResearcher("Erik S Parker", "eparker@uoregon.edu")
+        addUserResearcher("Julian Catchen", "jcatchen@uoregon.edu")
+        addUserResearcher("Susan Bassham", "sbassham@uoregon.edu")
+        addUserResearcher("Mark Currey", "mcurrey@uoregon.edu")
+        addUserResearcher("Clay Small", "csmall@uoregon.edu")
+        addUserResearcher("Ann Petersen", "annp@uoregon.edu")
+        addUserResearcher("Kristin Sikkink", "ksikkink@uoregon.edu")
+        addUserResearcher("Kristin Alligood", "kristin.alligood@gmail.com")
+        addUserResearcher("Thom Nelson", "tcn@uoregon.edu")
+        addUserResearcher("Kate Ituarte", "cituarte@uoregon.edu")
+        addUserResearcher("Kat Milligan-Myhre", "kmilliga@uoregon.edu")
+        addUserResearcher("Erik S Parker", "eparker@uoregon.edu")
         addAdminResearcher("Nathan Dunn", "ndunn@cas.uoregon.edu")
 
 //
@@ -105,31 +105,38 @@ class StubData {
         return "testpass123"
     }
 
+    def addUserResearcher(String name, String email) {
+        ResearchRole userRole = ResearchRole.findByName(ResearcherService.ROLE_USER)
+
+        addResearcher(name,email,userRole)
+
+        println "Added user researcher ${name}"
+
+//        println "Added role ${name}"
+
+    }
+
     def addAdminResearcher(String name, String email) {
+        ResearchRole adminRole = ResearchRole.findByName(ResearcherService.ROLE_ADMINISTRATOR)
 
-//        println "Adding admin researcher ${name}"
+        addResearcher(name,email,adminRole)
 
-        ResearchRole researchRole = ResearchRole.findByName(ResearcherService.ROLE_ADMINISTRATOR)
+        println "Added admin researcher ${name}"
 
-//        new Researcher(
-//                name: name
-//                , username: email
-//                , passwordHash: new Sha256Hash(RandomStringUtils.random(10)).toHex()
-//        ).addToRoles(researchRole).save()
+//        println "Added role ${name}"
 
+    }
+
+    def addResearcher(String name, String email, ResearchRole role) {
         Researcher researcher = new Researcher(
                 name: name
                 , username: email
                 , passwordHash: new Sha256Hash(generatePassword()).toHex()
         ).save(insert:true,flush:true)
 
-        researcher.addToRoles(researchRole)
+        researcher.addToRoles(role)
 
         researcher.save(flush: true)
-
-        println "Added admin researcher ${name}"
-
-//        println "Added role ${name}"
 
     }
 /*
