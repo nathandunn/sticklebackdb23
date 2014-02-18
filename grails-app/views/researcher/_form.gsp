@@ -41,17 +41,23 @@
     <label for="roles">
         <g:message code="researcher.roles.label" default="Roles"/>
     </label>
-    %{--<g:select name="roles" from="${edu.uoregon.sticklebackdb.ResearchRole.list()}" optionKey="id" value="${researcherInstance?.roles*.id}" optionValue="name"  />--}%
-    <select name="roles" id="roles">
-        <g:each in="${edu.uoregon.sticklebackdb.ResearchRole.list()}" var="role">
-        %{--<option value="2" selected="selected">ROLE_USER</option>--}%
-        %{--<option value="1" selected="selected">ROLE_ADMINISTRATOR</option>--}%
 
-            <option value="${role.id}"
-                <g:if test="${role.id in researcherInstance?.roles*.id}">
-                    selected="selected"
-                </g:if>>${role.name}</option>
-        </g:each>
-    </select>
+    <g:if test="${researcherInstance.username == org.apache.shiro.SecurityUtils.subject.principal}">
+        ${researcherInstance.roles*.name}
+    </g:if>
+    <g:else>
+        <select name="roles" id="roles">
+            <g:each in="${edu.uoregon.sticklebackdb.ResearchRole.list()}" var="role">
+            %{--<option value="2" selected="selected">ROLE_USER</option>--}%
+            %{--<option value="1" selected="selected">ROLE_ADMINISTRATOR</option>--}%
+
+                <option value="${role.id}"
+                    <g:if test="${role.id in researcherInstance?.roles*.id}">
+                        selected="selected"
+                    </g:if>>${role.name}</option>
+            </g:each>
+        </select>
+    </g:else>
+
 </div>
 

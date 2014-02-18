@@ -53,6 +53,8 @@ class StubData {
         userRole.addToPermissions("*:index")
         userRole.addToPermissions("stock:*")
         userRole.addToPermissions("individual:*")
+        userRole.addToPermissions("researcher:edit")
+        userRole.addToPermissions("researcher:update")
 
 //        userRole.addToPermissions("*:list")
 //        userRole.addToPermissions("*:show")

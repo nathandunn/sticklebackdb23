@@ -14,6 +14,8 @@ class ResearcherController {
             title:'Researchers',action: 'index',order:10,
     ]
 
+    def researcherService
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Researcher.list(params), model:[researcherInstanceCount: Researcher.count()]
@@ -83,13 +85,25 @@ class ResearcherController {
     }
 
     def edit(Researcher researcherInstance) {
-        respond researcherInstance
+
+        if(researcherService.isAdmin() || researcherService.currentUser.id == researcherInstance.id){
+            respond researcherInstance
+        }
+        else{
+            render(view:"/unauthorized")
+        }
+
     }
 
     @Transactional
     def update(Researcher researcherInstance) {
         if (researcherInstance == null) {
             notFound()
+            return
+        }
+
+        if(!researcherService.isAdmin() &&  researcherService.currentUser.id != researcherInstance.id){
+            render(view:"/unauthorized")
             return
         }
 
@@ -113,11 +127,11 @@ class ResearcherController {
             }
             else{
                 researcherInstance.errors.rejectValue("passwordHash", "", passwordErrorString)
+//                flash.message = passwordErrorString
 //                render(view: "edit", model: [researcherInstance: researcherInstance])
                 respond researcherInstance.errors, view:'edit'
                 return
             }
-es
         } else {
             params.passwordHash = researcherInstance.passwordHash
         }
