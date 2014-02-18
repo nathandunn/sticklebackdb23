@@ -54,101 +54,101 @@
 </div>
 
 %{-- Maternal Stock ID --}%
-<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'maternalStockID', 'error')} ">
-    <label for="maternalStockID">
-        <g:message code="individual.maternalStockID.label" default="Maternal Stock ID"/>
-    </label>
-    <script>
-        function setMaternalIds(data) {
-            var select = $("#maternalIndividual");
-            select.empty();
-            var count = 0
-            for (var key in data) {
-                var value = data[key];
-                select.append('<option value=' + key + '>' + value + '</option>');
-                count += 1 ;
-            }
-            if(count==0){
-                select.append('<option value="">None</option>');
-            }
-        }
-    </script>
-    <g:select id="maternalStock" name="maternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order: "desc")}"
-              value="${individualInstance?.maternalStock?.id}"
-              class="many-to-one" noSelection="['null': '- Choose Stock -']"
-              optionValue="stockIDLabel" optionKey="id"
-              onchange="
-              ${remoteFunction(action: 'findIndividualsForStock'
-                      , controller: 'individual'
-                      , params: '\'stockId=\' + this.value '
-                      , method: 'POST'
-                      , onSuccess: 'setMaternalIds(data);'
-                      , onError: 'alert(\'error\');'
-              )}"/>
-</div>
+%{--<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'maternalStockID', 'error')} ">--}%
+    %{--<label for="maternalStockID">--}%
+        %{--<g:message code="individual.maternalStockID.label" default="Maternal Stock ID"/>--}%
+    %{--</label>--}%
+    %{--<script>--}%
+        %{--function setMaternalIds(data) {--}%
+            %{--var select = $("#maternalIndividual");--}%
+            %{--select.empty();--}%
+            %{--var count = 0--}%
+            %{--for (var key in data) {--}%
+                %{--var value = data[key];--}%
+                %{--select.append('<option value=' + key + '>' + value + '</option>');--}%
+                %{--count += 1 ;--}%
+            %{--}--}%
+            %{--if(count==0){--}%
+                %{--select.append('<option value="">None</option>');--}%
+            %{--}--}%
+        %{--}--}%
+    %{--</script>--}%
+    %{--<g:select id="maternalStock" name="maternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order: "desc")}"--}%
+              %{--value="${individualInstance?.maternalStock?.id}"--}%
+              %{--class="many-to-one" noSelection="['null': '- Choose Stock -']"--}%
+              %{--optionValue="stockIDLabel" optionKey="id"--}%
+              %{--onchange="--}%
+              %{--${remoteFunction(action: 'findIndividualsForStock'--}%
+                      %{--, controller: 'individual'--}%
+                      %{--, params: '\'stockId=\' + this.value '--}%
+                      %{--, method: 'POST'--}%
+                      %{--, onSuccess: 'setMaternalIds(data);'--}%
+                      %{--, onError: 'alert(\'error\');'--}%
+              %{--)}"/>--}%
+%{--</div>--}%
 
 
 %{-- Maternal Individual ID --}%
-<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'maternalIndividualID', 'error')} ">
-    <label for="maternalIndividual">
-        <g:message code="stock.maternalIndividualID.label" default="Maternal Individual ID"/>
-    </label>
-    <g:select id="maternalIndividual" name="maternalIndividual.id"
-              from="${edu.uoregon.sticklebackdb.Individual.listOrderByStockID(order:"asc")}"
-              value="${individualInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"
-              class="many-to-one" noSelection="['null': '- Choose Individual -']"
-              optionValue="individualIDLabel" optionKey="id"/>
-</div>
+%{--<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'maternalIndividualID', 'error')} ">--}%
+    %{--<label for="maternalIndividual">--}%
+        %{--<g:message code="stock.maternalIndividualID.label" default="Maternal Individual ID"/>--}%
+    %{--</label>--}%
+    %{--<g:select id="maternalIndividual" name="maternalIndividual.id"--}%
+              %{--from="${edu.uoregon.sticklebackdb.Individual.listOrderByStockID(order:"asc")}"--}%
+              %{--value="${individualInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"--}%
+              %{--class="many-to-one" noSelection="['null': '- Choose Individual -']"--}%
+              %{--optionValue="individualIDLabel" optionKey="id"/>--}%
+%{--</div>--}%
 
 
 
 %{-- Paternal Stock ID --}%
-<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'paternalStockID', 'error')} ">
-    <label for="paternalStockID">
-        <g:message code="stock.paternalStockID.label" default="Paternal Stock ID"/>
-    </label>
-    <script>
-        function setPaternalIds(data) {
-            var select = $("#paternalIndividual");
-            select.empty();
-            var count = 0
-            for (var key in data) {
-                var value = data[key];
-                select.append('<option value=' + key + '>' + value + '</option>');
-                count += 1 ;
-            }
-            if(count==0){
-                select.append('<option value="">None</option>');
-            }
-        }
-    </script>
+%{--<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'paternalStockID', 'error')} ">--}%
+    %{--<label for="paternalStockID">--}%
+        %{--<g:message code="stock.paternalStockID.label" default="Paternal Stock ID"/>--}%
+    %{--</label>--}%
+    %{--<script>--}%
+        %{--function setPaternalIds(data) {--}%
+            %{--var select = $("#paternalIndividual");--}%
+            %{--select.empty();--}%
+            %{--var count = 0--}%
+            %{--for (var key in data) {--}%
+                %{--var value = data[key];--}%
+                %{--select.append('<option value=' + key + '>' + value + '</option>');--}%
+                %{--count += 1 ;--}%
+            %{--}--}%
+            %{--if(count==0){--}%
+                %{--select.append('<option value="">None</option>');--}%
+            %{--}--}%
+        %{--}--}%
+    %{--</script>--}%
 
-    <g:select id="paternalStock" name="paternalStock.id"
-              from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order:"desc")}"
-              value="${individualInstance?.paternalStock?.id}"
-              class="many-to-one" noSelection="['null': '- Choose Stock -']"
-              optionValue="stockIDLabel" optionKey="id"
-              onchange="
-              ${remoteFunction(action: 'findIndividualsForStock'
-                      , controller: 'individual'
-                      , params: '\'stockId=\' + this.value '
-                      , method: 'POST'
-                      , onSuccess: 'setPaternalIds(data);'
-                      , onError: 'alert(\'error\');'
-              )}"/>
-</div>
+    %{--<g:select id="paternalStock" name="paternalStock.id"--}%
+              %{--from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order:"desc")}"--}%
+              %{--value="${individualInstance?.paternalStock?.id}"--}%
+              %{--class="many-to-one" noSelection="['null': '- Choose Stock -']"--}%
+              %{--optionValue="stockIDLabel" optionKey="id"--}%
+              %{--onchange="--}%
+              %{--${remoteFunction(action: 'findIndividualsForStock'--}%
+                      %{--, controller: 'individual'--}%
+                      %{--, params: '\'stockId=\' + this.value '--}%
+                      %{--, method: 'POST'--}%
+                      %{--, onSuccess: 'setPaternalIds(data);'--}%
+                      %{--, onError: 'alert(\'error\');'--}%
+              %{--)}"/>--}%
+%{--</div>--}%
 
 %{-- Paternal Individual --}%
-<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'paternalIndividual', 'error')} ">
-    <label for="paternalIndividual">
-        <g:message code="stock.paternalIndividual.label" default="Paternal Individual"/>
-    </label>
-    <g:select id="paternalIndividual" name="paternalIndividual.id" from="${edu.uoregon.sticklebackdb.Individual.listOrderByIndividualID(order: "asc")}"
-              optionKey="id"
-              value="${individualInstance?.paternalIndividual?.id}" style="width:200px;font-size: 12px"
-              class="many-to-one" noSelection="['null': '- Choose Individual -']"
-              optionValue="individualIDLabel"/>
-</div>
+%{--<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'paternalIndividual', 'error')} ">--}%
+    %{--<label for="paternalIndividual">--}%
+        %{--<g:message code="stock.paternalIndividual.label" default="Paternal Individual"/>--}%
+    %{--</label>--}%
+    %{--<g:select id="paternalIndividual" name="paternalIndividual.id" from="${edu.uoregon.sticklebackdb.Individual.listOrderByIndividualID(order: "asc")}"--}%
+              %{--optionKey="id"--}%
+              %{--value="${individualInstance?.paternalIndividual?.id}" style="width:200px;font-size: 12px"--}%
+              %{--class="many-to-one" noSelection="['null': '- Choose Individual -']"--}%
+              %{--optionValue="individualIDLabel"/>--}%
+%{--</div>--}%
 
 %{-- Fish Location --}%
 <div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'fishLocation', 'error')} ">

@@ -29,13 +29,6 @@
     <g:textField name="sourceLong" value="${populationInstance?.sourceLong}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'sourceLong', 'error')} ">
-    <label for="source">
-        <g:message code="population.source.label" default="Source Longitude" />
-
-    </label>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'species', 'error')} ">
 	<label for="species">
 		<g:message code="population.species.label" default="Species" />

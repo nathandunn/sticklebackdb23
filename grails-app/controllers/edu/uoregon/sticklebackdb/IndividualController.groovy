@@ -11,6 +11,8 @@ class IndividualController {
             title: 'Individuals', action: 'list', order: 1
     ]
 
+    def stockService
+
     def index() {
         redirect(action: "list", params: params)
     }
@@ -48,10 +50,28 @@ class IndividualController {
 
     def save() {
         def individualInstance = new Individual(params)
+
+//        Stock stock = params.stock
+        println "stock to evalute 2 ${params.stock}"
+        Stock stock = Stock.findById(params.stock.id)
+
+        println "stock to evalute ${stock}"
+
+        Double individualID = stockService.getNextIndividualID(stock)
+        println "individualID ${individualID}"
+        individualInstance.individualID = individualID
+
+
         if (!individualInstance.save(flush: true)) {
             render(view: "create", model: [individualInstance: individualInstance])
             return
         }
+
+//        stock.addToIndividuals(individualInstance)
+//        individualInstance.stock = stock
+//
+//        stock.save(flush: true)
+//        individualInstance.save(flush: true)
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'individual.label', default: 'Individual'), individualInstance.id])
         redirect(action: "show", id: individualInstance.id)

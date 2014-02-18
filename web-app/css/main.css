@@ -607,7 +607,7 @@ a.skip {
 }
 
 .search-box{
-    display: inline;
+    display: inline-block;
     /*padding-bottom: 50px;*/
     /*margin-bottom: 50px;*/
 }
@@ -620,11 +620,14 @@ a.skip {
 
 .user-menu {
     float: right;
-    display: inline;
+    display: inline-table;
     border-color: black;
     border-width: 2px;
     margin: 10px;
     padding: 60px 20px 10px 10px;
+    /*width: 250px;*/
+    /*text-align: right;*/
+    /*margin-right: 16px;*/
 }
 
 .external {

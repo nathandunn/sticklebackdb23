@@ -34,15 +34,15 @@ class Individual {
 
     // we only have the stock in the case where there is no individual
     // Maternal Individual
-    Individual maternalIndividual
+//    Individual maternalIndividual
     // Maternal Stock
-    Stock maternalStock
+//    Stock maternalStock
 
     // we only have the stock in the case where there is no individual
     // PaternalStock
-    Stock paternalStock
+//    Stock paternalStock
     // Paternal individual
-    Individual paternalIndividual
+//    Individual paternalIndividual
 
 
     // TODO remove when deployed
@@ -51,17 +51,17 @@ class Individual {
 
     // TODO remove when deployed
     // Maternal Stock ID (column W)
-    Integer maternalStockID
+//    Integer maternalStockID
 
     // TODO remove when deployed
     // Maternal Individual ID (column W)
-    Integer maternalIndividualID
+//    Integer maternalIndividualID
 
     // TODO remove when deployed
     // Paternal ID (column X)
-    Integer paternalStockID
+//    Integer paternalStockID
 
     // TODO remove when deployed
     // Paternal Individual ID (column X)
-    Integer paternalIndividualID
+//    Integer paternalIndividualID
 }

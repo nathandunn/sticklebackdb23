@@ -14,13 +14,16 @@ class CaptureController {
             title:'Capture',action: 'index',order:7
     ]
 
+    def stockService
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Capture.list(params), model:[captureInstanceCount: Capture.count()]
     }
 
     def show(Capture captureInstance) {
-        respond captureInstance
+        List<Stock> stockList = Stock.findAllByCapture(captureInstance)
+        respond captureInstance, model:[captureStocks:stockList]
     }
 
     def create() {
@@ -39,7 +42,14 @@ class CaptureController {
             return
         }
 
-        captureInstance.save flush:true
+
+        captureInstance.save flush:false
+
+        Stock stock = new Stock(
+                capture: captureInstance
+                ,stockID:  stockService.getNextStockID()
+        ).save flush: false
+
 
         request.withFormat {
             form {

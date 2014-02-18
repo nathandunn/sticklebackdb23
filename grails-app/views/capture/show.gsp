@@ -61,6 +61,18 @@
             </li>
         </g:if>
 
+            <li class="fieldcontain">
+                <span id="captureStocks-label" class="property-label"><g:message code="capture.captureStocks.label"
+                                                                               default="Stocks"/></span>
+
+                <span class="property-value" aria-labelledby="captureStocks-label">
+                    <g:each in="${captureStocks}" var="stock">
+                        <g:link action="show" controller="stock" id="${stock.id}">${stock.stockIDLabel}</g:link>
+                    </g:each>
+                </span>
+
+            </li>
+
         <g:if test="${captureInstance?.comment}">
             <li class="fieldcontain">
                 <span id="comment-label" class="property-label"><g:message code="capture.comment.label"

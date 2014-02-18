@@ -33,7 +33,6 @@
         <shiro:notUser>
             <g:link controller="auth" action="login">Login</g:link>
         </shiro:notUser>
-
         <shiro:user>
             <g:set var="researcherId"
                    value="${Researcher.findByUsername(org.apache.shiro.SecurityUtils.subject.principal).id}"/>
