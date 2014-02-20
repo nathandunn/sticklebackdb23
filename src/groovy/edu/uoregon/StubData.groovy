@@ -202,8 +202,11 @@ class StubData {
                         // Stock name (column AM)
                         stock.stockName = tokens[38]?.size() > 0 ? tokens[38] : null
 
+                        if(stock.stockID==108){
+                            println "handling 108 ${tokens[16]} - ${tokens[17]}"
+                        }
                         // Maternal Individual ID (column Q)
-                        def maternalIndividualID = tokens[16].size() > 0 ? Math.round(tokens[16].toDouble()) : null
+                        String maternalIndividualID = tokens[16].size() > 0 ? tokens[16] : null
                         if (maternalIndividualID != null) {
                             stock.maternalIndividualID = maternalIndividualID
                         } else {
@@ -217,7 +220,7 @@ class StubData {
                             stock.maternalStockID = null
                         }
                         // Paternal Individual ID (column T)
-                        def paternalIndividualID = tokens[19].size() > 0 ? Math.round(tokens[19].toDouble()) : null
+                        String paternalIndividualID = tokens[19].size() > 0 ? tokens[19] : null
                         if (paternalIndividualID != null) {
                             stock.paternalIndividualID = paternalIndividualID
                         } else {
@@ -232,6 +235,9 @@ class StubData {
                         }
 
                         stock.save(flush: true, insert: true, failOnError: true)
+                        if(stock.stockID==108){
+                            println "saved stock ${stock.stockID} label[${stock.stockIDLabel}] maternal ind id:[${stock.maternalIndividualID}] maternal ind:[${stock.maternalIndividual}]"
+                        }
                     }
                 }
                 catch (e) {
@@ -411,7 +417,7 @@ class StubData {
                     // If we have a stock
                     if (stock) {
 
-                        // Get the maternal stock fron the saved ID                 
+                        // Get the maternal stock fron the saved ID
                         if (stock.maternalStockID != null) {
                             if (Stock.findByStockID(stock.maternalStockID) != null)
                                 stock.maternalStock = Stock.findByStockID(stock.maternalStockID)
@@ -419,20 +425,28 @@ class StubData {
 
                         // Get the paternal stock from the maternal stock ID
                         if (stock.paternalStockID != null) {
-                            if (Stock.findByStockID(stock.paternalStockID) != null)
+                            if (Stock.findByStockID(stock.paternalStockID) != null){
                                 stock.paternalStock = Stock.findByStockID(stock.paternalStockID)
+                            }
                         }
 
                         // Get the maternal individual
                         if (stock.maternalIndividualID != null) {
-                            if (Individual.findByIndividualID(stock.maternalIndividualID) != null)
+                            if(stock.stockID==108){
+//                                println "handling 108 ${tokens[16]} - ${tokens[17]}"
+                                println "handling 108 stock process ${stock.stockID} label[${stock.stockIDLabel}] maternal ind id:[${stock.maternalIndividualID}] maternal ind:[${stock.maternalIndividual}]"
+                            }
+
+                            if (Individual.findByIndividualID(stock.maternalIndividualID) != null){
                                 stock.maternalIndividual = Individual.findByIndividualID(stock.maternalIndividualID)
+                            }
                         }
 
                         // Get the paternal individual
                         if (stock.paternalIndividualID != null) {
-                            if (Individual.findByIndividualID(stock.paternalIndividualID) != null)
+                            if (Individual.findByIndividualID(stock.paternalIndividualID) != null){
                                 stock.paternalIndividual = Individual.findByIndividualID(stock.paternalIndividualID)
+                            }
                         }
                         stock.save(flush: true, insert: false)
                     }

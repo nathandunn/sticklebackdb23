@@ -76,7 +76,7 @@ class Stock {
 
     // TODO: REMOVE AFTER DEPLOYMENT
     // Lineage, maternal Individual ID (column Q)
-    Integer maternalIndividualID
+    String maternalIndividualID
 
     // TODO: REMOVE AFTER DEPLOYMENT
     // Lineage, maternal stock ID (column R)
@@ -84,7 +84,7 @@ class Stock {
 
     // TODO: REMOVE AFTER DEPLOYMENT
     // Lineage, paternal Individual ID (column T)
-    Integer paternalIndividualID
+    String paternalIndividualID
 
     // TODO: REMOVE AFTER DEPLOYMENT
     // Lineage, paternal stock ID (column U)

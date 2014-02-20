@@ -117,9 +117,12 @@
         <span id="maternalID-label" class="property-label"><g:message code="stock.maternalIndividualID"
                                                                       default="Maternal Individual ID"/></span>
         <g:if test="${stockInstance?.maternalIndividual}">
-            <span class="property-value" aria-labelledby="maternalIndividual-label"><g:link controller="individual"
-                                                                                            action="show"
-                                                                                            id="${stockInstance?.maternalIndividual?.id}">${stockInstance?.maternalIndividual?.individualIDLabel}</g:link></span>
+            <span class="property-value" aria-labelledby="maternalIndividual-label">
+                <g:link controller="individual" action="show" id="${stockInstance?.maternalIndividual?.id}">
+                ${stockInstance?.maternalIndividual?.individualIDLabel}</g:link>
+                ${stockInstance.maternalIndividualID}
+                ${stockInstance.maternalIndividual.individualIDLabel}
+            </span>
         </g:if>
         <g:else>
             <span class="property-value" aria-labelledby="maternalStock-label">----</span>
