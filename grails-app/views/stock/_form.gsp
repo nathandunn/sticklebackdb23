@@ -98,7 +98,7 @@
               onchange="
               ${remoteFunction(action: 'findIndividualsForStock'
                       , controller: 'individual'
-                      , params: '\'stockId=\' + this.value '
+                      , params: '\'stockId=\' + this.value+\'&excludeGender=male\''
                       , method: 'POST'
                       , onSuccess: 'setMaternalIds(data);'
                       , onError: 'alert(\'error\');'
@@ -111,7 +111,7 @@
         <g:message code="stock.maternalIndividualID.label" default="Maternal Individual ID"/>
     </label>
     %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
-    <g:select id="maternalIndividual" name="maternalIndividual.id" from="${edu.uoregon.sticklebackdb.Individual.listOrderByIndividualID(order:"desc")}"
+    <g:select id="maternalIndividual" name="maternalIndividual.id" from="${[]}"
               value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Individual -']"
               optionValue="individualIDLabel" optionKey="id"/>
@@ -146,7 +146,7 @@
               onchange="
               ${remoteFunction(action: 'findIndividualsForStock'
                       , controller: 'individual'
-                      , params: '\'stockId=\' + this.value '
+                      , params: '\'stockId=\' + this.value+\'&excludeGender=female\''
                       , method: 'POST'
                       , onSuccess: 'setPaternalIds(data);'
                       , onError: 'alert(\'error\');'
@@ -159,7 +159,7 @@
         <g:message code="stock.paternalIndividual.label" default="Paternal Individual"/>
     </label>
     %{--<g:select id="paternalIndividual" name="paternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
-    <g:select id="paternalIndividual" name="paternalIndividual.id" from="${edu.uoregon.sticklebackdb.Individual.listOrderByIndividualID(order:"desc")}"
+    <g:select id="paternalIndividual" name="paternalIndividual.id" from="${[]}"
               optionKey="id"
               value="${stockInstance?.paternalIndividual?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Individual -']"

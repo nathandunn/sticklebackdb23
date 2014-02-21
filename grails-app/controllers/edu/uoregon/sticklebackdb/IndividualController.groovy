@@ -172,10 +172,10 @@ class IndividualController {
         }
     }
 
-    def findIndividualsForStock(Long stockId) {
+    def findIndividualsForStock(Long stockId,String excludeGender) {
         Stock stock = Stock.findById(stockId)
         println "foudn stock ${stock} for ${stockId}"
-        List<Individual> individuals = Individual.findAllByStock(stock, [order: "desc", sort: "individualID"])
+        List<Individual> individuals = Individual.findAllByStockAndFishSexNotEqual(stock, excludeGender,[order: "desc", sort: "individualID"])
         println "# of individuals ${individuals.size()}"
 
         Map<Long, String> strings = new HashMap<>()
