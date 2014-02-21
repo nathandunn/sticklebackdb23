@@ -202,9 +202,6 @@ class StubData {
                         // Stock name (column AM)
                         stock.stockName = tokens[38]?.size() > 0 ? tokens[38] : null
 
-                        if(stock.stockID==108){
-                            println "handling 108 ${tokens[16]} - ${tokens[17]}"
-                        }
                         // Maternal Individual ID (column Q)
                         String maternalIndividualID = tokens[16].size() > 0 ? tokens[16] : null
                         if (maternalIndividualID != null) {
@@ -432,25 +429,11 @@ class StubData {
 
                         // Get the maternal individual
                         if (stock.maternalIndividualID != null) {
-                            if(stock.stockID==108){
-//                                println "handling 108 ${tokens[16]} - ${tokens[17]}"
-                                println "handling 108 stock process ${stock.stockID} label[${stock.stockIDLabel}] maternal ind id:[${stock.maternalIndividualID}] maternal ind:[${stock.maternalIndividual}]"
-                            }
-
 //                            Integer maternalStockID = stock.maternalIndividualID.split("\\.")[0] as Integer
                             Integer maternalIndividualID = stock.maternalIndividualID.split("\\.")[1] as Integer
 
-                            if(stock.stockID==108){
-//                                println "handling 108 ${tokens[16]} - ${tokens[17]}"
-                                println "found 108 individual ID: ${maternalIndividualID}]"
-                            }
-
                             if (Individual.findByIndividualIDAndStock(maternalIndividualID,stock.maternalStock) != null){
                                 stock.maternalIndividual = Individual.findByIndividualIDAndStock(maternalIndividualID,stock.maternalStock)
-                                println "Found 108 individual maternalID: ${stock.maternalIndividual}]"
-                            }
-                            else{
-                                println "NOT Found 108 individual ID: ${maternalIndividualID}]"
                             }
                         }
 

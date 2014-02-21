@@ -29,13 +29,6 @@
     <g:textField name="sourceLong" value="${populationInstance?.sourceLong}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'species', 'error')} ">
-	<label for="species">
-		<g:message code="population.species.label" default="Species" />
-		
-	</label>
-	<g:textField name="species" value="${populationInstance?.species}"/>
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'comment', 'error')} ">
     <label for="comment">

@@ -1,5 +1,6 @@
 <%@ page import="edu.uoregon.sticklebackdb.Capture" %>
 
+<r:require modules="jquery,jquery-ui"/>
 
 <script>
 

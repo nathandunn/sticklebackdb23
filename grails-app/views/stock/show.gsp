@@ -120,7 +120,6 @@
             <span class="property-value" aria-labelledby="maternalIndividual-label">
                 <g:link controller="individual" action="show" id="${stockInstance?.maternalIndividual?.id}">
                ${stockInstance?.maternalIndividual?.individualIDLabel} </g:link>
-               [${stockInstance?.maternalIndividualID} ]
             </span>
         </g:if>
     %{--<g:elseif test="${stockInstance?.maternalIndividualID}">--}%
