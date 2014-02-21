@@ -3,6 +3,7 @@ package edu.uoregon.sticklebackdb
 class Line {
 
 //    static transients = ['stockCount']
+    String sticklebackSpecies = "Gasterosteus aculeatus"
 
     static constraints = {
         name unique: true, nullable: false,blank: false
@@ -22,7 +23,7 @@ class Line {
     Capture capture
 
     String name
-    String species
+    String species = sticklebackSpecies
     String comment
     String geneticNote
 

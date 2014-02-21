@@ -1,9 +1,8 @@
 package edu.uoregon.sticklebackdb
 
-
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class CaptureController {
@@ -11,19 +10,19 @@ class CaptureController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     static navigation = [
-            title:'Capture',action: 'index',order:7
+            title: 'Capture', action: 'index', order: 7
     ]
 
     def stockService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Capture.list(params), model:[captureInstanceCount: Capture.count()]
+        respond Capture.list(params), model: [captureInstanceCount: Capture.count()]
     }
 
     def show(Capture captureInstance) {
         List<Stock> stockList = Stock.findAllByCapture(captureInstance)
-        respond captureInstance, model:[captureStocks:stockList]
+        respond captureInstance, model: [captureStocks: stockList]
     }
 
     def create() {
@@ -37,17 +36,32 @@ class CaptureController {
             return
         }
 
-        if (captureInstance.hasErrors()) {
-            respond captureInstance.errors, view:'create'
+        Line line = new Line(
+                name: params.newLineName
+        )
+
+        line.capture = captureInstance
+        captureInstance.line = line
+
+        if (line.hasErrors()) {
+            respond line.errors, view: 'create'
+            return
+        }
+        captureInstance.validate()
+
+        if ( captureInstance.hasErrors()) {
+            println "C ${captureInstance.line}"
+            respond captureInstance.errors, view: 'create'
             return
         }
 
 
-        captureInstance.save flush:false
+        line.save()
+        captureInstance.save flush: true
 
         Stock stock = new Stock(
                 capture: captureInstance
-                ,stockID:  stockService.getNextStockID()
+                , stockID: stockService.getNextStockID()
         ).save flush: false
 
 
@@ -72,18 +86,18 @@ class CaptureController {
         }
 
         if (captureInstance.hasErrors()) {
-            respond captureInstance.errors, view:'edit'
+            respond captureInstance.errors, view: 'edit'
             return
         }
 
-        captureInstance.save flush:true
+        captureInstance.save flush: true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Capture.label', default: 'Capture'), captureInstance.id])
                 redirect captureInstance
             }
-            '*'{ respond captureInstance, [status: OK] }
+            '*' { respond captureInstance, [status: OK] }
         }
     }
 
@@ -95,14 +109,14 @@ class CaptureController {
             return
         }
 
-        captureInstance.delete flush:true
+        captureInstance.delete flush: true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Capture.label', default: 'Capture'), captureInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -112,7 +126,7 @@ class CaptureController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'captureInstance.label', default: 'Capture'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }
