@@ -16,6 +16,54 @@
 
 
 <script>
+
+    function clearInputs(){
+        $('#newMaternalIndividualLocation').val("")
+        $('#newMaternalIndividualComment').val("");
+
+        $('#newPaternalIndividualLocation').val("");
+        $('#newPaternalIndividualComment').val("");
+    }
+
+    function selectLastMaternal(){
+        var selected = $('#maternalIndividual option:last').attr('selected','selected');
+    }
+
+    function selectLastPaternal(){
+        var selected = $('#paternalIndividual option:last').attr('selected','selected');
+    }
+
+    function setPaternalIds(data) {
+        var select = $("#paternalIndividual");
+        select.empty();
+
+        var count = 0
+        for (var key in data) {
+            var value = data[key];
+            select.append('<option value=' + key + '>' + value + '</option>');
+            count += 1 ;
+        }
+        if(count==0){
+            select.append('<option value="">None</option>');
+        }
+    }
+
+    function setMaternalIds(data) {
+        var select = $("#maternalIndividual");
+        select.empty();
+
+        var count = 0
+        for (var key in data) {
+            var value = data[key];
+            select.append('<option value=' + key + '>' + value + '</option>');
+            count += 1 ;
+        }
+        if(count==0){
+            select.append('<option value="">None</option>');
+        }
+    }
+
+
     $(document).ready(function () {
         var availableTags = [
             <g:each var="stockName" in="${stockNames}" status="iter">
@@ -25,6 +73,42 @@
         ];
         $("#stockName").autocomplete({
             source: availableTags
+        });
+
+        $("#addMaternalIndividualButton").click(function(){
+            var location = $('#newMaternalIndividualLocation').val();
+            var comment = $('#newMaternalIndividualComment').val();
+            if(location.length==0){
+                alert('You must provide a location');
+                return ;
+            }
+            var stock = $('#maternalStock-Id').val();
+
+            ${remoteFunction(action: 'addIndividualToStock'
+                      , controller: 'individual'
+                      , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&location=\'+location+\'&fishSex=female\''
+                      , method: 'POST'
+                      , onSuccess: 'setMaternalIds(data);clearInputs();selectLastMaternal();'
+                      , onError: 'alert(\'error\');'
+              )};
+        });
+
+        $("#addPaternalIndividualButton").click(function(){
+            var location = $('#newPaternalIndividualLocation').val();
+            var comment = $('#newPaternalIndividualComment').val();
+            if(location.length==0){
+                alert('You must provide a location');
+                return ;
+            }
+            var stock = $('#paternalStock-Id').val();
+
+            ${remoteFunction(action: 'addIndividualToStock'
+                      , controller: 'individual'
+                      , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&location=\'+location+\'&fishSex=male\''
+                      , method: 'POST'
+                      , onSuccess: 'setPaternalIds(data);clearInputs();selectLastPaternal();'
+                      , onError: 'alert(\'error\');'
+              )};
         });
     });
 </script>
@@ -74,23 +158,7 @@
     <label for="maternalStockID">
         <g:message code="stock.maternalStockID.label" default="Maternal Stock ID"/>
     </label>
-    <script>
-        function setMaternalIds(data) {
-            var select = $("#maternalIndividual");
-            select.empty();
-
-            var count = 0
-            for (var key in data) {
-                var value = data[key];
-                select.append('<option value=' + key + '>' + value + '</option>');
-                count += 1 ;
-            }
-            if(count==0){
-                select.append('<option value="">None</option>');
-            }
-        }
-    </script>
-    <g:select id="maternalStock.id" name="maternalStock.id"
+    <g:select id="maternalStock-Id" name="maternalStock.id"
               from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order: "desc")}"
               value="${stockInstance?.maternalStock?.id}"
               class="many-to-one" noSelection="['null': '- Choose Stock -']"
@@ -117,29 +185,28 @@
               optionValue="individualIDLabel" optionKey="id"/>
 </div>
 
+%{-- Add Maternal Individual ID Button --}%
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addMaternalIndividualID', 'error')} ">
+    <label for="addMaternalIndividual">
+        <g:message code="stock.addMaternalIndividualID.label" default="Add Maternal Individual"/>
+    </label>
+    <input id="addMaternalIndividualButton" type="button" value="Add"/>
+    Location: <g:textField id="newMaternalIndividualLocation" name="newMaternalIndividualLocation"/>
+    Comment: <g:textField id="newMaternalIndividualComment" name="newMaternalIndividualComment"/>
+    %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
+    %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${[]}"--}%
+              %{--value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"--}%
+              %{--class="many-to-one" noSelection="['null': '- Choose Individual -']"--}%
+              %{--optionValue="individualIDLabel" optionKey="id"/>--}%
+</div>
+
 %{-- Paternal Stock ID --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalStockID', 'error')} ">
     <label for="paternalStockID">
         <g:message code="stock.paternalStockID.label" default="Paternal Stock ID"/>
     </label>
-    <script>
-        function setPaternalIds(data) {
-            var select = $("#paternalIndividual");
-            select.empty();
 
-            var count = 0
-            for (var key in data) {
-                var value = data[key];
-                select.append('<option value=' + key + '>' + value + '</option>');
-                count += 1 ;
-            }
-            if(count==0){
-                select.append('<option value="">None</option>');
-            }
-        }
-    </script>
-
-    <g:select id="paternalStock.id" name="paternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order: "desc")}"
+    <g:select id="paternalStock-Id" name="paternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order: "desc")}"
               value="${stockInstance?.paternalStock?.id}"
               class="many-to-one" noSelection="['null': '- Choose Stock -']"
               optionValue="stockIDLabel" optionKey="id"
@@ -166,6 +233,20 @@
               optionValue="individualIDLabel" />
 </div>
 
+%{-- Add Maternal Individual ID Button --}%
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addPaternalIndividualID', 'error')} ">
+    <label for="addPaternalIndividual">
+        <g:message code="stock.addPaternalIndividualID.label" default="Add Paternal Individual"/>
+    </label>
+    <input id="addPaternalIndividualButton" type="button" value="Add"/>
+    Location: <g:textField id="newPaternalIndividualLocation" name="newPaternalIndividualLocation"/>
+    Comment: <g:textField id="newPaternalIndividualComment" name="newPaternalIndividualComment"/>
+    %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
+    %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${[]}"--}%
+    %{--value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"--}%
+    %{--class="many-to-one" noSelection="['null': '- Choose Individual -']"--}%
+    %{--optionValue="individualIDLabel" optionKey="id"/>--}%
+</div>
 
 %{-- Comments --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'comments', 'error')} ">

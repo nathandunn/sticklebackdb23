@@ -172,6 +172,31 @@ class IndividualController {
         }
     }
 
+    def addIndividualToStock(Long stockId,String location,String comment,String fishSex) {
+        Stock stock = Stock.findById(stockId)
+        println "going to add to stock ${stock.stockIDLabel}"
+        Integer individualID = stockService.getNextIndividualID(stock)
+        Individual individual = new Individual(
+                fishLocation: location
+                ,comments: comment
+                ,fishSex: fishSex
+                ,individualID: individualID
+                ,stock: stock
+        )
+        individual.validate()
+        if(individual.hasErrors()){
+            return "failed to add individual ${params}"
+        }
+
+        println "adding "
+        individual.save flush: true, insert: true
+
+        println "added? ${individual}"
+
+        String excludeGender = fishSex=='male' ? 'female' : 'male'
+        return findIndividualsForStock(stockId,excludeGender)
+    }
+
     def findIndividualsForStock(Long stockId,String excludeGender) {
         Stock stock = Stock.findById(stockId)
         println "foudn stock ${stock} for ${stockId}"

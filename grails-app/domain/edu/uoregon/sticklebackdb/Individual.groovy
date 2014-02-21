@@ -21,7 +21,7 @@ class Individual {
     Stock stock    
 
     // Fertilization date (column H)
-    Date fertilizationDate
+//    Date fertilizationDate
 
     // Researcher comments (column AA)
     String comments
