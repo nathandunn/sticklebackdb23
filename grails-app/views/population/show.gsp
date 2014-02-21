@@ -58,17 +58,6 @@
             </li>
         </g:if>
 
-        <g:if test="${populationInstance?.species}">
-            <li class="fieldcontain">
-                <span id="species-label" class="property-label"><g:message code="population.species.label"
-                                                                           default="Species"/></span>
-
-                <span class="property-value" aria-labelledby="species-label"><g:fieldValue bean="${populationInstance}"
-                                                                                           field="species"/></span>
-
-            </li>
-        </g:if>
-
 
         <g:if test="${populationInstance?.comment}">
             <li class="fieldcontain">

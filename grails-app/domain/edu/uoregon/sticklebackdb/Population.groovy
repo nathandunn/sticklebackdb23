@@ -25,9 +25,6 @@ class Population {
     Double sourceLat
     Double sourceLong
 
-    // TODO: convert to object
-    String species
-
     String getSourceDisplay(){
         if(sourceLat && sourceLong){
             return sourceLat + "," + sourceLong

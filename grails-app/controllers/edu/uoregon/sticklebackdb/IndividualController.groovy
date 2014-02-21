@@ -39,9 +39,21 @@ class IndividualController {
             Integer stockID = query.split("\\.")[0] as Integer
             Integer individualID = query.split("\\.")[1] as Integer
             List<Individual> individuals = Individual.findAllByIndividualIDAndStockID(individualID,stockID,params)
-            Integer individualCount = Individual.countByIndividualID(individualID)
+            Integer individualCount = Individual.countByIndividualIDAndStockID(individualID,stockID)
             def model = [individualInstanceList: individuals, individualInstanceTotal: individualCount]
-            render(view: "list", model:model)
+
+            switch (individualCount) {
+                case 1:
+                    render(view: "show", model:[individualInstance: individuals.get(0)])
+                    return
+                    break
+                case 0:
+                    flash.message = "No stocks found for individual ID [${query}]"
+//                    break
+                default:
+                    render(view: "list", model: model)
+                    return
+            }
         }
         else{
             redirect(view:"list")

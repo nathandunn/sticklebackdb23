@@ -119,11 +119,14 @@
         <g:if test="${stockInstance?.maternalIndividual}">
             <span class="property-value" aria-labelledby="maternalIndividual-label">
                 <g:link controller="individual" action="show" id="${stockInstance?.maternalIndividual?.id}">
-                ${stockInstance?.maternalIndividual?.individualIDLabel}</g:link>
-                ${stockInstance.maternalIndividualID}
-                ${stockInstance.maternalIndividual.individualIDLabel}
+               ${stockInstance?.maternalIndividual?.individualIDLabel} </g:link>
+               [${stockInstance?.maternalIndividualID} ]
             </span>
         </g:if>
+    %{--<g:elseif test="${stockInstance?.maternalIndividualID}">--}%
+        %{--<span class="property-value"--}%
+              %{--aria-labelledby="maternalIndividual-label">${stockInstance?.maternalIndividualID}</span>--}%
+    %{--</g:elseif>--}%
         <g:else>
             <span class="property-value" aria-labelledby="maternalStock-label">----</span>
         </g:else>
@@ -168,10 +171,10 @@
                                                                                             action="show"
                                                                                             id="${stockInstance?.paternalIndividual?.id}">${stockInstance?.paternalIndividual?.individualIDLabel}</g:link></span>
         </g:if>
-        <g:elseif test="${stockInstance?.paternalIndividualID}">
-            <span class="property-value"
-                  aria-labelledby="paternalIndividual-label">${stockInstance?.paternalIndividualID}</span>
-        </g:elseif>
+        %{--<g:elseif test="${stockInstance?.paternalIndividualID}">--}%
+            %{--<span class="property-value"--}%
+                  %{--aria-labelledby="paternalIndividual-label">${stockInstance?.paternalIndividualID}</span>--}%
+        %{--</g:elseif>--}%
         <g:else>
             <span class="property-value" aria-labelledby="paternalStock-label">----</span>
         </g:else>

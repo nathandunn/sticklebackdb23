@@ -1,8 +1,7 @@
 package edu.uoregon.sticklebackdb
 
-import static org.springframework.http.HttpStatus.*
-import org.springframework.dao.DataIntegrityViolationException
 import grails.transaction.Transactional
+import org.springframework.dao.DataIntegrityViolationException
 
 class StockController {
 
@@ -11,7 +10,7 @@ class StockController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     static navigation = [
-        title:'Stocks',action: 'list',order:1, 
+            title: 'Stocks', action: 'list', order: 1,
     ]
 
     def index() {
@@ -27,15 +26,23 @@ class StockController {
         params.max = Math.min(max ?: 10, 100)
         String query = params.q
 
-        if(query.contains(".")){
+        if (query.contains(".")) {
             // search for individual
-            redirect(action: "search", controller: "individual",params:params)
-        }
-        else{
-            List<Stock> stockList = Stock.findAllByStockID(query,params)
+            redirect(action: "search", controller: "individual", params: params)
+        } else {
+            List<Stock> stockList = Stock.findAllByStockID(query, params)
             Integer stockCount = Stock.countByStockID(query)
             def model = [stockInstanceList: stockList, stockInstanceTotal: stockCount]
-            render(view:"list",model:model)
+            switch (stockCount) {
+                case 1:
+                    render(view: "show", model:[stockInstance: stockList.get(0)])
+                    break
+                case 0:
+                    flash.message = "No stocks found for stock ID [${query}]"
+//                    break
+                default:
+                    render(view: "list", model: model)
+            }
         }
 
     }
@@ -45,28 +52,28 @@ class StockController {
         Stock stock = new Stock(params)
 
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
-        def model= [stockInstance: stock, maxStock : Stock.list(max:1, sort:"stockID", order: "desc")[0],stockNames: stockNames]
+        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames]
         render(view: "create", model: model)
-            
+
     }
 
     def save() {
         def stockInstance = new Stock(params)
 
-        if(false==researcherService.isAdmin()){
+        if (false == researcherService.isAdmin()) {
             Stock previousStock = Stock.findByStockName(stockInstance.stockName)
-            if(previousStock==null){
-                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist","Stock use previous stock name")
+            if (previousStock == null) {
+                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Stock use previous stock name")
 //                respond stockInstance.errors, view:'edit'
                 List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
-                render(view: "create", model: [stockInstance: stockInstance,stockNames: stockNames])
+                render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
                 return
             }
         }
 
         if (!stockInstance.save(flush: true)) {
             List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
-            render(view: "create", model: [stockInstance: stockInstance,stockNames: stockNames])
+            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
 
@@ -96,7 +103,7 @@ class StockController {
 
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
 
-        [stockInstance: stockInstance, stockNames:stockNames]
+        [stockInstance: stockInstance, stockNames: stockNames]
     }
 
     @Transactional
@@ -111,26 +118,26 @@ class StockController {
         if (version != null) {
             if (stockInstance.version > version) {
                 stockInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                    [message(code: 'stock.label', default: 'Stock')] as Object[],
-                          "Another user has updated this Stock while you were editing")
-                respond stockInstance.errors, view:'edit'
+                        [message(code: 'stock.label', default: 'Stock')] as Object[],
+                        "Another user has updated this Stock while you were editing")
+                respond stockInstance.errors, view: 'edit'
                 return
             }
         }
 
         stockInstance.properties = params
 
-        if(false==researcherService.isAdmin()){
+        if (false == researcherService.isAdmin()) {
             Stock previousStock = Stock.findByStockName(stockInstance.stockName)
-            if(previousStock==null){
-                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist","Stock use previous stock name")
+            if (previousStock == null) {
+                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Stock use previous stock name")
 
 //                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
 
                 println "should be responding with some errors: ${stockInstance.errors}"
 //                respond stockInstance.errors, view:'edit'
                 List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
-                render(view: "edit", model: [stockInstance: stockInstance,stockNames: stockNames])
+                render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
                 return
             }
         }
@@ -138,7 +145,7 @@ class StockController {
         if (!stockInstance.save(flush: true)) {
 //            render(view: "edit", model: [stockInstance: stockInstance])
             List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
-            render(view: "edit", model: [stockInstance: stockInstance,stockNames: stockNames])
+            render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
 
@@ -164,7 +171,7 @@ class StockController {
             redirect(action: "show", id: id)
         }
     }
-    
+
 //    String getNextStockID(){
 //        List stocks = Stock.listOrderByStockID()
 //        double max = 0

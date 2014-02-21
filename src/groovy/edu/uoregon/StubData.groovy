@@ -437,15 +437,28 @@ class StubData {
                                 println "handling 108 stock process ${stock.stockID} label[${stock.stockIDLabel}] maternal ind id:[${stock.maternalIndividualID}] maternal ind:[${stock.maternalIndividual}]"
                             }
 
-                            if (Individual.findByIndividualID(stock.maternalIndividualID) != null){
-                                stock.maternalIndividual = Individual.findByIndividualID(stock.maternalIndividualID)
+//                            Integer maternalStockID = stock.maternalIndividualID.split("\\.")[0] as Integer
+                            Integer maternalIndividualID = stock.maternalIndividualID.split("\\.")[1] as Integer
+
+                            if(stock.stockID==108){
+//                                println "handling 108 ${tokens[16]} - ${tokens[17]}"
+                                println "found 108 individual ID: ${maternalIndividualID}]"
+                            }
+
+                            if (Individual.findByIndividualIDAndStock(maternalIndividualID,stock.maternalStock) != null){
+                                stock.maternalIndividual = Individual.findByIndividualIDAndStock(maternalIndividualID,stock.maternalStock)
+                                println "Found 108 individual maternalID: ${stock.maternalIndividual}]"
+                            }
+                            else{
+                                println "NOT Found 108 individual ID: ${maternalIndividualID}]"
                             }
                         }
 
                         // Get the paternal individual
                         if (stock.paternalIndividualID != null) {
-                            if (Individual.findByIndividualID(stock.paternalIndividualID) != null){
-                                stock.paternalIndividual = Individual.findByIndividualID(stock.paternalIndividualID)
+                            Integer paternalIndividualID = stock.paternalIndividualID.split("\\.")[1] as Integer
+                            if (Individual.findByIndividualIDAndStock(paternalIndividualID,stock.paternalStock) != null){
+                                stock.paternalIndividual = Individual.findByIndividualIDAndStock(paternalIndividualID,stock.paternalStock)
                             }
                         }
                         stock.save(flush: true, insert: false)

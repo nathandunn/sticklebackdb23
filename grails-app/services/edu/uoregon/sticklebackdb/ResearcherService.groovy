@@ -12,6 +12,9 @@ class ResearcherService {
     Researcher getCurrentUser(){
         String currentUserName = SecurityUtils?.subject?.principal
         if(currentUserName){
+//        treeList.eachWithIndex{ LeafyTree<Photo> tree, int i ->
+//            println "RE-ORDER TREE[${i}]->size(${tree.findRoot().countLeaves()}): ${tree.findRoot().display()}"
+//        }
             return Researcher.findByUsername(currentUserName)
         }
         return null

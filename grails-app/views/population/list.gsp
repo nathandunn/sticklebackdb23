@@ -33,9 +33,6 @@
 
             <g:sortableColumn property="source" title="${message(code: 'population.source.label', default: 'Source')}"/>
 
-            <g:sortableColumn property="species"
-                              title="${message(code: 'population.species.label', default: 'Species')}"/>
-
         </tr>
         </thead>
         <tbody>
@@ -51,8 +48,6 @@
                 </td>
 
                 <td>${fieldValue(bean: populationInstance, field: "sourceDisplay")}</td>
-
-                <td>${fieldValue(bean: populationInstance, field: "species")}</td>
 
                 %{--<td>${fieldValue(bean: populationInstance, field: "comments")}</td>--}%
 
