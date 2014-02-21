@@ -138,7 +138,7 @@
     <label for="fertilizationDate">
         <g:message code="stock.fertilizationDate.label" default="Fertilization Date"/>
     </label>
-    <g:datePicker name="fertilizationDate" precision="day" relativeYears="[-20..0]"
+    <g:datePicker name="fertilizationDate" precision="day" relativeYears="[0..-20]"
                   value="${stockInstance?.fertilizationDate}" default="none" noSelection="['': '']"/>
 </div>
 

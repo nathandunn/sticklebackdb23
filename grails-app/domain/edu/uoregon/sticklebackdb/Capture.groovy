@@ -5,6 +5,7 @@ class Capture {
     static constraints = {
         line nullable: false
         population nullable: false
+        captureDate nullable: false
     }
 
     static mapping = {

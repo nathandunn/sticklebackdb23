@@ -52,7 +52,7 @@
                   optionKey="id" required="" value="${captureInstance?.line?.id}" class="many-to-one"/>
     </g:if>
     <g:else>
-        <g:textField name="newLineName" value="" id="newLineName"/>
+        <g:textField name="newLineName" value="" id="newLineName" size="60"/>
     </g:else>
 </div>
 
