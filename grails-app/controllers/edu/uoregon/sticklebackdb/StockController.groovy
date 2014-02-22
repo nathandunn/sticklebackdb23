@@ -71,6 +71,20 @@ class StockController {
             }
         }
 
+        if(stockInstance.maternalIndividual==null){
+            List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+            flash.message = "Must supply a maternal individual"
+            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
+        if(stockInstance.paternalIndividual==null){
+            List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+            flash.message = "Must supply a paternal individual"
+            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
         if (!stockInstance.save(flush: true)) {
             List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
             render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])

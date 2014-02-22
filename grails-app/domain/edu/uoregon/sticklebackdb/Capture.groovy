@@ -19,6 +19,6 @@ class Capture {
     String comment
 
     String getDisplay(){
-        line.name + " " + population.sourceDisplay + " "+captureDate.timeString
+        line.name + " " + population.sourceDisplay + " "+captureDate?.timeString
     }
 }
