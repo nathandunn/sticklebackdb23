@@ -134,7 +134,6 @@ class StockController {
 
 //                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
 
-                println "should be responding with some errors: ${stockInstance.errors}"
 //                respond stockInstance.errors, view:'edit'
                 List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
                 render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
@@ -170,6 +169,17 @@ class StockController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'stock.label', default: 'Stock'), id])
             redirect(action: "show", id: id)
         }
+    }
+
+    def print(Integer id){
+        def stockInstance = Stock.get(id)
+        if (!stockInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'individual.label', default: 'Individual'), id])
+            redirect(action: "list")
+            return
+        }
+
+        render (view:"label",model:[stockInstance:stockInstance])
     }
 
 //    String getNextStockID(){

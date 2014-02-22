@@ -235,6 +235,7 @@
 <g:form>
     <fieldset class="buttons">
         <g:hiddenField name="id" value="${stockInstance?.id}"/>
+        <g:link action="print" id="${stockInstance?.id}">Print</g:link>
         <g:link class="edit" action="edit" id="${stockInstance?.id}"><g:message code="default.button.edit.label"
                                                                                 default="Edit"/></g:link>
         <g:actionSubmit class="delete" action="delete"

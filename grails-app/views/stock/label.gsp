@@ -13,11 +13,12 @@
 
 <body>
 
-${individualInstance.individualIDLabel}
+${stockInstance.stockIDLabel}
 <br/>
-${individualInstance.stock.stockName}
+${stockInstance.stockName} <g:formatDate date="${stockInstance.fertilizationDate}" type="date" dateStyle="long"/>
 <br/>
-${individualInstance.stock.fertilizationDate}
+${stockInstance.comments}
+<br/>
 <br/>
 
 </body>
