@@ -38,18 +38,11 @@
     }
     </style>
 
-    <g:layoutHead/>/
+    <g:layoutHead/>
     <r:layoutResources/>
 </head>
 <body>
 <g:layoutBody/>
-
-%{--<div class="label"><img src="http://boulderinformationservices.files.wordpress.com/2011/08/barcode_sample.png" /><br>Human readable</div>--}%
-%{--<div class="label"><img src="http://boulderinformationservices.files.wordpress.com/2011/08/barcode_sample.png" /><br>Human readable</div>--}%
-%{--<div class="label"><img src="http://boulderinformationservices.files.wordpress.com/2011/08/barcode_sample.png" /><br>Human readable</div>--}%
-%{--<div class="label"><img src="http://boulderinformationservices.files.wordpress.com/2011/08/barcode_sample.png" /><br>Human readable</div>--}%
-%{--<div class="label">(Repeat 30 times)</div>--}%
-%{--<div class="page-break"></div>--}%
 
 <r:layoutResources/>
 </body>

@@ -6,20 +6,56 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
+
+<r:require modules="jquery,jquery-ui"/>
+
 <html>
 <head>
     <meta name="layout" content="label">
+
 </head>
 
 <body>
 
-${stockInstance.stockIDLabel}
-<br/>
-${stockInstance.stockName} <g:formatDate date="${stockInstance.fertilizationDate}" type="date" dateStyle="long"/>
-<br/>
-${stockInstance.comments}
-<br/>
-<br/>
+%{--<div id='canvas'>--}%
+
+%{--</div>--}%
+<canvas id="tutorial" width="800" height="150"></canvas>
+
+%{--<canvas id="canvas">--}%
+
+%{--</canvas>--}%
+
+%{--${stockInstance.stockIDLabel}--}%
+%{--<br/>--}%
+%{--${stockInstance.stockName} <g:formatDate date="${stockInstance.fertilizationDate}" type="date" dateStyle="long"/>--}%
+%{--<br/>--}%
+%{--${stockInstance.comments}--}%
+%{--<br/>--}%
+%{--<br/>--}%
+
+
+<script>
+    var maxWidth = 280;
+    var leftMargin = 3 ;
+    var topMargin = 3 ;
+    var lineHeight = 20 ;
+    var height = lineHeight + topMargin ;
+    var pixelRatio =  window.devicePixelRatio;
+    maxWidth = maxWidth / pixelRatio;
+
+    var ctx = document.getElementById('tutorial').getContext('2d');
+//    ctx.fillStyle = "solid";
+    ctx.font = "10pt Courier";
+    ctx.fillText('Stock Name: ${stockInstance.stockName}', leftMargin, height, maxWidth);
+
+    height += lineHeight ;
+    ctx.fillText('${stockInstance.stockIDLabel} Fert Date: <g:formatDate date="${stockInstance.fertilizationDate}" type="date" dateStyle="long"/>', leftMargin, height, maxWidth);
+
+    height += lineHeight ;
+    ctx.fillText('${stockInstance.comments}', leftMargin, height, maxWidth);
+
+</script>
 
 </body>
 </html>
