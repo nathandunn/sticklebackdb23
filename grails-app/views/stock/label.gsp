@@ -36,7 +36,7 @@
 
 
 <script>
-    var maxWidth = 280;
+    var maxWidth = 250;
     var leftMargin = 3 ;
     var topMargin = 3 ;
     var lineHeight = 20 ;
