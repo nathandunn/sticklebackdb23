@@ -37,7 +37,13 @@
     ctx.fillText('Stock Name: ${individualInstance.stock.stockName}', leftMargin, height, maxWidth);
 
     height += lineHeight ;
-    ctx.fillText('${individualInstance.individualIDLabel} Fert Date: <g:formatDate date="${individualInstance.stock.fertilizationDate}" type="date" dateStyle="long"/>', leftMargin,  height, maxWidth);
+
+    ctx.font = "bold 15pt Courier";
+	var spaceMargin = 90 ; 
+    ctx.fillText('${individualInstance.individualIDLabel}',leftMargin,height,spaceMargin);
+    ctx.font = "10pt Courier";
+	ctx.fillText('Fert: <g:formatDate date="${individualInstance.stock.fertilizationDate}" type="date" dateStyle="long"/>', leftMargin+spaceMargin,  height, maxWidth);
+    // ctx.fillText('${individualInstance.individualIDLabel} Fert Date: <g:formatDate date="${individualInstance.stock.fertilizationDate}" type="date" dateStyle="long"/>', leftMargin,  height, maxWidth);
 
     height += lineHeight ;
     ctx.fillText('${individualInstance.comments}', leftMargin, 70, maxWidth);
