@@ -60,33 +60,47 @@ class StockController {
     def save() {
         def stockInstance = new Stock(params)
 
+        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+
+        if(stockInstance.line == null ){
+            flash.message = "Must associate a line with a stock"
+            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
+        if(stockInstance.fertilizationDate && stockInstance?.line?.capture){
+            flash.message = "Can not have both a fertilization date and a Line with a capture"
+            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+        if(!stockInstance?.line?.capture && !stockInstance.fertilizationDate){
+            flash.message = "Must have a fertilization date or a line with a capture"
+            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
         if (false == researcherService.isAdmin()) {
             Stock previousStock = Stock.findByStockName(stockInstance.stockName)
             if (previousStock == null) {
                 stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Stock use previous stock name")
-//                respond stockInstance.errors, view:'edit'
-                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
                 render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
                 return
             }
         }
 
         if(stockInstance.maternalIndividual==null){
-            List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
             flash.message = "Must supply a maternal individual"
             render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
 
         if(stockInstance.paternalIndividual==null){
-            List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
             flash.message = "Must supply a paternal individual"
             render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
 
         if (!stockInstance.save(flush: true)) {
-            List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
             render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
