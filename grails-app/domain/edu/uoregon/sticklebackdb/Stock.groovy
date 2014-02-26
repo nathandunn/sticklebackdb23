@@ -26,7 +26,7 @@ class Stock {
     }
 
     static constraints = {
-        capture nullable: true
+//        capture nullable: true
 //        line nullable: false
         line nullable: true
     }
@@ -34,7 +34,7 @@ class Stock {
 
     // Line name (column X)
     Line line
-    Capture capture
+//    Capture capture
 
     // TODO remove one of these
     // TODO make stockID an Integer

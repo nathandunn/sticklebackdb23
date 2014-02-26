@@ -80,20 +80,20 @@
     </li>
 
     %{-- * * * Stock Capture * * * --}%
-    <li class="fieldcontain">
-        <span id="capture-label" class="property-label"><g:message code="stock.capture.label"
-                                                                   default="Capture"/></span>
-        <g:if test="${stockInstance?.capture}">
-            <span class="property-value" aria-labelledby="capture-label">
-                <g:link controller="capture" action="show" id="${stockInstance?.capture?.id}">
-                    ${stockInstance?.capture?.getDisplay()}
-                </g:link>
-            </span>
-        </g:if>
-        <g:else>
-            <span class="property-value" aria-labelledby="capture-label">----</span>
-        </g:else>
-    </li>
+    %{--<li class="fieldcontain">--}%
+        %{--<span id="capture-label" class="property-label"><g:message code="stock.capture.label"--}%
+                                                                   %{--default="Capture"/></span>--}%
+        %{--<g:if test="${stockInstance?.capture}">--}%
+            %{--<span class="property-value" aria-labelledby="capture-label">--}%
+                %{--<g:link controller="capture" action="show" id="${stockInstance?.capture?.id}">--}%
+                    %{--${stockInstance?.capture?.getDisplay()}--}%
+                %{--</g:link>--}%
+            %{--</span>--}%
+        %{--</g:if>--}%
+        %{--<g:else>--}%
+            %{--<span class="property-value" aria-labelledby="capture-label">----</span>--}%
+        %{--</g:else>--}%
+    %{--</li>--}%
 
     <br>
     <hr>
