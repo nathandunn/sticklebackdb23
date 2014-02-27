@@ -54,10 +54,15 @@
         <li class="fieldcontain">
             <span id="capture-label" class="property-label"><g:message code="line.capture.label"
                                                                        default="Capture"/></span>
-            <g:if test="${lineInstance?.capture}">
+            <g:if test="${lineInstance?.captures}">
                 <span class="property-value" aria-labelledby="capture-label">
-                    <g:link action="show" controller="capture"
-                            id="${lineInstance?.capture?.id}">${lineInstance?.capture?.getDisplay()}</g:link>
+                    <ul class="nobullet">
+                        <g:each var="capture" in="${lineInstance.captures}">
+                            <li class="nobullet"><g:link action="show" controller="capture"
+                                        id="${capture.id}">${capture.getDisplay()}</g:link>
+                            </li>
+                        </g:each>
+                    </ul>
                 </span>
             </g:if>
             <g:else>

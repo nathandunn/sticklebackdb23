@@ -22,7 +22,7 @@
         <span class="required-indicator">*</span>
     </label>
     <g:select id="capture" name="capture.id" from="${edu.uoregon.sticklebackdb.Capture.listOrderByCaptureDate()}"
-              optionKey="id" required=""
+              optionKey="id" required="" multiple="true"
               optionValue="captureDate"
               value="${lineInstance?.capture?.id}" class="many-to-one" noSelection="['null':'None']"/>
 </div>

@@ -40,7 +40,8 @@ class CaptureController {
                 name: params.newLineName
         )
 
-        line.capture = captureInstance
+//        line.captures= captureInstance
+        line.addToCaptures(captureInstance)
         captureInstance.line = line
 
         if (line.hasErrors()) {
@@ -50,7 +51,6 @@ class CaptureController {
         captureInstance.validate()
 
         if ( captureInstance.hasErrors()) {
-            println "C ${captureInstance.line}"
             respond captureInstance.errors, view: 'create'
             return
         }

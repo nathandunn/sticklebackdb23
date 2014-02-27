@@ -6,13 +6,14 @@ class Line {
     String sticklebackSpecies = "Gasterosteus aculeatus"
 
     static constraints = {
-        name unique: true, nullable: false,blank: false
-        capture nullable: true
+        name unique: true, nullable: false, blank: false
+//        capture nullable: true
     }
 
 
     static hasMany = [
-        stocks:Stock
+            stocks    : Stock
+            , captures: Capture
     ]
 
     static mapping = {

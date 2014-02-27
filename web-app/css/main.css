@@ -143,6 +143,11 @@ img {
 	zoom: 1;
 }
 
+.nobullet li{
+    list-style-type: none;
+    margin-left: 5px;
+}
+
 .nav ul {
 	overflow: hidden;
 	padding-left: 0;
