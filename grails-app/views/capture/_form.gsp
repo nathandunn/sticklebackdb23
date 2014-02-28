@@ -6,7 +6,7 @@
 
     function updateLineName() {
 
-        var lineText = 'capture-';
+        var lineText = '';
 //        lineText += $('#population').val();
         lineText += $("#population option:selected").text();
         lineText += '-';
@@ -46,14 +46,14 @@
         <span class="required-indicator">*</span>
     </label>
 
-    <g:if test="${captureInstance.id}">
+    %{--<g:if test="${captureInstance.id}">--}%
         <g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.listOrderByName()}"
                   optionValue="name"
                   optionKey="id" required="" value="${captureInstance?.line?.id}" class="many-to-one"/>
-    </g:if>
-    <g:else>
-        <g:textField name="newLineName" value="" id="newLineName" size="60"/>
-    </g:else>
+    %{--</g:if>--}%
+    %{--<g:else>--}%
+        %{--<g:textField name="newLineName" value="" id="newLineName" size="60"/>--}%
+    %{--</g:else>--}%
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: captureInstance, field: 'population', 'error')} required">

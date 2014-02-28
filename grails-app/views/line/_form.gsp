@@ -21,10 +21,13 @@
         <g:message code="line.capture.label" default="Capture" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="capture" name="capture.id" from="${edu.uoregon.sticklebackdb.Capture.listOrderByCaptureDate()}"
-              optionKey="id" required="" multiple="true"
-              optionValue="captureDate"
-              value="${lineInstance?.capture?.id}" class="many-to-one" noSelection="['null':'None']"/>
+    <g:each in="${edu.uoregon.sticklebackdb.Capture.listOrderByCaptureDate()}" var="capture">
+        <g:link action="show" id="${capture.id}">${capture.display}</g:link>
+    </g:each>
+    %{--<g:select id="capture" name="capture.id" from="${edu.uoregon.sticklebackdb.Capture.listOrderByCaptureDate()}"--}%
+              %{--optionKey="id" required="" multiple="true"--}%
+              %{--optionValue="captureDate"--}%
+              %{--value="${lineInstance?.capture?.id}" class="many-to-one" noSelection="['null':'None']"/>--}%
 </div>
 
 

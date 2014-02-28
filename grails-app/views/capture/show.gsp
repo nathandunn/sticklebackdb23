@@ -61,28 +61,31 @@
             </li>
         </g:if>
 
-            <li class="fieldcontain">
-                <span id="captureStocks-label" class="property-label"><g:message code="capture.captureStocks.label"
-                                                                               default="Stocks"/></span>
+            %{--<li class="fieldcontain">--}%
+                %{--<span id="captureStocks-label" class="property-label"><g:message code="capture.captureStocks.label"--}%
+                                                                               %{--default="Stocks"/></span>--}%
 
-                <span class="property-value" aria-labelledby="captureStocks-label">
-                    <g:each in="${captureStocks}" var="stock">
-                        <g:link action="show" controller="stock" id="${stock.id}">${stock.stockIDLabel}</g:link>
-                    </g:each>
-                </span>
+                %{--<span class="property-value" aria-labelledby="captureStocks-label">--}%
+                    %{--<g:each in="${captureStocks}" var="stock">--}%
+                        %{--<g:link action="show" controller="stock" id="${stock.id}">${stock.stockIDLabel}</g:link>--}%
+                    %{--</g:each>--}%
+                %{--</span>--}%
 
-            </li>
+            %{--</li>--}%
 
-        <g:if test="${captureInstance?.comment}">
             <li class="fieldcontain">
                 <span id="comment-label" class="property-label"><g:message code="capture.comment.label"
                                                                            default="Comment"/></span>
 
+        <g:if test="${captureInstance?.comment}">
                 <span class="property-value" aria-labelledby="comment-label"><g:fieldValue bean="${captureInstance}"
                                                                                            field="comment"/></span>
+        </g:if>
+                <g:else>
+                    <span class="property-value" aria-labelledby="maternalStock-label">----</span>
+                </g:else>
 
             </li>
-        </g:if>
 
     </ol>
     <g:form url="[resource: captureInstance, action: 'delete']" method="DELETE">

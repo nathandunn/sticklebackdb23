@@ -21,7 +21,8 @@ class CaptureController {
     }
 
     def show(Capture captureInstance) {
-        List<Stock> stockList = Stock.findAllByCapture(captureInstance)
+
+        List<Stock> stockList = Stock.findAllByLine(captureInstance.line)
         respond captureInstance, model: [captureStocks: stockList]
     }
 
@@ -36,18 +37,19 @@ class CaptureController {
             return
         }
 
-        Line line = new Line(
-                name: params.newLineName
-        )
+//        captureInstance.line.addToCaptures(captureInstance)
+//        Line line = new Line(
+//                name: params.newLineName
+//        )
 
 //        line.captures= captureInstance
-        line.addToCaptures(captureInstance)
-        captureInstance.line = line
+//        line.addToCaptures(captureInstance)
+//        captureInstance.line = line
 
-        if (line.hasErrors()) {
-            respond line.errors, view: 'create'
-            return
-        }
+//        if (line.hasErrors()) {
+//            respond line.errors, view: 'create'
+//            return
+//        }
         captureInstance.validate()
 
         if ( captureInstance.hasErrors()) {
@@ -56,7 +58,7 @@ class CaptureController {
         }
 
 
-        line.save()
+//        line.save flush: true
         captureInstance.save flush: true
 
         Stock stock = new Stock(
