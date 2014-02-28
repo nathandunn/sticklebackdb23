@@ -43,6 +43,7 @@
         <fieldset class="buttons">
             <g:actionSubmit class="save" action="update"
                             value="${message(code: 'default.button.update.label', default: 'Update')}"/>
+            <g:link action="show" id="${researcherInstance.id}" name="show" class="ui-icon-cancel">Cancel</g:link>
         </fieldset>
     </g:form>
 </div>
