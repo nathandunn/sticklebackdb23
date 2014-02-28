@@ -21,7 +21,7 @@ class Line {
         geneticNote type: "text"
     }
 
-    Capture capture
+//    Capture capture
 
     String name
     String species = sticklebackSpecies

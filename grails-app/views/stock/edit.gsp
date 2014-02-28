@@ -37,7 +37,12 @@
         <g:hiddenField name="id" value="${stockInstance?.id}"/>
         <g:hiddenField name="version" value="${stockInstance?.version}"/>
         <fieldset class="form">
-            <g:render template="form"/>
+            <g:if test="${stockInstance.isBred()}">
+                <g:render template="breedForm"/>
+            </g:if>
+            <g:else>
+                <g:render template="captureForm"/>
+            </g:else>
         </fieldset>
         <fieldset class="buttons">
             <g:actionSubmit class="save" action="update"

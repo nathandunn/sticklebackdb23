@@ -105,4 +105,12 @@ class Stock {
                 ", paternalStock=" + paternalStock +
                 '}';
     }
+
+    public isCapture(){
+        return line?.captures?.size()>0
+    }
+
+    public isBred(){
+        return fertilizationDate!=null
+    }
 }

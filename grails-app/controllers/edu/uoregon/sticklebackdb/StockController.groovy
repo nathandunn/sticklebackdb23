@@ -47,6 +47,45 @@ class StockController {
 
     }
 
+    def createFromCapture() {
+        params.stockID = stockService.getNextStockID()
+        Stock stock = new Stock(params)
+
+        List<Line> linesWithCapture = new ArrayList<>()
+        Line.all.captures.each { it ->
+            for(Line line in it.line){
+                linesWithCapture.add(line)
+            }
+        }
+
+        linesWithCapture.unique(true)
+
+//        println "lines with capture ${linesWithCapture}"
+        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames,lines:linesWithCapture]
+        render(view: "createFromCapture", model: model)
+    }
+
+    def createFromBreeding() {
+        params.stockID = stockService.getNextStockID()
+        Stock stock = new Stock(params)
+
+        List<Line> linesWithCapture = new ArrayList<>()
+        Line.all.captures.each { it ->
+            for(Line line in it.line){
+                linesWithCapture.add(line)
+            }
+        }
+
+        linesWithCapture.unique(true)
+
+        List<Line> linesWithoutCapture = Line.all.minus(linesWithCapture)
+
+        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames,lines:linesWithoutCapture]
+        render(view: "createFromBreeding", model: model)
+    }
+
     def create() {
         params.stockID = stockService.getNextStockID()
         Stock stock = new Stock(params)
@@ -57,7 +96,28 @@ class StockController {
 
     }
 
-    def save() {
+
+    def saveCapture() {
+        def stockInstance = new Stock(params)
+
+        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+
+        if(stockInstance.line == null ){
+            flash.message = "Must associate a line with a stock"
+            render(view: "createFromCapture", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
+        if (!stockInstance.save(flush: true)) {
+            render(view: "createFromCapture", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
+        flash.message = message(code: 'default.created.message', args: [message(code: 'stock.label', default: 'Stock'), stockInstance.stockIDLabel])
+        redirect(action: "show", id: stockInstance.id)
+    }
+
+    def saveFromBreeding() {
         def stockInstance = new Stock(params)
 
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
@@ -68,12 +128,7 @@ class StockController {
             return
         }
 
-        if(stockInstance.fertilizationDate && stockInstance?.line?.capture){
-            flash.message = "Can not have both a fertilization date and a Line with a capture"
-            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
-            return
-        }
-        if(!stockInstance?.line?.capture && !stockInstance.fertilizationDate){
+        if(!stockInstance.fertilizationDate){
             flash.message = "Must have a fertilization date or a line with a capture"
             render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
@@ -105,7 +160,59 @@ class StockController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'stock.label', default: 'Stock'), stockInstance.id])
+        flash.message = message(code: 'default.created.message', args: [message(code: 'stock.label', default: 'Stock'), stockInstance.stockIDLabel])
+        redirect(action: "show", id: stockInstance.id)
+    }
+
+    def save() {
+        def stockInstance = new Stock(params)
+
+        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+
+        if(stockInstance.line == null ){
+            flash.message = "Must associate a line with a stock"
+            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
+        if(stockInstance.fertilizationDate && stockInstance?.line?.captures){
+            flash.message = "Can not have both a fertilization date and a Line with a capture"
+            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+        if(!stockInstance?.line?.captures && !stockInstance.fertilizationDate){
+            flash.message = "Must have a fertilization date or a line with a capture"
+            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
+        if (false == researcherService.isAdmin()) {
+            Stock previousStock = Stock.findByStockName(stockInstance.stockName)
+            if (previousStock == null) {
+                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Stock use previous stock name")
+                render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+                return
+            }
+        }
+
+        if(stockInstance.maternalIndividual==null){
+            flash.message = "Must supply a maternal individual"
+            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
+        if(stockInstance.paternalIndividual==null){
+            flash.message = "Must supply a paternal individual"
+            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
+        if (!stockInstance.save(flush: true)) {
+            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
+        flash.message = message(code: 'default.created.message', args: [message(code: 'stock.label', default: 'Stock'), stockInstance.stockIDLabel])
         redirect(action: "show", id: stockInstance.id)
     }
 
@@ -129,9 +236,22 @@ class StockController {
             return
         }
 
+        List<Line> lineList = new ArrayList<>()
+        Line.all.captures.each { it ->
+            for(Line line in it.line){
+                lineList.add(line)
+            }
+        }
+
+        lineList.unique(true)
+
+        if(stockInstance.isBred()){
+            lineList = Line.all.minus(lineList)
+        }
+
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
 
-        [stockInstance: stockInstance, stockNames: stockNames]
+        [stockInstance: stockInstance, stockNames: stockNames, lines:lineList]
     }
 
     @Transactional
@@ -176,7 +296,7 @@ class StockController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'stock.label', default: 'Stock'), stockInstance.id])
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'stock.label', default: 'Stock'), stockInstance.stockIDLabel])
         redirect(action: "show", id: stockInstance.id)
     }
 

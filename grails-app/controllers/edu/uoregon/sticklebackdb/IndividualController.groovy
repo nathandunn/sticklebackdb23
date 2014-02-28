@@ -8,7 +8,7 @@ class IndividualController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     static navigation = [
-            title: 'Individuals', action: 'list', order: 1
+            title: 'Individuals', action: 'list', order: 2
     ]
 
     def stockService

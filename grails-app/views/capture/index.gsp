@@ -55,7 +55,7 @@
                     </g:link>
                 </td>
 
-                <td><g:formatDate date="${captureInstance.captureDate}"/></td>
+                <td><g:formatDate date="${captureInstance.captureDate}" type="date"/></td>
 
                 %{--<td>${fieldValue(bean: captureInstance, field: "comment")}</td>--}%
 
