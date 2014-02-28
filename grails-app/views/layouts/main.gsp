@@ -22,8 +22,8 @@
 
 <body>
 %{--<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>--}%
-<div id="grailsLogo" role="banner"><a href="http://grails.org"><img
-        src="${resource(dir: 'images', file: 'threespine_stickleback.jpg')}" alt="Grails" height="100px;"/></a>
+<div id="grailsLogo" role="banner"><g:link action="list" controller="stock"><img
+        src="${resource(dir: 'images', file: 'threespine_stickleback.jpg')}" alt="Grails" height="100px;"/></g:link>
     <g:form action="search" controller="stock" class="search-box" method="get">
         <input class="search-watermark" name="q" type="text" value="${params.q ?: 'Search stocks...'}" onclick="if (this.value=='Search stocks...') {this.value = '';}" />
     </g:form>
