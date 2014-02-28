@@ -15,7 +15,7 @@
     <ul>
         <li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]"/></g:link></li>
         %{--<li><g:link class="create" action="create"><g:message code="default.new.label"--}%
-                                                              %{--args="[entityName]"/></g:link></li>--}%
+        %{--args="[entityName]"/></g:link></li>--}%
         <li><g:link class="create" action="createFromBreeding">New Stock from Breeding</g:link></li>
         <li><g:link class="create" action="createFromCapture">New Stock from Capture</g:link></li>
     </ul>
@@ -23,7 +23,7 @@
 
 <div id="show-stock" class="content scaffold-show" role="main">
 
-<h1><g:message code="default.show.label" args="[entityName]"/></h1>
+<h1><g:message code="default.show.label" args="[entityName]"/> ${stockInstance.isCapture() ? 'from Capture' : 'from Breeding'}</h1>
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>

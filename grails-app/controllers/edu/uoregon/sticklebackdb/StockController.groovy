@@ -1,5 +1,6 @@
 package edu.uoregon.sticklebackdb
 
+import grails.converters.JSON
 import grails.transaction.Transactional
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -328,6 +329,22 @@ class StockController {
         }
 
         render (view:"label",model:[stockInstance:stockInstance])
+    }
+
+    def findCommonLineForStocks(){
+        println "params ${params}"
+        def paternalStockId = params.paternalStockId
+        def maternalStockId = params.maternalStockId
+        println "finding common lines: ${paternalStockId} - ${maternalStockId}"
+        Stock paternalStock = Stock.findById(paternalStockId as Long)
+        Stock maternalStock = Stock.findById(maternalStockId as Long)
+
+        if(paternalStock.line && paternalStock.line == maternalStock.line){
+           render paternalStock.line.id
+           return
+        }
+
+        render ''
     }
 
 //    String getNextStockID(){

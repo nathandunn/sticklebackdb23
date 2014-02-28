@@ -63,6 +63,24 @@
         }
     }
 
+    function syncLines(data){
+        var paternalStockId = $('#paternalStock-Id').val() ;
+        var maternalStockId = $('#maternalStock-Id').val() ;
+
+        $.ajax({
+        type: 'POST'
+        , data: 'paternalStockId=' + paternalStockId+ '&maternalStockId='+maternalStockId
+        , url: '/sticklebackdb/stock/findCommonLineForStocks'
+        , success: function (data, textStatus) {
+                if(data){
+                    $('#line').val(data)
+                }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        alert('error');
+        }
+        });
+    }
 
     $(document).ready(function () {
         var availableTags = [
@@ -250,7 +268,7 @@
                       , controller: 'individual'
                       , params: '\'stockId=\' + this.value+\'&excludeGender=female\''
                       , method: 'POST'
-                      , onSuccess: 'setPaternalIds(data);'
+                      , onSuccess: 'setPaternalIds(data);syncLines();'
                       , onError: 'alert(\'error\');'
               )}"/>
 </div>
