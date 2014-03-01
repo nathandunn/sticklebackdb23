@@ -39,7 +39,7 @@ class ResearchRoleController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'researchRoleInstance.label', default: 'ResearchRole'), researchRoleInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'researchRoleInstance.label', default: 'ResearchRole'), researchRoleInstance.name])
                 redirect researchRoleInstance
             }
             '*' { respond researchRoleInstance, [status: CREATED] }
@@ -66,7 +66,7 @@ class ResearchRoleController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'ResearchRole.label', default: 'ResearchRole'), researchRoleInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'ResearchRole.label', default: 'ResearchRole'), researchRoleInstance.name])
                 redirect researchRoleInstance
             }
             '*'{ respond researchRoleInstance, [status: OK] }
@@ -85,7 +85,7 @@ class ResearchRoleController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'ResearchRole.label', default: 'ResearchRole'), researchRoleInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'ResearchRole.label', default: 'ResearchRole'), researchRoleInstance.name])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

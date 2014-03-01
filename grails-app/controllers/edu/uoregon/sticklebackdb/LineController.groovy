@@ -74,7 +74,7 @@ class LineController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'line.label', default: 'Line'), lineInstance.id])
+        flash.message = message(code: 'default.created.message', args: [message(code: 'line.label', default: 'Line'), lineInstance.name])
         redirect(action: "show", id: lineInstance.id)
     }
 
@@ -137,7 +137,7 @@ class LineController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'line.label', default: 'Line'), lineInstance.id])
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'line.label', default: 'Line'), lineInstance.name])
         redirect(action: "show", id: lineInstance.id)
     }
 

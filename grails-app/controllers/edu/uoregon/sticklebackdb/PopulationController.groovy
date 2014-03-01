@@ -30,7 +30,7 @@ class PopulationController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'population.label', default: 'Genetics'), populationInstance.id])
+        flash.message = message(code: 'default.created.message', args: [message(code: 'population.label', default: 'Genetics'), populationInstance.identification])
         redirect(action: "show", id: populationInstance.id)
     }
 
@@ -81,7 +81,7 @@ class PopulationController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'population.label', default: 'Genetics'), populationInstance.id])
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'population.label', default: 'Genetics'), populationInstance.identification])
         redirect(action: "show", id: populationInstance.id)
     }
 

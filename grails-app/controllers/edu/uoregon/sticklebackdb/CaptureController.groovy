@@ -69,7 +69,7 @@ class CaptureController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'captureInstance.label', default: 'Capture'), captureInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'captureInstance.label', default: 'Capture'), captureInstance.display])
                 redirect captureInstance
             }
             '*' { respond captureInstance, [status: CREATED] }
@@ -96,7 +96,7 @@ class CaptureController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Capture.label', default: 'Capture'), captureInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Capture.label', default: 'Capture'), captureInstance.display])
                 redirect captureInstance
             }
             '*' { respond captureInstance, [status: OK] }
@@ -115,7 +115,7 @@ class CaptureController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Capture.label', default: 'Capture'), captureInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Capture.label', default: 'Capture'), captureInstance.display])
                 redirect action: "index", method: "GET"
             }
             '*' { render status: NO_CONTENT }

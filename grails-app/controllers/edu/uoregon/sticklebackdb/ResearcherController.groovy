@@ -77,7 +77,7 @@ class ResearcherController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'researcherInstance.label', default: 'Researcher'), researcherInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'researcherInstance.label', default: 'Researcher'), researcherInstance.name])
                 redirect researcherInstance
             }
             '*' { respond researcherInstance, [status: CREATED] }

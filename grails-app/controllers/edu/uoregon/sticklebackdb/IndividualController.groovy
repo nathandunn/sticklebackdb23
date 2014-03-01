@@ -85,7 +85,7 @@ class IndividualController {
 //        stock.save(flush: true)
 //        individualInstance.save(flush: true)
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'individual.label', default: 'Individual'), individualInstance.id])
+        flash.message = message(code: 'default.created.message', args: [message(code: 'individual.label', default: 'Individual'), individualInstance.individualIDLabel])
         redirect(action: "show", id: individualInstance.id)
     }
 
@@ -149,7 +149,7 @@ class IndividualController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'individual.label', default: 'Individual'), individualInstance.id])
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'individual.label', default: 'Individual'), individualInstance.individualIDLabel])
         redirect(action: "show", id: individualInstance.id)
     }
 
