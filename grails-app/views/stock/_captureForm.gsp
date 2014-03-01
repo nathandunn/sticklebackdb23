@@ -125,7 +125,7 @@
 %{-- Line --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
     <label for="line">
-        <g:message code="stock.line.label" default="Line"/>
+        <g:message code="stock.line.label" default="Existing Line With Capture"/>
     </label>
     %{--<g:select id="line" name="line.id" from="${lines}" optionKey="id"--}%
     <g:select id="line" name="line.id" from="${lines}" optionKey="id"

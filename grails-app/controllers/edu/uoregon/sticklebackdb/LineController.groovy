@@ -1,5 +1,6 @@
 package edu.uoregon.sticklebackdb
 
+import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
 class LineController {
@@ -21,6 +22,16 @@ class LineController {
 
     def create() {
         [lineInstance: new Line(params)]
+    }
+
+    def addLineToStock(){
+
+        def stockId = params.stockId
+        def comment = params.comment
+        def name = params.name
+        Stock stock = Stock.findById(stockId)
+        Line line = new Line(name: name , comment: comment,stock: stock).save flush: true
+        render line as JSON
     }
 
     def save() {

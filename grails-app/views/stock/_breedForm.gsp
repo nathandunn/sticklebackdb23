@@ -25,6 +25,13 @@
         $('#newPaternalIndividualComment').val("");
     }
 
+    function addAndSelectLine(data){
+        alert(data);
+//        $('#line').add
+        var select = $("#line");
+//        select.append('<option value=' + key + '>' + value + '</option>');
+    }
+
     function selectLastMaternal() {
         var selected = $('#maternalIndividual option:last').attr('selected', 'selected');
     }
@@ -63,22 +70,19 @@
         }
     }
 
-    function syncLines(data){
-        var paternalStockId = $('#paternalStock-Id').val() ;
-        var maternalStockId = $('#maternalStock-Id').val() ;
+    function syncLines(data) {
+        var paternalStockId = $('#paternalStock-Id').val();
+        var maternalStockId = $('#maternalStock-Id').val();
 
         $.ajax({
-        type: 'POST'
-        , data: 'paternalStockId=' + paternalStockId+ '&maternalStockId='+maternalStockId
-        , url: '/sticklebackdb/stock/findCommonLineForStocks'
-        , success: function (data, textStatus) {
-                if(data){
+            type: 'POST', data: 'paternalStockId=' + paternalStockId + '&maternalStockId=' + maternalStockId, url: '/sticklebackdb/stock/findCommonLineForStocks', success: function (data, textStatus) {
+                if (data) {
                     $('#line').val(data)
                 }
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-        alert('error');
-        }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('error');
+            }
         });
     }
 
@@ -111,6 +115,7 @@
               )};
         });
 
+
         $("#addPaternalIndividualButton").click(function () {
             var location = $('#newPaternalIndividualLocation').val();
             var comment = $('#newPaternalIndividualComment').val();
@@ -129,30 +134,47 @@
               )};
         });
 
+        $("#addNewLine").click(function () {
+            var name = $('#newLineName').val();
+            var comment = $('#newLineComment').val();
+            var stockId = '${stockInstance.id}' ;
+            if (name.length == 0) {
+                alert('You must provide a name');
+                return;
+            }
+            ${remoteFunction(action: 'addLineToStock'
+                      , controller: 'line'
+                      , params: '\'stockId=\' + stockId+\'&comment=\'+comment+\'&name=\'+name'
+                      , method: 'POST'
+                      , onSuccess: 'addAndSelectLine(data);'
+                      , onError: 'alert(\'error\');'
+              )};
+        });
+
         %{--var maternalStockId = ${stockInstance.maternalStock.id};--}%
         %{--jQuery.ajax({--}%
-            %{--type: 'POST'--}%
-            %{--, data: 'stockId=' + maternalStockId+ '&excludeGender=male'--}%
-            %{--, url: '/sticklebackdb/individual/findIndividualsForStock'--}%
-            %{--, success: function (data, textStatus) {--}%
-                %{--setMaternalIds(data);--}%
-            %{--},--}%
-            %{--error: function (XMLHttpRequest, textStatus, errorThrown) {--}%
-                %{--alert('error');--}%
-            %{--}--}%
+        %{--type: 'POST'--}%
+        %{--, data: 'stockId=' + maternalStockId+ '&excludeGender=male'--}%
+        %{--, url: '/sticklebackdb/individual/findIndividualsForStock'--}%
+        %{--, success: function (data, textStatus) {--}%
+        %{--setMaternalIds(data);--}%
+        %{--},--}%
+        %{--error: function (XMLHttpRequest, textStatus, errorThrown) {--}%
+        %{--alert('error');--}%
+        %{--}--}%
         %{--});--}%
 
         %{--var paternalStockId = ${stockInstance.paternalStock.id};--}%
         %{--jQuery.ajax({--}%
-            %{--type: 'POST'--}%
-            %{--, data: 'stockId=' + paternalStockId+ '&excludeGender=female'--}%
-            %{--, url: '/sticklebackdb/individual/findIndividualsForStock'--}%
-            %{--, success: function (data, textStatus) {--}%
-                %{--setPaternalIds(data);--}%
-            %{--},--}%
-            %{--error: function (XMLHttpRequest, textStatus, errorThrown) {--}%
-                %{--alert('error');--}%
-            %{--}--}%
+        %{--type: 'POST'--}%
+        %{--, data: 'stockId=' + paternalStockId+ '&excludeGender=female'--}%
+        %{--, url: '/sticklebackdb/individual/findIndividualsForStock'--}%
+        %{--, success: function (data, textStatus) {--}%
+        %{--setPaternalIds(data);--}%
+        %{--},--}%
+        %{--error: function (XMLHttpRequest, textStatus, errorThrown) {--}%
+        %{--alert('error');--}%
+        %{--}--}%
         %{--});--}%
 
     });
@@ -172,12 +194,26 @@
 %{-- Line --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
     <label for="line">
-        <g:message code="stock.line.label" default="Line"/>
+        <g:message code="stock.line.label" default="Existing Line"/>
     </label>
     <g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.listOrderByName()}" optionKey="id"
               value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Line -']"
               optionValue="name"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
+    <label for="line">
+        <g:message code="stock.line.label" default="Add New Line"/>
+    </label>
+    <input id="addNewLine" type="button" value="Add"/>
+    Name: <g:textField id="newLineName" name="newLineName"/>
+    Comment: <g:textField id="newLineComment" name="newLineComment"/>
+
+    %{--<g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.listOrderByName()}" optionKey="id"--}%
+    %{--value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"--}%
+    %{--class="many-to-one" noSelection="['null': '- Choose Line -']"--}%
+    %{--optionValue="name"/>--}%
 </div>
 
 %{-- Fertilization Date --}%
@@ -231,7 +267,8 @@
     <script>
     </script>
     %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
-    <g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance.maternalStock ? stockInstance.maternalStock.individuals: []}"
+    <g:select id="maternalIndividual" name="maternalIndividual.id"
+              from="${stockInstance.maternalStock ? stockInstance.maternalStock.individuals : []}"
               value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Individual -']"
               optionValue="individualIDLabel" optionKey="id"/>
@@ -280,7 +317,8 @@
     </label>
     %{--<g:select id="paternalIndividual" name="paternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
     %{--<g:select id="paternalIndividual" name="paternalIndividual.id" from="${[]}"--}%
-    <g:select id="paternalIndividual" name="paternalIndividual.id" from="${stockInstance.paternalStock ? stockInstance.paternalStock.individuals: []}"
+    <g:select id="paternalIndividual" name="paternalIndividual.id"
+              from="${stockInstance.paternalStock ? stockInstance.paternalStock.individuals : []}"
               optionKey="id"
               value="${stockInstance?.paternalIndividual?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Individual -']"

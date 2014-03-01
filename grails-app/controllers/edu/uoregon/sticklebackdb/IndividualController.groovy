@@ -174,7 +174,6 @@ class IndividualController {
 
     def addIndividualToStock(Long stockId,String location,String comment,String fishSex) {
         Stock stock = Stock.findById(stockId)
-        println "going to add to stock ${stock.stockIDLabel}"
         Integer individualID = stockService.getNextIndividualID(stock)
         Individual individual = new Individual(
                 fishLocation: location
