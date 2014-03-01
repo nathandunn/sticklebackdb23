@@ -166,14 +166,14 @@ class StubData {
         Line.all.each { it ->
             Population population = new Population(
                     identification: it.name
-                    ,comment: "Imported from line with comment ${it.comment}"
+                    , comment: "Imported from line with comment ${it.comment}"
             ).save flush: true, insert: true, failOnError: true
 
             Capture capture = new Capture(
                     population: population
-                    ,comment: "created on import from line"
-                    ,line: it
-            ).save flush: true,insert:true, failOnError: true
+                    , comment: "created on import from line"
+                    , line: it
+            ).save flush: true, insert: true, failOnError: true
         }
     }
 
@@ -443,22 +443,47 @@ class StubData {
                         }
 
                         // Get the maternal individual
-                        if (stock.maternalIndividualID != null) {
+                        try {
+                            if (stock.maternalIndividualID != null) {
 //                            Integer maternalStockID = stock.maternalIndividualID.split("\\.")[0] as Integer
-                            Integer maternalIndividualID = stock.maternalIndividualID.split("\\.")[1] as Integer
 
-                            if (Individual.findByIndividualIDAndStock(maternalIndividualID, stock.maternalStock) != null) {
-                                stock.maternalIndividual = Individual.findByIndividualIDAndStock(maternalIndividualID, stock.maternalStock)
+                                Integer maternalIndividualID
+                                if (stock.maternalIndividualID.indexOf('.') > 0) {
+                                    maternalIndividualID = stock.maternalIndividualID.split("\\.")[1] as Integer
+                                } else {
+                                    maternalIndividualID = stock.maternalIndividualID as Integer
+                                }
+
+//                                Integer maternalIndividualID = stock.maternalIndividualID.split("\\.")[1] as Integer
+//
+                                if (Individual.findByIndividualIDAndStock(maternalIndividualID, stock.maternalStock) != null) {
+                                    stock.maternalIndividual = Individual.findByIndividualIDAndStock(maternalIndividualID, stock.maternalStock)
+                                }
                             }
+                        }
+                        catch (Exception me) {
+                            println "failed to process maternal individual ${stock.maternalIndividualID} for stock ${stock.stockIDLabel} for: ${me.fillInStackTrace()}"
                         }
 
                         // Get the paternal individual
-                        if (stock.paternalIndividualID != null) {
-                            Integer paternalIndividualID = stock.paternalIndividualID.split("\\.")[1] as Integer
-                            if (Individual.findByIndividualIDAndStock(paternalIndividualID, stock.paternalStock) != null) {
-                                stock.paternalIndividual = Individual.findByIndividualIDAndStock(paternalIndividualID, stock.paternalStock)
+                        try {
+                            if (stock.paternalIndividualID != null) {
+                                Integer paternalIndividualID
+                                if (stock.paternalIndividualID.indexOf('.') > 0) {
+                                    paternalIndividualID = stock.paternalIndividualID.split("\\.")[1] as Integer
+                                } else {
+                                    paternalIndividualID = stock.paternalIndividualID as Integer
+                                }
+
+                                if (Individual.findByIndividualIDAndStock(paternalIndividualID, stock.paternalStock) != null) {
+                                    stock.paternalIndividual = Individual.findByIndividualIDAndStock(paternalIndividualID, stock.paternalStock)
+                                }
                             }
                         }
+                        catch (Exception oe) {
+                            println "failed to process paternal individual ${stock.paternalIndividualID} for stock ${stock.stockIDLabel} for ${oe.fillInStackTrace()}"
+                        }
+
                         stock.save(flush: true, insert: false)
                     }
                 }
