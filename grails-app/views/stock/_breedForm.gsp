@@ -26,10 +26,9 @@
     }
 
     function addAndSelectLine(data){
-        alert(data);
-//        $('#line').add
         var select = $("#line");
-//        select.append('<option value=' + key + '>' + value + '</option>');
+        select.append('<option value=' + data.id+ '>' + data.name+ '</option>');
+        select.val(data.id)
     }
 
     function selectLastMaternal() {
