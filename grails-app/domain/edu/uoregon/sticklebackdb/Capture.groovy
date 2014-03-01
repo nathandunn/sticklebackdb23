@@ -5,7 +5,8 @@ class Capture {
     static constraints = {
         line nullable: false
         population nullable: false
-        captureDate nullable: false
+        // this is a "for-now"
+        captureDate nullable: true
     }
 
     static mapping = {

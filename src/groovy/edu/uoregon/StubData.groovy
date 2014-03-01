@@ -168,6 +168,12 @@ class StubData {
                     identification: it.name
                     ,comment: "Imported from line with comment ${it.comment}"
             ).save flush: true, insert: true, failOnError: true
+
+            Capture capture = new Capture(
+                    population: population
+                    ,comment: "created on import from line"
+                    ,line: it
+            ).save flush: true,insert:true, failOnError: true
         }
     }
 

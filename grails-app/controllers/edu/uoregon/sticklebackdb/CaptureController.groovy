@@ -61,10 +61,10 @@ class CaptureController {
 //        line.save flush: true
         captureInstance.save flush: true
 
-        Stock stock = new Stock(
-                capture: captureInstance
-                , stockID: stockService.getNextStockID()
-        ).save flush: false
+//        Stock stock = new Stock(
+//                capture: captureInstance
+//                , stockID: stockService.getNextStockID()
+//        ).save flush: false
 
 
         request.withFormat {
