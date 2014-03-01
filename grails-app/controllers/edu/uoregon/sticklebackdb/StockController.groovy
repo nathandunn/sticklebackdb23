@@ -125,15 +125,15 @@ class StockController {
 
         if(stockInstance.line == null ){
             flash.message = "Must associate a line with a stock"
-            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            render(view: "createFromBreeding", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
 
-        if(!stockInstance.fertilizationDate){
-            flash.message = "Must have a fertilization date or a line with a capture"
-            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
-            return
-        }
+//        if(!stockInstance.fertilizationDate){
+//            flash.message = "Must have a fertilization date or a line with a capture"
+//            render(view: "createFromBreeding", model: [stockInstance: stockInstance, stockNames: stockNames])
+//            return
+//        }
 
         if (false == researcherService.isAdmin()) {
             Stock previousStock = Stock.findByStockName(stockInstance.stockName)

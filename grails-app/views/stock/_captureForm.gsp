@@ -17,74 +17,23 @@
 
 <script>
 
+    function clearInputs(){
+        $('#newLineName').val('');
+        $('#newLineComment').val('');
+        $('#population').val('');
+        $('#newLineDate_day').val('');
+        $('#newLineDate_month').val('');
+        $('#newLineDate_year').val('');
+    }
+
     function addAndSelectLine(data){
+        clearInputs();
+        alert('Added new line: '+data.name);
         var select = $("#line");
         select.append('<option value=' + data.id+ '>' + data.name+ '</option>');
         select.val(data.id)
     }
 
-    $("#addNewLine").click(function () {
-        var name = $('#newLineName').val();
-        var comment = $('#newLineComment').val();
-        var stockId = '${stockInstance.id}' ;
-        if (name.length == 0) {
-            alert('You must provide a name');
-            return;
-        }
-        ${remoteFunction(action: 'addLineToStockWithCapture'
-                      , controller: 'line'
-                      , params: '\'stockId=\' + stockId+\'&comment=\'+comment+\'&name=\'+name'
-                      , method: 'POST'
-                      , onSuccess: 'addAndSelectLine(data);'
-                      , onError: 'alert(\'error\');'
-              )};
-    });
-
-    //    function clearInputs(){
-    //        $('#newMaternalIndividualLocation').val("")
-    //        $('#newMaternalIndividualComment').val("");
-    //
-    //        $('#newPaternalIndividualLocation').val("");
-    //        $('#newPaternalIndividualComment').val("");
-    //    }
-    //
-    //    function selectLastMaternal(){
-    //        var selected = $('#maternalIndividual option:last').attr('selected','selected');
-    //    }
-    //
-    //    function selectLastPaternal(){
-    //        var selected = $('#paternalIndividual option:last').attr('selected','selected');
-    //    }
-    //
-    //    function setPaternalIds(data) {
-    //        var select = $("#paternalIndividual");
-    //        select.empty();
-    //
-    //        var count = 0
-    //        for (var key in data) {
-    //            var value = data[key];
-    //            select.append('<option value=' + key + '>' + value + '</option>');
-    //            count += 1 ;
-    //        }
-    //        if(count==0){
-    //            select.append('<option value="">None</option>');
-    //        }
-    //    }
-    //
-    //    function setMaternalIds(data) {
-    //        var select = $("#maternalIndividual");
-    //        select.empty();
-    //
-    //        var count = 0
-    //        for (var key in data) {
-    //            var value = data[key];
-    //            select.append('<option value=' + key + '>' + value + '</option>');
-    //            count += 1 ;
-    //        }
-    //        if(count==0){
-    //            select.append('<option value="">None</option>');
-    //        }
-    //    }
 
 
     $(document).ready(function () {
@@ -98,41 +47,25 @@
             source: availableTags
         });
 
-        %{--$("#addMaternalIndividualButton").click(function(){--}%
-        %{--var location = $('#newMaternalIndividualLocation').val();--}%
-        %{--var comment = $('#newMaternalIndividualComment').val();--}%
-        %{--if(location.length==0){--}%
-        %{--alert('You must provide a location');--}%
-        %{--return ;--}%
-        %{--}--}%
-        %{--var stock = $('#maternalStock-Id').val();--}%
-
-        %{--${remoteFunction(action: 'addIndividualToStock'--}%
-        %{--, controller: 'individual'--}%
-        %{--, params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&location=\'+location+\'&fishSex=female\''--}%
-        %{--, method: 'POST'--}%
-        %{--, onSuccess: 'setMaternalIds(data);clearInputs();selectLastMaternal();'--}%
-        %{--, onError: 'alert(\'error\');'--}%
-        %{--)};--}%
-        %{--});--}%
-
-        %{--$("#addPaternalIndividualButton").click(function(){--}%
-        %{--var location = $('#newPaternalIndividualLocation').val();--}%
-        %{--var comment = $('#newPaternalIndividualComment').val();--}%
-        %{--if(location.length==0){--}%
-        %{--alert('You must provide a location');--}%
-        %{--return ;--}%
-        %{--}--}%
-        %{--var stock = $('#paternalStock-Id').val();--}%
-
-        %{--${remoteFunction(action: 'addIndividualToStock'--}%
-        %{--, controller: 'individual'--}%
-        %{--, params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&location=\'+location+\'&fishSex=male\''--}%
-        %{--, method: 'POST'--}%
-        %{--, onSuccess: 'setPaternalIds(data);clearInputs();selectLastPaternal();'--}%
-        %{--, onError: 'alert(\'error\');'--}%
-        %{--)};--}%
-        %{--});--}%
+        $("#addNewLine").click(function () {
+            var name = $('#newLineName').val();
+            var captureComment = $('#newLineComment').val();
+            var populationId = $('#population').val();
+            var captureDay = $('#newLineDate_day').val();
+            var captureMonth = $('#newLineDate_month').val();
+            var captureYear= $('#newLineDate_year').val();
+            if (name.length == 0) {
+                alert('You must provide a name');
+                return;
+            }
+            ${remoteFunction(action: 'addLineToStockWithCapture'
+                      , controller: 'line'
+                      , params: '\'populationId=\' + populationId+\'&captureComment=\'+captureComment+\'&name=\'+name+\'&captureDay=\'+captureDay+\'&captureMonth=\'+captureMonth+\'&captureYear=\'+captureYear'
+                      , method: 'POST'
+                      , onSuccess: 'addAndSelectLine(data);'
+                      , onError: 'alert(\'error\');'
+              )};
+        });
     });
 </script>
 
@@ -144,6 +77,9 @@
     <g:textField id="stockName" class="ui-autocomplete-input" name="stockName" value="${stockInstance?.stockName}"
                  autocomplete="off" size="60"/>
 </div>
+
+<br/>
+<hr/>
 
 %{-- Line --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
@@ -176,7 +112,7 @@
     <label for="line">
         <g:message code="stock.line.label" default="Capture Date"/>
     </label>
-    <g:datePicker id="newLineDate" name="newLineDate" precision="day"/>
+    <g:datePicker id="newLineDate" name="newLineDate" precision="day" relativeYears="[0..-20]"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">

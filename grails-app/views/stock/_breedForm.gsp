@@ -25,7 +25,18 @@
         $('#newPaternalIndividualComment').val("");
     }
 
+    function clearNewLineInputs() {
+        $('#newLineName').val("");
+        $('#newLineComment').val("");
+        $('#fertilizationDate_day').val("");
+        $('#fertilizationDate_month').val("");
+        $('#fertilizationDate_year').val("");
+    }
+
     function addAndSelectLine(data){
+        clearNewLineInputs();
+        alert('Added new line: '+data.name);
+
         var select = $("#line");
         select.append('<option value=' + data.id+ '>' + data.name+ '</option>');
         select.val(data.id)
@@ -190,16 +201,22 @@
                  autocomplete="off" size="60"/>
 </div>
 
+<br/>
+<hr/>
+
 %{-- Line --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
     <label for="line">
-        <g:message code="stock.line.label" default="Existing Line"/>
+        <g:message code="stock.line.label" default="Select Existing Line"/>
     </label>
     <g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.listOrderByName()}" optionKey="id"
               value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Line -']"
               optionValue="name"/>
 </div>
+
+<br/>
+<hr/>
 
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
     <label for="line">
@@ -234,6 +251,9 @@
 %{--class="many-to-one" noSelection="['null': '- None -']"--}%
 %{--optionValue="display" />--}%
 %{--</div>--}%
+
+<br/>
+<hr/>
 
 %{-- Maternal Stock ID --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalStockID', 'error')} ">
@@ -338,6 +358,9 @@
     %{--class="many-to-one" noSelection="['null': '- Choose Individual -']"--}%
     %{--optionValue="individualIDLabel" optionKey="id"/>--}%
 </div>
+
+<br/>
+<hr/>
 
 %{-- Comments --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'comments', 'error')} ">

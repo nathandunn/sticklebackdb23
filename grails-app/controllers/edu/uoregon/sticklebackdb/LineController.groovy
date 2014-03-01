@@ -36,29 +36,31 @@ class LineController {
 
     def addLineToStockWithCapture(){
 
-        def stockId = params.stockId
-        def comment = params.comment
+        println "params: ${params}"
+
+//        def stockId = params.stockId
+//        def comment = params.comment
         def name = params.name
         def populationId = params.populationId
-        def captureName = params.captureName
+//        def captureName = params.captureName
         def captureYear = params.captureYear
         def captureMonth = params.captureMonth
         def captureDay = params.captureDay
         def captureComment = params.captureComment
 
-        Stock stock = Stock.findById(stockId)
+//        Stock stock = Stock.findById(stockId)
         Population population = Population.findById(populationId)
 
 
 
-        Line line = new Line(name: name , comment: comment,stock: stock).save
+        Line line = new Line(name: name ).save()
 
         Capture capture = new Capture(
                 population: population
-                ,captureDate: new Date()
+                ,captureDate: Date.parse("yyyy/mm/dd",captureYear+"/"+captureMonth+"/"+captureDay)
                 ,line: line
                 ,comment: captureComment
-        ).save
+        ).save flush: true
         line.addToCaptures(capture)
         line.save flush: true
 
