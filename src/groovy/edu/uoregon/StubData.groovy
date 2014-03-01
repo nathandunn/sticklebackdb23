@@ -1,8 +1,10 @@
 package edu.uoregon
+
 import au.com.bytecode.opencsv.CSVReader
 import edu.uoregon.sticklebackdb.*
 import org.apache.log4j.Logger
 import org.apache.shiro.crypto.hash.Sha256Hash
+
 /**
  */
 //@CompileStatic
@@ -43,7 +45,7 @@ class StubData {
 //
         def adminRole = new ResearchRole(name: ResearcherService.ROLE_ADMINISTRATOR)
         adminRole.addToPermissions("*:*")
-        adminRole.save(failOnError: true,insert:true,flush:true)
+        adminRole.save(failOnError: true, insert: true, flush: true)
         println "saved admin role ${ResearchRole.count}"
 
         def userRole = new ResearchRole(name: ResearcherService.ROLE_USER)
@@ -65,7 +67,7 @@ class StubData {
 //        userRole.addToPermissions("researcher:update")
 //        userRole.addToPermissions("strain:addFilter")
 //        userRole.addToPermissions("strain:showFilter")
-        userRole.save(failOnError: true,insert:true,flush:true)
+        userRole.save(failOnError: true, insert: true, flush: true)
         println "saved user role ${ResearchRole.count}"
 
 //        "William A. Cresko <wcresko@uoregon.edu>\n" +
@@ -104,7 +106,7 @@ class StubData {
 //
     }
 
-    String generatePassword(){
+    String generatePassword() {
 //        return RandomStringUtils.random(10)
         return "testpass123"
     }
@@ -112,7 +114,7 @@ class StubData {
     def addUserResearcher(String name, String email) {
         ResearchRole userRole = ResearchRole.findByName(ResearcherService.ROLE_USER)
 
-        addResearcher(name,email,userRole)
+        addResearcher(name, email, userRole)
 
         println "Added user researcher ${name}"
 
@@ -123,7 +125,7 @@ class StubData {
     def addAdminResearcher(String name, String email) {
         ResearchRole adminRole = ResearchRole.findByName(ResearcherService.ROLE_ADMINISTRATOR)
 
-        addResearcher(name,email,adminRole)
+        addResearcher(name, email, adminRole)
 
         println "Added admin researcher ${name}"
 
@@ -136,7 +138,7 @@ class StubData {
                 name: name
                 , username: email
                 , passwordHash: new Sha256Hash(generatePassword()).toHex()
-        ).save(insert:true,flush:true)
+        ).save(insert: true, flush: true)
 
         researcher.addToRoles(role)
 
@@ -159,6 +161,13 @@ class StubData {
             line.species = tokens[6]  // lineSpecies
 
             line.save(flush: true, insert: true, failOnError: true)
+        }
+
+        Line.all.each { it ->
+            Population population = new Population(
+                    identification: it.name
+                    ,comment: "Imported from line with comment ${it.comment}"
+            ).save flush: true, insert: true, failOnError: true
         }
     }
 
@@ -232,7 +241,7 @@ class StubData {
                         }
 
                         stock.save(flush: true, insert: true, failOnError: true)
-                        if(stock.stockID==108){
+                        if (stock.stockID == 108) {
                             println "saved stock ${stock.stockID} label[${stock.stockIDLabel}] maternal ind id:[${stock.maternalIndividualID}] maternal ind:[${stock.maternalIndividual}]"
                         }
                     }
@@ -422,7 +431,7 @@ class StubData {
 
                         // Get the paternal stock from the maternal stock ID
                         if (stock.paternalStockID != null) {
-                            if (Stock.findByStockID(stock.paternalStockID) != null){
+                            if (Stock.findByStockID(stock.paternalStockID) != null) {
                                 stock.paternalStock = Stock.findByStockID(stock.paternalStockID)
                             }
                         }
@@ -432,16 +441,16 @@ class StubData {
 //                            Integer maternalStockID = stock.maternalIndividualID.split("\\.")[0] as Integer
                             Integer maternalIndividualID = stock.maternalIndividualID.split("\\.")[1] as Integer
 
-                            if (Individual.findByIndividualIDAndStock(maternalIndividualID,stock.maternalStock) != null){
-                                stock.maternalIndividual = Individual.findByIndividualIDAndStock(maternalIndividualID,stock.maternalStock)
+                            if (Individual.findByIndividualIDAndStock(maternalIndividualID, stock.maternalStock) != null) {
+                                stock.maternalIndividual = Individual.findByIndividualIDAndStock(maternalIndividualID, stock.maternalStock)
                             }
                         }
 
                         // Get the paternal individual
                         if (stock.paternalIndividualID != null) {
                             Integer paternalIndividualID = stock.paternalIndividualID.split("\\.")[1] as Integer
-                            if (Individual.findByIndividualIDAndStock(paternalIndividualID,stock.paternalStock) != null){
-                                stock.paternalIndividual = Individual.findByIndividualIDAndStock(paternalIndividualID,stock.paternalStock)
+                            if (Individual.findByIndividualIDAndStock(paternalIndividualID, stock.paternalStock) != null) {
+                                stock.paternalIndividual = Individual.findByIndividualIDAndStock(paternalIndividualID, stock.paternalStock)
                             }
                         }
                         stock.save(flush: true, insert: false)
