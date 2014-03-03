@@ -163,13 +163,14 @@ class IndividualController {
             return
         }
 
+        def label = individualInstance.individualIDLabel
         try {
             individualInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'individual.label', default: 'Individual'), id])
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'individual.label', default: 'Individual'), label])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'individual.label', default: 'Individual'), id])
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'individual.label', default: 'Individual'), label])
             redirect(action: "show", id: id)
         }
     }

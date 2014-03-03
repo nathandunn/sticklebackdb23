@@ -309,13 +309,14 @@ class StockController {
             return
         }
 
+        def label = stockInstance.stockIDLabel
         try {
             stockInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'stock.label', default: 'Stock'), id])
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'stock.label', default: 'Stock'), label])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'stock.label', default: 'Stock'), id])
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'stock.label', default: 'Stock'), label])
             redirect(action: "show", id: id)
         }
     }

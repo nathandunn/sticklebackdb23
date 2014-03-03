@@ -93,13 +93,14 @@ class PopulationController {
             return
         }
 
+        def label = populationInstance.identification
         try {
             populationInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'population.label', default: 'Genetics'), id])
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'population.label', default: 'Genetics'), label])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'population.label', default: 'Genetics'), id])
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'population.label', default: 'Genetics'), label])
             redirect(action: "show", id: id)
         }
     }

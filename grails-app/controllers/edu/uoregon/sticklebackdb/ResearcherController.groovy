@@ -158,11 +158,12 @@ class ResearcherController {
             return
         }
 
+        def label  = researcherInstance.name
         researcherInstance.delete flush:true
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Researcher.label', default: 'Researcher'), researcherInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Researcher.label', default: 'Researcher'), label])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
