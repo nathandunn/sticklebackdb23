@@ -52,7 +52,7 @@
 
         <li class="fieldcontain">
             <span id="capture-label" class="property-label"><g:message code="line.capture.label"
-                                                                       default="Capture"/></span>
+                                                                       default="Captures"/></span>
             <g:if test="${lineInstance?.captures}">
                 <span class="property-value" aria-labelledby="capture-label">
                     <ul class="nobullet">
