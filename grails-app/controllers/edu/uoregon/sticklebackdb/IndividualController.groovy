@@ -61,6 +61,7 @@ class IndividualController {
     }
 
     def save() {
+        params.fishSex = params.fishSexString
         def individualInstance = new Individual(params)
 
 //        Stock stock = params.stock
@@ -72,6 +73,7 @@ class IndividualController {
         Double individualID = stockService.getNextIndividualID(stock)
         println "individualID ${individualID}"
         individualInstance.individualID = individualID
+
 
 
         if (!individualInstance.save(flush: true)) {
@@ -141,8 +143,8 @@ class IndividualController {
 
         individualInstance.properties = params
 
-        println "fishSex: ${params.fishSex}"
-        println "fishSexString: ${params.fishSexString}"
+//        println "fishSex: ${params.fishSex}"
+//        println "fishSexString: ${params.fishSexString}"
 
         if (!individualInstance.save(flush: true)) {
             render(view: "edit", model: [individualInstance: individualInstance])

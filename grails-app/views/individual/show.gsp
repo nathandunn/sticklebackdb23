@@ -53,7 +53,7 @@
       <li class="fieldcontain">
         <span id="stockName-label" class="property-label"><g:message code="individual.stockID.label" default="Stock Name" /></span>
       <g:if test="${individualInstance?.stock}">
-        <span class="property-value" aria-labelledby="stockName-label"><g:link controller="stock" action="show" id="${Stock.findByStockID(individualInstance?.stockID)?.id}">${Stock.findByStockID(individualInstance?.stockID)?.stockName}</g:link></span>
+        <span class="property-value" aria-labelledby="stockName-label"><g:link controller="stock" action="show" id="${individualInstance.stock?.id}">${individualInstance.stock.stockName}</g:link></span>
       </g:if>
       <g:else>
         <span class="property-value" aria-labelledby="stockName-label"> ---- </span>
@@ -63,8 +63,8 @@
 %{-- Stock Line (with link)--}%
       <li class="fieldcontain">
         <span id="line-label" class="property-label"><g:message code="stock.line.label" default="Stock Line" /></span>
-      <g:if test="${individualInstance?.stock}">
-        <span class="property-value" aria-labelledby="line-label"><g:link controller="line" action="show" id="${Stock.findByStockID(individualInstance?.stockID)?.line?.id}">${Stock.findByStockID(individualInstance?.stockID)?.line?.name}</g:link></span>
+      <g:if test="${individualInstance?.stock?.line}">
+        <span class="property-value" aria-labelledby="line-label"><g:link controller="line" action="show" id="${individualInstance.stock.line.id}">${individualInstance.stock.line.name}</g:link></span>
       </g:if>
       <g:else>
         <span class="property-value" aria-labelledby="stockLine-label"> ---- </span>
