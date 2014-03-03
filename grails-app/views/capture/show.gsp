@@ -54,7 +54,7 @@
                 <span id="captureDate-label" class="property-label"><g:message code="capture.captureDate.label"
                                                                                default="Capture Date"/></span>
 
-                <span class="property-value" aria-labelledby="captureDate-label"><g:formatDate
+                <span class="property-value" aria-labelledby="captureDate-label"><g:formatDate type="date"
                         date="${captureInstance?.captureDate}"/></span>
 
             </li>

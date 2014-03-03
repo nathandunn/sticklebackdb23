@@ -159,6 +159,9 @@ class StubData {
             line.name = tokens[4]   // lineName
             line.comment = tokens[3]  // lineComments
             line.species = tokens[6]  // lineSpecies
+            if (!line.species) {
+                line.species = line.sticklebackSpecies
+            }
 
             line.save(flush: true, insert: true, failOnError: true)
         }
@@ -510,7 +513,7 @@ class StubData {
                     population.identification = tokens[1]   // identification
                     population.comment = tokens[5]  // researcherCommentsGenetics
 //                    population.source = tokens[7]  // source
-                    population.species = tokens[8]  // species
+//                    population.species = tokens[8]  // species
                 } catch (e) {
                     println "error parsing identifier " + e
                 }
