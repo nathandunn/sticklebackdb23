@@ -350,7 +350,7 @@ class StockController {
         render ''
     }
 
-    List<Stock> getAllParentStocks(Stock stock,List<Stock> parentStocks ){
+    private List<Stock> getAllParentStocks(Stock stock,List<Stock> parentStocks ){
 
         if(!stock.paternalStock && !stock.maternalStock){
             return parentStocks
@@ -371,7 +371,7 @@ class StockController {
         return parentStocks
     }
 
-    List<Stock> getAllChildStocks(Stock stock,List<Stock> childStocks ){
+    private List<Stock> getAllChildStocks(Stock stock,List<Stock> childStocks ){
 
 //        return childStocks
 
