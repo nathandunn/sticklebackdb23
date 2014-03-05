@@ -353,6 +353,7 @@ class StockController {
     def bracket(){
 
 
+
     }
 
     private def getParentArray(Stock stock ){
@@ -367,14 +368,13 @@ class StockController {
         if(paternalStock && maternalStock){
             def paternalObject = new JSONObject()
             paternalObject.put("name",paternalStock.stockIDLabel)
+            paternalObject.put("winners",getParentArray(paternalStock))
             def maternalObject = new JSONObject()
             maternalObject.put("name",maternalStock.stockIDLabel)
+            maternalObject.put("winners",getParentArray(maternalStock))
 
             winnerArray.add(paternalObject)
             winnerArray.add(maternalObject)
-
-            // TODO: recurese here!
-
         }
 
         return winnerArray
@@ -390,150 +390,36 @@ class StockController {
         for(brood in broods){
             def broodObject = new JSONObject()
             broodObject.put("name",brood.stockIDLabel)
+            broodObject.put("challengers",getChildArray(brood))
+
+
             winnerArray.add(broodObject)
         }
 
         for(mare in mares){
             def mareObject = new JSONObject()
             mareObject.put("name",mare.stockIDLabel)
+            mareObject.put("challengers",getChildArray(mare))
             winnerArray.add(mareObject)
         }
 
         return winnerArray
     }
 
-    def lineage2(){
-
-        println "params: ${params.stockID}"
+    def lineage(){
 
         def stockID = params.stockID ?: 108
-
         Stock stock = Stock.findByStockID(stockID)
-        println stock
-
-        // winners are parents
-
-
-//        def jsonBuilder = new JSONBuilder()
-//
-//        Closure jsonFormat = {
-//            object = {
-//                name : "${stock.stockIDLabel}"
-//            }
-//        }
 
 
         // root object!
         def jsonObject = new JSONObject()
         jsonObject.put("name",stock.stockIDLabel)
-
         jsonObject.put("winners",getParentArray(stock))
-
         jsonObject.put("challengers",getChildArray(stock))
 
-
-
-
-//        def root = jsonBuilder.build {
-//           name  "${stock.stockIDLabel}"
-//        }
-//        root.build(
-//
-//        )
-
-
         render jsonObject as JSON
-
-
-//        String text = new File("./web-app/bracket.json").text
-////        println "text: ${text}"
-////        render JSON.parse(text)
-////        render text as JSON
-//        render JSON.parse(text) as JSON
-//        println "file: ${file.absolutePath}"
-//
-//        return "{\n" +
-//                "    \"name\": \"Overall Winner\",\n" +
-//                "    \"winners\": [\n" +
-//                "        {\n" +
-//                "            \"name\": \"Winner Left 1\",\n" +
-//                "            \"winners\": [\n" +
-//                "                {\"name\": \"Winner Left 3\"},\n" +
-//                "                {\"name\": \"Winner Left 4\"}\n" +
-//                "            ]\n" +
-//                "        },\n" +
-//                "        {\"name\": \"Winner Left 2\"}\n" +
-//                "    ],\n" +
-//                "    \"challengers\": [\n" +
-//                "        {\n" +
-//                "            \"name\": \"Challenger Right 1\",\n" +
-//                "            \"challengers\": [\n" +
-//                "                {\"name\": \"Challenger Right 3\"},\n" +
-//                "                {\"name\": \"Challenger Right 4\"}\n" +
-//                "            ]\n" +
-//                "        },\n" +
-//                "        {\n" +
-//                "            \"name\": \"Challenger Right 2\",\n" +
-//                "            \"challengers\": [\n" +
-//                "                {\"name\": \"Challenger Right 5\"},\n" +
-//                "                {\"name\": \"Challenger Right 6\"}\n" +
-//                "            ]\n" +
-//                "        }\n" +
-//                "    ]\n" +
-//                "}"
     }
 
 
-    def lineage(){
-
-        String text = new File("./web-app/bracket.json").text
-        println "text: ${text}"
-//        render JSON.parse(text)
-//        render text as JSON
-        render JSON.parse(text) as JSON
-//        println "file: ${file.absolutePath}"
-//
-//        return "{\n" +
-//                "    \"name\": \"Overall Winner\",\n" +
-//                "    \"winners\": [\n" +
-//                "        {\n" +
-//                "            \"name\": \"Winner Left 1\",\n" +
-//                "            \"winners\": [\n" +
-//                "                {\"name\": \"Winner Left 3\"},\n" +
-//                "                {\"name\": \"Winner Left 4\"}\n" +
-//                "            ]\n" +
-//                "        },\n" +
-//                "        {\"name\": \"Winner Left 2\"}\n" +
-//                "    ],\n" +
-//                "    \"challengers\": [\n" +
-//                "        {\n" +
-//                "            \"name\": \"Challenger Right 1\",\n" +
-//                "            \"challengers\": [\n" +
-//                "                {\"name\": \"Challenger Right 3\"},\n" +
-//                "                {\"name\": \"Challenger Right 4\"}\n" +
-//                "            ]\n" +
-//                "        },\n" +
-//                "        {\n" +
-//                "            \"name\": \"Challenger Right 2\",\n" +
-//                "            \"challengers\": [\n" +
-//                "                {\"name\": \"Challenger Right 5\"},\n" +
-//                "                {\"name\": \"Challenger Right 6\"}\n" +
-//                "            ]\n" +
-//                "        }\n" +
-//                "    ]\n" +
-//                "}"
-    }
-
-//    String getNextStockID(){
-//        List stocks = Stock.listOrderByStockID()
-//        double max = 0
-//        stocks.each(){
-//            double tmp = it.stockID.toDouble()
-//
-//           if(tmp > max)
-//            max = tmp
-//        }
-//        def nextID = max + 1.0
-//        return String.format("%.4f", nextID)
-//    }
 }
