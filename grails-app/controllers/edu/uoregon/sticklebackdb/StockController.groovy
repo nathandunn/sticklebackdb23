@@ -350,9 +350,80 @@ class StockController {
         render ''
     }
 
+    List<Stock> getAllParentStocks(Stock stock,List<Stock> parentStocks ){
+
+        if(!stock.paternalStock && !stock.maternalStock){
+            return parentStocks
+        }
+
+        if(stock.paternalStock){
+            parentStocks.add(stock.paternalStock)
+            parentStocks.addAll(getAllParentStocks(stock.paternalStock,parentStocks))
+        }
+
+        if(stock.maternalStock){
+            parentStocks.add(stock.maternalStock)
+            parentStocks.addAll(getAllParentStocks(stock.maternalStock,parentStocks))
+        }
+
+        parentStocks.unique()
+
+        return parentStocks
+    }
+
+    List<Stock> getAllChildStocks(Stock stock,List<Stock> childStocks ){
+
+//        return childStocks
+
+        println "child stocks: ${stock.stockIDLabel}"
+        List<Stock> broodStocks = Stock.findAllByPaternalStock(stock)
+        println "broods: ${broodStocks.size()}"
+        List<Stock> mareStocks = Stock.findAllByMaternalStock(stock)
+        println "mare: ${broodStocks.size()}"
+
+        if(!broodStocks && !mareStocks) {
+            childStocks.unique(true)
+            return childStocks
+        }
+
+        println "evaluating: ${childStocks.size()}"
+        for(brood in broodStocks){
+            childStocks.add(brood)
+            childStocks.addAll(getAllChildStocks(brood,childStocks))
+        }
+        println "post-brood: ${childStocks.size()}"
+
+        for(mare in mareStocks){
+            childStocks.add(mare)
+            childStocks.addAll(getAllChildStocks(mare,childStocks))
+        }
+        println "post-mare: ${childStocks.size()}"
+
+        childStocks.unique(true)
+
+        println "post-unique: ${childStocks.size()}"
+
+        return childStocks
+    }
+
     def bracket(){
 
+        def stockID = params.stockID ?: 108
+        Stock stock = Stock.findByStockID(stockID)
 
+        List<Stock> childStocks = getAllChildStocks(stock, new ArrayList<Stock>())
+        childStocks.sort(true,new Comparator<Stock>() {
+            @Override
+            int compare(Stock o1, Stock o2) {
+                return o1.stockID-o2.stockID
+            }
+        })
+        List<Stock> parentStocks = getAllParentStocks(stock, new ArrayList<Stock>())
+        parentStocks.sort(true){ a,b ->
+            a.stockID - b.stockID
+        }
+
+        [childStocks:childStocks,parentStocks:parentStocks]
 
     }
 

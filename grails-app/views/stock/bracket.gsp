@@ -28,6 +28,31 @@
 </head>
 
 <body>
+
+<h3>Parents</h3>
+<g:if test="${parentStocks}">
+    <g:each in="${parentStocks}" var="stock">
+        <g:link action="show" id="${stock.id}">${stock.stockIDLabel}</g:link>
+        <g:link action="bracket" params="[stockID: stock.stockID]">bracket</g:link>
+    </g:each>
+</g:if>
+<g:else>
+    None
+</g:else>
+<br/>
+
+<h3>Children</h3>
+<g:if test="${childStocks}">
+    <g:each in="${childStocks}" var="stock">
+        <g:link action="show" id="${stock.id}">${stock.stockIDLabel}</g:link>
+        <g:link action="bracket" params="[stockID: stock.stockID]">bracket</g:link>
+    </g:each>
+</g:if>
+<g:else>
+    None
+</g:else>
+
+
 <div id="chart"></div>
 <script type="text/javascript">
 
