@@ -247,6 +247,7 @@
 <g:form>
     <fieldset class="buttons">
         <g:hiddenField name="id" value="${stockInstance?.id}"/>
+        <g:link target="_blank" action="bracket" params="[stockID:stockInstance?.stockID]">Bracket</g:link>
         <g:link action="print" id="${stockInstance?.id}">Print</g:link>
         <g:link class="edit" action="edit" id="${stockInstance?.id}"><g:message code="default.button.edit.label"
                                                                                 default="Edit"/></g:link>
