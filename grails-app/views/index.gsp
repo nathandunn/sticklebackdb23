@@ -87,7 +87,8 @@
 <div id="status" role="complementary">
     <h1>Quick Links</h1>
     <ul>
-        <li><g:link controller="stock" action="create">Add New Stock</g:link></li>
+        <li><g:link controller="stock" action="createFromBreeding">Add New Stock from Breeding</g:link></li>
+        <li><g:link controller="stock" action="createFromCapture">Add New Stock from Capture</g:link></li>
         <li><g:link controller="individual" action="create">Add New Individual</g:link></li>
         <li><g:link controller="population" action="create">Add New Population</g:link></li>
         <li><g:link controller="line" action="create">Add New Line</g:link></li>
