@@ -53,6 +53,8 @@ class StubData {
         userRole.addToPermissions("*:list")
         userRole.addToPermissions("*:show")
         userRole.addToPermissions("*:index")
+        userRole.addToPermissions("line:addLineToStock")
+        userRole.addToPermissions("line:addLineToStockWithCapture")
         userRole.addToPermissions("stock:*")
         userRole.addToPermissions("individual:*")
         userRole.addToPermissions("researcher:edit")
