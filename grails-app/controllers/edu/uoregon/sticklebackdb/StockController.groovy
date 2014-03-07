@@ -26,7 +26,8 @@ class StockController {
     }
 
     def search(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+//        params.max = Math.min(max ?: 10, 100)
+        params.max = 1000
         String query = params.q
 
 //        if (query.startsWith("[a-zA-Z]")) {
@@ -35,6 +36,7 @@ class StockController {
             List<Stock> stockList = Stock.findAllByStockNameIlike("%" + query + "%", params)
             Integer stockCount = Stock.countByStockNameIlike("%" + query + "%")
             def model = [stockInstanceList: stockList, stockInstanceTotal: stockCount]
+            flash.message = "${stockCount} found for query: [${query}]"
             switch (stockCount) {
                 case 1:
                     render(view: "show", model: [stockInstance: stockList.get(0)])
