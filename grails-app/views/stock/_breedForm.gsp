@@ -120,7 +120,7 @@
                       , controller: 'individual'
                       , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&location=\'+location+\'&fishSex=female\''
                       , method: 'POST'
-                      , onSuccess: 'setMaternalIds(data);clearInputs();selectLastMaternal();'
+                      , onSuccess: 'alert(\'Added maternal individual in location:\'+location);setMaternalIds(data);clearInputs();selectLastMaternal();'
                       , onError: 'alert(\'error\');'
               )};
         });
@@ -139,7 +139,7 @@
                       , controller: 'individual'
                       , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&location=\'+location+\'&fishSex=male\''
                       , method: 'POST'
-                      , onSuccess: 'setPaternalIds(data);clearInputs();selectLastPaternal();'
+                      , onSuccess: 'alert(\'Added paternal individual in location: \'+location);setPaternalIds(data);clearInputs();selectLastPaternal();'
                       , onError: 'alert(\'error\');'
               )};
         });
