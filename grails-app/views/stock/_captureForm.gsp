@@ -102,10 +102,19 @@
     </label>
     <input id="addNewLine" type="button" value="Add"/>
     Name: <g:textField id="newLineName" name="newLineName"/>
-    Population:
+    %{--Population:--}%
+    %{--<g:select id="population" name="population"--}%
+              %{--from="${edu.uoregon.sticklebackdb.Population.listOrderByIdentification()}"--}%
+              %{--optionKey="id" optionValue="identification"/>--}%
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
+    <label for="population">
+        Population:
+    </label>
     <g:select id="population" name="population"
-              from="${edu.uoregon.sticklebackdb.Population.listOrderByIdentification()}"
-              optionKey="id" optionValue="identification"/>
+              from="${edu.uoregon.sticklebackdb.Population.executeQuery("from Population p order by p.common asc,p.identification asc")}"
+              optionKey="id" optionValue="shortIdentification"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">

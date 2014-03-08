@@ -73,7 +73,7 @@ class StockController {
         Stock stock = new Stock(params)
 
         List<Line> linesWithCapture = new ArrayList<>()
-        Line.all.captures.each { it ->
+        Line.listOrderByName().captures.each { it ->
             for (Line line in it.line) {
                 linesWithCapture.add(line)
             }
@@ -108,12 +108,13 @@ class StockController {
     }
 
     def create() {
-        params.stockID = stockService.getNextStockID()
-        Stock stock = new Stock(params)
-
-        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
-        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames]
-        render(view: "create", model: model)
+        redirect(action: "list")
+//        params.stockID = stockService.getNextStockID()
+//        Stock stock = new Stock(params)
+//
+//        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+//        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames]
+//        render(view: "create", model: model)
 
     }
 
@@ -158,26 +159,26 @@ class StockController {
         if (false == researcherService.isAdmin()) {
             Stock previousStock = Stock.findByStockName(stockInstance.stockName)
             if (previousStock == null) {
-                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Stock use previous stock name")
-                render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Use a previous stock name or ask Administrator to add it for you.")
+                render(view: "createFromBreeding", model: [stockInstance: stockInstance, stockNames: stockNames])
                 return
             }
         }
 
         if (stockInstance.maternalIndividual == null) {
             flash.message = "Must supply a maternal individual"
-            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            render(view: "createFromBreeding", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
 
         if (stockInstance.paternalIndividual == null) {
             flash.message = "Must supply a paternal individual"
-            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            render(view: "createFromBreeding", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
 
         if (!stockInstance.save(flush: true)) {
-            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+            render(view: "createFromBreeding", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
 
@@ -185,57 +186,57 @@ class StockController {
         redirect(action: "show", id: stockInstance.id)
     }
 
-    def save() {
-        def stockInstance = new Stock(params)
-
-        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
-
-        if (stockInstance.line == null) {
-            flash.message = "Must associate a line with a stock"
-            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
-            return
-        }
-
-        if (stockInstance.fertilizationDate && stockInstance?.line?.captures) {
-            flash.message = "Can not have both a fertilization date and a Line with a capture"
-            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
-            return
-        }
-        if (!stockInstance?.line?.captures && !stockInstance.fertilizationDate) {
-            flash.message = "Must have a fertilization date or a line with a capture"
-            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
-            return
-        }
-
-        if (false == researcherService.isAdmin()) {
-            Stock previousStock = Stock.findByStockName(stockInstance.stockName)
-            if (previousStock == null) {
-                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Stock use previous stock name")
-                render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
-                return
-            }
-        }
-
-        if (stockInstance.maternalIndividual == null) {
-            flash.message = "Must supply a maternal individual"
-            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
-            return
-        }
-
-        if (stockInstance.paternalIndividual == null) {
-            flash.message = "Must supply a paternal individual"
-            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
-            return
-        }
-
-        if (!stockInstance.save(flush: true)) {
-            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
-            return
-        }
-
-        flash.message = message(code: 'default.created.message', args: [message(code: 'stock.label', default: 'Stock'), stockInstance.stockIDLabel])
-        redirect(action: "show", id: stockInstance.id)
-    }
+//    def save() {
+//        def stockInstance = new Stock(params)
+//
+//        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+//
+//        if (stockInstance.line == null) {
+//            flash.message = "Must associate a line with a stock"
+//            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+//            return
+//        }
+//
+//        if (stockInstance.fertilizationDate && stockInstance?.line?.captures) {
+//            flash.message = "Can not have both a fertilization date and a Line with a capture"
+//            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+//            return
+//        }
+//        if (!stockInstance?.line?.captures && !stockInstance.fertilizationDate) {
+//            flash.message = "Must have a fertilization date or a line with a capture"
+//            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+//            return
+//        }
+//
+//        if (false == researcherService.isAdmin()) {
+//            Stock previousStock = Stock.findByStockName(stockInstance.stockName)
+//            if (previousStock == null) {
+//                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Use a previous stock name or ask Administrator to add it for you.")
+//                render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+//                return
+//            }
+//        }
+//
+//        if (stockInstance.maternalIndividual == null) {
+//            flash.message = "Must supply a maternal individual"
+//            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+//            return
+//        }
+//
+//        if (stockInstance.paternalIndividual == null) {
+//            flash.message = "Must supply a paternal individual"
+//            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+//            return
+//        }
+//
+//        if (!stockInstance.save(flush: true)) {
+//            render(view: "create", model: [stockInstance: stockInstance, stockNames: stockNames])
+//            return
+//        }
+//
+//        flash.message = message(code: 'default.created.message', args: [message(code: 'stock.label', default: 'Stock'), stockInstance.stockIDLabel])
+//        redirect(action: "show", id: stockInstance.id)
+//    }
 
     def show(Long id) {
         def stockInstance = Stock.get(id)
@@ -299,7 +300,7 @@ class StockController {
         if (false == researcherService.isAdmin()) {
             Stock previousStock = Stock.findByStockName(stockInstance.stockName)
             if (previousStock == null) {
-                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Stock use previous stock name")
+                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Use a previous stock name or ask Administrator to add it for you.")
 
 //                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
 

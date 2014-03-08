@@ -57,7 +57,6 @@
             </li>
         </g:if>
 
-
         <g:if test="${populationInstance?.comment}">
             <li class="fieldcontain">
                 <span id="comment-label" class="property-label"><g:message code="population.comment.label"
@@ -68,6 +67,7 @@
 
             </li>
         </g:if>
+
 
         <li class="fieldcontain">
             <span id="capture-label" class="property-label"><g:message code="population.capture.label"
@@ -85,6 +85,15 @@
                     </g:each>
                 </ul>
             </span>
+
+        </li>
+
+
+        <li class="fieldcontain">
+            <span id="common-label" class="property-label"><g:message code="population.common.label"
+                                                                      default="Common"/></span>
+
+            <span class="property-value" aria-labelledby="common-label">${populationInstance.common ? 'true' : 'false'}</span>
 
         </li>
 

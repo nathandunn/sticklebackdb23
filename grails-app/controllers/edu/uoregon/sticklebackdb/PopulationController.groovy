@@ -30,14 +30,14 @@ class PopulationController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'population.label', default: 'Genetics'), populationInstance.identification])
+        flash.message = message(code: 'default.created.message', args: [message(code: 'population.label', default: 'Population'), populationInstance.identification])
         redirect(action: "show", id: populationInstance.id)
     }
 
     def show(Long id) {
         def populationInstance = Population.get(id)
         if (!populationInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'population.label', default: 'Genetics'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'population.label', default: 'Population'), id])
             redirect(action: "list")
             return
         }
@@ -48,7 +48,7 @@ class PopulationController {
     def edit(Long id) {
         def populationInstance = Population.get(id)
         if (!populationInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'population.label', default: 'Genetics'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'population.label', default: 'Population'), id])
             redirect(action: "list")
             return
         }
@@ -59,7 +59,7 @@ class PopulationController {
     def update(Long id, Long version) {
         def populationInstance = Population.get(id)
         if (!populationInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'population.label', default: 'Genetics'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'population.label', default: 'Population'), id])
             redirect(action: "list")
             return
         }
@@ -67,7 +67,7 @@ class PopulationController {
         if (version != null) {
             if (populationInstance.version > version) {
                 populationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'population.label', default: 'Genetics')] as Object[],
+                          [message(code: 'population.label', default: 'Population')] as Object[],
                           "Another user has updated this Population while you were editing")
                 render(view: "edit", model: [populationInstance: populationInstance])
                 return
@@ -81,14 +81,14 @@ class PopulationController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'population.label', default: 'Genetics'), populationInstance.identification])
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'population.label', default: 'Population'), populationInstance.identification])
         redirect(action: "show", id: populationInstance.id)
     }
 
     def delete(Long id) {
         def populationInstance = Population.get(id)
         if (!populationInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'population.label', default: 'Genetics'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'population.label', default: 'Population'), id])
             redirect(action: "list")
             return
         }
@@ -96,11 +96,11 @@ class PopulationController {
         def label = populationInstance.identification
         try {
             populationInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'population.label', default: 'Genetics'), label])
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'population.label', default: 'Population'), label])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'population.label', default: 'Genetics'), label])
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'population.label', default: 'Population'), label])
             redirect(action: "show", id: id)
         }
     }

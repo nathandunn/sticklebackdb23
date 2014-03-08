@@ -29,7 +29,6 @@
     <g:textField name="sourceLong" value="${populationInstance?.sourceLong}"/>
 </div>
 
-
 <div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'comment', 'error')} ">
     <label for="comment">
         <g:message code="population.comment.label" default="Comments" />
@@ -39,3 +38,11 @@
 </div>
 
 
+
+<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'common', 'error')} ">
+    <label for="common">
+        <g:message code="population.common.label" default="Common" />
+    </label>
+    %{--<g:textArea name="common" value="${populationInstance?.common}"/>--}%
+    <g:checkBox name="common" value="${populationInstance?.common}"/>
+</div>
