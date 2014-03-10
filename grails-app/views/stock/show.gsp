@@ -23,7 +23,8 @@
 
 <div id="show-stock" class="content scaffold-show" role="main">
 
-<h1><g:message code="default.show.label" args="[entityName]"/> ${stockInstance.isCapture() ? 'from Capture' : 'from Breeding'}</h1>
+<h1><g:message code="default.show.label"
+               args="[entityName]"/> ${stockInstance.isCapture() ? 'from Capture' : 'from Breeding'}</h1>
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>
@@ -61,10 +62,12 @@
         <span class="property-value" aria-labelledby="line-label">
             <g:link controller="line" action="show"
                     id="${stockInstance?.line?.id}">${stockInstance?.line?.name}</g:link>
-            <g:if test="${stockInstance?.line?.captures}">
-                Capture Dates
+            <g:if test="${stockInstance?.line?.captures?.captureDate}">
+
                 <g:each in="${stockInstance?.line?.captures}" var="capture">
-                    <g:formatDate date="${capture.captureDate}" type="date" dateStyle="short"/>
+                    <g:if test="${capture.captureDate}">
+                        Capture <g:formatDate date="${capture.captureDate}" type="date" dateStyle="short"/>
+                    </g:if>
                 </g:each>
             </g:if>
         </span>
@@ -247,7 +250,7 @@
 <g:form>
     <fieldset class="buttons">
         <g:hiddenField name="id" value="${stockInstance?.id}"/>
-        <g:link target="_blank" action="bracket" params="[stockID:stockInstance?.stockID]">Bracket</g:link>
+        <g:link target="_blank" action="bracket" params="[stockID: stockInstance?.stockID]">Lineage</g:link>
         <g:link action="print" id="${stockInstance?.id}">Print</g:link>
         <g:link class="edit" action="edit" id="${stockInstance?.id}"><g:message code="default.button.edit.label"
                                                                                 default="Edit"/></g:link>

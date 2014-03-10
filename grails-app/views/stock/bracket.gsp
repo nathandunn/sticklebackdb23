@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <title>Node-Link Tree</title>
+    %{--<meta http-equiv="Content-Type" content="text/html;charset=utf-8">--}%
+    <meta name="layout" content="main">
+    <title>Stock Lineage ${stockInstance.stockIDLabel}</title>
     <script src="http://mbostock.github.com/d3/d3.v2.js"></script>
     <style type="text/css">
 
@@ -29,34 +30,46 @@
 
 <body>
 
-<h3>Parents</h3>
-<g:if test="${parentStocks}">
-    <g:each in="${parentStocks}" var="stock" status="iter">
-        <g:link action="show" id="${stock.id}">${stock.stockID}</g:link>
-        <g:link action="bracket" params="[stockID: stock.stockID]">brack</g:link>
-        <g:if test="${iter.intValue() < parentStocks.size()-1}">
-            &bullet;
+<div class="lineage">
+    <div >
+        <h3>Parents</h3>
+        <g:if test="${parentStocks}">
+            <g:each in="${parentStocks}" var="stock" status="iter">
+                <g:link action="show" id="${stock.id}">${stock.stockID}</g:link><g:link action="bracket"
+                                                                                        params="[stockID: stock.stockID]">[map]</g:link>
+                <g:if test="${iter.intValue() < parentStocks.size() - 1}">
+                    &bullet;
+                </g:if>
+            </g:each>
         </g:if>
-    </g:each>
-</g:if>
-<g:else>
-    None
-</g:else>
-<br/>
+        <g:else>
+            None
+        </g:else>
 
-<h3>Children</h3>
-<g:if test="${childStocks}">
-    <g:each in="${childStocks}" var="stock">
-        <g:link action="show" id="${stock.id}">${stock.stockID}</g:link>
-        <g:link action="bracket" params="[stockID: stock.stockID]">brack</g:link>
-    </g:each>
-</g:if>
-<g:else>
-    None
-</g:else>
+    </div>
 
+    <div>
+        <div id="chart"></div>
+    </div>
 
-<div id="chart"></div>
+    <div >
+        <h3>Children</h3>
+        <g:if test="${childStocks}">
+            <g:each in="${childStocks}" var="stock" status="iter">
+                <g:link action="show" id="${stock.id}">${stock.stockID}</g:link><g:link action="bracket"
+                                                                                        params="[stockID: stock.stockID]">[map]</g:link>
+                <g:if test="${iter.intValue() < childStocks.size() - 1}">
+                    &bullet;
+                </g:if>
+            </g:each>
+        </g:if>
+        <g:else>
+            None
+        </g:else>
+    </div>
+
+</div>
+
 <script type="text/javascript">
 
     var margin = {top: 30, right: 10, bottom: 10, left: 10},

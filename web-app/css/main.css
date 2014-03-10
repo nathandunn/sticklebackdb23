@@ -651,3 +651,8 @@ a.external {
     background: url(../images/external.png) center right no-repeat;
     padding-right: 23px;
 }
+
+.lineage{
+    padding: 10px;
+    float: left;
+}

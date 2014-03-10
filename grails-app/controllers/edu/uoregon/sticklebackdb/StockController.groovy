@@ -442,7 +442,7 @@ class StockController {
             a.stockID - b.stockID
         }
 
-        [childStocks: childStocks, parentStocks: parentStocks]
+        [stockInstance: stock, childStocks: childStocks, parentStocks: parentStocks]
 
     }
 
