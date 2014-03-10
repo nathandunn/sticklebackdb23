@@ -81,6 +81,7 @@
                 alert('error');
             }
         });
+
     }
 
     function setMaternalIds(data) {
@@ -121,6 +122,7 @@
         console.log('paternal: ' + paternalStockId);
         console.log('maternal: ' + maternalStockId);
         if(maternalStockId==null || paternalStockId==null ) return ;
+        if(maternalStockId=='null' || paternalStockId=='null' ) return ;
 
         $.ajax({
             type: 'POST', data: 'paternalStockId=' + paternalStockId + '&maternalStockId=' + maternalStockId, url: '/sticklebackdb/stock/findCommonLineForStocks', success: function (data, textStatus) {
@@ -173,7 +175,7 @@
                       , controller: 'individual'
                       , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&location=\'+location+\'&fishSex=female\''
                       , method: 'POST'
-                      , onSuccess: 'alert(\'Added maternal individual in location:\'+location);setMaternalIds(data);clearInputs();selectLastMaternal();'
+                      , onSuccess: 'alert(\'Added maternal individual in location:\'+location);setMaternalIds(data);clearInputs();selectLastMaternal();$(\'#addMaternalIndividualDiv\').toggle(800);'
                       , onError: 'alert(\'error\');'
               )};
         });
@@ -192,7 +194,7 @@
                       , controller: 'individual'
                       , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&location=\'+location+\'&fishSex=male\''
                       , method: 'POST'
-                      , onSuccess: 'alert(\'Added paternal individual in location: \'+location);setPaternalIds(data);clearInputs();selectLastPaternal();'
+                      , onSuccess: 'alert(\'Added paternal individual in location: \'+location);setPaternalIds(data);clearInputs();selectLastPaternal(); $(\'#addPaternalIndividualDiv\').toggle(800);'
                       , onError: 'alert(\'error\');'
               )};
         });
