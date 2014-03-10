@@ -122,6 +122,9 @@ class StockController {
     def saveCapture() {
         def stockInstance = new Stock(params)
 
+
+        println "params ${params}"
+
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
 
         if (stockInstance.line == null) {
@@ -129,6 +132,18 @@ class StockController {
             render(view: "createFromCapture", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
+
+        Population population = Population.findById(params.population)
+        Date captureDate = params.newLineDate
+        String captureComment = params.newLinecomment
+        Capture capture = new Capture(
+                population: population
+                ,captureDate: captureDate
+                ,comment: captureComment
+                ,line: stockInstance.line
+        ).save(flush:true,failOnError: true)
+
+        stockInstance.line.addToCaptures(capture)
 
         if (!stockInstance.save(flush: true)) {
             render(view: "createFromCapture", model: [stockInstance: stockInstance, stockNames: stockNames])
