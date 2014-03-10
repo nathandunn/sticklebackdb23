@@ -344,9 +344,6 @@
     <label for="maternalIndividual">
         <g:message code="stock.maternalIndividualID.label" default="Maternal Individual ID"/>
     </label>
-
-    <script>
-    </script>
     %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
     <g:select id="maternalIndividual" name="maternalIndividual.id"
               from="${stockInstance.maternalStock ? stockInstance.maternalStock.individuals : []}"
