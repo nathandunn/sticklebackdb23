@@ -33,13 +33,15 @@
         $('#fertilizationDate_year').val("");
     }
 
-    function addAndSelectLine(data){
+    function addAndSelectLine(data) {
         clearNewLineInputs();
-        alert('Added new line: '+data.name);
+        alert('Added new line: ' + data.name);
 
         var select = $("#line");
-        select.append('<option value=' + data.id+ '>' + data.name+ '</option>');
-        select.val(data.id)
+        select.append('<option value=' + data.id + '>' + data.name + '</option>');
+        select.val(data.id);
+
+        $('#addNewLineDiv').toggle(800);
     }
 
     function selectLastMaternal() {
@@ -65,14 +67,14 @@
         }
 
 
-        var paternalId= $("#paternalStock-Id").val();
+        var paternalId = $("#paternalStock-Id").val();
         $.ajax({
             type: 'POST', data: 'id=' + paternalId, url: '/sticklebackdb/stock/findStock',
             success: function (data, textStatus) {
                 if (data) {
                     var paternalView = $("#paternalView");
-                    var linkView = '${createLink(action: "show",controller: "stock")}/'+data.id ;
-                    paternalView.html('<a href='+linkView+'>'+data.stockName+'</a>');
+                    var linkView = '${createLink(action: "show",controller: "stock")}/' + data.id;
+                    paternalView.html('<a href=' + linkView + '>' + data.stockName + '</a>');
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -95,14 +97,14 @@
             select.append('<option value="">None</option>');
         }
 
-        var maternalId= $("#maternalStock-Id").val();
+        var maternalId = $("#maternalStock-Id").val();
         $.ajax({
             type: 'POST', data: 'id=' + maternalId, url: '/sticklebackdb/stock/findStock',
             success: function (data, textStatus) {
                 if (data) {
                     var maternalView = $("#maternalView");
-                    var linkView = '${createLink(action: "show",controller: "stock")}/'+data.id ;
-                    maternalView.html('<a href='+linkView+'>'+data.stockName+'</a>');
+                    var linkView = '${createLink(action: "show",controller: "stock")}/' + data.id;
+                    maternalView.html('<a href=' + linkView + '>' + data.stockName + '</a>');
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -116,8 +118,9 @@
         var paternalStockId = $('#paternalStock-Id').val();
         var maternalStockId = $('#maternalStock-Id').val();
 
-        console.log('paternal: '+paternalStockId);
-        console.log('maternal: '+maternalStockId);
+        console.log('paternal: ' + paternalStockId);
+        console.log('maternal: ' + maternalStockId);
+        if(maternalStockId==null || paternalStockId==null ) return ;
 
         $.ajax({
             type: 'POST', data: 'paternalStockId=' + paternalStockId + '&maternalStockId=' + maternalStockId, url: '/sticklebackdb/stock/findCommonLineForStocks', success: function (data, textStatus) {
@@ -140,6 +143,21 @@
         ];
         $("#stockName").autocomplete({
             source: availableTags
+        });
+
+        $('#addMaternalIndividualDiv').hide();
+        $("#addNewMaternalIndividualButton").click(function(){
+            $('#addMaternalIndividualDiv').toggle(800);
+        });
+
+        $('#addPaternalIndividualDiv').hide();
+        $("#addNewPaternalIndividualButton").click(function(){
+            $('#addPaternalIndividualDiv').toggle(800);
+        });
+
+        $("#addNewLineDiv").hide();
+        $("#addNewLineButton").click(function(){
+            $('#addNewLineDiv').toggle(800);
         });
 
         $("#addMaternalIndividualButton").click(function () {
@@ -182,7 +200,7 @@
         $("#addNewLine").click(function () {
             var name = $('#newLineName').val();
             var comment = $('#newLineComment').val();
-            var stockId = '${stockInstance.id}' ;
+            var stockId = '${stockInstance.id}';
             if (name.length == 0) {
                 alert('You must provide a name');
                 return;
@@ -248,34 +266,39 @@
               value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Line -']"
               optionValue="name"/>
+
+    <input type="button" id="addNewLineButton" value="Add New Line"/>
 </div>
 
-<br/>
-<hr/>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
-    <label for="line">
-        <g:message code="stock.line.label" default="Add New Line"/>
-    </label>
-    <input id="addNewLine" type="button" value="Add"/>
-    Name: <g:textField id="newLineName" name="newLineName"/>
-    Comment: <g:textField id="newLineComment" name="newLineComment"/>
+<div id="addNewLineDiv">
+    <br/>
+    <hr/>
 
-    %{--<g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.listOrderByName()}" optionKey="id"--}%
-    %{--value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"--}%
-    %{--class="many-to-one" noSelection="['null': '- Choose Line -']"--}%
-    %{--optionValue="name"/>--}%
+    <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
+        <label for="line">
+            <g:message code="stock.line.label" default="Add New Line"/>
+        </label>
+        <input id="addNewLine" type="button" value="Add"/>
+        Name: <g:textField id="newLineName" name="newLineName"/>
+        Comment: <g:textField id="newLineComment" name="newLineComment"/>
+
+        %{--<g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.listOrderByName()}" optionKey="id"--}%
+        %{--value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"--}%
+        %{--class="many-to-one" noSelection="['null': '- Choose Line -']"--}%
+        %{--optionValue="name"/>--}%
+    </div>
+
+    %{-- Fertilization Date --}%
+    <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'fertilizationDate', 'error')} ">
+        <label for="fertilizationDate">
+            <g:message code="stock.fertilizationDate.label" default="Fertilization Date"/>
+        </label>
+        <g:datePicker name="fertilizationDate" precision="day" relativeYears="[0..-20]"
+                      value="${stockInstance?.fertilizationDate}" default="none" noSelection="['': '']"/>
+    </div>
+
 </div>
-
-%{-- Fertilization Date --}%
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'fertilizationDate', 'error')} ">
-    <label for="fertilizationDate">
-        <g:message code="stock.fertilizationDate.label" default="Fertilization Date"/>
-    </label>
-    <g:datePicker name="fertilizationDate" precision="day" relativeYears="[0..-20]"
-                  value="${stockInstance?.fertilizationDate}" default="none" noSelection="['': '']"/>
-</div>
-
 %{-- Capture --}%
 %{--<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'capture', 'error')} ">--}%
 %{--<label for="capture">--}%
@@ -311,7 +334,7 @@
                       , onError: 'alert(\'error\');'
               )}"/>
 
-    <div id="maternalView" class="stockSmallView"> </div>
+    <div id="maternalView" class="stockSmallView"></div>
 </div>
 
 %{-- Maternal Individual ID --}%
@@ -328,10 +351,11 @@
               value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Individual -']"
               optionValue="individualIDLabel" optionKey="id"/>
+    <input type="button" id="addNewMaternalIndividualButton" value="Add New Maternal Individual"/>
 </div>
 
 %{-- Add Maternal Individual ID Button --}%
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addMaternalIndividualID', 'error')} ">
+<div id='addMaternalIndividualDiv' class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addMaternalIndividualID', 'error')} ">
     <label for="addMaternalIndividual">
         <g:message code="stock.addMaternalIndividualID.label" default="Add Maternal Individual"/>
     </label>
@@ -344,6 +368,9 @@
     %{--class="many-to-one" noSelection="['null': '- Choose Individual -']"--}%
     %{--optionValue="individualIDLabel" optionKey="id"/>--}%
 </div>
+
+<br/>
+<hr/>
 
 %{-- Paternal Stock ID --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalStockID', 'error')} ">
@@ -365,7 +392,7 @@
                       , onError: 'alert(\'error\');'
               )}"/>
 
-    <div id="paternalView" class="stockSmallView"> </div>
+    <div id="paternalView" class="stockSmallView"></div>
 </div>
 
 %{-- Paternal Individual --}%
@@ -381,10 +408,12 @@
               value="${stockInstance?.paternalIndividual?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Individual -']"
               optionValue="individualIDLabel"/>
+
+    <input type="button" id="addNewPaternalIndividualButton" value="Add New Paternal Individual"/>
 </div>
 
 %{-- Add Maternal Individual ID Button --}%
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addPaternalIndividualID', 'error')} ">
+<div id='addPaternalIndividualDiv' class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addPaternalIndividualID', 'error')} ">
     <label for="addPaternalIndividual">
         <g:message code="stock.addPaternalIndividualID.label" default="Add Paternal Individual"/>
     </label>
