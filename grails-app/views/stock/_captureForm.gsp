@@ -84,6 +84,7 @@
     </label>
     <g:textField id="stockName" class="ui-autocomplete-input" name="stockName" value="${stockInstance?.stockName}"
                  autocomplete="off" size="60"/>
+
 </div>
 
 <br/>

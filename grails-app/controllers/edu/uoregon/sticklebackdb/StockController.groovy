@@ -192,6 +192,11 @@ class StockController {
             return
         }
 
+        println "paternal stock: ${stockInstance.paternalStock}"
+        println "paternal ind: ${stockInstance.paternalIndividual}"
+        println "maternal stock: ${stockInstance.maternalStock}"
+        println "maternal ind: ${stockInstance.maternalIndividual}"
+
         if (!stockInstance.save(flush: true)) {
             render(view: "createFromBreeding", model: [stockInstance: stockInstance, stockNames: stockNames])
             return

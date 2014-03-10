@@ -6,16 +6,16 @@ package edu.uoregon.sticklebackdb
 class Stock {
 
     // Initialize variables
-    Stock(){
-        comments = null
-        fertilizationDate = null
-        maternalIndividualID = null
-        maternalStockID = null
-        maternalStock = null
-        paternalIndividualID = null
-        paternalStockID = null
-        paternalStock = null
-    }
+//    Stock(){
+//        comments = null
+//        fertilizationDate = null
+//        maternalIndividualID = null
+//        maternalStockID = null
+//        maternalStock = null
+//        paternalIndividualID = null
+//        paternalStockID = null
+//        paternalStock = null
+//    }
 
     static hasMany = [
             individuals: Individual
@@ -107,7 +107,13 @@ class Stock {
     }
 
     public isCapture(){
-        return line?.captures?.size()>0
+        int count = 0 ;
+        for(capture in line?.captures){
+            if(capture.captureDate) ++count
+        }
+
+//        return line?.captures?.size()>0
+        return count>0
     }
 
     public isBred(){
