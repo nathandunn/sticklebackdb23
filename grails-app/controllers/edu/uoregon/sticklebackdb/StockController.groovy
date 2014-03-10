@@ -425,9 +425,15 @@ class StockController {
         return childStocks
     }
 
+    def findStock(){
+        def stockID = params.id
+        Stock stock = Stock.findById(stockID)
+        render stock as JSON
+    }
+
     def bracket() {
 
-        def stockID = params.stockID ?: 108
+        def stockID = params.stockID
         Stock stock = Stock.findByStockID(stockID)
 
         List<Stock> childStocks = getAllChildStocks(stock, new ArrayList<Stock>())

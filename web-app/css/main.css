@@ -656,3 +656,7 @@ a.external {
     padding: 10px;
     float: left;
 }
+
+.stockSmallView{
+    display: inline;
+}

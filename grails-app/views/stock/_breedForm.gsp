@@ -63,6 +63,22 @@
         if (count == 0) {
             select.append('<option value="">None</option>');
         }
+
+
+        var paternalId= $("#paternalStock-Id").val();
+        $.ajax({
+            type: 'POST', data: 'id=' + paternalId, url: '/sticklebackdb/stock/findStock',
+            success: function (data, textStatus) {
+                if (data) {
+                    var paternalView = $("#paternalView");
+                    var linkView = '${createLink(action: "show",controller: "stock")}/'+data.id ;
+                    paternalView.html('<a href='+linkView+'>'+data.stockName+'</a>');
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('error');
+            }
+        });
     }
 
     function setMaternalIds(data) {
@@ -78,11 +94,30 @@
         if (count == 0) {
             select.append('<option value="">None</option>');
         }
+
+        var maternalId= $("#maternalStock-Id").val();
+        $.ajax({
+            type: 'POST', data: 'id=' + maternalId, url: '/sticklebackdb/stock/findStock',
+            success: function (data, textStatus) {
+                if (data) {
+                    var maternalView = $("#maternalView");
+                    var linkView = '${createLink(action: "show",controller: "stock")}/'+data.id ;
+                    maternalView.html('<a href='+linkView+'>'+data.stockName+'</a>');
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('error');
+            }
+        });
+
     }
 
     function syncLines(data) {
         var paternalStockId = $('#paternalStock-Id').val();
         var maternalStockId = $('#maternalStock-Id').val();
+
+        console.log('paternal: '+paternalStockId);
+        console.log('maternal: '+maternalStockId);
 
         $.ajax({
             type: 'POST', data: 'paternalStockId=' + paternalStockId + '&maternalStockId=' + maternalStockId, url: '/sticklebackdb/stock/findCommonLineForStocks', success: function (data, textStatus) {
@@ -275,6 +310,8 @@
                       , onSuccess: 'setMaternalIds(data);'
                       , onError: 'alert(\'error\');'
               )}"/>
+
+    <div id="maternalView" class="stockSmallView"> </div>
 </div>
 
 %{-- Maternal Individual ID --}%
@@ -327,6 +364,8 @@
                       , onSuccess: 'setPaternalIds(data);syncLines();'
                       , onError: 'alert(\'error\');'
               )}"/>
+
+    <div id="paternalView" class="stockSmallView"> </div>
 </div>
 
 %{-- Paternal Individual --}%
