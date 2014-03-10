@@ -53,7 +53,7 @@ class LineController {
 
 
 
-        Line line = new Line(name: name ).save()
+        Line line = new Line(name: name ).save(failOnError: true)
 
         Capture capture = new Capture(
                 population: population

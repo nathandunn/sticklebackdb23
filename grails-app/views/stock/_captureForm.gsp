@@ -32,6 +32,7 @@
         var select = $("#line");
         select.append('<option value=' + data.id+ '>' + data.name+ '</option>');
         select.val(data.id)
+        $('#addNewLineDiv').toggle(800);
     }
 
 
@@ -47,6 +48,11 @@
             source: availableTags
         });
 
+        $("#addNewLineDiv").hide();
+        $("#addNewLineButton").click(function(){
+            $('#addNewLineDiv').toggle(800);
+        });
+
         $("#addNewLine").click(function () {
             var name = $('#newLineName').val();
             var captureComment = $('#newLineComment').val();
@@ -58,6 +64,8 @@
                 alert('You must provide a name');
                 return;
             }
+
+
             ${remoteFunction(action: 'addLineToStockWithCapture'
                       , controller: 'line'
                       , params: '\'populationId=\' + populationId+\'&captureComment=\'+captureComment+\'&name=\'+name+\'&captureDay=\'+captureDay+\'&captureMonth=\'+captureMonth+\'&captureYear=\'+captureYear'
@@ -91,12 +99,12 @@
               value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Line -']"
               optionValue="name"/>
+
+    <input type="button" id="addNewLineButton" value="Add New Line"/>
 </div>
 
-<br/>
-<hr/>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
+<div id='addNewLineDiv' class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
     <label for="line">
         <g:message code="stock.line.label" default="Add New Line"/>
     </label>
@@ -107,6 +115,9 @@
               %{--from="${edu.uoregon.sticklebackdb.Population.listOrderByIdentification()}"--}%
               %{--optionKey="id" optionValue="identification"/>--}%
 </div>
+
+<br/>
+<hr/>
 
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
     <label for="population">
