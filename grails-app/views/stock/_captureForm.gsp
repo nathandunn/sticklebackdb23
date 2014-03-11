@@ -122,7 +122,10 @@
     />
 
     <input type="button" id="addNewLineButton" value="Add New Line"/>
-    <div id="newViewDiv" class="lineSmallView"></div>
+    <div id="newViewDiv" class="lineSmallView">
+        ${stockInstance.line.name}
+        %{--<g:link action="show" --}%
+    </div>
 </div>
 
 
