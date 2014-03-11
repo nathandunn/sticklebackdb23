@@ -84,9 +84,9 @@
         <span id="fertilizationDate-label" class="property-label"><g:message code="stock.fertilizationDate.label"
                                                                              default="Fertilization Date"/></span>
         <g:if test="${stockInstance?.fertilizationDate}">
-            <span class="property-value" aria-labelledby="fertilizationDate-label"><g:formatDate type="datetime"
+            <span class="property-value" aria-labelledby="fertilizationDate-label"><g:formatDate type="date"
                                                                                                  style="MEDIUM"
-                                                                                                 date="${stockInstance?.fertilizationDate}"/></span>
+                                                                                                 date="${stockInstance?.fertilizationDate}" /></span>
         </g:if>
         <g:else>
             <span class="property-value" aria-labelledby="fertilizationDate-label">----</span>

@@ -29,6 +29,9 @@
             <g:sortableColumn property="stockID" title="${message(code: 'stock.stockID.label', default: 'ID')}"/>
             <g:sortableColumn property="stockName"
                               title="${message(code: 'stock.stockName.label', default: 'Stock Name')}"/>
+            %{--<g:sortableColumn property="type"--}%
+                              %{--title="${message(code: 'stock.stockName.label', default: 'Type')}"/>--}%
+            <th>Type</th>
         </tr>
         </thead>
         <tbody>
@@ -39,6 +42,24 @@
                     <g:link action="show" id="${stockInstance.id}" controller="stock">${stockInstance?.stockIDLabel}
                     </g:link></td>
                 <td>${fieldValue(bean: stockInstance, field: "stockName")}</td>
+                <td>
+                <g:if test="${stockInstance.isCapture()}">
+                    Captures:
+                    <g:each in="${stockInstance.line.captures}" var="capture">
+                        <g:formatDate date="${capture.captureDate}" type="date"/>
+                    </g:each>
+                %{--${stockInstance.isCapture() ? stockInstance.line.captures}--}%
+                </g:if>
+                <g:else>
+                    Bred:
+                    <g:if test="${stockInstance.fertilizationDate}">
+                    <g:formatDate date="${stockInstance.fertilizationDate}" type="date"/>
+                        </g:if>
+                    <g:else>
+                        N/A
+                    </g:else>
+                </g:else>
+                </td>
             </tr>
         </g:each>
         </tbody>

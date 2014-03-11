@@ -107,16 +107,16 @@ class StockController {
         render(view: "createFromBreeding", model: model)
     }
 
-    def create() {
-        redirect(action: "list")
-//        params.stockID = stockService.getNextStockID()
-//        Stock stock = new Stock(params)
+//    def create() {
+//        redirect(action: "list")
+////        params.stockID = stockService.getNextStockID()
+////        Stock stock = new Stock(params)
+////
+////        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+////        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames]
+////        render(view: "create", model: model)
 //
-//        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
-//        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames]
-//        render(view: "create", model: model)
-
-    }
+//    }
 
 
     def saveCapture() {
@@ -138,10 +138,10 @@ class StockController {
         String captureComment = params.newLinecomment
         Capture capture = new Capture(
                 population: population
-                ,captureDate: captureDate
-                ,comment: captureComment
-                ,line: stockInstance.line
-        ).save(flush:true,failOnError: true)
+                , captureDate: captureDate
+                , comment: captureComment
+                , line: stockInstance.line
+        ).save(flush: true, failOnError: true)
 
         stockInstance.line.addToCaptures(capture)
 
@@ -278,18 +278,31 @@ class StockController {
             return
         }
 
+        // find all lines with captures without dates
         List<Line> lineList = new ArrayList<>()
         Line.all.captures.each { it ->
-            for (Line line in it.line) {
-                lineList.add(line)
+            for(Capture capture in it){
+                if(capture.captureDate){
+                    lineList.add(capture.line)
+                }
             }
+//            if (it.captureDate != null) {
+//                lineList.add(it.line)
+//            }
+//            else {
+//
+//            }
         }
 
         lineList.unique(true)
 
+        println "line with capture dates: ${lineList.size()}"
+        println "all line count: ${Line.count}"
+
         if (stockInstance.isBred()) {
             lineList = Line.all.minus(lineList)
         }
+        println "final line count: ${lineList.size()}"
 
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
 
@@ -298,6 +311,94 @@ class StockController {
 
     @Transactional
     def update(Long id, Long version) {
+        def stockInstance = Stock.get(id)
+        if (!stockInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'stock.label', default: 'Stock'), id])
+            redirect(action: "list")
+            return
+        }
+
+        if (version != null) {
+            if (stockInstance.version > version) {
+                stockInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                        [message(code: 'stock.label', default: 'Stock')] as Object[],
+                        "Another user has updated this Stock while you were editing")
+                respond stockInstance.errors, view: 'edit'
+                return
+            }
+        }
+
+        stockInstance.properties = params
+
+        if (false == researcherService.isAdmin()) {
+            Stock previousStock = Stock.findByStockName(stockInstance.stockName)
+            if (previousStock == null) {
+                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Use a previous stock name or ask Administrator to add it for you.")
+
+//                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+
+//                respond stockInstance.errors, view:'edit'
+                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+                render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
+                return
+            }
+        }
+
+        if (!stockInstance.save(flush: true)) {
+//            render(view: "edit", model: [stockInstance: stockInstance])
+            List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+            render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'stock.label', default: 'Stock'), stockInstance.stockIDLabel])
+        redirect(action: "show", id: stockInstance.id)
+    }
+
+    @Transactional
+    def updateCapture(Long id, Long version) {
+        def stockInstance = Stock.get(id)
+        if (!stockInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'stock.label', default: 'Stock'), id])
+            redirect(action: "list")
+            return
+        }
+
+        if (version != null) {
+            if (stockInstance.version > version) {
+                stockInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                        [message(code: 'stock.label', default: 'Stock')] as Object[],
+                        "Another user has updated this Stock while you were editing")
+                respond stockInstance.errors, view: 'edit'
+                return
+            }
+        }
+
+        stockInstance.properties = params
+
+        if (false == researcherService.isAdmin()) {
+            Stock previousStock = Stock.findByStockName(stockInstance.stockName)
+            if (previousStock == null) {
+                stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Use a previous stock name or ask Administrator to add it for you.")
+                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+                render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
+                return
+            }
+        }
+
+        if (!stockInstance.save(flush: true)) {
+            List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+            render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
+
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'stock.label', default: 'Stock'), stockInstance.stockIDLabel])
+        redirect(action: "show", id: stockInstance.id)
+    }
+
+
+    @Transactional
+    def updateBreeding(Long id, Long version) {
         def stockInstance = Stock.get(id)
         if (!stockInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'stock.label', default: 'Stock'), id])
@@ -445,7 +546,7 @@ class StockController {
         return childStocks
     }
 
-    def findStock(){
+    def findStock() {
         def stockID = params.id
         Stock stock = Stock.findById(stockID)
         render stock as JSON

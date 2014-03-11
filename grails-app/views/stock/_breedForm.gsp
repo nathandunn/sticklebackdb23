@@ -259,6 +259,18 @@
 <br/>
 <hr/>
 
+%{-- Fertilization Date --}%
+<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'fertilizationDate', 'error')} ">
+    <label for="fertilizationDate">
+        <g:message code="stock.fertilizationDate.label" default="Fertilization Date"/>
+    </label>
+    <g:datePicker name="fertilizationDate" precision="day" relativeYears="[0..-20]"
+                  value="${stockInstance?.fertilizationDate}" default="none" noSelection="['': '']"/>
+</div>
+
+<br/>
+<hr/>
+
 %{-- Line --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
     <label for="line">
@@ -289,15 +301,6 @@
         %{--value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"--}%
         %{--class="many-to-one" noSelection="['null': '- Choose Line -']"--}%
         %{--optionValue="name"/>--}%
-    </div>
-
-    %{-- Fertilization Date --}%
-    <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'fertilizationDate', 'error')} ">
-        <label for="fertilizationDate">
-            <g:message code="stock.fertilizationDate.label" default="Fertilization Date"/>
-        </label>
-        <g:datePicker name="fertilizationDate" precision="day" relativeYears="[0..-20]"
-                      value="${stockInstance?.fertilizationDate}" default="none" noSelection="['': '']"/>
     </div>
 
 </div>

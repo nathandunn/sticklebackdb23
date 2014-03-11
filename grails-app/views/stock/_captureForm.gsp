@@ -17,7 +17,7 @@
 
 <script>
 
-    function clearInputs(){
+    function clearInputs() {
         $('#newLineName').val('');
         $('#newLineComment').val('');
         $('#population').val('');
@@ -26,15 +26,14 @@
         $('#newLineDate_year').val('');
     }
 
-    function addAndSelectLine(data){
+    function addAndSelectLine(data) {
         clearInputs();
-        alert('Added new line: '+data.name);
+        alert('Added new line: ' + data.name);
         var select = $("#line");
-        select.append('<option value=' + data.id+ '>' + data.name+ '</option>');
+        select.append('<option value=' + data.id + '>' + data.name + '</option>');
         select.val(data.id)
         $('#addNewLineDiv').toggle(800);
     }
-
 
 
     $(document).ready(function () {
@@ -49,7 +48,7 @@
         });
 
         $("#addNewLineDiv").hide();
-        $("#addNewLineButton").click(function(){
+        $("#addNewLineButton").click(function () {
             $('#addNewLineDiv').toggle(800);
         });
 
@@ -59,7 +58,7 @@
             var populationId = $('#population').val();
             var captureDay = $('#newLineDate_day').val();
             var captureMonth = $('#newLineDate_month').val();
-            var captureYear= $('#newLineDate_year').val();
+            var captureYear = $('#newLineDate_year').val();
             if (name.length == 0) {
                 alert('You must provide a name');
                 return;
@@ -111,37 +110,35 @@
     </label>
     <input id="addNewLine" type="button" value="Add"/>
     Name: <g:textField id="newLineName" name="newLineName"/>
-    %{--Population:--}%
-    %{--<g:select id="population" name="population"--}%
-              %{--from="${edu.uoregon.sticklebackdb.Population.listOrderByIdentification()}"--}%
-              %{--optionKey="id" optionValue="identification"/>--}%
 </div>
 
-<br/>
-<hr/>
+<g:if test="${!stockInstance.id}">
+    <br/>
+    <hr/>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
-    <label for="population">
-        Population:
-    </label>
-    <g:select id="population" name="population"
-              from="${edu.uoregon.sticklebackdb.Population.executeQuery("from Population p order by p.common asc,p.identification asc")}"
-              optionKey="id" optionValue="shortIdentification"/>
-</div>
+    <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
+        <label for="population">
+            Capture Population:
+        </label>
+        <g:select id="population" name="population"
+                  from="${edu.uoregon.sticklebackdb.Population.executeQuery("from Population p order by p.common asc,p.identification asc")}"
+                  optionKey="id" optionValue="shortIdentification"/>
+    </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
-    <label for="line">
-        <g:message code="stock.line.label" default="Capture Date"/>
-    </label>
-    <g:datePicker id="newLineDate" name="newLineDate" precision="day" relativeYears="[0..-20]"/>
-</div>
+    <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
+        <label for="line">
+            <g:message code="stock.line.label" default="Capture Date"/>
+        </label>
+        <g:datePicker id="newLineDate" name="newLineDate" precision="day" relativeYears="[0..-20]"/>
+    </div>
 
-<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
-    <label for="line">
-        <g:message code="stock.line.label" default="Capture Comment"/>
-    </label>
-    <g:textField id="newLineComment" name="newLineComment"/>
-</div>
+    <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
+        <label for="line">
+            <g:message code="stock.line.label" default="Capture Comment"/>
+        </label>
+        <g:textField id="newLineComment" name="newLineComment"/>
+    </div>
+</g:if>
 
 <br/>
 <hr/>

@@ -21,7 +21,9 @@
 </div>
 
 <div id="edit-stock" class="content scaffold-edit" role="main">
-    <h1><g:message code="default.edit.label" args="[entityName]"/></h1>
+    <h1><g:message code="default.edit.label" args="[entityName]"/>
+        ${stockInstance.isCapture() ? 'from Capture' : 'from Breeding'}
+    </h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -37,16 +39,23 @@
         <g:hiddenField name="id" value="${stockInstance?.id}"/>
         <g:hiddenField name="version" value="${stockInstance?.version}"/>
         <fieldset class="form">
-            <g:if test="${stockInstance.isBred()}">
-                <g:render template="breedForm"/>
+            <g:if test="${stockInstance.isCapture()}">
+                <g:render template="captureForm"/>
             </g:if>
             <g:else>
-                <g:render template="captureForm"/>
+                <g:render template="breedForm"/>
             </g:else>
         </fieldset>
         <fieldset class="buttons">
-            <g:actionSubmit class="save" action="update"
-                            value="${message(code: 'default.button.update.label', default: 'Update')}"/>
+            <g:if test="${stockInstance.isCapture()}">
+                %{--<g:render template="breedForm"/>--}%
+                <g:actionSubmit class="save" action="updateCapture"
+                                value="Update Capture"/>
+            </g:if>
+            <g:else>
+                <g:actionSubmit class="save" action="updateBreeding"
+                                value="Update Breeding"/>
+            </g:else>
             <g:link action="show" id="${stockInstance.id}" name="show" class="ui-icon-cancel">Cancel</g:link>
         </fieldset>
     </g:form>

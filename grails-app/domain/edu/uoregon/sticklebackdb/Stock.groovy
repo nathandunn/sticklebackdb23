@@ -1,5 +1,9 @@
 package edu.uoregon.sticklebackdb
 
+import org.springframework.format.datetime.DateFormatter
+
+import java.text.DateFormat
+
 /**
  * TODO: implement may not have both a capture and a parent stock / individual
  */
@@ -107,16 +111,50 @@ class Stock {
     }
 
     public isCapture(){
-        int count = 0 ;
+//        int count = 0 ;
         for(capture in line?.captures){
-            if(capture.captureDate) ++count
+            if(capture.captureDate!=null){
+                return true
+            }
         }
 
+        return false
 //        return line?.captures?.size()>0
-        return count>0
+//        return count>0
     }
 
     public isBred(){
-        return fertilizationDate!=null
+        return !isCapture()
+//        return fertilizationDate!=null
+    }
+
+    public String getType(){
+        String typeString = (isBred() ? "Breeding" : "Capture")
+        DateFormatter dateFormatter = new DateFormatter()
+        if(isBred()){
+            typeString += " "
+            Calendar calendar = fertilizationDate.toCalendar()
+            if(fertilizationDate){
+                typeString += calendar.get(Calendar.YEAR)
+                typeString += calendar.get(Calendar.MONTH)
+                typeString += calendar.get(Calendar.DAY_OF_MONTH)
+            }
+            else{
+                typeString += "N/A"
+            }
+        }
+        else{
+            for(capture in line.captures){
+                Calendar calendar = capture.captureDate.toCalendar()
+                typeString += calendar.get(Calendar.YEAR)
+                typeString += calendar.get(Calendar.MONTH)
+                typeString += calendar.get(Calendar.DAY_OF_MONTH)
+                typeString += " "
+            }
+        }
+        return typeString
+//        if(isBred()){
+//            typeString + " "+
+//        }
     }
 }
