@@ -17,14 +17,20 @@
 
 <script>
 
-    function setLineView(data){
+    function setLineView(data) {
         var paternalView = $("#newViewDiv");
-        var linkView = '${createLink(action: "show",controller: "line")}/' + data.id;
-        if(data.captures.length>0){
-            paternalView.html('<a href=' + linkView + '>' + data.name+ '</a><br/> Captures: '+data.captures.length + ' Stocks: '+data.stocks.length);
+
+        if(!data){
+            paternalView.html('');
+            return ;
         }
-        else{
-            paternalView.html('<a href=' + linkView + '>' + data.name+ '</a><br/> Stocks: '+data.stocks.length);
+
+        var linkView = '${createLink(action: "show",controller: "line")}/' + data.id;
+        if (data.captures!=='undefined' && data.captures.length > 0) {
+            paternalView.html('<a href=' + linkView + '>' + data.name + '</a><br/> Captures: ' + data.captures.length + ' Stocks: ' + data.stocks.length);
+        }
+        else {
+            paternalView.html('<a href=' + linkView + '>' + data.name + '</a><br/> Stocks: ' + data.stocks.length);
         }
     }
 
@@ -42,8 +48,11 @@
         alert('Added new line: ' + data.name);
         var select = $("#line");
         select.append('<option value=' + data.id + '>' + data.name + '</option>');
-        select.val(data.id)
+
         $('#addNewLineDiv').toggle(800);
+
+        select.val(data.id);
+        select.change();
     }
 
 
@@ -66,11 +75,11 @@
 
         $("#addNewLine").click(function () {
             var name = $('#newLineName').val();
-            var captureComment = $('#newLineComment').val();
-            var populationId = $('#population').val();
-            var captureDay = $('#newLineDate_day').val();
-            var captureMonth = $('#newLineDate_month').val();
-            var captureYear = $('#newLineDate_year').val();
+//            var captureComment = $('#newLineComment').val();
+//            var populationId = $('#population').val();
+//            var captureDay = $('#newLineDate_day').val();
+//            var captureMonth = $('#newLineDate_month').val();
+//            var captureYear = $('#newLineDate_year').val();
             if (name.length == 0) {
                 alert('You must provide a name');
                 return;
@@ -79,7 +88,7 @@
 
             ${remoteFunction(action: 'addLineToStockWithCapture'
                       , controller: 'line'
-                      , params: '\'populationId=\' + populationId+\'&captureComment=\'+captureComment+\'&name=\'+name+\'&captureDay=\'+captureDay+\'&captureMonth=\'+captureMonth+\'&captureYear=\'+captureYear'
+                      , params: "\'name=\'+name+\'&stockId=\'+${stockInstance.stockID}+\'&comment=\'"
                       , method: 'POST'
                       , onSuccess: 'addAndSelectLine(data);'
                       , onError: 'alert(\'error\');'
@@ -118,13 +127,18 @@
                       , method: 'POST'
                       , onSuccess: 'setLineView(data);'
                       , onError: 'alert(\'error\');')}
-              "
-    />
+              "/>
 
     <input type="button" id="addNewLineButton" value="Add New Line"/>
+
     <div id="newViewDiv" class="lineSmallView">
-        ${stockInstance.line.name}
-        %{--<g:link action="show" --}%
+        <g:if test="${stockInstance?.line?.id}">
+            <g:link action="show" controller="line" id="${stockInstance?.line?.id}">${stockInstance?.line.name}</g:link>
+            <g:if test="${stockInstance.line?.captures}">
+                Captures:  ${stockInstance?.line?.captures.size()}
+                Stocks:  ${stockInstance.line?.stocks.size()}
+            </g:if>
+        </g:if>
     </div>
 </div>
 
@@ -167,121 +181,6 @@
 
 <br/>
 <hr/>
-
-%{-- Fertilization Date --}%
-%{--<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'fertilizationDate', 'error')} ">--}%
-%{--<label for="fertilizationDate">--}%
-%{--<g:message code="stock.fertilizationDate.label" default="Fertilization Date"/>--}%
-%{--</label>--}%
-%{--<g:datePicker name="fertilizationDate" precision="day" relativeYears="[0..-20]"--}%
-%{--value="${stockInstance?.fertilizationDate}" default="none" noSelection="['': '']"/>--}%
-%{--</div>--}%
-
-%{-- Capture --}%
-%{--<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'capture', 'error')} ">--}%
-%{--<label for="capture">--}%
-%{--<g:message code="stock.capture.label" default="Capture "/>--}%
-%{--</label>--}%
-%{--<g:select id="capture" name="capture.id" from="${edu.uoregon.sticklebackdb.Capture.listOrderByCaptureDate()}" optionKey="id"--}%
-%{--value="${stockInstance.capture?.id}" style="width:200px;font-size: 12px"--}%
-%{--class="many-to-one" noSelection="['null': '- None -']"--}%
-%{--optionValue="display" />--}%
-%{--</div>--}%
-
-%{-- Maternal Stock ID --}%
-%{--<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalStockID', 'error')} ">--}%
-%{--<label for="maternalStockID">--}%
-%{--<g:message code="stock.maternalStockID.label" default="Maternal Stock ID"/>--}%
-%{--</label>--}%
-%{--<g:select id="maternalStock-Id" name="maternalStock.id"--}%
-%{--from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order: "desc")}"--}%
-%{--value="${stockInstance?.maternalStock?.id}"--}%
-%{--class="many-to-one" noSelection="['null': '- Choose Stock -']"--}%
-%{--optionValue="stockIDLabel" optionKey="id"--}%
-%{--onchange="--}%
-%{--${remoteFunction(action: 'findIndividualsForStock'--}%
-%{--, controller: 'individual'--}%
-%{--, params: '\'stockId=\' + this.value+\'&excludeGender=male\''--}%
-%{--, method: 'POST'--}%
-%{--, onSuccess: 'setMaternalIds(data);'--}%
-%{--, onError: 'alert(\'error\');'--}%
-%{--)}"/>--}%
-%{--</div>--}%
-
-%{-- Maternal Individual ID --}%
-%{--<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalIndividualID', 'error')} ">--}%
-%{--<label for="maternalIndividual">--}%
-%{--<g:message code="stock.maternalIndividualID.label" default="Maternal Individual ID"/>--}%
-%{--</label>--}%
-%{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
-%{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${[]}"--}%
-%{--value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"--}%
-%{--class="many-to-one" noSelection="['null': '- Choose Individual -']"--}%
-%{--optionValue="individualIDLabel" optionKey="id"/>--}%
-%{--</div>--}%
-
-%{-- Add Maternal Individual ID Button --}%
-%{--<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addMaternalIndividualID', 'error')} ">--}%
-%{--<label for="addMaternalIndividual">--}%
-%{--<g:message code="stock.addMaternalIndividualID.label" default="Add Maternal Individual"/>--}%
-%{--</label>--}%
-%{--<input id="addMaternalIndividualButton" type="button" value="Add"/>--}%
-%{--Location: <g:textField id="newMaternalIndividualLocation" name="newMaternalIndividualLocation"/>--}%
-%{--Comment: <g:textField id="newMaternalIndividualComment" name="newMaternalIndividualComment"/>--}%
-%{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
-%{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${[]}"--}%
-%{--value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"--}%
-%{--class="many-to-one" noSelection="['null': '- Choose Individual -']"--}%
-%{--optionValue="individualIDLabel" optionKey="id"/>--}%
-%{--</div>--}%
-
-%{-- Paternal Stock ID --}%
-%{--<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalStockID', 'error')} ">--}%
-%{--<label for="paternalStockID">--}%
-%{--<g:message code="stock.paternalStockID.label" default="Paternal Stock ID"/>--}%
-%{--</label>--}%
-
-%{--<g:select id="paternalStock-Id" name="paternalStock.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order: "desc")}"--}%
-%{--value="${stockInstance?.paternalStock?.id}"--}%
-%{--class="many-to-one" noSelection="['null': '- Choose Stock -']"--}%
-%{--optionValue="stockIDLabel" optionKey="id"--}%
-%{--onchange="--}%
-%{--${remoteFunction(action: 'findIndividualsForStock'--}%
-%{--, controller: 'individual'--}%
-%{--, params: '\'stockId=\' + this.value+\'&excludeGender=female\''--}%
-%{--, method: 'POST'--}%
-%{--, onSuccess: 'setPaternalIds(data);'--}%
-%{--, onError: 'alert(\'error\');'--}%
-%{--)}"/>--}%
-%{--</div>--}%
-
-%{-- Paternal Individual --}%
-%{--<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalIndividual', 'error')} ">--}%
-%{--<label for="paternalIndividual">--}%
-%{--<g:message code="stock.paternalIndividual.label" default="Paternal Individual"/>--}%
-%{--</label>--}%
-%{--<g:select id="paternalIndividual" name="paternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
-%{--<g:select id="paternalIndividual" name="paternalIndividual.id" from="${[]}"--}%
-%{--optionKey="id"--}%
-%{--value="${stockInstance?.paternalIndividual?.id}" style="width:200px;font-size: 12px"--}%
-%{--class="many-to-one" noSelection="['null': '- Choose Individual -']"--}%
-%{--optionValue="individualIDLabel" />--}%
-%{--</div>--}%
-
-%{-- Add Maternal Individual ID Button --}%
-%{--<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addPaternalIndividualID', 'error')} ">--}%
-%{--<label for="addPaternalIndividual">--}%
-%{--<g:message code="stock.addPaternalIndividualID.label" default="Add Paternal Individual"/>--}%
-%{--</label>--}%
-%{--<input id="addPaternalIndividualButton" type="button" value="Add"/>--}%
-%{--Location: <g:textField id="newPaternalIndividualLocation" name="newPaternalIndividualLocation"/>--}%
-%{--Comment: <g:textField id="newPaternalIndividualComment" name="newPaternalIndividualComment"/>--}%
-%{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
-%{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${[]}"--}%
-%{--value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"--}%
-%{--class="many-to-one" noSelection="['null': '- Choose Individual -']"--}%
-%{--optionValue="individualIDLabel" optionKey="id"/>--}%
-%{--</div>--}%
 
 %{-- Comments --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'comments', 'error')} ">
