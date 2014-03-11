@@ -17,6 +17,17 @@
 
 <script>
 
+    function setLineView(data){
+        var paternalView = $("#newViewDiv");
+        var linkView = '${createLink(action: "show",controller: "line")}/' + data.id;
+        if(data.captures.length>0){
+            paternalView.html('<a href=' + linkView + '>' + data.name+ '</a><br/> Captures: '+data.captures.length + ' Stocks: '+data.stocks.length);
+        }
+        else{
+            paternalView.html('<a href=' + linkView + '>' + data.name+ '</a><br/> Stocks: '+data.stocks.length);
+        }
+    }
+
     function clearInputs() {
         $('#newLineName').val('');
         $('#newLineComment').val('');
@@ -51,6 +62,7 @@
         $("#addNewLineButton").click(function () {
             $('#addNewLineDiv').toggle(800);
         });
+
 
         $("#addNewLine").click(function () {
             var name = $('#newLineName').val();
@@ -98,9 +110,19 @@
     <g:select id="line" name="line.id" from="${lines}" optionKey="id"
               value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Line -']"
-              optionValue="name"/>
+              optionValue="name"
+              onchange="
+              ${remoteFunction(action: 'findLine'
+                      , controller: 'line'
+                      , params: '\'id=\' + this.value'
+                      , method: 'POST'
+                      , onSuccess: 'setLineView(data);'
+                      , onError: 'alert(\'error\');')}
+              "
+    />
 
     <input type="button" id="addNewLineButton" value="Add New Line"/>
+    <div id="newViewDiv" class="lineSmallView"></div>
 </div>
 
 

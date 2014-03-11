@@ -160,4 +160,15 @@ class LineController {
             redirect(action: "show", id: id)
         }
     }
+
+    def findLine(Long id){
+        println "getting line id ${id}"
+        def lineInstance = Line.get(id)
+        if(lineInstance){
+            render lineInstance as JSON
+        }
+        else{
+            render ""
+        }
+    }
 }

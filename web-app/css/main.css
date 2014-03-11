@@ -660,3 +660,8 @@ a.external {
 .stockSmallView{
     display: inline;
 }
+
+.lineSmallView{
+    display: inline;
+    float: right;
+}

@@ -72,18 +72,18 @@ class StockController {
         params.stockID = stockService.getNextStockID()
         Stock stock = new Stock(params)
 
-        List<Line> linesWithCapture = new ArrayList<>()
-        Line.listOrderByName().captures.each { it ->
-            for (Line line in it.line) {
-                linesWithCapture.add(line)
+        List<Line> lineList = new ArrayList<>()
+        Line.all.captures.each { it ->
+            for(Capture capture in it){
+                if(capture.captureDate){
+                    lineList.add(capture.line)
+                }
             }
         }
-
-        linesWithCapture.unique(true)
-
+        lineList.unique(true)
 //        println "lines with capture ${linesWithCapture}"
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
-        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames, lines: linesWithCapture]
+        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames, lines: lineList]
         render(view: "createFromCapture", model: model)
     }
 
@@ -93,8 +93,10 @@ class StockController {
 
         List<Line> linesWithCapture = new ArrayList<>()
         Line.all.captures.each { it ->
-            for (Line line in it.line) {
-                linesWithCapture.add(line)
+            for(Capture capture in it){
+                if(capture.captureDate){
+                    linesWithCapture.add(capture.line)
+                }
             }
         }
 
@@ -286,23 +288,13 @@ class StockController {
                     lineList.add(capture.line)
                 }
             }
-//            if (it.captureDate != null) {
-//                lineList.add(it.line)
-//            }
-//            else {
-//
-//            }
         }
 
         lineList.unique(true)
 
-        println "line with capture dates: ${lineList.size()}"
-        println "all line count: ${Line.count}"
-
         if (stockInstance.isBred()) {
             lineList = Line.all.minus(lineList)
         }
-        println "final line count: ${lineList.size()}"
 
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
 
