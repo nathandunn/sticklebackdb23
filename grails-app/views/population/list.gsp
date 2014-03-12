@@ -30,7 +30,7 @@
             <g:sortableColumn property="identification"
                               title="${message(code: 'population.identification.label', default: 'Identification')}"/>
 
-            <g:sortableColumn property="source" title="${message(code: 'population.source.label', default: 'Source')}"/>
+            <g:sortableColumn property="source" title="${message(code: 'population.source.label', default: 'Source (Lat/Long)')}"/>
 
         </tr>
         </thead>
