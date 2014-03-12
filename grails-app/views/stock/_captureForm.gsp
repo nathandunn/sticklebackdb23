@@ -7,7 +7,20 @@
 <script>
 
     function setLine(){
-        var name = $('#population').val($(this).find("option:selected").attr("title"));
+//        var name = $('#population').val($(this).find("option:selected").attr("title"));
+//        var name = $('#population').val($(this).find("option:selected").text());
+        var name = $("#population option:selected").text();
+
+        $("#line option:contains(" + name + ")").attr('selected', 'selected');
+        $('#line').change();
+        $('#stockName').val(name);
+
+
+//        $("#line").filter(function() {
+//            alert('name '+name +' filtering: '+$(this).text().trim());
+//            //may want to use $.trim in here
+//            return $(this).text().trim() == name ;
+//        }).prop('selected', true);
 //        $('#line').val($(this).attr("title"));
 //        $('#line').val(12)
 //        $('#line').title(name);
