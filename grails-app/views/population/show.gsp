@@ -26,44 +26,52 @@
     </g:if>
     <ol class="property-list population">
 
-    %{--<g:if test="${populationInstance?.captureDate}">--}%
-    %{--<li class="fieldcontain">--}%
-    %{--<span id="captureDate-label" class="property-label"><g:message code="population.captureDate.label" default="Capture Date" /></span>--}%
-    %{----}%
-    %{--<span class="property-value" aria-labelledby="captureDate-label"><g:formatDate date="${populationInstance?.captureDate}" /></span>--}%
-    %{----}%
-    %{--</li>--}%
-    %{--</g:if>--}%
+        %{--<g:if test="${populationInstance?.captureDate}">--}%
+        %{--<li class="fieldcontain">--}%
+        %{--<span id="captureDate-label" class="property-label"><g:message code="population.captureDate.label" default="Capture Date" /></span>--}%
+        %{----}%
+        %{--<span class="property-value" aria-labelledby="captureDate-label"><g:formatDate date="${populationInstance?.captureDate}" /></span>--}%
+        %{----}%
+        %{--</li>--}%
+        %{--</g:if>--}%
 
-        <g:if test="${populationInstance?.identification}">
-            <li class="fieldcontain">
-                <span id="identification-label" class="property-label"><g:message code="population.identification.label"
-                                                                                  default="Identification"/></span>
+        <li class="fieldcontain">
+            <span id="identification-label" class="property-label"><g:message code="population.identification.label"
+                                                                              default="Identification"/></span>
 
-                <span class="property-value" aria-labelledby="identification-label"><g:fieldValue
-                        bean="${populationInstance}" field="identification"/></span>
+            <span class="property-value" aria-labelledby="identification-label"><g:fieldValue
+                    bean="${populationInstance}" field="identification"/></span>
 
-            </li>
-        </g:if>
+        </li>
 
-        <g:if test="${populationInstance?.sourceLat}">
-            <li class="fieldcontain">
-                <span id="source-label" class="property-label"><g:message code="population.source.label"
-                                                                          default="Source (Lat/Long)"/></span>
+        <li class="fieldcontain">
+            <span id="source-label" class="property-label"><g:message code="population.source.label"
+                                                                      default="Source (Lat/Long)"/></span>
 
-                <span class="property-value" aria-labelledby="source-label"><g:fieldValue bean="${populationInstance}"
-                                                                                          field="sourceDisplay"/></span>
+            <span class="property-value" aria-labelledby="source-label">
+                <g:if test="${populationInstance?.sourceLat}">
+                    <g:fieldValue bean="${populationInstance}" field="sourceDisplay"/>
+                </g:if>
+                <g:else>
+                    ----
+                </g:else>
+            </span>
 
-            </li>
-        </g:if>
+        </li>
 
         <g:if test="${populationInstance?.comment}">
             <li class="fieldcontain">
                 <span id="comment-label" class="property-label"><g:message code="population.comment.label"
                                                                            default="Comments"/></span>
 
-                <span class="property-value" aria-labelledby="comment-label"><g:fieldValue bean="${populationInstance}"
-                                                                                           field="comment"/></span>
+                <span class="property-value" aria-labelledby="comment-label">
+                    <g:if test="${populationInstance.comment}">
+                        <g:fieldValue bean="${populationInstance}" field="comment"/>
+                    </g:if>
+                    <g:else>
+                        ----
+                    </g:else>
+                </span>
 
             </li>
         </g:if>
@@ -93,7 +101,8 @@
             <span id="common-label" class="property-label"><g:message code="population.common.label"
                                                                       default="Common"/></span>
 
-            <span class="property-value" aria-labelledby="common-label">${populationInstance.common ? 'true' : 'false'}</span>
+            <span class="property-value"
+                  aria-labelledby="common-label">${populationInstance.common ? 'true' : 'false'}</span>
 
         </li>
 

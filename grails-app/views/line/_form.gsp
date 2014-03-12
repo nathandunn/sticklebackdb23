@@ -16,20 +16,23 @@
     <g:textField name="species" value="${lineInstance?.species}"/>
 </div>
 
-<g:if test="${lineInstance.captures}">
-    <div class="fieldcontain ${hasErrors(bean: lineInstance, field: 'population', 'error')} required">
-        <label for="population">
-            <g:message code="line.capture.label" default="Capture"/>
-        </label>
+<div class="fieldcontain ${hasErrors(bean: lineInstance, field: 'population', 'error')} required">
+    <label for="population">
+        <g:message code="line.capture.label" default="Capture"/>
+    </label>
+    <g:if test="${lineInstance.captures}">
         <g:each in="${lineInstance.captures}" var="capture">
-            <g:link action="show" id="${capture.id}">${capture.display}</g:link>
+            <g:link action="show" controller="capture" id="${capture.id}">${capture.display}</g:link>
         </g:each>
-        %{--<g:select id="capture" name="capture.id" from="${edu.uoregon.sticklebackdb.Capture.listOrderByCaptureDate()}"--}%
-        %{--optionKey="id" required="" multiple="true"--}%
-        %{--optionValue="captureDate"--}%
-        %{--value="${lineInstance?.capture?.id}" class="many-to-one" noSelection="['null':'None']"/>--}%
-    </div>
-</g:if>
+    </g:if>
+    <g:else>
+        ----
+    </g:else>
+    %{--<g:select id="capture" name="capture.id" from="${edu.uoregon.sticklebackdb.Capture.listOrderByCaptureDate()}"--}%
+    %{--optionKey="id" required="" multiple="true"--}%
+    %{--optionValue="captureDate"--}%
+    %{--value="${lineInstance?.capture?.id}" class="many-to-one" noSelection="['null':'None']"/>--}%
+</div>
 
 
 

@@ -22,25 +22,20 @@
 			</g:if>
 			<ol class="property-list researcher">
 			
-				<g:if test="${researcherInstance?.username}">
 				<li class="fieldcontain">
 					<span id="username-label" class="property-label"><g:message code="researcher.username.label" default="Username" /></span>
 					
 						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${researcherInstance}" field="username"/></span>
 					
 				</li>
-				</g:if>
-			
-				<g:if test="${researcherInstance?.name}">
+
 				<li class="fieldcontain">
 					<span id="name-label" class="property-label"><g:message code="researcher.name.label" default="Name" /></span>
 					
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${researcherInstance}" field="name"/></span>
 					
 				</li>
-				</g:if>
 
-				<g:if test="${researcherInstance?.roles}">
 				<li class="fieldcontain">
 					<span id="roles-label" class="property-label"><g:message code="researcher.roles.label" default="Roles" /></span>
 					
@@ -51,8 +46,7 @@
 						</g:each>
 					
 				</li>
-				</g:if>
-			
+
 			</ol>
 			<g:form url="[resource:researcherInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

@@ -26,65 +26,73 @@
     </g:if>
     <ol class="property-list capture">
 
-        <g:if test="${captureInstance?.line}">
-            <li class="fieldcontain">
-                <span id="line-label" class="property-label"><g:message code="capture.line.label"
-                                                                        default="Line"/></span>
+        <li class="fieldcontain">
+            <span id="line-label" class="property-label"><g:message code="capture.line.label"
+                                                                    default="Line"/></span>
 
-                <span class="property-value" aria-labelledby="line-label"><g:link controller="line" action="show"
-                                                                                  id="${captureInstance?.line?.id}">${captureInstance?.line?.name}</g:link></span>
-
-            </li>
-        </g:if>
+            <span class="property-value" aria-labelledby="line-label">
+                <g:if test="${captureInstance?.line}">
+                    <g:link controller="line" action="show"
+                            id="${captureInstance?.line?.id}">${captureInstance?.line?.name}</g:link>
+                </g:if>
+                <g:else>
+                    ----
+                </g:else>
+            </span>
+        </li>
 
         <g:if test="${captureInstance?.population}">
             <li class="fieldcontain">
                 <span id="population-label" class="property-label"><g:message code="capture.population.label"
                                                                               default="Population"/></span>
 
-                <span class="property-value" aria-labelledby="population-label"><g:link controller="population"
-                                                                                        action="show"
-                                                                                        id="${captureInstance?.population?.id}">${captureInstance?.population?.identification}</g:link></span>
+                <span class="property-value" aria-labelledby="population-label">
+                    <g:link controller="population" action="show"
+                            id="${captureInstance?.population?.id}">${captureInstance?.population?.identification}</g:link></span>
 
             </li>
         </g:if>
 
-        <g:if test="${captureInstance?.captureDate}">
-            <li class="fieldcontain">
-                <span id="captureDate-label" class="property-label"><g:message code="capture.captureDate.label"
-                                                                               default="Capture Date"/></span>
+        <li class="fieldcontain">
+            <span id="captureDate-label" class="property-label"><g:message code="capture.captureDate.label"
+                                                                           default="Capture Date"/></span>
 
-                <span class="property-value" aria-labelledby="captureDate-label"><g:formatDate type="date"
-                        date="${captureInstance?.captureDate}"/></span>
+            <span class="property-value" aria-labelledby="captureDate-label">
+                <g:if test="${captureInstance?.captureDate}">
+                    <g:formatDate type="date" date="${captureInstance?.captureDate}"/>
+                </g:if>
+                <g:else>
+                    ----
+                </g:else>
+            </span>
 
-            </li>
-        </g:if>
+        </li>
 
-            %{--<li class="fieldcontain">--}%
-                %{--<span id="captureStocks-label" class="property-label"><g:message code="capture.captureStocks.label"--}%
-                                                                               %{--default="Stocks"/></span>--}%
+        %{--<li class="fieldcontain">--}%
+        %{--<span id="captureStocks-label" class="property-label"><g:message code="capture.captureStocks.label"--}%
+        %{--default="Stocks"/></span>--}%
 
-                %{--<span class="property-value" aria-labelledby="captureStocks-label">--}%
-                    %{--<g:each in="${captureStocks}" var="stock">--}%
-                        %{--<g:link action="show" controller="stock" id="${stock.id}">${stock.stockIDLabel}</g:link>--}%
-                    %{--</g:each>--}%
-                %{--</span>--}%
+        %{--<span class="property-value" aria-labelledby="captureStocks-label">--}%
+        %{--<g:each in="${captureStocks}" var="stock">--}%
+        %{--<g:link action="show" controller="stock" id="${stock.id}">${stock.stockIDLabel}</g:link>--}%
+        %{--</g:each>--}%
+        %{--</span>--}%
 
-            %{--</li>--}%
+        %{--</li>--}%
 
-            <li class="fieldcontain">
-                <span id="comment-label" class="property-label"><g:message code="capture.comment.label"
-                                                                           default="Comment"/></span>
+        <li class="fieldcontain">
+            <span id="comment-label" class="property-label"><g:message code="capture.comment.label"
+                                                                       default="Comment"/></span>
 
-        <g:if test="${captureInstance?.comment}">
+            <g:if test="${captureInstance?.comment}">
                 <span class="property-value" aria-labelledby="comment-label"><g:fieldValue bean="${captureInstance}"
                                                                                            field="comment"/></span>
-        </g:if>
-                <g:else>
-                    <span class="property-value" aria-labelledby="maternalStock-label">----</span>
-                </g:else>
+            </g:if>
+            <g:else>
+                <span class="property-value" aria-labelledby="maternalStock-label">----</span>
+            </g:else>
 
-            </li>
+        </li>
 
     </ol>
     <g:form url="[resource: captureInstance, action: 'delete']" method="DELETE">
