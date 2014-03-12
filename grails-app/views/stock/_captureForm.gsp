@@ -6,6 +6,13 @@
 
 <script>
 
+    function setLine(){
+        var name = $('#population').val($(this).find("option:selected").attr("title"));
+//        $('#line').val($(this).attr("title"));
+//        $('#line').val(12)
+//        $('#line').title(name);
+    }
+
     function setLineView(data) {
         var paternalView = $("#newViewDiv");
 
@@ -94,7 +101,9 @@
         </label>
         <g:select id="population" name="population"
                   from="${edu.uoregon.sticklebackdb.Population.executeQuery("from Population p order by p.common asc,p.identification asc")}"
-                  optionKey="id" optionValue="shortIdentification"/>
+                  optionKey="id" optionValue="shortIdentification"
+        onchange="setLine();"
+        />
     </div>
 
     <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
