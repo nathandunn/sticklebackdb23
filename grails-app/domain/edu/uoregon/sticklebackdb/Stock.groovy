@@ -1,9 +1,5 @@
 package edu.uoregon.sticklebackdb
-
 import org.springframework.format.datetime.DateFormatter
-
-import java.text.DateFormat
-
 /**
  * TODO: implement may not have both a capture and a parent stock / individual
  */
@@ -126,6 +122,22 @@ class Stock {
     public isBred(){
         return !isCapture()
 //        return fertilizationDate!=null
+    }
+
+    Collection<Individual> getFemaleIndividuals(){
+        return individuals.findAll{
+           it?.fishSex?.toLowerCase() != "male"
+        }.sort(true){ a,b ->
+            a.individualID - b.individualID
+        }
+    }
+
+    Collection<Individual> getMaleIndividuals(){
+        return individuals.findAll{
+            it?.fishSex?.toLowerCase() != "female"
+        }.sort(true){ a, b ->
+            a.individualID - b.individualID
+        }
     }
 
     public String getType(){

@@ -140,6 +140,7 @@
             type: 'POST', data: 'paternalStockId=' + paternalStockId + '&maternalStockId=' + maternalStockId, url: '/sticklebackdb/stock/findCommonLineForStocks', success: function (data, textStatus) {
                 if (data) {
                     $('#line').val(data)
+                    $('#stockName').val($('#line option:selected').text());
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -317,24 +318,9 @@
         <input id="addNewLine" type="button" value="Add"/>
         Name: <g:textField id="newLineName" name="newLineName"/>
         Comment: <g:textField id="newLineComment" name="newLineComment"/>
-
-        %{--<g:select id="line" name="line.id" from="${edu.uoregon.sticklebackdb.Line.listOrderByName()}" optionKey="id"--}%
-        %{--value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"--}%
-        %{--class="many-to-one" noSelection="['null': '- Choose Line -']"--}%
-        %{--optionValue="name"/>--}%
     </div>
 
 </div>
-%{-- Capture --}%
-%{--<div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'capture', 'error')} ">--}%
-%{--<label for="capture">--}%
-%{--<g:message code="stock.capture.label" default="Capture "/>--}%
-%{--</label>--}%
-%{--<g:select id="capture" name="capture.id" from="${edu.uoregon.sticklebackdb.Capture.listOrderByCaptureDate()}" optionKey="id"--}%
-%{--value="${stockInstance.capture?.id}" style="width:200px;font-size: 12px"--}%
-%{--class="many-to-one" noSelection="['null': '- None -']"--}%
-%{--optionValue="display" />--}%
-%{--</div>--}%
 
 <br/>
 <hr/>
@@ -370,7 +356,7 @@
     </label>
     %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
     <g:select id="maternalIndividual" name="maternalIndividual.id"
-              from="${stockInstance.maternalStock ? stockInstance.maternalStock.individuals : []}"
+              from="${stockInstance.maternalStock ? stockInstance.maternalStock.femaleIndividuals: []}"
               value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Individual -']"
               optionValue="individualIDLabel" optionKey="id"/>
@@ -426,7 +412,7 @@
     %{--<g:select id="paternalIndividual" name="paternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
     %{--<g:select id="paternalIndividual" name="paternalIndividual.id" from="${[]}"--}%
     <g:select id="paternalIndividual" name="paternalIndividual.id"
-              from="${stockInstance.paternalStock ? stockInstance.paternalStock.individuals : []}"
+              from="${stockInstance.paternalStock ? stockInstance.paternalStock.maleIndividuals : []}"
               optionKey="id"
               value="${stockInstance?.paternalIndividual?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Individual -']"
