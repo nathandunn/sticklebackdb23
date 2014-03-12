@@ -10,6 +10,7 @@ class StockController {
 
     def stockService
     def researcherService
+
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     static navigation = [
@@ -72,18 +73,22 @@ class StockController {
         params.stockID = stockService.getNextStockID()
         Stock stock = new Stock(params)
 
-        List<Line> lineList = new ArrayList<>()
-        Line.all.captures.each { it ->
-            for(Capture capture in it){
-                if(capture.captureDate){
-                    lineList.add(capture.line)
-                }
-            }
-        }
-        lineList.unique(true)
+//        List<Line> lineList = new ArrayList<>()
+//        Line.all.captures.each { it ->
+//            for(Capture capture in it){
+//                if(capture.captureDate){
+//                    lineList.add(capture.line)
+//                }
+//            }
+//        }
+//        lineList.unique(true)
+
 //        println "lines with capture ${linesWithCapture}"
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
-        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames, lines: lineList]
+
+
+
+        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames, lines: Line.listOrderByName(), isNewOrAdmin: true]
         render(view: "createFromCapture", model: model)
     }
 
@@ -91,21 +96,22 @@ class StockController {
         params.stockID = stockService.getNextStockID()
         Stock stock = new Stock(params)
 
-        List<Line> linesWithCapture = new ArrayList<>()
-        Line.all.captures.each { it ->
-            for(Capture capture in it){
-                if(capture.captureDate){
-                    linesWithCapture.add(capture.line)
-                }
-            }
-        }
+//        List<Line> linesWithCapture = new ArrayList<>()
+//        Line.all.captures.each { it ->
+//            for(Capture capture in it){
+//                if(capture.captureDate){
+//                    linesWithCapture.add(capture.line)
+//                }
+//            }
+//        }
+//
+//        linesWithCapture.unique(true)
+//
+//        List<Line> linesWithoutCapture = Line.all.minus(linesWithCapture)
 
-        linesWithCapture.unique(true)
-
-        List<Line> linesWithoutCapture = Line.all.minus(linesWithCapture)
 
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
-        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames, lines: linesWithoutCapture]
+        def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames, lines: Line.listOrderByName(),isNewOrAdmin: false]
         render(view: "createFromBreeding", model: model)
     }
 
@@ -281,24 +287,24 @@ class StockController {
         }
 
         // find all lines with captures without dates
-        List<Line> lineList = new ArrayList<>()
-        Line.all.captures.each { it ->
-            for(Capture capture in it){
-                if(capture.captureDate){
-                    lineList.add(capture.line)
-                }
-            }
-        }
-
-        lineList.unique(true)
-
-        if (stockInstance.isBred()) {
-            lineList = Line.all.minus(lineList)
-        }
+//        List<Line> lineList = new ArrayList<>()
+//        Line.all.captures.each { it ->
+//            for(Capture capture in it){
+//                if(capture.captureDate){
+//                    lineList.add(capture.line)
+//                }
+//            }
+//        }
+//
+//        lineList.unique(true)
+//
+//        if (stockInstance.isBred()) {
+//            lineList = Line.all.minus(lineList)
+//        }
 
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
 
-        [stockInstance: stockInstance, stockNames: stockNames, lines: lineList]
+        [stockInstance: stockInstance, stockNames: stockNames, lines: Line.listOrderByName(),isNewOrAdmin: researcherService.admin || !stockInstance.id]
     }
 
     @Transactional
