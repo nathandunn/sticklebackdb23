@@ -64,9 +64,9 @@
         });
 
         $("#addNewLineDiv").hide();
-        $("#addNewLineButton").click(function () {
-            $('#addNewLineDiv').toggle(800);
-        });
+//        $("#addNewLineButton").click(function () {
+//            $('#addNewLineDiv').toggle(800);
+//        });
 
 
         $("#addNewLine").click(function () {
@@ -133,8 +133,8 @@
 %{--<g:select id="line" name="line.id" from="${lines}" optionKey="id"--}%
     <g:if test="${isNewOrAdmin}">
         <g:select id="line" name="line.id" from="${lines}" optionKey="id"
-                  value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"
-                  class="many-to-one" noSelection="['null': '- Choose Line -']"
+                  value="${stockInstance.line?.id}" style="width:260px;font-size: 12px"
+                  class="many-to-one" noSelection="['null': '- Add New Line From Selected Population -']"
                   optionValue="name"
                   onchange="
                   ${remoteFunction(action: 'findLine'
@@ -145,7 +145,7 @@
                           , onError: 'alert(\'error\');')}
                   "/>
 
-        <input type="button" id="addNewLineButton" value="Add New Line"/>
+        %{--<input type="button" id="addNewLineButton" value="Add New Line"/>--}%
 
         <div id="newViewDiv" class="lineSmallView">
             <g:if test="${stockInstance?.line?.id}">

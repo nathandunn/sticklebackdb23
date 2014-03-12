@@ -135,13 +135,26 @@ class StockController {
 
         List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
 
+        Population population = Population.findById(params.population)
+
+
         if (stockInstance.line == null) {
-            flash.message = "Must associate a line with a stock"
-            render(view: "createFromCapture", model: [stockInstance: stockInstance, stockNames: stockNames])
-            return
+
+            Line line = Line.findByName(population.identification)
+            if(!line){
+                line = new Line(
+                        name: population.identification
+                ).save flush: true
+            }
+
+            stockInstance.line = line
+            line.addToStocks(stockInstance)
+
+//            flash.message = "Must associate a line with a stock"
+//            render(view: "createFromCapture", model: [stockInstance: stockInstance, stockNames: stockNames])
+//            return
         }
 
-        Population population = Population.findById(params.population)
         Date captureDate = params.newLineDate
         String captureComment = params.newLinecomment
         Capture capture = new Capture(
