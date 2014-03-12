@@ -107,20 +107,21 @@ class Stock {
     }
 
     public isCapture(){
+        return !isBred()
 //        int count = 0 ;
-        for(capture in line?.captures){
-            if(capture.captureDate!=null){
-                return true
-            }
-        }
-
-        return false
+//        for(capture in line?.captures){
+//            if(capture.captureDate!=null){
+//                return true
+//            }
+//        }
+//
+//        return false
 //        return line?.captures?.size()>0
 //        return count>0
     }
 
     public isBred(){
-        return !isCapture()
+        return fertilizationDate!=null || maternalStock!=null || paternalStock!=null
 //        return fertilizationDate!=null
     }
 
