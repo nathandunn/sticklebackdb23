@@ -30,7 +30,7 @@ class Population {
         if(sourceLat && sourceLong){
             return sourceLat + "," + sourceLong
         }
-        return 'N/A'
+        return 'Lat/Long not specified'
     }
 
     String getShortIdentification(){

@@ -66,7 +66,9 @@
 
                 <g:each in="${stockInstance?.line?.captures}" var="capture">
                     <g:if test="${capture.captureDate}">
-                        Capture <g:formatDate date="${capture.captureDate}" type="date" dateStyle="short"/>
+                        <g:link action="show" controller="capture" id="${capture.id}">
+                            Capture <g:formatDate date="${capture.captureDate}" type="date" dateStyle="short"/>
+                        </g:link>
                     </g:if>
                 </g:each>
             </g:if>
@@ -86,7 +88,7 @@
         <g:if test="${stockInstance?.fertilizationDate}">
             <span class="property-value" aria-labelledby="fertilizationDate-label"><g:formatDate type="date"
                                                                                                  style="MEDIUM"
-                                                                                                 date="${stockInstance?.fertilizationDate}" /></span>
+                                                                                                 date="${stockInstance?.fertilizationDate}"/></span>
         </g:if>
         <g:else>
             <span class="property-value" aria-labelledby="fertilizationDate-label">----</span>

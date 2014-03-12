@@ -51,6 +51,7 @@
         var select = $("#line");
         select.append('<option value=' + data.id + '>' + data.name + '</option>');
         select.val(data.id);
+        select.change();
 
         $('#addNewLineDiv').toggle(800);
     }
@@ -277,7 +278,7 @@
         <g:message code="stock.fertilizationDate.label" default="Fertilization Date"/>
     </label>
     <g:datePicker name="fertilizationDate" precision="day" relativeYears="[0..-20]"
-                  value="${stockInstance?.fertilizationDate}" default="none" noSelection="['': '']"/>
+                  value="${stockInstance?.fertilizationDate}" default="${new Date()}" noSelection="['': '']"/>
 </div>
 
 <br/>
@@ -308,8 +309,6 @@
 
 
 <div id="addNewLineDiv">
-    <br/>
-    <hr/>
 
     <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
         <label for="line">
