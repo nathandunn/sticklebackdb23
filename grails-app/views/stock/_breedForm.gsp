@@ -177,38 +177,42 @@
         });
 
         $("#addMaternalIndividualButton").click(function () {
-            var location = $('#newMaternalIndividualLocation').val();
+            var somaLocation= $('#newMaternalSomaLocation').val();
+            var finclipLocation= $('#newMaternalFinclipLocation').val();
+            var dnaLocation= $('#newMaternalDnaLocation').val();
             var comment = $('#newMaternalIndividualComment').val();
-            if (location.length == 0) {
-                alert('You must provide a location');
+            if (somaLocation.length == 0) {
+                alert('You must provide a soma location');
                 return;
             }
             var stock = $('#maternalStock-Id').val();
 
             ${remoteFunction(action: 'addIndividualToStock'
                       , controller: 'individual'
-                      , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&location=\'+location+\'&fishSex=female\''
+                      , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&finclipLocation=\'+finclipLocation+\'&dnaLocation=\'+dnaLocation+\'&somaLocation=\'+somaLocation+\'&fishSex=female\''
                       , method: 'POST'
-                      , onSuccess: 'alert(\'Added maternal individual in location:\'+location);setMaternalIds(data);clearInputs();selectLastMaternal();$(\'#addMaternalIndividualDiv\').toggle(800);'
+                      , onSuccess: 'alert(\'Added maternal individual to location:\'+somaLocation);setMaternalIds(data);clearInputs();selectLastMaternal();$(\'#addMaternalIndividualDiv\').toggle(800);'
                       , onError: 'alert(\'error\');'
               )};
         });
 
 
         $("#addPaternalIndividualButton").click(function () {
-            var location = $('#newPaternalIndividualLocation').val();
+            var somaLocation= $('#newPaternalSomaLocation').val();
+            var finclipLocation= $('#newPaternalFinclipLocation').val();
+            var dnaLocation= $('#newPaternalDnaLocation').val();
             var comment = $('#newPaternalIndividualComment').val();
-            if (location.length == 0) {
-                alert('You must provide a location');
+            if (somaLocation.length == 0) {
+                alert('You must provide a soma location');
                 return;
             }
             var stock = $('#paternalStock-Id').val();
 
             ${remoteFunction(action: 'addIndividualToStock'
                       , controller: 'individual'
-                      , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&location=\'+location+\'&fishSex=male\''
+                      , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&finclipLocation=\'+finclipLocation+\'&dnaLocation=\'+dnaLocation+\'&somaLocation=\'+somaLocation+\'&fishSex=male\''
                       , method: 'POST'
-                      , onSuccess: 'alert(\'Added paternal individual in location: \'+location);setPaternalIds(data);clearInputs();selectLastPaternal(); $(\'#addPaternalIndividualDiv\').toggle(800);'
+                      , onSuccess: 'alert(\'Added paternal individual in location: \'+somaLocation);setPaternalIds(data);clearInputs();selectLastPaternal(); $(\'#addPaternalIndividualDiv\').toggle(800);'
                       , onError: 'alert(\'error\');'
               )};
         });
@@ -369,13 +373,13 @@
         <g:message code="stock.addMaternalIndividualID.label" default="Add Maternal Individual"/>
     </label>
     <input id="addMaternalIndividualButton" type="button" value="Add"/>
-    Location: <g:textField id="newMaternalIndividualLocation" name="newMaternalIndividualLocation"/>
-    Comment: <g:textField id="newMaternalIndividualComment" name="newMaternalIndividualComment"/>
-    %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
-    %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${[]}"--}%
-    %{--value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"--}%
-    %{--class="many-to-one" noSelection="['null': '- Choose Individual -']"--}%
-    %{--optionValue="individualIDLabel" optionKey="id"/>--}%
+    Comment: <g:textField id="newMaternalIndividualComment" name="newMaternalIndividualComment" size="50"/>
+    <br/>
+    <br/>
+    Locations
+    Soma: <g:textField id="newMaternalSomaLocation" name="newMaternalSomaLocation"/>
+    Finclip: <g:textField id="newMaternalIndividualLocation" name="newMaternalIndividualLocation"/>
+    Dna: <g:textField id="newMaternalDnaLocation" name="newMaternalDnaLocation"/>
 </div>
 
 <br/>
@@ -426,9 +430,19 @@
     <label for="addPaternalIndividual">
         <g:message code="stock.addPaternalIndividualID.label" default="Add Paternal Individual"/>
     </label>
+    %{--<input id="addPaternalIndividualButton" type="button" value="Add"/>--}%
+    %{--Location: <g:textField id="newPaternalIndividualLocation" name="newPaternalIndividualLocation"/>--}%
+    %{--Comment: <g:textField id="newPaternalIndividualComment" name="newPaternalIndividualComment"/>--}%
+
     <input id="addPaternalIndividualButton" type="button" value="Add"/>
-    Location: <g:textField id="newPaternalIndividualLocation" name="newPaternalIndividualLocation"/>
-    Comment: <g:textField id="newPaternalIndividualComment" name="newPaternalIndividualComment"/>
+    Comment: <g:textField id="newPaternalIndividualComment" name="newPaternalIndividualComment" size="50"/>
+    <br/>
+    <br/>
+    Locations
+    Soma: <g:textField id="newPaternalSomaLocation" name="newPaternalSomaLocation"/>
+    Finclip: <g:textField id="newPaternalFinclipLocation" name="newPaternalFinclipLocation"/>
+    Dna: <g:textField id="newPaternalDnaLocation" name="newPaternalDnaLocation"/>
+
     %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
     %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${[]}"--}%
     %{--value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"--}%

@@ -175,11 +175,13 @@ class IndividualController {
         }
     }
 
-    def addIndividualToStock(Long stockId,String location,String comment,String fishSex) {
+    def addIndividualToStock(Long stockId,String somaLocation,String finclipLocation,String dnaLocation,String comment,String fishSex) {
         Stock stock = Stock.findById(stockId)
         Integer individualID = stockService.getNextIndividualID(stock)
         Individual individual = new Individual(
-                somaLocation: location
+                somaLocation: somaLocation
+                ,dnaLocation: dnaLocation
+                ,finclipLocation: finclipLocation
                 ,comments: comment
                 ,fishSex: fishSex
                 ,individualID: individualID
