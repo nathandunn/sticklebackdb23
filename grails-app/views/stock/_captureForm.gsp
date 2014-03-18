@@ -114,7 +114,7 @@
         </label>
         <g:select id="population" name="population"
                   from="${edu.uoregon.sticklebackdb.Population.executeQuery("from Population p order by p.common asc,p.identification asc")}"
-                  optionKey="id" optionValue="shortIdentification"
+                  optionKey="id" optionValue="identification"
         onchange="setLine();"
         />
     </div>
