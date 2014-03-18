@@ -665,3 +665,8 @@ a.external {
     display: inline;
     float: right;
 }
+
+.small-select{
+    font-size: 12px;
+    max-width: 200px;
+}

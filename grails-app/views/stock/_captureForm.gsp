@@ -44,6 +44,13 @@
     }
 
     function clearInputs() {
+        $('#newPopulationComment').val('');
+        $('#newPopulationCommon').val('');
+        $('#newPopulationLat').val('');
+        $('#newPopulationLong').val('');
+        $('#newPopulationName').val('');
+
+
         $('#newLineName').val('');
         $('#newLineComment').val('');
         $('#population').val('');
@@ -58,12 +65,38 @@
         var select = $("#line");
         select.append('<option value=' + data.id + '>' + data.name + '</option>');
 
-        $('#addNewLineDiv').toggle(800);
+        $('#addNewLineDiv').hide(800);
 
         select.val(data.id);
         select.change();
     }
 
+    function addAndSelectPopulation(input) {
+
+        var data = input.population ;
+
+        clearInputs();
+        alert('Added new population : ' + data.identification);
+        var select1 = $("#population");
+        select1.append('<option value=' + data.id + '>' + data.identification + '</option>');
+
+        $('#addNewPopulationDiv').hide(800);
+
+        select1.val(data.id);
+        select1.change();
+
+        var line = input.line ;
+
+        var select = $("#line");
+        select.append('<option value=' + line.id + '>' + line.name + '</option>');
+
+//        $('#addNewLineDiv').hide(800);
+
+        select.val(line.id);
+        select.change();
+
+//        addAndSelectLine(input.line);
+    }
 
     $(document).ready(function () {
         var availableTags = [
@@ -74,6 +107,33 @@
         ];
         $("#stockName").autocomplete({
             source: availableTags
+        });
+
+        $("#addNewPopulation").click(function(){
+            $('#addNewPopulationDiv').toggle(800);
+        });
+
+        $("#addNewPopulationDiv").hide();
+
+        $("#addNewPopulationButton").click(function(){
+            var name = $('#newPopulationName').val();
+            var comment = $('#newPopulationComment').val();
+            var latitude = $('#newPopulationLat').val();
+            var longitude = $('#newPopulationLong').val();
+            var common = $('#newPopulationCommon').val();
+
+            console.log('name: '+name);
+            console.log('comment: '+comment);
+            console.log('latitude: '+latitude);
+            console.log('common: '+common);
+
+            ${remoteFunction(action: 'addPopulation'
+                      , controller: 'population'
+                      , params: "\'name=\'+name+\'&comment=\'+comment+\'&common=\'+common+\'&latitude=\'+latitude+\'&longitude=\'+longitude"
+                      , method: 'POST'
+                      , onSuccess: 'addAndSelectPopulation(data);'
+                      , onError: 'alert(\'error\');'
+              )};
         });
 
         $("#addNewLineDiv").hide();
@@ -114,9 +174,26 @@
         </label>
         <g:select id="population" name="population"
                   from="${edu.uoregon.sticklebackdb.Population.executeQuery("from Population p order by p.common asc,p.identification asc")}"
-                  optionKey="id" optionValue="identification"
+                  optionKey="id" optionValue="identification" class="small-select"
         onchange="setLine();"
         />
+        <input type="button" id="addNewPopulation" value="Add New Population"/>
+    </div>
+
+    <div id='addNewPopulationDiv' class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
+        <label for="line">
+            <g:message code="stock.line.label" default="Add New Line"/>
+        </label>
+        <input id="addNewPopulationButton" type="button" value="Add"/>
+        Name: <g:textField id="newPopulationName" name="newPopulationName" size="50"/>
+        Common: <g:checkBox id="newPopulationCommon" name="newPopulationCommon"/>
+        <br/>
+        <br/>
+        Source Lat: <g:textField datatype="number" id="newPopulationLat" name="newPopulationLat" size="10"/>
+        Long: <g:textField id="newPopulationLong" name="newPopulationLong" size="10"/>
+        <br/>
+        <br/>
+        Comment: <g:textField id="newPopulationComment" name="newPopulationComment" size="50"/>
     </div>
 
     <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
