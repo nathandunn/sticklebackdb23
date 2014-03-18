@@ -27,7 +27,9 @@ class Individual {
     String comments
 
     // Fish location (column Q)
-    String fishLocation
+    String somaLocation
+    String finclipLocation
+    String dnaLocation
 
     // Fish sex (column R)
     String fishSex

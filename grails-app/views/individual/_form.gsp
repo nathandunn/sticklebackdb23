@@ -23,7 +23,7 @@
         <g:message code="individual.stock.label" default="Stock"/>
     </label>
     <g:if test="${individualInstance.id}">
-       <div class="locked-field">${individualInstance.stock.stockIDLabel}</div>
+       <div class="locked-field">${individualInstance?.stock.stockIDLabel}</div>
     </g:if>
     <g:else>
         <g:select id="stock" name="stock.id" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID(order: "desc")}"
@@ -150,12 +150,28 @@
               %{--optionValue="individualIDLabel"/>--}%
 %{--</div>--}%
 
-%{-- Fish Location --}%
-<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'fishLocation', 'error')} ">
-    <label for="fishLocation">
-        <g:message code="individual.fishLocation.label" default="Fish Location"/>
+%{-- Soma Location --}%
+<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'somaLocation', 'error')} ">
+    <label for="somaLocation">
+        <g:message code="individual.somaLocation.label" default="Soma Location"/>
     </label>
-    <g:textField name="fishLocation" value="${individualInstance?.fishLocation}" size="40"/>
+    <g:textField name="somaLocation" value="${individualInstance?.somaLocation}" size="40"/>
+</div>
+
+%{-- Finclip Location --}%
+<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'finclipLocation', 'error')} ">
+    <label for="finclipLocation">
+        <g:message code="individual.finclipLocation.label" default="Finclip Location"/>
+    </label>
+    <g:textField name="finclipLocation" value="${individualInstance?.finclipLocation}" size="40"/>
+</div>
+
+%{-- DNA Location --}%
+<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'dnaLocation', 'error')} ">
+    <label for="dnaLocation">
+        <g:message code="individual.dnaLocation.label" default="DNA Location"/>
+    </label>
+    <g:textField name="dnaLocation" value="${individualInstance?.dnaLocation}" size="40"/>
 </div>
 
 %{-- Comments --}%

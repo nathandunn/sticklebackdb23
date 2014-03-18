@@ -10,7 +10,7 @@ class IndividualTests {
     void testSomething() {
         Individual individual = new Individual(
            individualID: 12
-                ,fishLocation: "ASDF"
+                , somaLocation: "ASDF"
                 ,fishSex: "male"
 
         )

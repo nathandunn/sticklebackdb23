@@ -335,7 +335,7 @@ class StubData {
 //                }
 
                 // Fish location (column Q)
-                individual.fishLocation = tokens[16].size() > 0 ? tokens[16] : null
+                individual.somaLocation = tokens[16].size() > 0 ? tokens[16] : null
 
                 // Researcher comments
                 individual.comments = tokens[26]?.size() > 0 ? tokens[26] : null

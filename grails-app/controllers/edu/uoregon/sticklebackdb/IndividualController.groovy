@@ -179,7 +179,7 @@ class IndividualController {
         Stock stock = Stock.findById(stockId)
         Integer individualID = stockService.getNextIndividualID(stock)
         Individual individual = new Individual(
-                fishLocation: location
+                somaLocation: location
                 ,comments: comment
                 ,fishSex: fishSex
                 ,individualID: individualID
