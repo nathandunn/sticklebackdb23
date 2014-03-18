@@ -14,8 +14,10 @@
 <div class="nav" role="navigation">
     <ul>
         <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]"/></g:link></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label"
-                                                              args="[entityName]"/></g:link></li>
+        <shiro:hasRole name="${edu.uoregon.sticklebackdb.ResearcherService.ROLE_ADMINISTRATOR}">
+            <li><g:link class="create" action="create"><g:message code="default.new.label"
+                                                                  args="[entityName]"/></g:link></li>
+        </shiro:hasRole>
     </ul>
 </div>
 
@@ -24,8 +26,8 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    %{--${researcherInstance.hasErrors()}--}%
-    %{--${researcherInstance.errors}--}%
+%{--${researcherInstance.hasErrors()}--}%
+%{--${researcherInstance.errors}--}%
     <g:hasErrors bean="${researcherInstance}">
         <ul class="errors" role="alert">
             <g:eachError bean="${researcherInstance}" var="error">

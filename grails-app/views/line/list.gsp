@@ -9,11 +9,11 @@
 </head>
 <body>
   <a href="#list-line" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-  <div class="nav" role="navigation">
-    <ul>
-      <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-    </ul>
-  </div>
+  %{--<div class="nav" role="navigation">--}%
+    %{--<ul>--}%
+      %{--<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--}%
+    %{--</ul>--}%
+  %{--</div>--}%
   <div id="list-line" class="content scaffold-list" role="main">
     <h1><g:message code="default.list.label" args="[entityName]" /></h1>
     <g:if test="${flash.message}">

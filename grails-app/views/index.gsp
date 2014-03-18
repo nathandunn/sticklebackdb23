@@ -90,9 +90,9 @@
         <li><g:link controller="stock" action="createFromBreeding">Add New Stock from Breeding</g:link></li>
         <li><g:link controller="stock" action="createFromCapture">Add New Stock from Capture</g:link></li>
         <li><g:link controller="individual" action="create">Add New Individual</g:link></li>
-        <li><g:link controller="population" action="create">Add New Population</g:link></li>
-        <li><g:link controller="line" action="create">Add New Line</g:link></li>
-        <li><g:link controller="capture" action="create">Add New Capture</g:link></li>
+        %{--<li><g:link controller="population" action="create">Add New Population</g:link></li>--}%
+        %{--<li><g:link controller="line" action="create">Add New Line</g:link></li>--}%
+        %{--<li><g:link controller="capture" action="create">Add New Capture</g:link></li>--}%
         <li><g:link controller="researcher" action="create">Add New Researcher</g:link></li>
     </ul>
 </div>
