@@ -6,7 +6,7 @@
 
 <script>
 
-    function setLine(){
+    function setLine() {
 //        var name = $('#population').val($(this).find("option:selected").attr("title"));
 //        var name = $('#population').val($(this).find("option:selected").text());
         var name = $("#population option:selected").text();
@@ -73,7 +73,7 @@
 
     function addAndSelectPopulation(input) {
 
-        var data = input.population ;
+        var data = input.population;
 
         clearInputs();
         alert('Added new population : ' + data.identification);
@@ -85,7 +85,7 @@
         select1.val(data.id);
         select1.change();
 
-        var line = input.line ;
+        var line = input.line;
 
         var select = $("#line");
         select.append('<option value=' + line.id + '>' + line.name + '</option>');
@@ -109,23 +109,23 @@
             source: availableTags
         });
 
-        $("#addNewPopulation").click(function(){
+        $("#addNewPopulation").click(function () {
             $('#addNewPopulationDiv').toggle(800);
         });
 
         $("#addNewPopulationDiv").hide();
 
-        $("#addNewPopulationButton").click(function(){
+        $("#addNewPopulationButton").click(function () {
             var name = $('#newPopulationName').val();
             var comment = $('#newPopulationComment').val();
             var latitude = $('#newPopulationLat').val();
             var longitude = $('#newPopulationLong').val();
             var common = $('#newPopulationCommon').val();
 
-            console.log('name: '+name);
-            console.log('comment: '+comment);
-            console.log('latitude: '+latitude);
-            console.log('common: '+common);
+            console.log('name: ' + name);
+            console.log('comment: ' + comment);
+            console.log('latitude: ' + latitude);
+            console.log('common: ' + common);
 
             ${remoteFunction(action: 'addPopulation'
                       , controller: 'population'
@@ -175,9 +175,10 @@
         <g:select id="population" name="population"
                   from="${edu.uoregon.sticklebackdb.Population.executeQuery("from Population p order by p.common asc,p.identification asc")}"
                   optionKey="id" optionValue="identification" class="small-select"
-        onchange="setLine();"
-        />
-        <input type="button" id="addNewPopulation" value="Add New Population"/>
+                  onchange="setLine();"/>
+        <shiro:hasRole name="${edu.uoregon.sticklebackdb.ResearcherService.ROLE_ADMINISTRATOR}">
+            <input type="button" id="addNewPopulation" value="Add New Population"/>
+        </shiro:hasRole>
     </div>
 
     <div id='addNewPopulationDiv' class="fieldcontain ${hasErrors(bean: stockInstance, field: 'line', 'error')} ">
@@ -235,7 +236,7 @@
                           , onError: 'alert(\'error\');')}
                   "/>
 
-        %{--<input type="button" id="addNewLineButton" value="Add New Line"/>--}%
+    %{--<input type="button" id="addNewLineButton" value="Add New Line"/>--}%
 
         <div id="newViewDiv" class="lineSmallView">
             <g:if test="${stockInstance?.line?.id}">
