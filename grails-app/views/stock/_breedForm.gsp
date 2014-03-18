@@ -29,10 +29,16 @@
     }
 
     function clearInputs() {
-        $('#newMaternalIndividualLocation').val("");
+        $('#newMaternalFinclipLocation').val("");
+        $('#newMaternalDnaLocation').val("");
+        $('#newMaternalSomaLocation').val("");
+        $('#newMaternalIdStatus').val("");
         $('#newMaternalIndividualComment').val("");
 
-        $('#newPaternalIndividualLocation').val("");
+        $('#newPaternalFinclipLocation').val("");
+        $('#newPaternalDnaLocation').val("");
+        $('#newPaternalSomaLocation').val("");
+        $('#newPaternalIdStatus').val("");
         $('#newPaternalIndividualComment').val("");
     }
 
@@ -180,6 +186,7 @@
             var somaLocation= $('#newMaternalSomaLocation').val();
             var finclipLocation= $('#newMaternalFinclipLocation').val();
             var dnaLocation= $('#newMaternalDnaLocation').val();
+            var idStatus = $('#newMaternalIdStatus').val();
             var comment = $('#newMaternalIndividualComment').val();
             if (somaLocation.length == 0) {
                 alert('You must provide a soma location');
@@ -189,7 +196,7 @@
 
             ${remoteFunction(action: 'addIndividualToStock'
                       , controller: 'individual'
-                      , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&finclipLocation=\'+finclipLocation+\'&dnaLocation=\'+dnaLocation+\'&somaLocation=\'+somaLocation+\'&fishSex=female\''
+                      , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&idStatus=\'+idStatus+\'&finclipLocation=\'+finclipLocation+\'&dnaLocation=\'+dnaLocation+\'&somaLocation=\'+somaLocation+\'&fishSex=female\''
                       , method: 'POST'
                       , onSuccess: 'alert(\'Added maternal individual to location:\'+somaLocation);setMaternalIds(data);clearInputs();selectLastMaternal();$(\'#addMaternalIndividualDiv\').toggle(800);'
                       , onError: 'alert(\'error\');'
@@ -201,6 +208,7 @@
             var somaLocation= $('#newPaternalSomaLocation').val();
             var finclipLocation= $('#newPaternalFinclipLocation').val();
             var dnaLocation= $('#newPaternalDnaLocation').val();
+            var idStatus = $('#newPaternalIdStatus').val();
             var comment = $('#newPaternalIndividualComment').val();
             if (somaLocation.length == 0) {
                 alert('You must provide a soma location');
@@ -210,7 +218,7 @@
 
             ${remoteFunction(action: 'addIndividualToStock'
                       , controller: 'individual'
-                      , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&finclipLocation=\'+finclipLocation+\'&dnaLocation=\'+dnaLocation+\'&somaLocation=\'+somaLocation+\'&fishSex=male\''
+                      , params: '\'stockId=\' + stock+\'&comment=\'+comment+\'&idStatus=\'+idStatus+\'&finclipLocation=\'+finclipLocation+\'&dnaLocation=\'+dnaLocation+\'&somaLocation=\'+somaLocation+\'&fishSex=male\''
                       , method: 'POST'
                       , onSuccess: 'alert(\'Added paternal individual in location: \'+somaLocation);setPaternalIds(data);clearInputs();selectLastPaternal(); $(\'#addPaternalIndividualDiv\').toggle(800);'
                       , onError: 'alert(\'error\');'
@@ -378,8 +386,12 @@
     <br/>
     Locations
     Soma: <g:textField id="newMaternalSomaLocation" name="newMaternalSomaLocation"/>
-    Finclip: <g:textField id="newMaternalIndividualLocation" name="newMaternalIndividualLocation"/>
+    Finclip: <g:textField id="newMaternalFinclipLocation" name="newMaternalFinclipLocation"/>
     Dna: <g:textField id="newMaternalDnaLocation" name="newMaternalDnaLocation"/>
+
+    <br/>
+    <br/>
+    Id Status: <g:select id="newMaternalIdStatus" name="newMaternalIdStatus" from="${edu.uoregon.IndividualIdStatus.values()}"/>
 </div>
 
 <br/>
@@ -425,7 +437,7 @@
     <input type="button" id="addNewPaternalIndividualButton" value="Add New Paternal Individual"/>
 </div>
 
-%{-- Add Maternal Individual ID Button --}%
+%{-- Add Paternal Individual ID Button --}%
 <div id='addPaternalIndividualDiv' class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addPaternalIndividualID', 'error')} ">
     <label for="addPaternalIndividual">
         <g:message code="stock.addPaternalIndividualID.label" default="Add Paternal Individual"/>
@@ -442,6 +454,9 @@
     Soma: <g:textField id="newPaternalSomaLocation" name="newPaternalSomaLocation"/>
     Finclip: <g:textField id="newPaternalFinclipLocation" name="newPaternalFinclipLocation"/>
     Dna: <g:textField id="newPaternalDnaLocation" name="newPaternalDnaLocation"/>
+    <br/>
+    <br/>
+    Id Status: <g:select id="newPaternalIdStatus" name="newPaternalIdStatus" from="${edu.uoregon.IndividualIdStatus.values()}"/>
 
     %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
     %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${[]}"--}%

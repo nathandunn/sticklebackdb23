@@ -174,6 +174,15 @@
     <g:textField name="dnaLocation" value="${individualInstance?.dnaLocation}" size="40"/>
 </div>
 
+%{-- ID Status --}%
+<div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'idStatus', 'error')} ">
+    <label for="idStatus">
+        <g:message code="individual.idStatus.label" default="ID Status"/>
+    </label>
+    %{--<g:textField name="dnaLocation" value="${individualInstance?.idStatus}" size="40"/>--}%
+    <g:select name="idStatus" value="${individualInstance?.idStatus}" from="${edu.uoregon.IndividualIdStatus.values()}"/>
+</div>
+
 %{-- Comments --}%
 <div class="fieldcontain ${hasErrors(bean: individualInstance, field: 'comments', 'error')} ">
     <label for="comments">

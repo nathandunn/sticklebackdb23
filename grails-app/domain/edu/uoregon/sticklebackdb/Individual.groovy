@@ -30,6 +30,7 @@ class Individual {
     String somaLocation
     String finclipLocation
     String dnaLocation
+    String idStatus
 
     // Fish sex (column R)
     String fishSex
