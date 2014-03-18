@@ -30,8 +30,15 @@
 
 <body>
 
+<div class="nav" role="navigation">
+    <ul>
+        %{--<li><g:link class="show" action="show" id="${stockInstance.id}">${stockInstance.stockIDLabel}</g:link></li>--}%
+        <li><g:link class="show" action="show" id="${stockInstance.id}">Show Stock ${stockInstance.stockIDLabel}</g:link></li>
+    </ul>
+</div>
+
 <div class="lineage">
-    <div >
+    <div>
         <h3>Parents</h3>
         <g:if test="${parentStocks}">
             <g:each in="${parentStocks}" var="stock" status="iter">
