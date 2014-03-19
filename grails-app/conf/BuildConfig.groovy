@@ -4,6 +4,7 @@ grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
 grails.project.target.level = 1.6
 grails.project.source.level = 1.6
+gwt.version = "2.5.1"
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 
@@ -87,6 +88,12 @@ grails.project.dependency.resolution = {
         // plugins.shiro=1.1.4
         compile ":shiro:1.2.0"
         compile ":crypto:2.0"
+
+        // GWT Plugin
+        runtime ":extended-dependency-manager:0.5.5"
+        compile ":gwt:1.0", {
+            transitive=false
+        }
 
 //        compile ':cache:1.1.1'
     }
