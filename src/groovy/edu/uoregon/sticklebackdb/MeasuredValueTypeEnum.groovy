@@ -1,4 +1,4 @@
-package edu.uoregon
+package edu.uoregon.sticklebackdb
 
 /**
  * Created by ndunn on 3/19/14.

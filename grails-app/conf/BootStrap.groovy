@@ -1,4 +1,4 @@
-import edu.uoregon.StubData
+import edu.uoregon.sticklebackdb.StubData
 import edu.uoregon.sticklebackdb.Individual
 import edu.uoregon.sticklebackdb.Stock
 

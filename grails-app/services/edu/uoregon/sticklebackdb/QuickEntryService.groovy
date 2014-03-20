@@ -2,6 +2,7 @@ package edu.uoregon.sticklebackdb
 
 import grails.converters.JSON
 import grails.transaction.Transactional
+import groovy.transform.CompileStatic
 
 @Transactional
 class QuickEntryService {
@@ -21,7 +22,7 @@ class QuickEntryService {
         for (MeasuredValue measuredValue in MeasuredValue.findAllByExperiment(experiment, [order: "asc", sort: "strain.name"])) {
             MeasuredValueDTO measuredValueDTO = new MeasuredValueDTO()
             measuredValueDTO.category = measuredValue.category.name
-            measuredValueDTO.strain = measuredValue.strain.name
+            measuredValueDTO.stock = measuredValue.stock.stockIDLabel
             measuredValueDTO.value = measuredValue.value
             measuredValueDTO.id = measuredValue.id
             measuredValueDTOList.add(measuredValueDTO)
@@ -29,7 +30,7 @@ class QuickEntryService {
 
         MeasuredValuesDTO measuredValuesDTO = new MeasuredValuesDTO()
         measuredValuesDTO.categories = Category.listOrderByName().collect { it.name }
-        measuredValuesDTO.strains = Strain.listOrderByName().collect { it.name }
+        measuredValuesDTO.stocks = Stock.listOrderByStockIDLabel().collect { it.stockID.toString() }
         measuredValuesDTO.experiments = measuredValueDTOList
 
         measuredValuesDTO.experimentId = experimentId;
@@ -41,11 +42,11 @@ class QuickEntryService {
 
     String createMeasuredValue(Integer experimentId, String strainString, String valueString, String categoryString) {
         Experiment experiment = Experiment.get(experimentId)
-        Strain strain = Strain.findByName(strainString)
+        Stock stock = Stock.findById(strainString as Integer)
         Category category = Category.findByName(categoryString)
         MeasuredValue measuredValue = new MeasuredValue(
                 experiment: experiment
-                , strain: strain
+                , stock: stock
                 , category: category
                 , value: valueString
         ).save(insert: true, flush: true, failOnError: true)
@@ -63,12 +64,12 @@ class QuickEntryService {
         MeasuredValue measuredValue = MeasuredValue.findById(measuredValueId)
         println "measuredValue ${measuredValue}"
         if (field == "strain") {
-            Strain strain = Strain.findByName(newValue)
-            println "strain [${strain}] found for [${newValue}]"
-            if (strain == null) {
-                return "error:Strain does not exist '${newValue}'"
+            Stock stock = Stock.findByStockID(newValue as Integer)
+            println "stock [${stock}] found for [${newValue}]"
+            if (stock == null) {
+                return "error:Stock does not exist '${newValue}'"
             }
-            measuredValue.strain = strain
+            measuredValue.stock = stock
         } else if (field == "value") {
             if (newValue == "bad") {
                 return "error:badness"

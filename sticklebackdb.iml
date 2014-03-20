@@ -26,6 +26,14 @@
         <naming-strategy-map />
       </configuration>
     </facet>
+    <facet type="gwt" name="GWT">
+      <configuration>
+        <setting name="compilerMaxHeapSize" value="1024" />
+        <setting name="gwtScriptOutputStyle" value="DETAILED" />
+        <setting name="gwtSdkUrl" value="file://$USER_HOME$/Downloads/gwt-2.5.1" />
+        <setting name="webFacet" value="GrailsWeb" />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -41,6 +49,7 @@
       <sourceFolder url="file://$MODULE_DIR$/grails-app/services" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/grails-app/taglib" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/grails-app/realms" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/gwt" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/test-classes" />
     </content>
@@ -97,6 +106,7 @@
     <orderEntry type="library" name="grails-2.3.4" level="application" />
     <orderEntry type="module" module-name="sticklebackdb-grailsPlugins" />
     <orderEntry type="library" name="grails-2.3.4" level="application" />
+    <orderEntry type="library" name="gwt-user" level="project" />
   </component>
 </module>
 

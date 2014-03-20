@@ -1,6 +1,6 @@
 package edu.uoregon.sticklebackdb
 
-import edu.uoregon.MeasuredValueTypeEnum
+import edu.uoregon.sticklebackdb.MeasuredValueTypeEnum
 
 class Category {
 

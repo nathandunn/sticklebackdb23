@@ -1,4 +1,4 @@
-package edu.uoregon
+package edu.uoregon.sticklebackdb
 
 import au.com.bytecode.opencsv.CSVReader
 import edu.uoregon.sticklebackdb.*
