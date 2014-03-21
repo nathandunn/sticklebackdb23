@@ -49,6 +49,20 @@ class Stock {
         return ""
     }
 
+    String getStockIDLabelName(){
+        String returnString = ""
+        if(stockID){
+            returnString += String.format("%.4f", stockID as Float)
+        }
+        if(stockID && stockName){
+            returnString += " "
+        }
+        if(stockName){
+            returnString += stockName
+        }
+        return returnString
+    }
+
     // Stock name (column AM)
     String stockName
     

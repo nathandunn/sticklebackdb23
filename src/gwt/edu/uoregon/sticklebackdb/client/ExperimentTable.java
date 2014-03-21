@@ -28,7 +28,7 @@ public class ExperimentTable extends FlexTable {
     private final String CATEGORY_KEY = "category";
     private final String EXPERIMENTS_KEY = "experiments";
     private final String CATEGORIES_KEY = "categories";
-    private final String STRAINS_KEY = "strains";
+    private final String STOCKS_KEY = "stocks";
     private final String EXPERIMENT_KEY = "experimentId";
     private final String MEASURED_VALUE_KEY = "id";
 
@@ -69,10 +69,12 @@ public class ExperimentTable extends FlexTable {
 
         experimentId = (int) measuredValueDto.get(EXPERIMENT_KEY).isNumber().doubleValue();
 
-        JSONArray strains = measuredValueDto.get(STRAINS_KEY).isArray();
-        for (int i = 0; i < strains.size(); i++) {
+        GWT.log(measuredValueDto.toString());
+
+        JSONArray stocks = measuredValueDto.get(STOCKS_KEY).isArray();
+        for (int i = 0; i < stocks.size(); i++) {
 //            newStrainList.addItem(strains.get(i).isString().stringValue());
-            stockOracle.add(strains.get(i).isString().stringValue());
+            stockOracle.add(stocks.get(i).isString().stringValue());
         }
 
 

@@ -29,7 +29,8 @@ class QuickEntryService {
 
         MeasuredValuesDTO measuredValuesDTO = new MeasuredValuesDTO()
         measuredValuesDTO.categories = Category.listOrderByName().collect { it.name }
-        measuredValuesDTO.stocks = Stock.listOrderByStockIDLabel().collect { it.stockID.toString() }
+        measuredValuesDTO.stocks = Stock.listOrderByStockID().collect { it?.stockIDLabelName}
+//        measuredValuesDTO.stocks = []
         measuredValuesDTO.experiments = measuredValueDTOList
 
         measuredValuesDTO.experimentId = experimentId;
