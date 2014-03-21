@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.stockdb.MeasuredValue" %>
+<%@ page import="edu.uoregon.sticklebackdb.MeasuredValue" %>
 
 
 
@@ -16,8 +16,8 @@
 		<g:message code="measuredValue.type.label" default="Type" />
 		
 	</label>
-	%{--<g:select name="type" from="${edu.uoregon.stockdb.MeasuredValueTypeEnum?.values()}" keys="${edu.uoregon.stockdb.MeasuredValueTypeEnum.values()*.name()}" value="${measuredValueInstance?.type?.name()}" noSelection="['': '']"/>--}%
-    <g:select name="type" value="${measuredValueInstance.type}" from="${edu.uoregon.stockdb.MeasuredValueTypeEnum?.values()}"
+	%{--<g:select name="type" from="${edu.uoregon.sticklebackdb.MeasuredValueTypeEnum?.values()}" keys="${edu.uoregon.sticklebackdb.MeasuredValueTypeEnum.values()*.name()}" value="${measuredValueInstance?.type?.name()}" noSelection="['': '']"/>--}%
+    <g:select name="type" value="${measuredValueInstance.type}" from="${edu.uoregon.sticklebackdb.MeasuredValueTypeEnum?.values()}"
     />
     %{--noSelection="['':'- no selection -']"--}%
 </div>
@@ -35,7 +35,7 @@
         <g:message code="measuredValue.category.label" default="Category" />
 
     </label>
-    <g:select id="category" name="category.id" optionValue="name" from="${edu.uoregon.stockdb.Category.listOrderByName()}" optionKey="id" value="${measuredValueInstance?.category?.id}" class="many-to-one" noSelection="['null': '- NONE -']"/>
+    <g:select id="category" name="category.id" optionValue="name" from="${edu.uoregon.sticklebackdb.Category.listOrderByName()}" optionKey="id" value="${measuredValueInstance?.category?.id}" class="many-to-one" noSelection="['null': '- NONE -']"/>
     <g:link action="create" controller="category">Create Category</g:link>
 </div>
 
@@ -44,7 +44,7 @@
         <g:message code="measuredValue.experiment.label" default="Experiment" />
 
     </label>
-    <g:select id="experiment" name="experiment.id" optionValue="name" from="${edu.uoregon.stockdb.Experiment.listOrderByName()}" optionKey="id" value="${measuredValueInstance?.experiment?.id}" class="many-to-one" noSelection="['null': '- NONE -']"/>
+    <g:select id="experiment" name="experiment.id" optionValue="name" from="${edu.uoregon.sticklebackdb.Experiment.listOrderByName()}" optionKey="id" value="${measuredValueInstance?.experiment?.id}" class="many-to-one" noSelection="['null': '- NONE -']"/>
     <g:link action="create" controller="experiment">Create Experiment</g:link>
 </div>
 
@@ -54,6 +54,6 @@
         <g:message code="measuredValue.stock.label" default="Stock" />
 
     </label>
-    <g:select id="stock" name="stock.id" optionValue="name" from="${edu.uoregon.stockdb.Stock.listOrderByName()}" optionKey="id" value="${measuredValueInstance?.stock?.id}" class="many-to-one" noSelection="['null': '- NONE -']"/>
+    <g:select id="stock" name="stock.id" optionValue="name" from="${edu.uoregon.sticklebackdb.Stock.listOrderByName()}" optionKey="id" value="${measuredValueInstance?.stock?.id}" class="many-to-one" noSelection="['null': '- NONE -']"/>
     <g:link action="create" controller="stock">Create Stock</g:link>
 </div>

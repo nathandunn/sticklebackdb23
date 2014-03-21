@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.stockdb.ResearcherService; edu.uoregon.stockdb.Experiment" %>
+<%@ page import="edu.uoregon.sticklebackdb.ResearcherService; edu.uoregon.sticklebackdb.Experiment" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +44,7 @@
                 <td><g:link action="show"
                             id="${experimentInstance.id}">${fieldValue(bean: experimentInstance, field: "name")}</g:link></td>
 
-                <td>${experimentInstance?.researcher?.fullName}</td>
+                <td>${experimentInstance?.researcher?.name}</td>
 
                 <td><g:formatDate date="${experimentInstance.whenPerformed}" type="date" dateStyle="MEDIUM"/></td>
 

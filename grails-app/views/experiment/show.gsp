@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.stockdb.ResearcherService; edu.uoregon.stockdb.Experiment" %>
+<%@ page import="edu.uoregon.sticklebackdb.ResearcherService; edu.uoregon.sticklebackdb.Experiment" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,7 +114,7 @@
 
                 <span class="property-value" aria-labelledby="researcher-label"><g:link controller="researcher"
                                                                                         action="show"
-                                                                                        id="${experimentInstance?.researcher?.id}">${experimentInstance?.researcher?.fullName}</g:link></span>
+                                                                                        id="${experimentInstance?.researcher?.id}">${experimentInstance?.researcher?.name}</g:link></span>
 
             </li>
         </g:if>

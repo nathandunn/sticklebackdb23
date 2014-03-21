@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.stockdb.Category" %>
+<%@ page import="edu.uoregon.sticklebackdb.Category" %>
 
 
 

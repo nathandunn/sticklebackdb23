@@ -2,7 +2,6 @@ package edu.uoregon.sticklebackdb
 
 import grails.converters.JSON
 import grails.transaction.Transactional
-import groovy.transform.CompileStatic
 
 @Transactional
 class QuickEntryService {
@@ -19,7 +18,7 @@ class QuickEntryService {
 
         List<MeasuredValueDTO> measuredValueDTOList = new ArrayList<MeasuredValueDTO>();
 
-        for (MeasuredValue measuredValue in MeasuredValue.findAllByExperiment(experiment, [order: "asc", sort: "strain.name"])) {
+        for (MeasuredValue measuredValue in MeasuredValue.findAllByExperiment(experiment, [order: "asc", sort: "stock.stockID"])) {
             MeasuredValueDTO measuredValueDTO = new MeasuredValueDTO()
             measuredValueDTO.category = measuredValue.category.name
             measuredValueDTO.stock = measuredValue.stock.stockIDLabel

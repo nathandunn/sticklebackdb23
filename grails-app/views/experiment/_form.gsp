@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.stockdb.Experiment" %>
+<%@ page import="edu.uoregon.sticklebackdb.Experiment" %>
 
 
 
@@ -15,8 +15,8 @@
         <g:message code="experiment.researcher.label" default="Researcher"/>
 
     </label>
-    <g:select id="researcher" name="researcher.id" optionValue="fullName"
-              from="${edu.uoregon.stockdb.Researcher.list()}" optionKey="id"
+    <g:select id="researcher" name="researcher.id" optionValue="name"
+              from="${edu.uoregon.sticklebackdb.Researcher.list()}" optionKey="id"
               value="${currentUserId}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
@@ -25,7 +25,7 @@
         %{--<g:message code="experiment.strains.label" default="Strains"/>--}%
 
     %{--</label>--}%
-    %{--<g:select name="strains" from="${edu.uoregon.stockdb.Strain.list()}" optionValue="name" multiple="multiple"--}%
+    %{--<g:select name="strains" from="${edu.uoregon.sticklebackdb.Strain.list()}" optionValue="name" multiple="multiple"--}%
               %{--optionKey="id" size="5" value="${experimentInstance?.strains*.id}" class="many-to-many"/>--}%
 %{--</div>--}%
 

@@ -20,7 +20,7 @@
      } ;
 
 </script>
-  <script type="text/javascript" src="${resource(dir: 'gwt/edu.uoregon.stockdb.client', file: 'edu.uoregon.stockdb.client.nocache.js')}"></script>
+  <script type="text/javascript" src="${resource(dir: 'gwt/edu.uoregon.sticklebackdb.experiment', file: 'edu.uoregon.sticklebackdb.experiment.nocache.js')}"></script>
 </head>
 
 <!--                                           -->
@@ -36,7 +36,7 @@
   <iframe id="__gwt_historyFrame" style="width:0;height:0;border:0"></iframe>
 
 <h3>Experiment</h3>
-${experimentInstance.name} <g:formatDate date="${experimentInstance.whenPerformed}"/> ${experimentInstance.researcher?.fullName}
+${experimentInstance.name} <g:formatDate date="${experimentInstance.whenPerformed}"/> ${experimentInstance.researcher?.name}
 
 <div id="edit-table"></div>
 

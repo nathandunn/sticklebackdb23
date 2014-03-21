@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.stockdb.Experiment" %>
+<%@ page import="edu.uoregon.sticklebackdb.Experiment" %>
 <!DOCTYPE html>
 <html>
 	<head>
