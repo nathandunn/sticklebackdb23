@@ -1,9 +1,9 @@
 package edu.uoregon.sticklebackdb
 
 import grails.converters.JSON
-import grails.transaction.Transactional
+//import grails.transaction.Transactional
 
-@Transactional
+//@Transactional
 class QuickEntryService {
 
     static expose = ['gwt:edu.uoregon.sticklebackdb.client']

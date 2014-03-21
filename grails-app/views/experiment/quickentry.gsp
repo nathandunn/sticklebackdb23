@@ -20,7 +20,7 @@
      } ;
 
 </script>
-  <script type="text/javascript" src="${resource(dir: 'gwt/edu.uoregon.sticklebackdb.experiment', file: 'edu.uoregon.sticklebackdb.experiment.nocache.js')}"></script>
+  <script type="text/javascript" src="${resource(dir: 'gwt/edu.uoregon.sticklebackdb.ExperimentEntry', file: 'edu.uoregon.sticklebackdb.ExperimentEntry.nocache.js')}"></script>
 </head>
 
 <!--                                           -->
