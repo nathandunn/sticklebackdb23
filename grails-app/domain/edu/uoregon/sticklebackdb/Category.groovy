@@ -1,8 +1,6 @@
 package edu.uoregon.sticklebackdb
 
-import edu.uoregon.sticklebackdb.MeasuredValueTypeEnum
-
-class Category {
+class Category implements Comparable{
 
     static constraints = {
         name unique: true, nullable: false, blank: false

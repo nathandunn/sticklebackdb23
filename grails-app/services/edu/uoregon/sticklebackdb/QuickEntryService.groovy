@@ -29,7 +29,7 @@ class QuickEntryService {
 
         MeasuredValuesDTO measuredValuesDTO = new MeasuredValuesDTO()
         measuredValuesDTO.categories = Category.listOrderByName().collect { it.name }
-        measuredValuesDTO.stocks = Stock.listOrderByStockID().collect { it?.stockIDLabelName}
+        measuredValuesDTO.stocks = Stock.listOrderByStockID().collect { it?.stockIDLabel}
 //        measuredValuesDTO.stocks = []
         measuredValuesDTO.experiments = measuredValueDTOList
 
@@ -42,7 +42,11 @@ class QuickEntryService {
 
     String createMeasuredValue(Integer experimentId, String strainString, String valueString, String categoryString) {
         Experiment experiment = Experiment.get(experimentId)
-        Stock stock = Stock.findById(strainString as Integer)
+//        println "strainString: ${strainString}"
+//        println "split : ${strainString.split(':')[0]}"
+//        println "split2 : ${strainString.split(':')[0].split('\\.')[0]}"
+        Integer stockID = strainString.split(":")[0].split("\\.")[0] as Integer
+        Stock stock = Stock.findByStockID(stockID)
         Category category = Category.findByName(categoryString)
         MeasuredValue measuredValue = new MeasuredValue(
                 experiment: experiment
@@ -63,7 +67,10 @@ class QuickEntryService {
         println "saving [${measuredValueId}] field ${field} oldValue ${oldValue} newValue ${newValue} "
         MeasuredValue measuredValue = MeasuredValue.findById(measuredValueId)
         println "measuredValue ${measuredValue}"
-        if (field == "strain") {
+        if (field == "stock") {
+            if(newValue.contains(".")){
+                newValue = newValue.split("\\.")[0]
+            }
             Stock stock = Stock.findByStockID(newValue as Integer)
             println "stock [${stock}] found for [${newValue}]"
             if (stock == null) {

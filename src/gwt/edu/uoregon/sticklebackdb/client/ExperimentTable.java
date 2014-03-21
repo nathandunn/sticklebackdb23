@@ -23,12 +23,13 @@ public class ExperimentTable extends FlexTable {
     private final int VALUE_COLUMN = 2;
     private final int ACTION_COLUMN = 3;
 
-    private final String STRAIN_KEY = "strain";
+//    private final String STRAIN_KEY = "strain";
     private final String VALUE_KEY = "value";
     private final String CATEGORY_KEY = "category";
     private final String EXPERIMENTS_KEY = "experiments";
     private final String CATEGORIES_KEY = "categories";
     private final String STOCKS_KEY = "stocks";
+    private final String STOCK_KEY = "stock";
     private final String EXPERIMENT_KEY = "experimentId";
     private final String MEASURED_VALUE_KEY = "id";
 
@@ -95,10 +96,14 @@ public class ExperimentTable extends FlexTable {
 
             lastCategory = measuredValue.get(CATEGORY_KEY).isString().stringValue();
 
+            GWT.log("measured value: "+measuredValue.toString());
+            GWT.log("measured value category: "+measuredValue.get(CATEGORY_KEY));
+            GWT.log("measured value category value : "+measuredValue.get(CATEGORY_KEY).isString().stringValue());
+
             createRow(numberRows
-                    , measuredValue.get(STRAIN_KEY).isString().stringValue()
-                    , measuredValue.get(VALUE_KEY).isString().stringValue()
+                    , measuredValue.get(STOCK_KEY).isString().stringValue()
                     , lastCategory
+                    , measuredValue.get(VALUE_KEY).isString().stringValue()
                     , String.valueOf(measuredValue.get(MEASURED_VALUE_KEY).isNumber().doubleValue())
             );
 
@@ -131,9 +136,9 @@ public class ExperimentTable extends FlexTable {
 //        setWidget(numberRows, STRAIN_COLUMN, strainList);
 
 
-    private void createRow(int numberRows, String strain, String value, String category, String measuredValueId) {
+    private void createRow(int numberRows, String stock, String category , String value, String measuredValueId) {
 //        TextBox strainBox = new TextBox();
-        StockEditBox stockEditBox = new StockEditBox(stockOracle, Double.valueOf(measuredValueId).intValue(), strain);
+        StockEditBox stockEditBox = new StockEditBox(stockOracle, Double.valueOf(measuredValueId).intValue(), stock);
         setWidget(numberRows, STOCK_COLUMN, stockEditBox);
 
         ValueEditBox valueEditBox = new ValueEditBox(Double.valueOf(measuredValueId).intValue(), value);
@@ -162,9 +167,9 @@ public class ExperimentTable extends FlexTable {
         createRow(insertRow,
 //                newStrainList.getItemText(newStrainList.getSelectedIndex())
                 newStockSuggestBox.getText()
+                , newCategoryListBox.getItemText(newCategoryListBox.getSelectedIndex())
                 , newValueBox.getText()
-                , newCategoryListBox.getItemText(newCategoryListBox.getSelectedIndex()),
-                measuredValueId
+                , measuredValueId
         );
 
         for (int col = 0; col < ACTION_COLUMN; col++) {

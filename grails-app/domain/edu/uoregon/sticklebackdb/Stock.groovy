@@ -52,10 +52,7 @@ class Stock {
     String getStockIDLabelName(){
         String returnString = ""
         if(stockID){
-            returnString += String.format("%.4f", stockID as Float)
-        }
-        if(stockID && stockName){
-            returnString += " "
+            returnString += String.format("%.4f", stockID as Float)+":"
         }
         if(stockName){
             returnString += stockName
