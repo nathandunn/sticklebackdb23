@@ -339,7 +339,7 @@
 
 %{-- Maternal Stock ID --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'maternalStockID', 'error')} ">
-    <label for="maternalStockID">
+    <label for="maternalStock-Id">
         <g:message code="stock.maternalStockID.label" default="Maternal Stock ID"/>
     </label>
 
@@ -377,7 +377,7 @@
 
 %{-- Add Maternal Individual ID Button --}%
 <div id='addMaternalIndividualDiv' class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addMaternalIndividualID', 'error')} ">
-    <label for="addMaternalIndividual">
+    <label for="addMaternalIndividualButton">
         <g:message code="stock.addMaternalIndividualID.label" default="Add Maternal Individual"/>
     </label>
     <input id="addMaternalIndividualButton" type="button" value="Add"/>
@@ -399,7 +399,7 @@
 
 %{-- Paternal Stock ID --}%
 <div class="fieldcontain ${hasErrors(bean: stockInstance, field: 'paternalStockID', 'error')} ">
-    <label for="paternalStockID">
+    <label for="paternalStock-Id">
         <g:message code="stock.paternalStockID.label" default="Paternal Stock ID"/>
     </label>
 
@@ -439,7 +439,7 @@
 
 %{-- Add Paternal Individual ID Button --}%
 <div id='addPaternalIndividualDiv' class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addPaternalIndividualID', 'error')} ">
-    <label for="addPaternalIndividual">
+    <label for="addPaternalIndividualButton">
         <g:message code="stock.addPaternalIndividualID.label" default="Add Paternal Individual"/>
     </label>
     %{--<input id="addPaternalIndividualButton" type="button" value="Add"/>--}%
