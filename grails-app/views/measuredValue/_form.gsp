@@ -54,6 +54,6 @@
         <g:message code="measuredValue.stock.label" default="Stock" />
 
     </label>
-    <g:select id="stock" name="stock.id" optionValue="name" from="${edu.uoregon.sticklebackdb.Stock.listOrderByName()}" optionKey="id" value="${measuredValueInstance?.stock?.id}" class="many-to-one" noSelection="['null': '- NONE -']"/>
+    <g:select id="stock" name="stock.id" optionValue="stockIDLabelName" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID()}" optionKey="id" value="${measuredValueInstance?.stock?.id}" class="many-to-one" noSelection="['null': '- NONE -']"/>
     <g:link action="create" controller="stock">Create Stock</g:link>
 </div>
