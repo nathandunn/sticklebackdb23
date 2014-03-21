@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.sticklebackdb.Stock" %>
+<%@ page import="edu.uoregon.sticklebackdb.IndividualIdStatus; edu.uoregon.sticklebackdb.Stock" %>
 
 <r:require modules="jquery,jquery-ui"/>
 
@@ -17,14 +17,14 @@
 
 <script>
 
-    function setLineView(data){
+    function setLineView(data) {
         var paternalView = $("#newViewDiv");
         var linkView = '${createLink(action: "show",controller: "line")}/' + data.id;
-        if(data.captures.length>0){
-            paternalView.html('<a href=' + linkView + '>' + data.name+ '</a><br/> Captures: '+data.captures.length + ' Stocks: '+data.stocks.length);
+        if (data.captures.length > 0) {
+            paternalView.html('<a href=' + linkView + '>' + data.name + '</a><br/> Captures: ' + data.captures.length + ' Stocks: ' + data.stocks.length);
         }
-        else{
-            paternalView.html('<a href=' + linkView + '>' + data.name+ '</a><br/> Stocks: '+data.stocks.length);
+        else {
+            paternalView.html('<a href=' + linkView + '>' + data.name + '</a><br/> Stocks: ' + data.stocks.length);
         }
     }
 
@@ -139,8 +139,8 @@
 
         console.log('paternal: ' + paternalStockId);
         console.log('maternal: ' + maternalStockId);
-        if(maternalStockId==null || paternalStockId==null ) return ;
-        if(maternalStockId=='null' || paternalStockId=='null' ) return ;
+        if (maternalStockId == null || paternalStockId == null) return;
+        if (maternalStockId == 'null' || paternalStockId == 'null') return;
 
         $.ajax({
             type: 'POST', data: 'paternalStockId=' + paternalStockId + '&maternalStockId=' + maternalStockId, url: '/sticklebackdb/stock/findCommonLineForStocks', success: function (data, textStatus) {
@@ -168,24 +168,24 @@
         });
 
         $('#addMaternalIndividualDiv').hide();
-        $("#addNewMaternalIndividualButton").click(function(){
+        $("#addNewMaternalIndividualButton").click(function () {
             $('#addMaternalIndividualDiv').toggle(800);
         });
 
         $('#addPaternalIndividualDiv').hide();
-        $("#addNewPaternalIndividualButton").click(function(){
+        $("#addNewPaternalIndividualButton").click(function () {
             $('#addPaternalIndividualDiv').toggle(800);
         });
 
         $("#addNewLineDiv").hide();
-        $("#addNewLineButton").click(function(){
+        $("#addNewLineButton").click(function () {
             $('#addNewLineDiv').toggle(800);
         });
 
         $("#addMaternalIndividualButton").click(function () {
-            var somaLocation= $('#newMaternalSomaLocation').val();
-            var finclipLocation= $('#newMaternalFinclipLocation').val();
-            var dnaLocation= $('#newMaternalDnaLocation').val();
+            var somaLocation = $('#newMaternalSomaLocation').val();
+            var finclipLocation = $('#newMaternalFinclipLocation').val();
+            var dnaLocation = $('#newMaternalDnaLocation').val();
             var idStatus = $('#newMaternalIdStatus').val();
             var comment = $('#newMaternalIndividualComment').val();
             if (somaLocation.length == 0) {
@@ -205,9 +205,9 @@
 
 
         $("#addPaternalIndividualButton").click(function () {
-            var somaLocation= $('#newPaternalSomaLocation').val();
-            var finclipLocation= $('#newPaternalFinclipLocation').val();
-            var dnaLocation= $('#newPaternalDnaLocation').val();
+            var somaLocation = $('#newPaternalSomaLocation').val();
+            var finclipLocation = $('#newPaternalFinclipLocation').val();
+            var dnaLocation = $('#newPaternalDnaLocation').val();
             var idStatus = $('#newPaternalIdStatus').val();
             var comment = $('#newPaternalIndividualComment').val();
             if (somaLocation.length == 0) {
@@ -306,17 +306,17 @@
               value="${stockInstance.line?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Line -']"
               optionValue="name"
-        onchange="
-    ${remoteFunction(action: 'findLine'
-              , controller: 'line'
-              , params: '\'id=\' + this.value'
-              , method: 'POST'
-              , onSuccess: 'setLineView(data);'
-              , onError: 'alert(\'error\');')}
-    "
-    />
+              onchange="
+              ${remoteFunction(action: 'findLine'
+                      , controller: 'line'
+                      , params: '\'id=\' + this.value'
+                      , method: 'POST'
+                      , onSuccess: 'setLineView(data);'
+                      , onError: 'alert(\'error\');')}
+              "/>
 
     <input type="button" id="addNewLineButton" value="Add New Line"/>
+
     <div id="newViewDiv" class="lineSmallView"></div>
 </div>
 
@@ -366,9 +366,9 @@
     <label for="maternalIndividual">
         <g:message code="stock.maternalIndividualID.label" default="Maternal Individual ID"/>
     </label>
-    %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
+    <g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"
     <g:select id="maternalIndividual" name="maternalIndividual.id"
-              from="${stockInstance.maternalStock ? stockInstance.maternalStock.femaleIndividuals: []}"
+              from="${stockInstance.maternalStock ? stockInstance.maternalStock.femaleIndividuals : []}"
               value="${stockInstance?.maternalIndividual?.id}" style="width:200px;font-size: 12px"
               class="many-to-one" noSelection="['null': '- Choose Individual -']"
               optionValue="individualIDLabel" optionKey="id"/>
@@ -376,7 +376,8 @@
 </div>
 
 %{-- Add Maternal Individual ID Button --}%
-<div id='addMaternalIndividualDiv' class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addMaternalIndividualID', 'error')} ">
+<div id='addMaternalIndividualDiv'
+     class="fieldcontain ${hasErrors(bean: stockInstance, field: 'addMaternalIndividualID', 'error')} ">
     <label for="addMaternalIndividualButton">
         <g:message code="stock.addMaternalIndividualID.label" default="Add Maternal Individual"/>
     </label>
@@ -391,7 +392,7 @@
 
     <br/>
     <br/>
-    Id Status: <g:select id="newMaternalIdStatus" name="newMaternalIdStatus" from="${edu.uoregon.IndividualIdStatus.values()}"/>
+    Id Status: <g:select id="newMaternalIdStatus" name="newMaternalIdStatus" from="${IndividualIdStatus.values()}"/>
 </div>
 
 <br/>
@@ -425,8 +426,6 @@
     <label for="paternalIndividual">
         <g:message code="stock.paternalIndividual.label" default="Paternal Individual"/>
     </label>
-    %{--<g:select id="paternalIndividual" name="paternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
-    %{--<g:select id="paternalIndividual" name="paternalIndividual.id" from="${[]}"--}%
     <g:select id="paternalIndividual" name="paternalIndividual.id"
               from="${stockInstance.paternalStock ? stockInstance.paternalStock.maleIndividuals : []}"
               optionKey="id"
@@ -442,9 +441,6 @@
     <label for="addPaternalIndividualButton">
         <g:message code="stock.addPaternalIndividualID.label" default="Add Paternal Individual"/>
     </label>
-    %{--<input id="addPaternalIndividualButton" type="button" value="Add"/>--}%
-    %{--Location: <g:textField id="newPaternalIndividualLocation" name="newPaternalIndividualLocation"/>--}%
-    %{--Comment: <g:textField id="newPaternalIndividualComment" name="newPaternalIndividualComment"/>--}%
 
     <input id="addPaternalIndividualButton" type="button" value="Add"/>
     Comment: <g:textField id="newPaternalIndividualComment" name="newPaternalIndividualComment" size="50"/>
@@ -456,7 +452,8 @@
     Dna: <g:textField id="newPaternalDnaLocation" name="newPaternalDnaLocation"/>
     <br/>
     <br/>
-    Id Status: <g:select id="newPaternalIdStatus" name="newPaternalIdStatus" from="${edu.uoregon.IndividualIdStatus.values()}"/>
+    Id Status: <g:select id="newPaternalIdStatus" name="newPaternalIdStatus"
+                         from="${IndividualIdStatus.values()}"/>
 
     %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${stockInstance ? edu.uoregon.sticklebackdb.Individual.findAllByStock(stockInstance,[sort:"individualID",order:"desc"]):[]}"--}%
     %{--<g:select id="maternalIndividual" name="maternalIndividual.id" from="${[]}"--}%
