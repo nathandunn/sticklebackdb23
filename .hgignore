@@ -13,5 +13,6 @@ cobertura.ser
 .DS_Store
 target/
 out/
+web-app/gwt
 web-app/plugins
 web-app/WEB-INF/classes
