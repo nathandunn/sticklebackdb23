@@ -2,6 +2,7 @@ package edu.uoregon.sticklebackdb
 
 import grails.converters.JSON
 import grails.transaction.Transactional
+import grails.util.CollectionUtils
 import org.codehaus.groovy.grails.web.json.JSONArray
 import org.codehaus.groovy.grails.web.json.JSONObject
 import org.springframework.dao.DataIntegrityViolationException
@@ -84,7 +85,7 @@ class StockController {
 //        lineList.unique(true)
 
 //        println "lines with capture ${linesWithCapture}"
-        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+        List<String> stockNames = getAllStockNames()
 
 
 
@@ -110,7 +111,7 @@ class StockController {
 //        List<Line> linesWithoutCapture = Line.all.minus(linesWithCapture)
 
 
-        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+        List<String> stockNames = getAllStockNames()
         def model = [stockInstance: stock, maxStock: Stock.list(max: 1, sort: "stockID", order: "desc")[0], stockNames: stockNames, lines: Line.listOrderByName(),isNewOrAdmin: false]
         render(view: "createFromBreeding", model: model)
     }
@@ -133,9 +134,15 @@ class StockController {
 
         println "params ${params}"
 
-        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+        List<String> stockNames = getAllStockNames()
 
         Population population = Population.findById(params.population)
+
+        if(!population){
+            flash.message = "No population found for ID ${params.population}"
+            render(view: "createFromCapture", model: [stockInstance: stockInstance, stockNames: stockNames])
+            return
+        }
 
 
         if (stockInstance.line == null) {
@@ -178,7 +185,7 @@ class StockController {
     def saveFromBreeding() {
         def stockInstance = new Stock(params)
 
-        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+        List<String> stockNames = getAllStockNames()
 
         if (stockInstance.line == null) {
             flash.message = "Must associate a line with a stock"
@@ -213,10 +220,10 @@ class StockController {
             return
         }
 
-        println "paternal stock: ${stockInstance.paternalStock}"
-        println "paternal ind: ${stockInstance.paternalIndividual}"
-        println "maternal stock: ${stockInstance.maternalStock}"
-        println "maternal ind: ${stockInstance.maternalIndividual}"
+        log.debug "paternal stock: ${stockInstance.paternalStock}"
+        log.debug "paternal ind: ${stockInstance.paternalIndividual}"
+        log.debug "maternal stock: ${stockInstance.maternalStock}"
+        log.debug "maternal ind: ${stockInstance.maternalIndividual}"
 
         if (!stockInstance.save(flush: true)) {
             render(view: "createFromBreeding", model: [stockInstance: stockInstance, stockNames: stockNames])
@@ -315,7 +322,7 @@ class StockController {
 //            lineList = Line.all.minus(lineList)
 //        }
 
-        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+        List<String> stockNames = getAllStockNames()
 
         [stockInstance: stockInstance, stockNames: stockNames, lines: Line.listOrderByName(),isNewOrAdmin: researcherService.admin || !stockInstance.id]
     }
@@ -349,7 +356,7 @@ class StockController {
 //                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
 
 //                respond stockInstance.errors, view:'edit'
-                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+                List<String> stockNames = getAllStockNames()
                 render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
                 return
             }
@@ -357,7 +364,7 @@ class StockController {
 
         if (!stockInstance.save(flush: true)) {
 //            render(view: "edit", model: [stockInstance: stockInstance])
-            List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+            List<String> stockNames = getAllStockNames()
             render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
@@ -391,14 +398,14 @@ class StockController {
             Stock previousStock = Stock.findByStockName(stockInstance.stockName)
             if (previousStock == null) {
                 stockInstance.errors.rejectValue("stockName", "stock.name.must.exist", "Use a previous stock name or ask Administrator to add it for you.")
-                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+                List<String> stockNames = getAllStockNames()
                 render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
                 return
             }
         }
 
         if (!stockInstance.save(flush: true)) {
-            List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+            List<String> stockNames = getAllStockNames()
             render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
@@ -437,7 +444,7 @@ class StockController {
 //                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
 
 //                respond stockInstance.errors, view:'edit'
-                List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+                List<String> stockNames = getAllStockNames()
                 render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
                 return
             }
@@ -445,7 +452,7 @@ class StockController {
 
         if (!stockInstance.save(flush: true)) {
 //            render(view: "edit", model: [stockInstance: stockInstance])
-            List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+            List<String> stockNames = getAllStockNames()
             render(view: "edit", model: [stockInstance: stockInstance, stockNames: stockNames])
             return
         }
@@ -499,6 +506,17 @@ class StockController {
         }
 
         render ''
+    }
+
+    private getAllStockNames(){
+//        List<String> stockNames = Stock.executeQuery("select distinct s.stockName from Stock s order by s.stockName asc ")
+        List<String> stockNames = new ArrayList<>()
+        Stock.all.each{
+            if(!stockNames.contains(it.stockName)){
+                stockNames.add(it.stockName)
+            }
+        }
+        return stockNames.sort(true)
     }
 
     private List<Stock> getAllParentStocks(Stock stock, List<Stock> parentStocks) {
