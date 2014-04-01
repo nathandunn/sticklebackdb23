@@ -4,7 +4,7 @@ import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 
 @TestFor(IndividualController)
-@Mock([Individual,Stock])
+@Mock([Individual,Stock,StockService])
 class IndividualControllerTests {
 
     def populateValidParams(params) {
@@ -16,9 +16,10 @@ class IndividualControllerTests {
                     stockID: 12
                     , stockName: "bob"
                     , comments: "some comments"
-            ).save(flush: true,insert:true)
+            ).save(flush: true,insert:true,failOnError: true)
         }
 
+        println "stock ${stock} and ID ${stock?.id}"
 
         params["comments"] = 'Some comments'
         params["somaLocation"] = 'On floor'
@@ -26,7 +27,7 @@ class IndividualControllerTests {
         params["idStatus"] = 'some status'
         params["fishSex"] = 'Male'
         params["individualID"] = 13
-        params["stock"] = stock
+        params.stock = stock
     }
 
     void testIndex() {
@@ -49,6 +50,7 @@ class IndividualControllerTests {
     }
 
     void testSave() {
+        controller.stockService = new StubStockService()
         controller.save()
 
         assert model.individualInstance != null
@@ -101,6 +103,7 @@ class IndividualControllerTests {
     }
 
     void testUpdate() {
+        controller.stockService = new StubStockService()
         controller.update()
 
         assert flash.message != null
@@ -115,7 +118,8 @@ class IndividualControllerTests {
 
         // test invalid parameters in update
         params.id = individual.id
-        individual.individualID = null
+
+        params.individualID = null
 
         controller.update()
 

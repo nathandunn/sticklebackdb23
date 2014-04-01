@@ -66,9 +66,15 @@ class IndividualController {
 
 //        Stock stock = params.stock
         println "stock to evalute 2 ${params.stock}"
+        if(!params.stock || !params.stock.id){
+            flash.message = "Must provide a valid stock "
+            render(view: "create", model: [individualInstance: individualInstance])
+            return
+        }
         Stock stock = Stock.findById(params.stock.id)
 
         println "stock to evalute ${stock}"
+        println "stock service ${stockService}"
 
         Double individualID = stockService.getNextIndividualID(stock)
         println "individualID ${individualID}"
@@ -143,8 +149,8 @@ class IndividualController {
 
         individualInstance.properties = params
 
-//        println "fishSex: ${params.fishSex}"
-//        println "fishSexString: ${params.fishSexString}"
+        println "fishSex: ${params.fishSex}"
+        println "fishSexString: ${params.fishSexString}"
 
         if (!individualInstance.save(flush: true)) {
             render(view: "edit", model: [individualInstance: individualInstance])
