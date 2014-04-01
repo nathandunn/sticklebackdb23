@@ -3,7 +3,7 @@ import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 
 @TestFor(LineController)
-@Mock(Line)
+@Mock([Line,Stock])
 class LineControllerTests {
 
     def populateValidParams(params) {

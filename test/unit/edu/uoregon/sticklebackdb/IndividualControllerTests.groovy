@@ -1,18 +1,32 @@
 package edu.uoregon.sticklebackdb
 
-
-
-import org.junit.*
-import grails.test.mixin.*
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
 
 @TestFor(IndividualController)
-@Mock(Individual)
+@Mock([Individual,Stock])
 class IndividualControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+
+        Stock stock = Stock.findByStockID(12)
+        if(!stock){
+            stock = new Stock(
+                    stockID: 12
+                    , stockName: "bob"
+                    , comments: "some comments"
+            ).save(flush: true,insert:true)
+        }
+
+
+        params["comments"] = 'Some comments'
+        params["somaLocation"] = 'On floor'
+        params["dnaLocation"] = 'On table'
+        params["idStatus"] = 'some status'
+        params["fishSex"] = 'Male'
+        params["individualID"] = 13
+        params["stock"] = stock
     }
 
     void testIndex() {
@@ -101,7 +115,7 @@ class IndividualControllerTests {
 
         // test invalid parameters in update
         params.id = individual.id
-        //TODO: add invalid values to params object
+        individual.individualID = null
 
         controller.update()
 

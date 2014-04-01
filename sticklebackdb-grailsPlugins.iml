@@ -28,6 +28,11 @@
         <naming-strategy-map />
       </configuration>
     </facet>
+    <facet type="gwt" name="GWT">
+      <configuration>
+        <setting name="gwtSdkUrl" value="file://$USER_HOME$/Downloads/gwt-2.5.1" />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -161,6 +166,7 @@
         <jarDirectory url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/gwt-1.0/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="gwt-user" level="project" />
   </component>
 </module>
 
