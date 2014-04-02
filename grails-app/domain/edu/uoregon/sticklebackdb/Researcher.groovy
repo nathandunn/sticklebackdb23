@@ -8,6 +8,6 @@ class Researcher {
     static hasMany = [ roles: ResearchRole, permissions: String ]
 
     static constraints = {
-        username(nullable: false, blank: false, unique: true)
+        username(nullable: false, blank: false, unique: true,email:true)
     }
 }

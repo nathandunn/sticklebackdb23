@@ -180,7 +180,7 @@
         <g:message code="individual.idStatus.label" default="ID Status"/>
     </label>
     %{--<g:textField name="dnaLocation" value="${individualInstance?.idStatus}" size="40"/>--}%
-    <g:select name="idStatus" value="${individualInstance?.idStatus}" from="${edu.uoregon.IndividualIdStatus.values()}"/>
+    <g:select name="idStatus" value="${individualInstance?.idStatus}" from="${edu.uoregon.sticklebackdb.IndividualIdStatus.values()}"/>
 </div>
 
 %{-- Comments --}%

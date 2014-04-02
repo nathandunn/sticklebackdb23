@@ -6,13 +6,18 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(ResearcherController)
-@Mock(Researcher)
+@Mock([Researcher,StockService,ResearcherService,ResearchRole])
 class ResearcherControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["name"] = 'Bob Jones'
+        params["username"] = 'bob.jones@uoregon.edu'
+        params["passwordHash"] = 'asdlfkj121lkjSd'
+        params["password1"] = 'asdlfkj121lkjSd'
+        params["password2"] = 'asdlfkj121lkjSd'
+
+        ResearchRole.findOrSaveByName(ResearcherService.ROLE_USER)
     }
 
     void "Test the index action returns the correct model"() {
@@ -75,6 +80,7 @@ class ResearcherControllerSpec extends Specification {
 
     void "Test that the edit action returns the correct model"() {
         when:"The edit action is executed with a null domain"
+            controller.researcherService = new StubResearchService()
             controller.edit(null)
 
         then:"A 404 error is returned"
@@ -102,6 +108,7 @@ class ResearcherControllerSpec extends Specification {
             response.reset()
             def researcher = new Researcher()
             researcher.validate()
+            controller.researcherService = new StubResearchService()
             controller.update(researcher)
 
         then:"The edit view is rendered again with the invalid instance"

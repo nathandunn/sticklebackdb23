@@ -4,27 +4,24 @@
     <facet type="web" name="GrailsWeb">
       <configuration>
         <webroots>
-          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/jquery-ui-1.10.3/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/resources-1.2.1/web-app" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/database-migration-1.3.8/grails-app/views" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/csv-0.3.1/web-app" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/navigation-1.3.2/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/jquery-1.10.2.2/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/shiro-1.2.0/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/mail-1.0.1/grails-app/views" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/crypto-2.0/web-app" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/extended-dependency-manager-0.5.5/web-app" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/extended-dependency-manager-0.5.5/grails-app/views" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/mail-1.0.1/grails-app/views" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/shiro-1.2.0/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/csv-0.3.1/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/jquery-ui-1.10.3/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/jquery-1.10.2.2/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/crypto-2.0/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/resources-1.2.1/web-app" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
     </facet>
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map>
-          <unit-entry name="Gorm" />
-          <unit-entry name="sessionFactory" />
-        </datasource-map>
+        <datasource-map />
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -109,50 +106,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="grails-2.3.4" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="grails-2.3.4" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="grails-2.3.4" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.3.7" level="application" />
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (sticklebackdb-grailsPlugins)">
         <CLASSES>
           <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/crypto-2.0/lib" />
-          <root url="jar://$MAVEN_REPOSITORY$/net/sf/opencsv/opencsv/2.3/opencsv-2.3.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/liquibase/liquibase-core/2.0.5/liquibase-core-2.0.5.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-commons-annotations/3.2.0.Final/hibernate-commons-annotations-3.2.0.Final.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-web/2.0.2.RELEASE/grails-datastore-web-2.0.2.RELEASE.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-gorm-plugin-support/2.0.2.RELEASE/grails-datastore-gorm-plugin-support-2.0.2.RELEASE.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-ehcache/3.6.10.Final/hibernate-ehcache-3.6.10.Final.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-entitymanager/3.6.10.Final/hibernate-entitymanager-3.6.10.Final.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-validator/4.1.0.Final/hibernate-validator-4.1.0.Final.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/net/sf/ehcache/ehcache-core/2.4.6/ehcache-core-2.4.6.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-orm/3.2.4.RELEASE/spring-orm-3.2.4.RELEASE.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/3.6.10.Final/hibernate-core-3.6.10.Final.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-gorm-hibernate-core/2.0.2.RELEASE/grails-datastore-gorm-hibernate-core-2.0.2.RELEASE.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/antlr/antlr/2.7.7/antlr-2.7.7.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-gorm-hibernate/2.0.2.RELEASE/grails-datastore-gorm-hibernate-2.0.2.RELEASE.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/postgresql/postgresql/9.1-901.jdbc4/postgresql-9.1-901.jdbc4.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/7.0.42/tomcat-embed-core-7.0.42.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.42/tomcat-embed-logging-log4j-7.0.42.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.42/tomcat-embed-jasper-7.0.42.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina-ant/7.0.42/tomcat-catalina-ant-7.0.42.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1/commons-logging-1.1.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/jasig/cas/client/cas-client-core/3.2.1/cas-client-core-3.2.1.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-cas/1.2.2/shiro-cas-1.2.2.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/opensymphony/quartz/quartz/1.6.1/quartz-1.6.1.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-quartz/1.2.2/shiro-quartz-1.2.2.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.2.2/shiro-core-1.2.2.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-ehcache/1.2.2/shiro-ehcache-1.2.2.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-spring/1.2.2/shiro-spring-1.2.2.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-web/1.2.2/shiro-web-1.2.2.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/javax/activation/activation/1.1/activation-1.1.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/javax/mail/mail/1.4.3/mail-1.4.3.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/bouncycastle/bcprov-jdk14/136/bcprov-jdk14-136.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/bouncycastle/bcmail-jdk14/136/bcmail-jdk14-136.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/com/lowagie/itext/2.1.0/itext-2.1.0.jar!/" />
           <root url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/gwt-1.0/lib" />
         </CLASSES>
         <JAVADOC />

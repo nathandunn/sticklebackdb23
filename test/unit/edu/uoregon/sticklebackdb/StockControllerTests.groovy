@@ -6,13 +6,24 @@ import org.junit.*
 import grails.test.mixin.*
 
 @TestFor(StockController)
-@Mock(Stock)
+@Mock([Stock,StockService,ResearcherService,Line,Individual,Population,Capture])
 class StockControllerTests {
+
+    String populationName = "Rabbit Slough"
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["stockID"] = 11
+        params["comments"] = "whatup"
+        params["stockName"] = "some name"
+
+        Population population  = Population.findByIdentification(populationName)
+        if(!population){
+            population = new Population(
+                    identification: populationName
+            ).save(failOnError: true,flush:true)
+        }
+        params.population = population.id
     }
 
     void testIndex() {
@@ -28,25 +39,65 @@ class StockControllerTests {
         assert model.stockInstanceTotal == 0
     }
 
-    void testCreate() {
-        controller.stockService = new StockService()
-        def model = controller.create()
+    void testCreateFromBreeding() {
+        controller.stockService = new StubStockService()
+        controller.createFromBreeding()
 
         assert model.stockInstance != null
     }
 
-    void testSave() {
-        controller.stockService = new StockService()
-        controller.researcherService = new ResearcherService()
-        controller.save()
+    void testCreateFromCapture() {
+        controller.stockService = new StubStockService()
+        controller.createFromCapture()
 
         assert model.stockInstance != null
-        assert view == '/stock/create'
+    }
+
+
+    void testSaveCapture() {
+        controller.stockService = new StockService()
+        controller.researcherService = new ResearcherService()
+        controller.saveCapture()
+
+        assert model.stockInstance != null
+        assert view == '/stock/createFromCapture'
 
         response.reset()
 
         populateValidParams(params)
-        controller.save()
+        controller.saveCapture()
+
+        assert response.redirectedUrl == '/stock/show/1'
+        assert controller.flash.message != null
+        assert Stock.count() == 1
+    }
+
+    void testSaveFromBreeding() {
+//        controller.stockService = new StockService()
+        controller.researcherService = new StubResearchService()
+        controller.saveFromBreeding()
+
+        assert model.stockInstance != null
+        assert view == '/stock/createFromBreeding'
+
+        response.reset()
+
+        populateValidParams(params)
+        Line line = Line.findOrSaveByName(populationName)
+        Individual maternalIndividual = new Individual(
+             individualID: 1
+        ).save(failOnError: true)
+        Individual paternalIndividual = new Individual(
+                individualID: 2
+        ).save(failOnError: true)
+        params.maternalIndividual  = maternalIndividual
+        params.paternalIndividual  = paternalIndividual
+        params.line = line
+
+
+        controller.saveFromBreeding()
+
+        println view
 
         assert response.redirectedUrl == '/stock/show/1'
         assert controller.flash.message != null
@@ -92,6 +143,7 @@ class StockControllerTests {
     }
 
     void testUpdate() {
+        controller.researcherService = new StubResearchService()
         controller.update()
 
         assert flash.message != null
@@ -106,7 +158,7 @@ class StockControllerTests {
 
         // test invalid parameters in update
         params.id = stock.id
-        //TODO: add invalid values to params object
+        params.stockID = "Asdfadsf"
 
         controller.update()
 
@@ -130,7 +182,8 @@ class StockControllerTests {
         params.version = -1
         controller.update()
 
-        assert view == "/stock/edit"
+//        assert view == "/stock/edit"
+        assert view == "edit"
         assert model.stockInstance != null
         assert model.stockInstance.errors.getFieldError('version')
         assert flash.message != null
