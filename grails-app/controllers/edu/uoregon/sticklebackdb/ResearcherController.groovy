@@ -1,9 +1,7 @@
 package edu.uoregon.sticklebackdb
 
-import org.apache.shiro.crypto.hash.Sha256Hash
-
-import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import org.apache.shiro.crypto.hash.Sha256Hash
 
 @Transactional(readOnly = true)
 class ResearcherController {
@@ -11,14 +9,14 @@ class ResearcherController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     static navigation = [
-            title:'Researchers',action: 'index',order:10,
+            title: 'Researchers', action: 'index', order: 10,
     ]
 
     def researcherService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Researcher.list(params), model:[researcherInstanceCount: Researcher.count()]
+        respond Researcher.list(params), model: [researcherInstanceCount: Researcher.count()]
     }
 
     def show(Researcher researcherInstance) {
@@ -30,7 +28,7 @@ class ResearcherController {
     }
 
     String isValidPassword(String password) {
-        if(!password || password.length()<6){
+        if (!password || password.length() < 6) {
             return "Password length must be greater than 6"
         }
         return null;
@@ -44,7 +42,8 @@ class ResearcherController {
         }
 
         String passwordErrorString = isValidPassword(params.password1)
-        if (passwordErrorString==null) {
+        println "errorsTring ${passwordErrorString}"
+        if (passwordErrorString == null) {
             if (params.password1.equals(params.password2)) {
                 params.passwordHash = new Sha256Hash(params.password1).toHex()
                 researcherInstance.passwordHash = params.passwordHash
@@ -52,45 +51,48 @@ class ResearcherController {
                 researcherInstance.errors.rejectValue("passwordHash", "default.password.doesnotmatch", "Passwords do not match")
 //                render(view: "create", model: [researcherInstance: researcherInstance])
 //                respond researcherInstance.errors, view:'create'
+                respond researcherInstance.errors, view: 'create'
                 return
             }
-        }
-        else{
+        } else {
             researcherInstance.errors.rejectValue("passwordHash", "", passwordErrorString)
 //            render(view: "create", model: [researcherInstance: researcherInstance])
 //            respond researcherInstance.errors, view:'create'
+            respond researcherInstance.errors, view: 'create'
             return
         }
 
+//        researcherInstance.validate()
 
         if (researcherInstance.hasErrors()) {
-            respond researcherInstance.errors, view:'create'
+            respond researcherInstance.errors, view: 'create'
             return
         }
 
-        researcherInstance.save flush:true
+        researcherInstance.save flush: true
 
-        ResearchRole userRole = ResearchRole.findByName(ResearcherService.ROLE_USER)
-        if(researcherInstance){
-            researcherInstance.addToRoles( userRole )
-        }
-
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'researcherInstance.label', default: 'Researcher'), researcherInstance.name])
-                redirect researcherInstance
+        if(!researcherInstance.hasErrors()){
+            ResearchRole userRole = ResearchRole.findByName(ResearcherService.ROLE_USER)
+            if (researcherInstance) {
+                researcherInstance.addToRoles(userRole)
             }
-            '*' { respond researcherInstance, [status: CREATED] }
         }
+
+//        request.withFormat {
+//            form {
+        flash.message = message(code: 'default.created.message', args: [message(code: 'researcherInstance.label', default: 'Researcher'), researcherInstance.name])
+        redirect researcherInstance
+//            }
+//            '*' { respond researcherInstance, [status: CREATED] }
+//        }
     }
 
     def edit(Researcher researcherInstance) {
 
-        if(researcherService.isAdmin() || researcherService.currentUser.id == researcherInstance.id){
+        if (researcherService.isAdmin() || researcherService.currentUser.id == researcherInstance.id) {
             respond researcherInstance
-        }
-        else{
-            render(view:"/unauthorized")
+        } else {
+            render(view: "/unauthorized")
         }
 
     }
@@ -102,34 +104,33 @@ class ResearcherController {
             return
         }
 
-        if(!researcherService.isAdmin() &&  researcherService.currentUser.id != researcherInstance.id){
-            render(view:"/unauthorized")
+        if (!researcherService.isAdmin() && researcherService.currentUser.id != researcherInstance.id) {
+            render(view: "/unauthorized")
             return
         }
 
         if (researcherInstance.hasErrors()) {
-            respond researcherInstance.errors, view:'edit'
+            respond researcherInstance.errors, view: 'edit'
             return
         }
         if (params.password1) {
 
             String passwordErrorString = isValidPassword(params.password1)
             println "pasword Error string ? ${passwordErrorString}"
-            if (passwordErrorString==null) {
+            if (passwordErrorString == null) {
                 if (params.password1.equals(params.password2)) {
                     researcherInstance.passwordHash = new Sha256Hash(params.password1).toHex()
                 } else {
                     researcherInstance.errors.rejectValue("passwordHash", "default.password.doesnotmatch", "Passwords do not match")
 //                    render(view: "edit", model: [researcherInstance: researcherInstance])
-                    respond researcherInstance.errors, view:'edit'
+                    respond researcherInstance.errors, view: 'edit'
                     return
                 }
-            }
-            else{
+            } else {
                 researcherInstance.errors.rejectValue("passwordHash", "", passwordErrorString)
 //                flash.message = passwordErrorString
 //                render(view: "edit", model: [researcherInstance: researcherInstance])
-                respond researcherInstance.errors, view:'edit'
+                respond researcherInstance.errors, view: 'edit'
                 return
             }
         } else {
@@ -139,15 +140,15 @@ class ResearcherController {
         researcherInstance.properties = params
 
 
-        researcherInstance.save flush:true
+        researcherInstance.save flush: true
 
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Researcher.label', default: 'Researcher'), researcherInstance.name])
-                redirect researcherInstance
-            }
-            '*'{ respond researcherInstance, [status: OK] }
-        }
+//        request.withFormat {
+//            form {
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'Researcher.label', default: 'Researcher'), researcherInstance.name])
+        redirect researcherInstance
+//            }
+//            '*'{ respond researcherInstance, [status: OK] }
+//        }
     }
 
     @Transactional
@@ -158,25 +159,25 @@ class ResearcherController {
             return
         }
 
-        def label  = researcherInstance.name
-        researcherInstance.delete flush:true
+        def label = researcherInstance.name
+        researcherInstance.delete flush: true
 
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Researcher.label', default: 'Researcher'), label])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+//        request.withFormat {
+//            form {
+        flash.message = message(code: 'default.deleted.message', args: [message(code: 'Researcher.label', default: 'Researcher'), label])
+        redirect action: "index", method: "GET"
+//            }
+//            '*'{ render status: NO_CONTENT }
+//        }
     }
 
     protected void notFound() {
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'researcherInstance.label', default: 'Researcher'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
+//        request.withFormat {
+//            form {
+        flash.message = message(code: 'default.not.found.message', args: [message(code: 'researcherInstance.label', default: 'Researcher'), params.id])
+        redirect action: "index", method: "GET"
+//            }
+//            '*'{ render status: NOT_FOUND }
+//        }
     }
 }

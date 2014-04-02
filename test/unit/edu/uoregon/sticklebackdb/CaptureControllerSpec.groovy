@@ -6,13 +6,29 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(CaptureController)
-@Mock(Capture)
+@Mock([Capture,Line,Population,Stock])
 class CaptureControllerSpec extends Specification {
+
+    String populationName = "RabitSlough"
 
     def populateValidParams(params) {
         assert params != null
         // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["comment"] = 'some type of catprue comment'
+        params.captureDate = new Date()
+
+
+        Line line = new Line(
+                name: populationName
+        ).save(failOnError: true)
+
+        Population population = new Population(
+                identification: populationName
+        ).save(failOnError: true)
+
+        params.line = line
+        params.population = population
+
     }
 
     void "Test the index action returns the correct model"() {
@@ -48,7 +64,6 @@ class CaptureControllerSpec extends Specification {
             response.reset()
             populateValidParams(params)
             capture = new Capture(params)
-
             controller.save(capture)
 
         then:"A redirect is issued to the show action"

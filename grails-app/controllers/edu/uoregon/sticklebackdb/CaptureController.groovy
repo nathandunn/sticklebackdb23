@@ -2,8 +2,6 @@ package edu.uoregon.sticklebackdb
 
 import grails.transaction.Transactional
 
-import static org.springframework.http.HttpStatus.*
-
 @Transactional(readOnly = true)
 class CaptureController {
 
@@ -21,6 +19,10 @@ class CaptureController {
     }
 
     def show(Capture captureInstance) {
+        if (captureInstance == null) {
+            respond captureInstance
+            return
+        }
 
         List<Stock> stockList = Stock.findAllByLine(captureInstance.line)
         respond captureInstance, model: [captureStocks: stockList]
@@ -50,13 +52,13 @@ class CaptureController {
 //            respond line.errors, view: 'create'
 //            return
 //        }
+
         captureInstance.validate()
 
-        if ( captureInstance.hasErrors()) {
+        if (captureInstance.hasErrors()) {
             respond captureInstance.errors, view: 'create'
             return
         }
-
 
 //        line.save flush: true
         captureInstance.save flush: true
@@ -66,14 +68,13 @@ class CaptureController {
 //                , stockID: stockService.getNextStockID()
 //        ).save flush: false
 
-
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'captureInstance.label', default: 'Capture'), captureInstance.display])
-                redirect captureInstance
-            }
-            '*' { respond captureInstance, [status: CREATED] }
-        }
+//        request.withFormat {
+////            form {
+        flash.message = message(code: 'default.created.message', args: [message(code: 'captureInstance.label', default: 'Capture'), captureInstance.display])
+        redirect captureInstance
+//            }
+//            '*' { respond captureInstance, [status: CREATED] }
+//        }
     }
 
     def edit(Capture captureInstance) {
@@ -94,13 +95,13 @@ class CaptureController {
 
         captureInstance.save flush: true
 
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Capture.label', default: 'Capture'), captureInstance.display])
-                redirect captureInstance
-            }
-            '*' { respond captureInstance, [status: OK] }
-        }
+//        request.withFormat {
+//            form {
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'Capture.label', default: 'Capture'), captureInstance.display])
+        redirect captureInstance
+//            }
+//            '*' { respond captureInstance, [status: OK] }
+//        }
     }
 
     @Transactional
@@ -113,22 +114,22 @@ class CaptureController {
 
         captureInstance.delete flush: true
 
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Capture.label', default: 'Capture'), captureInstance.display])
-                redirect action: "index", method: "GET"
-            }
-            '*' { render status: NO_CONTENT }
-        }
+//        request.withFormat {
+//            form {
+        flash.message = message(code: 'default.deleted.message', args: [message(code: 'Capture.label', default: 'Capture'), captureInstance.display])
+        redirect action: "index", method: "GET"
+//            }
+//            '*' { render status: NO_CONTENT }
+//        }
     }
 
     protected void notFound() {
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'captureInstance.label', default: 'Capture'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*' { render status: NOT_FOUND }
-        }
+//        request.withFormat {
+//            form {
+        flash.message = message(code: 'default.not.found.message', args: [message(code: 'captureInstance.label', default: 'Capture'), params.id])
+        redirect action: "index", method: "GET"
+//            }
+//            '*' { render status: NOT_FOUND }
+//        }
     }
 }
