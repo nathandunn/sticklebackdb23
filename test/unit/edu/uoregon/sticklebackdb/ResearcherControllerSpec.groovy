@@ -6,7 +6,7 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(ResearcherController)
-@Mock([Researcher,StockService,ResearcherService])
+@Mock([Researcher,StockService,ResearcherService,ResearchRole])
 class ResearcherControllerSpec extends Specification {
 
     def populateValidParams(params) {
@@ -14,6 +14,10 @@ class ResearcherControllerSpec extends Specification {
         params["name"] = 'Bob Jones'
         params["username"] = 'bob.jones@uoregon.edu'
         params["passwordHash"] = 'asdlfkj121lkjSd'
+        params["password1"] = 'asdlfkj121lkjSd'
+        params["password2"] = 'asdlfkj121lkjSd'
+
+        ResearchRole.findOrSaveByName(ResearcherService.ROLE_USER)
     }
 
     void "Test the index action returns the correct model"() {
