@@ -61,7 +61,7 @@
 
                 <td>
                     <g:link action="show" controller="stock"
-                            id="${measuredValueInstance?.stock?.id}">${measuredValueInstance?.stock?.name}</g:link>
+                            id="${measuredValueInstance?.stock?.id}">${measuredValueInstance?.stock?.stockIDLabel}</g:link>
                 </td>
 
             </tr>

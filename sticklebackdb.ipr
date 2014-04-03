@@ -32,6 +32,11 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="gwt" url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/gwt-1.0/src/gwt/grails/plugins/Dto.gwt.xml" />
+    <file type="gwt" url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/gwt-1.0/src/gwt/grails/plugins/gwt/Grails.gwt.xml" />
+    <file type="gwt" url="file://$USER_HOME$/.grails/2.3.4/projects/sticklebackdb/plugins/gwt-1.0/src/templates/artifacts/Gwt.gwt.xml" />
+  </component>
   <component name="IdProvider" IDEtalkID="C248DADE245B33717AE29B47700E0E92" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -152,6 +157,17 @@
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="hg4idea" />
+  </component>
+  <component name="libraryTable">
+    <library name="gwt-user">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/Downloads/gwt-2.5.1/gwt-user.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$USER_HOME$/Downloads/gwt-2.5.1/gwt-user.jar!/" />
+      </SOURCES>
+    </library>
   </component>
   <component name="masterDetails">
     <states>
