@@ -21,7 +21,7 @@ class QuickEntryService {
         for (MeasuredValue measuredValue in MeasuredValue.findAllByExperiment(experiment, [order: "asc", sort: "stock.stockID"])) {
             MeasuredValueDTO measuredValueDTO = new MeasuredValueDTO()
             measuredValueDTO.category = measuredValue.category.name
-            measuredValueDTO.stock = measuredValue.stock.stockIDLabel
+            measuredValueDTO.stock = measuredValue.individual.individualIDLabel
             measuredValueDTO.value = measuredValue.value
             measuredValueDTO.id = measuredValue.id
             measuredValueDTOList.add(measuredValueDTO)
@@ -50,7 +50,7 @@ class QuickEntryService {
         Category category = Category.findByName(categoryString)
         MeasuredValue measuredValue = new MeasuredValue(
                 experiment: experiment
-                , stock: stock
+                , individual: stock
                 , category: category
                 , value: valueString
         ).save(insert: true, flush: true, failOnError: true)
@@ -76,7 +76,7 @@ class QuickEntryService {
             if (stock == null) {
                 return "error:Stock does not exist '${newValue}'"
             }
-            measuredValue.stock = stock
+            measuredValue.individual = stock
         } else if (field == "value") {
             if (newValue == "bad") {
                 return "error:badness"

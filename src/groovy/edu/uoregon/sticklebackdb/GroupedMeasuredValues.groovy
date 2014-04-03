@@ -25,6 +25,6 @@ class GroupedMeasuredValues {
 
     def addMeasuredValue(MeasuredValue measuredValue) {
         measuredValues.add(measuredValue)
-        strains.add(measuredValue.getStock)
+        strains.add(measuredValue.individual)
     }
 }

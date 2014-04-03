@@ -9,7 +9,7 @@ class ExperimentService {
         TreeMap<Category,List<MeasuredValue>> values = new TreeMap<Category,List<MeasuredValue>>()
 
         List<MeasuredValue> sortedValues = experiment?.measuredValues?.sort(){
-            it.stock.stockID
+            it.individual.stockID
         }
 
         for(MeasuredValue measuredValue in sortedValues){

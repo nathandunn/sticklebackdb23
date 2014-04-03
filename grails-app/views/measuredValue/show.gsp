@@ -82,8 +82,8 @@
                                                                       default="Stock"/></span>
 
             <span class="property-value" aria-labelledby="stock-label">
-                <g:link controller="stock" action="show" id="${measuredValueInstance.stock.id}">
-                    ${measuredValueInstance.stock.stockIDLabel}
+                <g:link controller="stock" action="show" id="${measuredValueInstance.individual.id}">
+                    ${measuredValueInstance.individual.individualIDLabel}
                 </g:link>
             </span>
 

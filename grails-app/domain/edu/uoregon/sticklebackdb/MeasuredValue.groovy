@@ -1,13 +1,11 @@
 package edu.uoregon.sticklebackdb
 
-import edu.uoregon.sticklebackdb.MeasuredValueTypeEnum
-
 class MeasuredValue implements Serializable{
 
     static constraints = {
         value nullable: false
         category nullable: false
-        stock nullable: false
+        individual nullable: false
         experiment nullable: false
     }
 
@@ -16,7 +14,7 @@ class MeasuredValue implements Serializable{
 
 //    Experiment experiment
     Category category
-    Stock stock
+    Individual individual
     Experiment experiment
     String type = MeasuredValueTypeEnum.TEXT
 
