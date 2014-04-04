@@ -117,7 +117,7 @@ class IndividualController {
         }
 
         String fishSexString
-        if(individualInstance.fishSex == "Male" ||individualInstance.fishSex == "Female" ){
+        if(individualInstance.fishSex == "male" ||individualInstance.fishSex == "female" ){
             fishSexString = individualInstance.fishSex
         }
         else{

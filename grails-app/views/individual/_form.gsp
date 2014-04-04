@@ -48,7 +48,7 @@
     <label for="fishSex">
         <g:message code="individual.fertilizationDate.label" default="Fish Sex"/>
     </label>
-    <g:radioGroup labels="['Male','Female','N/A']" values="['Male','Female','N/A']" name="fishSexString" value="${fishSexString}">
+    <g:radioGroup labels="['male','female','N/A']" values="['male','female','N/A']" name="fishSexString" value="${fishSexString}">
         ${it.label} ${it.radio}
     </g:radioGroup>
 </div>
