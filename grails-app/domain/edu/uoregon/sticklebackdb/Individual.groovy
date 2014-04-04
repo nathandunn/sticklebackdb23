@@ -5,7 +5,11 @@ class Individual {
     static constraints = {
          individualID nullable: false
     }
-    
+
+    static mapping = {
+        comments type: "text"
+    }
+
     // Individual ID (column U)
     Integer individualID
 //    String individualIDLabel

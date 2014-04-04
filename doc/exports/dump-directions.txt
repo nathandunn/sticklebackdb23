@@ -107,4 +107,6 @@ sbStocksInd::barcode
 ,sbStocksInd::stockType
 
 
+3 - remove extra lines (atleast on individuals)
+4 - convert commas to spaces and tabs to commas on on individuals 
 

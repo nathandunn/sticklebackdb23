@@ -45,7 +45,7 @@
                 <td>
                     <g:if test="${stockInstance.isCapture()}">
                         Captures:
-                        <g:each in="${stockInstance.line.captures}" var="capture">
+                        <g:each in="${stockInstance?.line?.captures}" var="capture">
                             <g:link action="show" id="${capture.id}"
                                     controller="capture"><g:formatDate date="${capture.captureDate}" type="date"/></g:link>
                         </g:each>
