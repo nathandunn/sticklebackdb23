@@ -83,8 +83,8 @@
                                                 id="${val.id}">${val.value ?: "no value"}</g:link>
                                     </td>
                                     <td>
-                                        <g:link controller="stock" action="show"
-                                                id="${val.stock.id}">${val?.stock.stockIDLabel}</g:link>
+                                        <g:link controller="individual" action="show"
+                                                id="${val.individual.id}">${val?.individual.individualIDLabel}</g:link>
                                     </td>
                                 </tr>
                             </g:each>

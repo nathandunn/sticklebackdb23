@@ -18,7 +18,7 @@ public class ExperimentTable extends FlexTable {
 
     int numberRows = 0;
 
-    private final int STOCK_COLUMN = 0;
+    private final int INDIVIDUAL_COLUMN = 0;
     private final int CATEGORY_COLUMN = 1;
     private final int VALUE_COLUMN = 2;
     private final int ACTION_COLUMN = 3;
@@ -28,18 +28,19 @@ public class ExperimentTable extends FlexTable {
     private final String CATEGORY_KEY = "category";
     private final String EXPERIMENTS_KEY = "experiments";
     private final String CATEGORIES_KEY = "categories";
-    private final String STOCKS_KEY = "stocks";
-    private final String STOCK_KEY = "stock";
+    private final String INDIVIDUALS_KEY = "individuals";
+    private final String INDIVIDUAL_KEY = "individual";
     private final String EXPERIMENT_KEY = "experimentId";
     private final String MEASURED_VALUE_KEY = "id";
 
     private String lastCategory = null;
 
-    private MultiWordSuggestOracle stockOracle = new MultiWordSuggestOracle();
+    private MultiWordSuggestOracle individualsOracle = new MultiWordSuggestOracle();
 
     private Button addButton = new Button("Add");
     //    private ListBox newStrainList = new ListBox();
-    private SuggestBox newStockSuggestBox = new SuggestBox(stockOracle);
+//    private SuggestBox newIndividualSuggestBox = new SuggestBox(individualsOracle);
+    private TextBox newIndividualTextBox = new TextBox();
     private TextBox newValueBox = new TextBox();
     private ListBox newCategoryListBox = new ListBox();
     List<String> categoryList = new ArrayList<String>();
@@ -72,11 +73,11 @@ public class ExperimentTable extends FlexTable {
 
         GWT.log(measuredValueDto.toString());
 
-        JSONArray stocks = measuredValueDto.get(STOCKS_KEY).isArray();
-        for (int i = 0; i < stocks.size(); i++) {
-//            newStrainList.addItem(strains.get(i).isString().stringValue());
-            stockOracle.add(stocks.get(i).isString().stringValue());
-        }
+//        JSONArray individuals= measuredValueDto.get(INDIVIDUAL_KEY).isArray();
+//        for (int i = 0; i < individuals.size(); i++) {
+////            newStrainList.addItem(strains.get(i).isString().stringValue());
+//            individualsOracle.add(individuals.get(i).isString().stringValue());
+//        }
 
 
         JSONArray categories = measuredValueDto.get(CATEGORIES_KEY).isArray();
@@ -101,7 +102,7 @@ public class ExperimentTable extends FlexTable {
             GWT.log("measured value category value : "+measuredValue.get(CATEGORY_KEY).isString().stringValue());
 
             createRow(numberRows
-                    , measuredValue.get(STOCK_KEY).isString().stringValue()
+                    , measuredValue.get(INDIVIDUAL_KEY).isString().stringValue()
                     , lastCategory
                     , measuredValue.get(VALUE_KEY).isString().stringValue()
                     , String.valueOf(measuredValue.get(MEASURED_VALUE_KEY).isNumber().doubleValue())
@@ -136,10 +137,10 @@ public class ExperimentTable extends FlexTable {
 //        setWidget(numberRows, STRAIN_COLUMN, strainList);
 
 
-    private void createRow(int numberRows, String stock, String category , String value, String measuredValueId) {
+    private void createRow(int numberRows, String individual, String category , String value, String measuredValueId) {
 //        TextBox strainBox = new TextBox();
-        StockEditBox stockEditBox = new StockEditBox(stockOracle, Double.valueOf(measuredValueId).intValue(), stock);
-        setWidget(numberRows, STOCK_COLUMN, stockEditBox);
+        StockEditBox stockEditBox = new StockEditBox(individualsOracle, Double.valueOf(measuredValueId).intValue(), individual);
+        setWidget(numberRows, INDIVIDUAL_COLUMN, stockEditBox);
 
         ValueEditBox valueEditBox = new ValueEditBox(Double.valueOf(measuredValueId).intValue(), value);
         setWidget(numberRows, VALUE_COLUMN, valueEditBox);
@@ -166,7 +167,7 @@ public class ExperimentTable extends FlexTable {
 //
         createRow(insertRow,
 //                newStrainList.getItemText(newStrainList.getSelectedIndex())
-                newStockSuggestBox.getText()
+                newIndividualTextBox.getText()
                 , newCategoryListBox.getItemText(newCategoryListBox.getSelectedIndex())
                 , newValueBox.getText()
                 , measuredValueId
@@ -185,14 +186,14 @@ public class ExperimentTable extends FlexTable {
     private void clearNewEntry() {
 //        newStrainList.setSelectedIndex(0);
 
-        newStockSuggestBox.setText("");
+        newIndividualTextBox.setText("");
         selectLastCategory();
         newValueBox.setText("");
     }
 
     private void createFooters() {
 //        setWidget(numberRows, STRAIN_COLUMN, newStrainList);
-        setWidget(numberRows, STOCK_COLUMN, newStockSuggestBox);
+        setWidget(numberRows, INDIVIDUAL_COLUMN, newIndividualTextBox);
         setWidget(numberRows, VALUE_COLUMN, newValueBox);
         setWidget(numberRows, CATEGORY_COLUMN, newCategoryListBox);
         setWidget(numberRows, ACTION_COLUMN, addButton);
@@ -222,13 +223,13 @@ public class ExperimentTable extends FlexTable {
     }
 
     private void addNewMeasuredValue(){
-        final String strain = newStockSuggestBox.getText();
+        final String individual = newIndividualTextBox.getText();
         final String value = newValueBox.getText();
         final String category = newCategoryListBox.getItemText(newCategoryListBox.getSelectedIndex());
         lastCategory = category;
-        quickEntryServiceAsync.createMeasuredValue(experimentId, strain, value, category, new AsyncCallback() {
+        quickEntryServiceAsync.createMeasuredValue(experimentId, individual, value, category, new AsyncCallback() {
             public void onFailure(Throwable caught) {
-                Window.alert("failed to create record  " + strain + " " + value + " " + category);
+                Window.alert("failed to create record  " + individual + " " + value + " " + category);
             }
 
             public void onSuccess(Object result) {
@@ -252,7 +253,7 @@ public class ExperimentTable extends FlexTable {
     }
 
     private void createHeaders() {
-        setHTML(numberRows, STOCK_COLUMN, "<b>Stock</b>");
+        setHTML(numberRows, INDIVIDUAL_COLUMN, "<b>Individual</b>");
         setHTML(numberRows, VALUE_COLUMN, "<b>Value</b>");
         setHTML(numberRows, CATEGORY_COLUMN, "<b>Category</b>");
         setHTML(numberRows, ACTION_COLUMN, "<b>Action</b>");

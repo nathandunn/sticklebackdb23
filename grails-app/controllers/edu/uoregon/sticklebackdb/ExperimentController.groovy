@@ -109,7 +109,7 @@ class ExperimentController {
         }
 
         if (experimentInstance.measuredValues) {
-            flash.error = "Must remove ${experimentInstance.stocks.size()} measured values before removing"
+            flash.error = "Must remove ${experimentInstance.individuals.size()} measured values before removing"
             redirect(action: "edit", id: id)
             return
         }

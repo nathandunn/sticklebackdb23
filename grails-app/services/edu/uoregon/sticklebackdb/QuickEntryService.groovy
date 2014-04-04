@@ -1,9 +1,12 @@
 package edu.uoregon.sticklebackdb
 
 import grails.converters.JSON
+import groovy.transform.CompileStatic
+
 //import grails.transaction.Transactional
 
 //@Transactional
+//@CompileStatic
 class QuickEntryService {
 
     static expose = ['gwt:edu.uoregon.sticklebackdb.client']
@@ -18,18 +21,20 @@ class QuickEntryService {
 
         List<MeasuredValueDTO> measuredValueDTOList = new ArrayList<MeasuredValueDTO>();
 
-        for (MeasuredValue measuredValue in MeasuredValue.findAllByExperiment(experiment, [order: "asc", sort: "stock.stockID"])) {
+        for (MeasuredValue measuredValue in MeasuredValue.findAllByExperiment(experiment, [order: "asc", sort: "individual.stock"])) {
             MeasuredValueDTO measuredValueDTO = new MeasuredValueDTO()
             measuredValueDTO.category = measuredValue.category.name
-            measuredValueDTO.stock = measuredValue.individual.individualIDLabel
+            measuredValueDTO.individual = measuredValue.individual.individualIDLabel
             measuredValueDTO.value = measuredValue.value
             measuredValueDTO.id = measuredValue.id
             measuredValueDTOList.add(measuredValueDTO)
         }
 
         MeasuredValuesDTO measuredValuesDTO = new MeasuredValuesDTO()
-        measuredValuesDTO.categories = Category.listOrderByName().collect { it.name }
-        measuredValuesDTO.stocks = Stock.listOrderByStockID().collect { it?.stockIDLabel}
+        measuredValuesDTO.categories = Category.listOrderByName().collect { it ->
+            it.name
+        }
+//        measuredValuesDTO.individuals = Individual.listOrderByStockID().collect { it?.individualIDLabel}
 //        measuredValuesDTO.stocks = []
         measuredValuesDTO.experiments = measuredValueDTOList
 
@@ -40,17 +45,19 @@ class QuickEntryService {
 //        return experiment.measuredValues as JSON
     }
 
-    String createMeasuredValue(Integer experimentId, String strainString, String valueString, String categoryString) {
+    String createMeasuredValue(Integer experimentId, String individualString, String valueString, String categoryString) {
         Experiment experiment = Experiment.get(experimentId)
 //        println "strainString: ${strainString}"
 //        println "split : ${strainString.split(':')[0]}"
 //        println "split2 : ${strainString.split(':')[0].split('\\.')[0]}"
-        Integer stockID = strainString.split(":")[0].split("\\.")[0] as Integer
-        Stock stock = Stock.findByStockID(stockID)
+//        Integer stockID = strainString.split(":")[0].split("\\.")[0] as Integer
+        Integer stockID = individualString.split(":")[0].split("\\.")[0] as Integer
+        Integer individualID = individualString.split(":")[0].split("\\.")[1] as Integer
+        Individual individual = Individual.findByIndividualIDAndStockID(individualID,stockID)
         Category category = Category.findByName(categoryString)
         MeasuredValue measuredValue = new MeasuredValue(
                 experiment: experiment
-                , individual: stock
+                , individual: individual
                 , category: category
                 , value: valueString
         ).save(insert: true, flush: true, failOnError: true)
@@ -67,16 +74,19 @@ class QuickEntryService {
         println "saving [${measuredValueId}] field ${field} oldValue ${oldValue} newValue ${newValue} "
         MeasuredValue measuredValue = MeasuredValue.findById(measuredValueId)
         println "measuredValue ${measuredValue}"
-        if (field == "stock") {
-            if(newValue.contains(".")){
-                newValue = newValue.split("\\.")[0]
+        if (field == "individual") {
+            Integer stockID = newValue.split("\\.")[0] as Integer
+            Integer individualID = newValue.split("\\.")[1] as Integer
+//            if (newValue.contains(".")) {
+//                newValue = newValue.split("\\.")[0]
+//            }
+            Individual individual = Individual.findByIndividualIDAndStockID(individualID,stockID)
+            println "stockID ${stockID}-${individualID} -> find ${individual.individualIDLabel}"
+            println "individual [${individual}-${individual.individualIDLabel}] found for [${newValue}]"
+            if (individual == null) {
+                return "error:Individual does not exist '${newValue}'"
             }
-            Stock stock = Stock.findByStockID(newValue as Integer)
-            println "stock [${stock}] found for [${newValue}]"
-            if (stock == null) {
-                return "error:Stock does not exist '${newValue}'"
-            }
-            measuredValue.individual = stock
+            measuredValue.individual = individual
         } else if (field == "value") {
             if (newValue == "bad") {
                 return "error:badness"

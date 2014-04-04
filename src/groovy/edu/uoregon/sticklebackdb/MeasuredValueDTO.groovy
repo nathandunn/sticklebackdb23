@@ -4,18 +4,18 @@ package edu.uoregon.sticklebackdb
  */
 class MeasuredValueDTO implements Serializable{
 
-    String stock
+    String individual
     String value
     String category
     Long id
 //    private String experiment ;
 
-    String getStock() {
-        return stock
+    String getIndividual() {
+        return individual
     }
 
-    void setStock(String strain) {
-        this.stock = strain
+    void setIndividual(String strain) {
+        this.individual = strain
     }
 
     String getValue() {

@@ -60,8 +60,8 @@
                 <td>${measuredValueInstance.category.type}</td>
 
                 <td>
-                    <g:link action="show" controller="stock"
-                            id="${measuredValueInstance?.individual?.id}">${measuredValueInstance?.individual?.stockIDLabel}</g:link>
+                    <g:link action="show" controller="individual"
+                            id="${measuredValueInstance?.individual?.id}">${measuredValueInstance?.individual?.individualIDLabel}</g:link>
                 </td>
 
             </tr>

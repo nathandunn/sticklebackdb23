@@ -78,8 +78,8 @@
 
 
         <li class="fieldcontain">
-            <span id="stock-label" class="property-label"><g:message code="measuredValue.stock.label"
-                                                                      default="Stock"/></span>
+            <span id="stock-label" class="property-label"><g:message code="measuredValue.individual.label"
+                                                                      default="Individual"/></span>
 
             <span class="property-value" aria-labelledby="stock-label">
                 <g:link controller="stock" action="show" id="${measuredValueInstance.individual.id}">

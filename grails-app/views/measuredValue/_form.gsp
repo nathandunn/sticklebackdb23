@@ -51,9 +51,10 @@
 
 <div class="fieldcontain ${hasErrors(bean: measuredValueInstance, field: 'stock', 'error')} ">
     <label for="stock">
-        <g:message code="measuredValue.stock.label" default="Stock" />
+        <g:message code="measuredValue.individual.label" default="Individual" />
 
     </label>
-    <g:select id="stock" name="stock.id" optionValue="stockIDLabelName" from="${edu.uoregon.sticklebackdb.Stock.listOrderByStockID()}" optionKey="id" value="${measuredValueInstance?.stock?.id}" class="many-to-one" noSelection="['null': '- NONE -']"/>
-    <g:link action="create" controller="stock">Create Stock</g:link>
+    <g:select id="individual" name="individual.id" optionValue="individualIDLabel" from="${edu.uoregon.sticklebackdb.Individual.listOrderByStockID()}" optionKey="id" value="${measuredValueInstance?.individual?.id}" class="many-to-one" noSelection="['null': '- NONE -']"/>
+    %{--<g:textField id="individual.id" name="individual.id" value="${measuredValueInstance?.individual?.individualIDLabel}"/>--}%
+    <g:link action="create" controller="individual">Create Individual</g:link>
 </div>

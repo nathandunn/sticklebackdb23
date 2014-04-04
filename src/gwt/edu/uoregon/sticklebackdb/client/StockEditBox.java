@@ -47,7 +47,7 @@ public class StockEditBox extends SuggestBox {
     }
 
     private void saveNewStockValue(String replacementString) {
-        quickEntryServiceAsync.saveMeasuredValue(getMeasuredValueId(), "stock", getStock(), replacementString, new AsyncCallback() {
+        quickEntryServiceAsync.saveMeasuredValue(getMeasuredValueId(), "individual", getStock(), replacementString, new AsyncCallback() {
             public void onFailure(Throwable caught) {
                 Window.alert("Error saving stock: " + caught);
                 getElement().getStyle().setProperty("color", "red");
