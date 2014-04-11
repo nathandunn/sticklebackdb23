@@ -1,7 +1,6 @@
 package edu.uoregon.sticklebackdb
 
 import au.com.bytecode.opencsv.CSVReader
-import edu.uoregon.sticklebackdb.*
 import org.apache.log4j.Logger
 import org.apache.shiro.crypto.hash.Sha256Hash
 
@@ -222,34 +221,40 @@ class StubData {
                         // Stock name (column AM)
                         stock.stockName = tokens[38]?.size() > 0 ? tokens[38] : null
 
+                        /**
+                         * Should be of the form sbCrsXXX
+                         */
                         // Maternal Individual ID (column Q)
-                        String maternalIndividualID = tokens[16].size() > 0 ? tokens[16] : null
+                        String maternalIndividualID = tokens[114].size() > 0 ? tokens[114] : null
                         if (maternalIndividualID != null) {
                             stock.maternalIndividualID = maternalIndividualID
                         } else {
                             stock.maternalIndividualID = null
                         }
                         // Maternal stock ID (column R)
-                        def maternalStockID = tokens[17].size() > 0 ? Math.round(tokens[17].toDouble()) : null
-                        if (maternalStockID != null) {
-                            stock.maternalStockID = maternalStockID
-                        } else {
-                            stock.maternalStockID = null
-                        }
+//                        def maternalStockID = tokens[17].size() > 0 ? Math.round(tokens[117].toDouble()) : null
+//                        if (maternalStockID != null) {
+//                            stock.maternalStockID = maternalStockID
+//                        } else {
+//                            stock.maternalStockID = null
+//                        }
                         // Paternal Individual ID (column T)
-                        String paternalIndividualID = tokens[19].size() > 0 ? tokens[19] : null
+                        /**
+                         * Should be of the form sbCrsXXX
+                         */
+                        String paternalIndividualID = tokens[115].size() > 0 ? tokens[115] : null
                         if (paternalIndividualID != null) {
                             stock.paternalIndividualID = paternalIndividualID
                         } else {
                             stock.paternalIndividualID = null
                         }
                         // Paternal stock ID (column U)
-                        def paternalStockID = tokens[20].size() > 0 ? Math.round(tokens[20].toDouble()) : null
-                        if (paternalStockID != null) {
-                            stock.paternalStockID = paternalStockID
-                        } else {
-                            stock.paternalStockID = null
-                        }
+//                        def paternalStockID = tokens[20].size() > 0 ? Math.round(tokens[20].toDouble()) : null
+//                        if (paternalStockID != null) {
+//                            stock.paternalStockID = paternalStockID
+//                        } else {
+//                            stock.paternalStockID = null
+//                        }
 
                         stock.save(flush: true, insert: true, failOnError: true)
                         if (stock.stockID == 108) {
@@ -420,83 +425,128 @@ class StubData {
      */
 
     def processStockLineage() {
-        CSVReader csvReader = getImportFile("stocks.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
+        Map<String, String> femaleMap = new HashMap<>()
+        Map<String, String> maleMap = new HashMap<>()
+        CSVReader csvReader = getImportFile("crosses.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
         println "start processing stocks"
         csvReader.eachLine { tokens ->
             try {
 
-                if (tokens.size() > 5) {
-
-                    // Get the stock object
-                    def stockID = tokens[14]?.size() > 0 ? tokens[14].toDouble() : null
-                    Stock stock = Stock.findByStockID(stockID)
-
-                    // If we have a stock
-                    if (stock) {
-
-                        // Get the maternal stock fron the saved ID
-                        if (stock.maternalStockID != null) {
-                            if (Stock.findByStockID(stock.maternalStockID) != null)
-                                stock.maternalStock = Stock.findByStockID(stock.maternalStockID)
-                        }
-
-                        // Get the paternal stock from the maternal stock ID
-                        if (stock.paternalStockID != null) {
-                            if (Stock.findByStockID(stock.paternalStockID) != null) {
-                                stock.paternalStock = Stock.findByStockID(stock.paternalStockID)
-                            }
-                        }
-
-                        // Get the maternal individual
-                        try {
-                            if (stock.maternalIndividualID != null) {
-//                            Integer maternalStockID = stock.maternalIndividualID.split("\\.")[0] as Integer
-
-                                Integer maternalIndividualID
-                                if (stock.maternalIndividualID.indexOf('.') > 0) {
-                                    maternalIndividualID = stock.maternalIndividualID.split("\\.")[1] as Integer
-                                } else {
-                                    maternalIndividualID = stock.maternalIndividualID as Integer
-                                }
-
-//                                Integer maternalIndividualID = stock.maternalIndividualID.split("\\.")[1] as Integer
-//
-                                if (Individual.findByIndividualIDAndStock(maternalIndividualID, stock.maternalStock) != null) {
-                                    stock.maternalIndividual = Individual.findByIndividualIDAndStock(maternalIndividualID, stock.maternalStock)
-                                }
-                            }
-                        }
-                        catch (Exception me) {
-                            println "failed to process maternal individual ${stock.maternalIndividualID} for stock ${stock.stockIDLabel} for: ${me.fillInStackTrace()}"
-                        }
-
-                        // Get the paternal individual
-                        try {
-                            if (stock.paternalIndividualID != null) {
-                                Integer paternalIndividualID
-                                if (stock.paternalIndividualID.indexOf('.') > 0) {
-                                    paternalIndividualID = stock.paternalIndividualID.split("\\.")[1] as Integer
-                                } else {
-                                    paternalIndividualID = stock.paternalIndividualID as Integer
-                                }
-
-                                if (Individual.findByIndividualIDAndStock(paternalIndividualID, stock.paternalStock) != null) {
-                                    stock.paternalIndividual = Individual.findByIndividualIDAndStock(paternalIndividualID, stock.paternalStock)
-                                }
-                            }
-                        }
-                        catch (Exception oe) {
-                            println "failed to process paternal individual ${stock.paternalIndividualID} for stock ${stock.stockIDLabel} for ${oe.fillInStackTrace()}"
-                        }
-
-                        stock.save(flush: true, insert: false)
+                if (tokens.size() > 5 && tokens[1]?.size() > 0) {
+                    String key = tokens[16]
+                    String individualID = tokens[1]
+                    if (tokens[5] == "male") {
+                        maleMap.put(key, individualID)
+                    } else {
+                        femaleMap.put(key, individualID)
                     }
                 }
+
+
             }
             catch (e) {
                 println "error processing line ${tokens} \n ${e}"
             }
         }
+
+        Stock.all.each { stock ->
+
+            if (stock.maternalIndividualID != null && femaleMap.containsKey(stock.maternalIndividualID)) {
+                String individualIDValue = femaleMap.get(stock.maternalIndividualID)
+                String[] ids = individualIDValue.split("\\.")
+                Individual individual = Individual.findByIndividualIDAndStockID(ids[0] as Integer,ids[1] as Integer)
+                if(individual.fishSex!="female"){
+                    println "fixing sex from ${individual.fishSex} to female"
+                    individual.fishSex = "female"
+                    individual.save()
+                }
+                if(individual){
+                    stock.maternalIndividual = individual
+                }
+                stock.save(flush:true)
+            }
+
+            if (stock.paternalIndividualID != null && maleMap.containsKey(stock.paternalIndividualID)) {
+                String individualIDValue = maleMap.get(stock.paternalIndividualID)
+                String[] ids = individualIDValue.split("\\.")
+                Individual individual = Individual.findByIndividualIDAndStockID(ids[0] as Integer,ids[1] as Integer)
+                if(individual.fishSex!="male"){
+                    println "fixing sex from ${individual.fishSex} to male"
+                    individual.fishSex = "male"
+                    individual.save()
+                }
+                if(individual){
+                    stock.paternalIndividual = individual
+                }
+                stock.save(flush:true)
+            }
+
+//                    // Get the stock object
+//                    def stockID = tokens[14]?.size() > 0 ? tokens[14].toDouble() : null
+//                    Stock stock = Stock.findByStockID(stockID)
+//
+//                    // If we have a stock
+//                    if (stock) {
+//
+//                        // Get the maternal stock fron the saved ID
+//                        if (stock.maternalStockID != null) {
+//                            if (Stock.findByStockID(stock.maternalStockID) != null)
+//                                stock.maternalStock = Stock.findByStockID(stock.maternalStockID)
+//                        }
+//
+//                        // Get the paternal stock from the maternal stock ID
+//                        if (stock.paternalStockID != null) {
+//                            if (Stock.findByStockID(stock.paternalStockID) != null) {
+//                                stock.paternalStock = Stock.findByStockID(stock.paternalStockID)
+//                            }
+//                        }
+//
+//                        // Get the maternal individual
+//                        try {
+//                            if (stock.maternalIndividualID != null) {
+////                            Integer maternalStockID = stock.maternalIndividualID.split("\\.")[0] as Integer
+//
+//                                Integer maternalIndividualID
+//                                if (stock.maternalIndividualID.indexOf('.') > 0) {
+//                                    maternalIndividualID = stock.maternalIndividualID.split("\\.")[1] as Integer
+//                                } else {
+//                                    maternalIndividualID = stock.maternalIndividualID as Integer
+//                                }
+//
+////                                Integer maternalIndividualID = stock.maternalIndividualID.split("\\.")[1] as Integer
+////
+//                                if (Individual.findByIndividualIDAndStock(maternalIndividualID, stock.maternalStock) != null) {
+//                                    stock.maternalIndividual = Individual.findByIndividualIDAndStock(maternalIndividualID, stock.maternalStock)
+//                                }
+//                            }
+//                        }
+//                        catch (Exception me) {
+//                            println "failed to process maternal individual ${stock.maternalIndividualID} for stock ${stock.stockIDLabel} for: ${me.fillInStackTrace()}"
+//                        }
+//
+//                        // Get the paternal individual
+//                        try {
+//                            if (stock.paternalIndividualID != null) {
+//                                Integer paternalIndividualID
+//                                if (stock.paternalIndividualID.indexOf('.') > 0) {
+//                                    paternalIndividualID = stock.paternalIndividualID.split("\\.")[1] as Integer
+//                                } else {
+//                                    paternalIndividualID = stock.paternalIndividualID as Integer
+//                                }
+//
+//                                if (Individual.findByIndividualIDAndStock(paternalIndividualID, stock.paternalStock) != null) {
+//                                    stock.paternalIndividual = Individual.findByIndividualIDAndStock(paternalIndividualID, stock.paternalStock)
+//                                }
+//                            }
+//                        }
+//                        catch (Exception oe) {
+//                            println "failed to process paternal individual ${stock.paternalIndividualID} for stock ${stock.stockIDLabel} for ${oe.fillInStackTrace()}"
+//                        }
+//
+//                        stock.save(flush: true, insert: false)
+//                    }
+        }
+
         println "finished processing stocks: " + Stock.count()
     }
 
