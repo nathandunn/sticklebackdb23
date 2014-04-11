@@ -453,32 +453,55 @@ class StubData {
 
             if (stock.maternalIndividualID != null && femaleMap.containsKey(stock.maternalIndividualID)) {
                 String individualIDValue = femaleMap.get(stock.maternalIndividualID)
+                println "maternalID: ${individualIDValue}"
                 String[] ids = individualIDValue.split("\\.")
-                Individual individual = Individual.findByIndividualIDAndStockID(ids[0] as Integer,ids[1] as Integer)
-                if(individual.fishSex!="female"){
-                    println "fixing sex from ${individual.fishSex} to female"
-                    individual.fishSex = "female"
-                    individual.save()
+
+                Integer stockID = ids[0] as Integer
+                Stock maternalStock = Stock.findByStockID(stockID)
+                Integer individualID = ids[2] as Integer
+
+                Individual individual = Individual.findByStockAndIndividualID(maternalStock, individualID)
+                if (individual) {
+                    println "individual found ${individual.individualIDLabel} mom of stock ${stock.stockIDLabel}"
+                    if (individual.fishSex != "female") {
+                        println "fixing sex from ${individual.fishSex} to female"
+                        individual.fishSex = "female"
+                        individual.save()
+                    }
+                    if (individual) {
+                        stock.maternalIndividual = individual
+                    }
+                    stock.save(flush: true)
                 }
-                if(individual){
-                    stock.maternalIndividual = individual
+                else {
+                    println "no maternal individual found for ${individualIDValue}"
                 }
-                stock.save(flush:true)
             }
 
             if (stock.paternalIndividualID != null && maleMap.containsKey(stock.paternalIndividualID)) {
                 String individualIDValue = maleMap.get(stock.paternalIndividualID)
+                println "paternalID: ${individualIDValue}"
                 String[] ids = individualIDValue.split("\\.")
-                Individual individual = Individual.findByIndividualIDAndStockID(ids[0] as Integer,ids[1] as Integer)
-                if(individual.fishSex!="male"){
-                    println "fixing sex from ${individual.fishSex} to male"
-                    individual.fishSex = "male"
-                    individual.save()
+                Integer stockID = ids[0] as Integer
+                Stock paternalStock = Stock.findByStockID(stockID)
+                Integer individualID = ids[2] as Integer
+                Individual individual = Individual.findByStockAndIndividualID(paternalStock, individualID)
+
+                if (individual) {
+                    println "individual found ${individual.individualIDLabel} dad of stock ${stock.stockIDLabel}"
+                    if (individual.fishSex != "male") {
+                        println "fixing sex from ${individual.fishSex} to male"
+                        individual.fishSex = "male"
+                        individual.save()
+                    }
+                    if (individual) {
+                        stock.paternalIndividual = individual
+                    }
+                    stock.save(flush: true)
                 }
-                if(individual){
-                    stock.paternalIndividual = individual
+                else {
+                    println "no paternal individual found for ${individualIDValue}"
                 }
-                stock.save(flush:true)
             }
 
 //                    // Get the stock object
