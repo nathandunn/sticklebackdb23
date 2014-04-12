@@ -470,6 +470,7 @@ class StubData {
                     }
                     if (individual) {
                         stock.maternalIndividual = individual
+                        stock.maternalStock = individual.stock
                     }
                     stock.save(flush: true)
                 }
@@ -496,6 +497,7 @@ class StubData {
                     }
                     if (individual) {
                         stock.paternalIndividual = individual
+                        stock.paternalStock = individual.stock
                     }
                     stock.save(flush: true)
                 }
