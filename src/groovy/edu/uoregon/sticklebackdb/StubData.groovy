@@ -297,6 +297,7 @@ class StubData {
     /*
      * Process the lineage of stock
      */
+
     def processStockLineage() {
         Map<String, String> femaleMap = new HashMap<>()
         Map<String, String> maleMap = new HashMap<>()
@@ -305,22 +306,35 @@ class StubData {
         csvReader.eachLine { tokens ->
             try {
 
-                if (tokens.size() > 5 && tokens[1]?.size() > 0) {
+                if (tokens.size() > 18 && tokens[1]?.size() > 0) {
                     String key = tokens[17]
                     String individualID = tokens[1]
-                    if (tokens[5] == "male") {
-                        maleMap.put(key, individualID)
-                    } else {
-                        femaleMap.put(key, individualID)
+                    Integer gender = tokens[0] as Integer
+                    switch (gender) {
+                        case 0: femaleMap.put(key, individualID)
+                            break
+                        case 1: maleMap.put(key, individualID)
+                            break
+//                        default:
+//                            println "error in map ${gender} mapped to ${tokens[2]}"
                     }
+//                    if (tokens[5] == "male") {
+//                        maleMap.put(key, individualID)
+//                    } else {
+//                        femaleMap.put(key, individualID)
+//                    }
                 }
-
-
+                else{
+                    println "bad line ${tokens}"
+                }
             }
             catch (e) {
                 println "error processing line ${tokens} \n ${e}"
             }
         }
+
+        println "male map ${maleMap.size()}"
+        println "female map ${femaleMap.size()}"
 
         Stock.all.each { stock ->
 
@@ -349,9 +363,7 @@ class StubData {
                     } else {
                         println "no maternal individual found for ${individualIDValue}"
                     }
-                }
-                else
-                if (maleMap.containsKey(stock.maternalIndividualID)) {
+                } else if (maleMap.containsKey(stock.maternalIndividualID)) {
                     individualIDValue = maleMap.get(stock.maternalIndividualID)
                     println "paternalID: ${individualIDValue}"
                     String[] ids = individualIDValue.split("\\.")
@@ -374,8 +386,7 @@ class StubData {
                     } else {
                         println "no paternal individual found for ${individualIDValue}"
                     }
-                }
-                else {
+                } else {
                     println "no cross ${stock.maternalIndividualID} found for stock ${stock.stockIDLabel}"
                 }
             }
