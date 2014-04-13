@@ -362,14 +362,14 @@ class StubData {
 
                     Individual individual = Individual.findByStockAndIndividualID(paternalStock, individualID)
                     if (individual) {
-                        println "individual found ${individual.individualIDLabel} mom of stock ${stock.stockIDLabel}"
+                        println "individual found ${individual.individualIDLabel} dad of stock ${stock.stockIDLabel}"
                         if (individual.fishSex == "female") {
-                            println "fixing sex from ${individual.fishSex} to female"
+                            println "fixing sex from ${individual.fishSex} to male"
                             individual.fishSex = "male"
                             individual.save()
                         }
-                        stock.maternalIndividual = individual
-                        stock.maternalStock = individual.stock
+                        stock.paternalIndividual = individual
+                        stock.paternalStock = individual.stock
                         stock.save(flush: true)
                     } else {
                         println "no paternal individual found for ${individualIDValue}"
