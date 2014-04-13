@@ -225,7 +225,7 @@ class StubData {
                          * Should be of the form sbCrsXXX
                          */
                         // Maternal Individual ID (column Q)
-                        String maternalIndividualID = tokens[114].size() > 0 ? tokens[114] : null
+                        String maternalIndividualID = tokens[117].size() > 0 ? tokens[117] : null
                         if (maternalIndividualID != null) {
                             stock.maternalIndividualID = maternalIndividualID
                         } else {
@@ -242,12 +242,12 @@ class StubData {
                         /**
                          * Should be of the form sbCrsXXX
                          */
-                        String paternalIndividualID = tokens[115].size() > 0 ? tokens[115] : null
-                        if (paternalIndividualID != null) {
-                            stock.paternalIndividualID = paternalIndividualID
-                        } else {
-                            stock.paternalIndividualID = null
-                        }
+//                        String paternalIndividualID = tokens[115].size() > 0 ? tokens[115] : null
+//                        if (paternalIndividualID != null) {
+//                            stock.paternalIndividualID = paternalIndividualID
+//                        } else {
+//                            stock.paternalIndividualID = null
+//                        }
                         // Paternal stock ID (column U)
 //                        def paternalStockID = tokens[20].size() > 0 ? Math.round(tokens[20].toDouble()) : null
 //                        if (paternalStockID != null) {
@@ -433,7 +433,7 @@ class StubData {
             try {
 
                 if (tokens.size() > 5 && tokens[1]?.size() > 0) {
-                    String key = tokens[16]
+                    String key = tokens[17]
                     String individualID = tokens[1]
                     if (tokens[5] == "male") {
                         maleMap.put(key, individualID)
