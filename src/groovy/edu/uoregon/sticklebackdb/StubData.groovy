@@ -425,8 +425,8 @@ class StubData {
      */
 
     def processStockLineage() {
-        Map<String, String> femaleMap = new HashMap<>()
-        Map<String, String> maleMap = new HashMap<>()
+        Map<String, String> crossMap = new HashMap<>()
+//        Map<String, String> maleMap = new HashMap<>()
         CSVReader csvReader = getImportFile("crosses.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
         println "start processing stocks"
         csvReader.eachLine { tokens ->
@@ -435,11 +435,11 @@ class StubData {
                 if (tokens.size() > 5 && tokens[1]?.size() > 0) {
                     String key = tokens[17]
                     String individualID = tokens[1]
-                    if (tokens[5] == "male") {
-                        maleMap.put(key, individualID)
-                    } else {
-                        femaleMap.put(key, individualID)
-                    }
+//                    if (tokens[5] == "male") {
+//                        maleMap.put(key, individualID)
+//                    } else {
+                    crossMap.put(key, individualID)
+//                    }
                 }
 
 
@@ -451,8 +451,8 @@ class StubData {
 
         Stock.all.each { stock ->
 
-            if (stock.maternalIndividualID != null && femaleMap.containsKey(stock.maternalIndividualID)) {
-                String individualIDValue = femaleMap.get(stock.maternalIndividualID)
+            if (stock.maternalIndividualID != null && crossMap.containsKey(stock.maternalIndividualID)) {
+                String individualIDValue = crossMap.get(stock.maternalIndividualID)
                 println "maternalID: ${individualIDValue}"
                 String[] ids = individualIDValue.split("\\.")
 
@@ -463,48 +463,46 @@ class StubData {
                 Individual individual = Individual.findByStockAndIndividualID(maternalStock, individualID)
                 if (individual) {
                     println "individual found ${individual.individualIDLabel} mom of stock ${stock.stockIDLabel}"
-                    if (individual.fishSex != "female") {
-                        println "fixing sex from ${individual.fishSex} to female"
-                        individual.fishSex = "female"
-                        individual.save()
-                    }
-                    if (individual) {
+                    if (individual.fishSex == "female") {
+//                        println "fixing sex from ${individual.fishSex} to female"
+//                        individual.fishSex = "female"
                         stock.maternalIndividual = individual
                         stock.maternalStock = individual.stock
-                    }
-                    stock.save(flush: true)
-                }
-                else {
-                    println "no maternal individual found for ${individualIDValue}"
-                }
-            }
-
-            if (stock.paternalIndividualID != null && maleMap.containsKey(stock.paternalIndividualID)) {
-                String individualIDValue = maleMap.get(stock.paternalIndividualID)
-                println "paternalID: ${individualIDValue}"
-                String[] ids = individualIDValue.split("\\.")
-                Integer stockID = ids[0] as Integer
-                Stock paternalStock = Stock.findByStockID(stockID)
-                Integer individualID = ids[2] as Integer
-                Individual individual = Individual.findByStockAndIndividualID(paternalStock, individualID)
-
-                if (individual) {
-                    println "individual found ${individual.individualIDLabel} dad of stock ${stock.stockIDLabel}"
-                    if (individual.fishSex != "male") {
-                        println "fixing sex from ${individual.fishSex} to male"
-                        individual.fishSex = "male"
-                        individual.save()
-                    }
-                    if (individual) {
+                    } else {
                         stock.paternalIndividual = individual
                         stock.paternalStock = individual.stock
                     }
                     stock.save(flush: true)
-                }
-                else {
-                    println "no paternal individual found for ${individualIDValue}"
+                } else {
+                    println "no maternal individual found for ${individualIDValue}"
                 }
             }
+
+//            if (stock.paternalIndividualID != null && maleMap.containsKey(stock.paternalIndividualID)) {
+//                String individualIDValue = maleMap.get(stock.paternalIndividualID)
+//                println "paternalID: ${individualIDValue}"
+//                String[] ids = individualIDValue.split("\\.")
+//                Integer stockID = ids[0] as Integer
+//                Stock paternalStock = Stock.findByStockID(stockID)
+//                Integer individualID = ids[2] as Integer
+//                Individual individual = Individual.findByStockAndIndividualID(paternalStock, individualID)
+//
+//                if (individual) {
+//                    println "individual found ${individual.individualIDLabel} dad of stock ${stock.stockIDLabel}"
+//                    if (individual.fishSex != "male") {
+//                        println "fixing sex from ${individual.fishSex} to male"
+//                        individual.fishSex = "male"
+//                        individual.save()
+//                    }
+//                    if (individual) {
+//                        stock.paternalIndividual = individual
+//                        stock.paternalStock = individual.stock
+//                    }
+//                    stock.save(flush: true)
+//                } else {
+//                    println "no paternal individual found for ${individualIDValue}"
+//                }
+//            }
 
 //                    // Get the stock object
 //                    def stockID = tokens[14]?.size() > 0 ? tokens[14].toDouble() : null
@@ -575,7 +573,7 @@ class StubData {
         println "finished processing stocks: " + Stock.count()
     }
 
-    // !! Not Used !!
+// !! Not Used !!
     def stubGenetics() {
         //        Genetics.deleteAll(Genetics.all)
         println "start stub population"
@@ -603,4 +601,5 @@ class StubData {
         }
         println "FINISHED stub population " + Population.count()
     }
+
 }
