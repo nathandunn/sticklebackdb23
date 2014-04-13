@@ -363,7 +363,9 @@ class StubData {
                     } else {
                         println "no maternal individual found for ${individualIDValue}"
                     }
-                } else if (maleMap.containsKey(stock.maternalIndividualID)) {
+                }
+
+                if (maleMap.containsKey(stock.maternalIndividualID)) {
                     individualIDValue = maleMap.get(stock.maternalIndividualID)
                     println "paternalID: ${individualIDValue}"
                     String[] ids = individualIDValue.split("\\.")
@@ -386,7 +388,10 @@ class StubData {
                     } else {
                         println "no paternal individual found for ${individualIDValue}"
                     }
-                } else {
+                }
+
+                if(!maleMap.containsKey(stock.setMaternalIndividualID()) && !femaleMap.containsKey(stock.setMaternalIndividualID()))
+                {
                     println "no cross ${stock.maternalIndividualID} found for stock ${stock.stockIDLabel}"
                 }
             }
