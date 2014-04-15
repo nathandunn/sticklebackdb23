@@ -33,21 +33,51 @@
 <div class="nav" role="navigation">
     <ul>
         %{--<li><g:link class="show" action="show" id="${stockInstance.id}">${stockInstance.stockIDLabel}</g:link></li>--}%
-        <li><g:link class="show" action="show" id="${stockInstance.id}">Show Stock ${stockInstance.stockIDLabel}</g:link></li>
+        <li><g:link class="show" action="show"
+                    id="${stockInstance.id}">Show Stock ${stockInstance.stockIDLabel}</g:link></li>
     </ul>
 </div>
 
 <div class="lineage">
     <div>
         <h3>Parents</h3>
+        %{--<g:if test="${parentStocks}">--}%
+        %{--<g:each in="${parentStocks}" var="stock" status="iter">--}%
+        %{--<g:link action="show" id="${stock.id}">${stock.stockID}</g:link><g:link action="bracket"--}%
+        %{--params="[stockID: stock.stockID]">[map]</g:link>--}%
+        %{--<g:if test="${iter.intValue() < parentStocks.size() - 1}">--}%
+        %{--&bullet;--}%
+        %{--</g:if>--}%
+        %{--</g:each>--}%
+        %{--</g:if>--}%
+        %{--<g:else>--}%
+        %{--None--}%
+        %{--</g:else>--}%
         <g:if test="${parentStocks}">
-            <g:each in="${parentStocks}" var="stock" status="iter">
-                <g:link action="show" id="${stock.id}">${stock.stockID}</g:link><g:link action="bracket"
-                                                                                        params="[stockID: stock.stockID]">[map]</g:link>
-                <g:if test="${iter.intValue() < parentStocks.size() - 1}">
-                    &bullet;
+            <g:each in="${parentStocks}" var="layer" status="st">
+                <g:if test="${layer.value}">
+                    <b>Previous Generation ${-layer.key}</b>
+                </g:if>
+            %{--${layer.key}--}%
+                <g:each in="${layer.value}" var="stock" status="iter">
+                %{--${stock.id}--}%
+                    <g:link action="show" id="${stock.id}">${stock.stockID}</g:link><g:link action="bracket"
+                                                                                            params="[stockID: stock.stockID]">[map]</g:link>
+                    <g:if test="${iter.intValue() < layer.value.size() - 1}">
+                        &bullet;
+                    </g:if>
+                </g:each>
+                <g:if test="${st.intValue() < parentStocks.size() - 1}">
+                    <hr/>
                 </g:if>
             </g:each>
+        %{--<g:each in="${childStocks}" var="stock" status="iter">--}%
+        %{--<g:link action="show" id="${stock.id}">${stock.stockID}</g:link><g:link action="bracket"--}%
+        %{--params="[stockID: stock.stockID]">[map]</g:link>--}%
+        %{--<g:if test="${iter.intValue() < childStocks.size() - 1}">--}%
+        %{--&bullet;--}%
+        %{--</g:if>--}%
+        %{--</g:each>--}%
         </g:if>
         <g:else>
             None
@@ -59,16 +89,33 @@
         <div id="chart"></div>
     </div>
 
-    <div >
+    <div>
         <h3>Children</h3>
         <g:if test="${childStocks}">
-            <g:each in="${childStocks}" var="stock" status="iter">
-                <g:link action="show" id="${stock.id}">${stock.stockID}</g:link><g:link action="bracket"
-                                                                                        params="[stockID: stock.stockID]">[map]</g:link>
-                <g:if test="${iter.intValue() < childStocks.size() - 1}">
-                    &bullet;
+            <g:each in="${childStocks}" var="layer" status="st">
+                <g:if test="${layer.value}">
+                    <b>Depth ${layer.key}</b>
+                </g:if>
+            %{--${layer.key}--}%
+                <g:each in="${layer.value}" var="stock" status="iter">
+                %{--${stock.id}--}%
+                    <g:link action="show" id="${stock.id}">${stock.stockID}</g:link><g:link action="bracket"
+                                                                                            params="[stockID: stock.stockID]">[map]</g:link>
+                    <g:if test="${iter.intValue() < layer.value.size() - 1}">
+                        &bullet;
+                    </g:if>
+                </g:each>
+                <g:if test="${st.intValue() < childStocks.size() - 1}">
+                    <hr/>
                 </g:if>
             </g:each>
+        %{--<g:each in="${childStocks}" var="stock" status="iter">--}%
+        %{--<g:link action="show" id="${stock.id}">${stock.stockID}</g:link><g:link action="bracket"--}%
+        %{--params="[stockID: stock.stockID]">[map]</g:link>--}%
+        %{--<g:if test="${iter.intValue() < childStocks.size() - 1}">--}%
+        %{--&bullet;--}%
+        %{--</g:if>--}%
+        %{--</g:each>--}%
         </g:if>
         <g:else>
             None

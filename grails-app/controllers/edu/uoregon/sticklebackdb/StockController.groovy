@@ -2,7 +2,6 @@ package edu.uoregon.sticklebackdb
 
 import grails.converters.JSON
 import grails.transaction.Transactional
-import grails.util.CollectionUtils
 import org.codehaus.groovy.grails.web.json.JSONArray
 import org.codehaus.groovy.grails.web.json.JSONObject
 import org.springframework.dao.DataIntegrityViolationException
@@ -519,32 +518,43 @@ class StockController {
         return stockNames.sort(true)
     }
 
-    private List<Stock> getAllParentStocks(Stock stock, List<Stock> parentStocks) {
+    private Map<Integer,List<Stock>> getAllParentStocks(Stock stock, Map<Integer,List<Stock>> parentStockMap,Integer currentLayer) {
 
         if (!stock.paternalStock && !stock.maternalStock) {
-            return parentStocks
+            return parentStockMap
+        }
+
+        List<Stock> parentStockList = parentStockMap.get(currentLayer)
+        if(parentStockList==null){
+            parentStockList = new ArrayList<>()
         }
 
         if (stock.paternalStock) {
-            if(!parentStocks.contains(stock.paternalStock)){
-                parentStocks.add(stock.paternalStock)
-                parentStocks.addAll(getAllParentStocks(stock.paternalStock, parentStocks))
+            if(!parentStockList.contains(stock.paternalStock)){
+                parentStockList.add(stock.paternalStock)
+                parentStockMap.put(currentLayer,parentStockList)
+//                parentStockMap.addAll(getAllParentStocks(stock.paternalStock, parentStockMap))
+//                parentStockMap.put(currentLayer-1,getAllParentStocks(stock.paternalStock, parentStockMap,currentLayer-1))
+                parentStockMap=getAllParentStocks(stock.paternalStock, parentStockMap,currentLayer-1)
             }
         }
 
         if (stock.maternalStock) {
-            if(!parentStocks.contains(stock.maternalStock)) {
-                parentStocks.add(stock.maternalStock)
-                parentStocks.addAll(getAllParentStocks(stock.maternalStock, parentStocks))
+            if(!parentStockList.contains(stock.maternalStock)) {
+                parentStockList.add(stock.maternalStock)
+                parentStockMap.put(currentLayer,parentStockList)
+//                parentStockMap.addAll(getAllParentStocks(stock.maternalStock, parentStockMap))
+//                parentStockMap.put(currentLayer-1,getAllParentStocks(stock.maternalStock, parentStockMap,currentLayer-1))
+                parentStockMap=getAllParentStocks(stock.maternalStock, parentStockMap,currentLayer-1)
             }
         }
 
-        parentStocks.unique()
+        parentStockList = parentStockList.unique(true)
 
-        return parentStocks
+        return parentStockMap
     }
 
-    private List<Stock> getAllChildStocks(Stock stock, List<Stock> childStocks) {
+    private Map<Integer,List<Stock>> getAllChildStocks(Stock stock, Map<Integer,List<Stock>> childStockMap,Integer currentLayer) {
 
 //        return childStocks
 
@@ -554,33 +564,45 @@ class StockController {
         List<Stock> mareStocks = Stock.findAllByMaternalStock(stock)
         println "mare: ${broodStocks.size()}"
 
-        if (!broodStocks && !mareStocks) {
-            childStocks.unique(true)
-            return childStocks
+        List<Stock> childStockList = childStockMap.get(currentLayer)
+        if(childStockList==null){
+            childStockList = new ArrayList<>()
         }
 
-        println "evaluating: ${childStocks.size()}"
+        if (!broodStocks && !mareStocks) {
+            childStockList.unique(true)
+            childStockMap.put(currentLayer,childStockList)
+            return childStockMap
+        }
+
+        println "evaluating: ${childStockMap.size()}"
         for (brood in broodStocks) {
-            if(!childStocks.contains(brood)){
-                childStocks.add(brood)
-                childStocks.addAll(getAllChildStocks(brood, childStocks))
+            if(!childStockList.contains(brood)){
+                childStockList.add(brood)
+                childStockMap.put(currentLayer,childStockList)
+//                childStockList.addAll(getAllChildStocks(brood, childStockMap,++currentLayer))
+//                childStockMap.put(currentLayer+1,getAllChildStocks(brood, childStockMap,currentLayer+1))
+                childStockMap = getAllChildStocks(brood, childStockMap,currentLayer+1)
             }
         }
-        println "post-brood: ${childStocks.size()}"
+        println "post-brood: ${childStockMap.size()}"
 
         for (mare in mareStocks) {
-            if(!childStocks.contains(mare)) {
-                childStocks.add(mare)
-                childStocks.addAll(getAllChildStocks(mare, childStocks))
+            if(!childStockList.contains(mare)) {
+                childStockList.add(mare)
+                childStockMap.put(currentLayer,childStockList)
+//                childStockMap.addAll(getAllChildStocks(mare, childStockMap))
+//                childStockMap.put(currentLayer+1,getAllChildStocks(mare, childStockMap,currentLayer+1))
+                childStockMap = getAllChildStocks(mare, childStockMap,currentLayer+1)
             }
         }
-        println "post-mare: ${childStocks.size()}"
+        println "post-mare: ${childStockMap.size()}"
 
-        childStocks.unique(true)
+//        childStockMap = childStockList.unique(true)
 
-        println "post-unique: ${childStocks.size()}"
+        println "post-unique: ${childStockMap.size()}"
 
-        return childStocks
+        return childStockMap
     }
 
     def findStock() {
@@ -594,17 +616,17 @@ class StockController {
         def stockID = params.stockID
         Stock stock = Stock.findByStockID(stockID)
 
-        List<Stock> childStocks = getAllChildStocks(stock, new ArrayList<Stock>())
-        childStocks.sort(true, new Comparator<Stock>() {
-            @Override
-            int compare(Stock o1, Stock o2) {
-                return o1.stockID - o2.stockID
-            }
-        })
-        List<Stock> parentStocks = getAllParentStocks(stock, new ArrayList<Stock>())
-        parentStocks.sort(true) { a, b ->
-            a.stockID - b.stockID
-        }
+        TreeMap<Integer,List<Stock>> childStocks = getAllChildStocks(stock, new TreeMap<Integer,List<Stock>>(),1)
+//        childStocks.values().sort(true, new Comparator<Stock>() {
+//            @Override
+//            int compare(Stock o1, Stock o2) {
+//                return o1.stockID - o2.stockID
+//            }
+//        })
+        TreeMap<Integer,List<Stock>> parentStocks = getAllParentStocks(stock, new TreeMap<Integer,List<Stock>>(),-1)
+//        parentStocks.values().sort(true) { a, b ->
+//            a.stockID - b.stockID
+//        }
 
         [stockInstance: stock, childStocks: childStocks, parentStocks: parentStocks]
 
@@ -612,7 +634,7 @@ class StockController {
 
     private def getParentArray(Stock stock) {
 
-        if (!stock.paternalStock) return
+        if (!stock.paternalStock && !stock.maternalStock) return
 
         def paternalStock = stock.paternalStock
         def maternalStock = stock.maternalStock
