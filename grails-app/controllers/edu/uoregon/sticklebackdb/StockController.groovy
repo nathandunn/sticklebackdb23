@@ -526,13 +526,17 @@ class StockController {
         }
 
         if (stock.paternalStock) {
-            parentStocks.add(stock.paternalStock)
-            parentStocks.addAll(getAllParentStocks(stock.paternalStock, parentStocks))
+            if(!parentStocks.contains(stock.paternalStock)){
+                parentStocks.add(stock.paternalStock)
+                parentStocks.addAll(getAllParentStocks(stock.paternalStock, parentStocks))
+            }
         }
 
         if (stock.maternalStock) {
-            parentStocks.add(stock.maternalStock)
-            parentStocks.addAll(getAllParentStocks(stock.maternalStock, parentStocks))
+            if(!parentStocks.contains(stock.maternalStock)) {
+                parentStocks.add(stock.maternalStock)
+                parentStocks.addAll(getAllParentStocks(stock.maternalStock, parentStocks))
+            }
         }
 
         parentStocks.unique()
@@ -557,14 +561,18 @@ class StockController {
 
         println "evaluating: ${childStocks.size()}"
         for (brood in broodStocks) {
-            childStocks.add(brood)
-            childStocks.addAll(getAllChildStocks(brood, childStocks))
+            if(!childStocks.contains(brood)){
+                childStocks.add(brood)
+                childStocks.addAll(getAllChildStocks(brood, childStocks))
+            }
         }
         println "post-brood: ${childStocks.size()}"
 
         for (mare in mareStocks) {
-            childStocks.add(mare)
-            childStocks.addAll(getAllChildStocks(mare, childStocks))
+            if(!childStocks.contains(mare)) {
+                childStocks.add(mare)
+                childStocks.addAll(getAllChildStocks(mare, childStocks))
+            }
         }
         println "post-mare: ${childStocks.size()}"
 
