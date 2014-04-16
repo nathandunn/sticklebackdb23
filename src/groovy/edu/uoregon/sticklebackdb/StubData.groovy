@@ -33,9 +33,9 @@ class StubData {
         stubLine()
         // stubGenetics()
         stubStock()
-//        stubIndividuals()
+        stubIndividuals()
 ////        processIndividualLineage()
-//        processStockLineage()
+        processStockLineage()
     }
 
     def stubUsers() {
