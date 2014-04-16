@@ -33,9 +33,9 @@ class StubData {
         stubLine()
         // stubGenetics()
         stubStock()
-        stubIndividuals()
-//        processIndividualLineage()
-        processStockLineage()
+//        stubIndividuals()
+////        processIndividualLineage()
+//        processStockLineage()
     }
 
     def stubUsers() {
@@ -152,7 +152,7 @@ class StubData {
 
     def stubLine() {
 
-        CSVReader csvReader = getImportFile("lines.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
+        CSVReader csvReader = getImportFile("lines.csv").toCsvReader(skipLines: 0, 'charset': 'UTF-8')
         csvReader.eachLine { tokens ->
             Line line = new Line()
 
@@ -187,9 +187,10 @@ class StubData {
 
     def stubStock() {
         //        Stock.deleteAll(Stock.all)
-        CSVReader csvReader = getImportFile("stocks.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
+        CSVReader csvReader = getImportFile("stocks.csv").toCsvReader(skipLines: 0, 'charset': 'UTF-8')
         println "start stub stocks"
 
+        int index = 0
         csvReader.eachLine { tokens ->
 
             if (tokens.size() > 5) {
@@ -198,13 +199,16 @@ class StubData {
 
                 try {
 
-                    if (tokens.size() < 38)
+                    if (tokens.size() < 38) {
                         println "Error reading stock # " + tokens[0] + ", skipping, not enough information."
-                    else {
+                    } else
+                    if (tokens[14]?.trim()?.size()==0) {
+//                        println "empty line ${index}"
+                    } else {
                         // Population (find using column X)
                         stock.line = tokens[23]?.size() > 0 ? Line.findByName(tokens[23]) : null
 
-                        // Stock ID (column O)    
+                        // Stock ID (column O)
                         stock.stockID = tokens[14]?.size() > 0 ? tokens[14].toDouble() : null
 
                         // Fertilization date (column D)
@@ -242,6 +246,7 @@ class StubData {
                     println "error saving output: " + e
                 }
             }
+            ++index
         }
         println "finished stubbing stocks: " + Stock.count()
     }
@@ -251,7 +256,7 @@ class StubData {
      */
 
     def stubIndividuals() {
-        CSVReader csvReader = getImportFile("individuals.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
+        CSVReader csvReader = getImportFile("individuals.csv").toCsvReader(skipLines: 0, 'charset': 'UTF-8')
         println "start stub individuals"
         Integer count = 0;
         csvReader.eachLine { tokens ->
@@ -301,7 +306,7 @@ class StubData {
     def processStockLineage() {
         Map<String, String> femaleMap = new HashMap<>()
         Map<String, String> maleMap = new HashMap<>()
-        CSVReader csvReader = getImportFile("crosses.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
+        CSVReader csvReader = getImportFile("crosses.csv").toCsvReader(skipLines: 0, 'charset': 'UTF-8')
         println "start processing stocks"
         csvReader.eachLine { tokens ->
             try {
@@ -323,8 +328,7 @@ class StubData {
 //                    } else {
 //                        femaleMap.put(key, individualID)
 //                    }
-                }
-                else{
+                } else {
                     println "bad line ${tokens}"
                 }
             }
@@ -390,8 +394,7 @@ class StubData {
                     }
                 }
 
-                if(!maleMap.containsKey(stock.setMaternalIndividualID()) && !femaleMap.containsKey(stock.setMaternalIndividualID()))
-                {
+                if (!maleMap.containsKey(stock.maternalIndividualID) && !femaleMap.containsKey(stock.maternalIndividualID)) {
                     println "no cross ${stock.maternalIndividualID} found for stock ${stock.stockIDLabel}"
                 }
             }
@@ -404,7 +407,7 @@ class StubData {
     def stubGenetics() {
         //        Genetics.deleteAll(Genetics.all)
         println "start stub population"
-        CSVReader csvReader = getImportFile("genetics.csv").toCsvReader(skipLines: 1, 'charset': 'UTF-8')
+        CSVReader csvReader = getImportFile("genetics.csv").toCsvReader(skipLines: 0, 'charset': 'UTF-8')
         csvReader.eachLine { tokens ->
             if (tokens.size() > 2) {
 
