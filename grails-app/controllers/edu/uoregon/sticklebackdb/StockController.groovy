@@ -33,7 +33,7 @@ class StockController {
 
 //        if (query.startsWith("[a-zA-Z]")) {
         if (query ==~ "[a-zA-Z].*") {
-            println "starts with text ${query}"
+            log.debug  "starts with text ${query}"
             List<Stock> stockList = Stock.findAllByStockNameIlike("%" + query + "%", params)
             Integer stockCount = Stock.countByStockNameIlike("%" + query + "%")
             def model = [stockInstanceList: stockList, stockInstanceTotal: stockCount]
@@ -83,7 +83,7 @@ class StockController {
 //        }
 //        lineList.unique(true)
 
-//        println "lines with capture ${linesWithCapture}"
+//        log.debug  "lines with capture ${linesWithCapture}"
         List<String> stockNames = getAllStockNames()
 
 
@@ -131,7 +131,7 @@ class StockController {
         def stockInstance = new Stock(params)
 
 
-        println "params ${params}"
+        log.debug  "params ${params}"
 
         List<String> stockNames = getAllStockNames()
 
@@ -492,10 +492,10 @@ class StockController {
     }
 
     def findCommonLineForStocks() {
-        println "params ${params}"
+        log.debug  "params ${params}"
         def paternalStockId = params.paternalStockId
         def maternalStockId = params.maternalStockId
-        println "finding common lines: ${paternalStockId} - ${maternalStockId}"
+        log.debug  "finding common lines: ${paternalStockId} - ${maternalStockId}"
         Stock paternalStock = Stock.findById(paternalStockId as Long)
         Stock maternalStock = Stock.findById(maternalStockId as Long)
 
@@ -558,11 +558,11 @@ class StockController {
 
 //        return childStocks
 
-        println "child stocks: ${stock.stockIDLabel}"
+        log.debug  "child stocks: ${stock.stockIDLabel}"
         List<Stock> broodStocks = Stock.findAllByPaternalStock(stock)
-        println "broods: ${broodStocks.size()}"
+        log.debug  "broods: ${broodStocks.size()}"
         List<Stock> mareStocks = Stock.findAllByMaternalStock(stock)
-        println "mare: ${broodStocks.size()}"
+        log.debug  "mare: ${broodStocks.size()}"
 
         List<Stock> childStockList = childStockMap.get(currentLayer)
         if(childStockList==null){
@@ -575,7 +575,7 @@ class StockController {
             return childStockMap
         }
 
-        println "evaluating: ${childStockMap.size()}"
+        log.debug  "evaluating: ${childStockMap.size()}"
         for (brood in broodStocks) {
             if(!childStockList.contains(brood)){
                 childStockList.add(brood)
@@ -585,7 +585,7 @@ class StockController {
                 childStockMap = getAllChildStocks(brood, childStockMap,currentLayer+1)
             }
         }
-        println "post-brood: ${childStockMap.size()}"
+        log.debug  "post-brood: ${childStockMap.size()}"
 
         for (mare in mareStocks) {
             if(!childStockList.contains(mare)) {
@@ -596,11 +596,11 @@ class StockController {
                 childStockMap = getAllChildStocks(mare, childStockMap,currentLayer+1)
             }
         }
-        println "post-mare: ${childStockMap.size()}"
+        log.debug  "post-mare: ${childStockMap.size()}"
 
 //        childStockMap = childStockList.unique(true)
 
-        println "post-unique: ${childStockMap.size()}"
+        log.debug  "post-unique: ${childStockMap.size()}"
 
         return childStockMap
     }
