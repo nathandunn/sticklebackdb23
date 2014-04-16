@@ -337,8 +337,8 @@ class StubData {
             }
         }
 
-        println "male map ${maleMap.size()}"
-        println "female map ${femaleMap.size()}"
+        log.debug "male map ${maleMap.size()}"
+        log.debug "female map ${femaleMap.size()}"
 
         Stock.all.each { stock ->
 
@@ -346,7 +346,7 @@ class StubData {
                 String individualIDValue
                 if (femaleMap.containsKey(stock.maternalIndividualID)) {
                     individualIDValue = femaleMap.get(stock.maternalIndividualID)
-                    println "maternalID: ${individualIDValue}"
+                    log.debug "maternalID: ${individualIDValue}"
                     String[] ids = individualIDValue.split("\\.")
 
                     Integer stockID = ids[0] as Integer
@@ -355,7 +355,7 @@ class StubData {
 
                     Individual individual = Individual.findByStockAndIndividualID(maternalStock, individualID)
                     if (individual) {
-                        println "individual found ${individual.individualIDLabel} mom of stock ${stock.stockIDLabel}"
+                        log.debug "individual found ${individual.individualIDLabel} mom of stock ${stock.stockIDLabel}"
                         if (individual.fishSex == "male") {
                             println "fixing sex from ${individual.fishSex} to female"
                             individual.fishSex = "female"
@@ -371,7 +371,7 @@ class StubData {
 
                 if (maleMap.containsKey(stock.maternalIndividualID)) {
                     individualIDValue = maleMap.get(stock.maternalIndividualID)
-                    println "paternalID: ${individualIDValue}"
+                    log.debug "paternalID: ${individualIDValue}"
                     String[] ids = individualIDValue.split("\\.")
 
                     Integer stockID = ids[0] as Integer
@@ -380,7 +380,7 @@ class StubData {
 
                     Individual individual = Individual.findByStockAndIndividualID(paternalStock, individualID)
                     if (individual) {
-                        println "individual found ${individual.individualIDLabel} dad of stock ${stock.stockIDLabel}"
+                        log.debug "individual found ${individual.individualIDLabel} dad of stock ${stock.stockIDLabel}"
                         if (individual.fishSex == "female") {
                             println "fixing sex from ${individual.fishSex} to male"
                             individual.fishSex = "male"
