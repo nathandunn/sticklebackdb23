@@ -183,7 +183,7 @@ class Stock {
     }
 
     String getLabelStockName(){
-        int stockNameSize = 23
+        int stockNameSize = 30
         if(stockName?.size()>stockNameSize){
             return stockName.substring(0,stockNameSize-3)+"..."
         }
@@ -193,7 +193,17 @@ class Stock {
     }
 
     String getLabelComments() {
-        int commentSize = 35
+        int commentSize = 40
+        if(comments?.size()>commentSize){
+            return comments.substring(0,commentSize-3)+"..."
+        }
+        else{
+            return comments
+        }
+    }
+
+    String getLabelCommentsWrap() {
+        int commentSize = 40
         if(comments?.size()>commentSize){
             return comments.substring(0,commentSize-3)+"..."
         }

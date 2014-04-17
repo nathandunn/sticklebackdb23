@@ -513,27 +513,64 @@ class StockController {
 
 // Create a new blank page and add it to the document
         PDPage page = new PDPage();
-        PDRectangle printable = new PDRectangle(300,100)
-        page.setCropBox(printable)
+        //
+//        1 pt = 1/72 inch
+        PDRectangle printable = new PDRectangle(72*3,72)
+        page.setMediaBox(printable)
         document.addPage( page );
 
-        PDFont font = PDType1Font.HELVETICA_BOLD;
+        PDFont font = PDType1Font.COURIER;
+        PDFont fontBold = PDType1Font.COURIER_BOLD;
+        Integer leftMargin = 5
 // Start a new content stream which will "hold" the to be created content
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
 // Define a text content stream using the selected font, moving the cursor and drawing the text "Hello World"
         contentStream.beginText();
-        contentStream.setFont( font, 12 );
-        contentStream.moveTextPositionByAmount( 100, 700 );
-        contentStream.drawString( "Hello World" );
+        contentStream.setFont( font, 10 );
+//        contentStream.moveTextPositionByAmount( 100, 700 );
+        contentStream.moveTextPositionByAmount( leftMargin, 60 );
+//        contentStream.setTextTranslation(10,20)
+        contentStream.drawString( "Name: ${stockInstance.labelStockName}" );
+        contentStream.endText()
+
+        contentStream.beginText()
+        contentStream.setFont(fontBold,14)
+        contentStream.moveTextPositionByAmount( leftMargin, 45 );
+        contentStream.drawString( "${stockInstance.stockIDLabel}" );
+        contentStream.endText();
+
+
+        contentStream.beginText()
+        contentStream.setFont(font,10)
+        contentStream.moveTextPositionByAmount( 60, 45 );
+        contentStream.drawString( "Fert: ${g:formatDate([date:stockInstance.fertilizationDate,type:"date",dateStyle: "short"])}" );
+        contentStream.endText();
+
+        contentStream.beginText()
+        contentStream.setFont(font,8)
+        contentStream.moveTextPositionByAmount( leftMargin, 30 );
+        String labelComments = stockInstance.comments
+        Integer maxWidth = 40
+        if(labelComments.size()>maxWidth){
+            contentStream.drawString(labelComments.substring(0,maxWidth));
+            contentStream.endText()
+
+            contentStream.beginText()
+            contentStream.moveTextPositionByAmount( leftMargin, 20 );
+            contentStream.drawString(labelComments.substring(maxWidth,labelComments.size()));
+        }
+        else{
+            contentStream.drawString(labelComments);
+        }
         contentStream.endText();
 
 // Make sure that the content stream is closed:
         contentStream.close();
 
-        BufferedImage bufferedImage = page.convertToImage(BufferedImage.TYPE_CUSTOM,72)
-        File outputfile = new File("saved.png");
-        ImageIO.write(bufferedImage, "png", outputfile);
+//        BufferedImage bufferedImage = page.convertToImage(BufferedImage.TYPE_BYTE_BINARY,72)
+//        File outputfile = new File("saved.png");
+//        ImageIO.write(bufferedImage, "png", outputfile);
 
 // Save the newly created document
         document.save("BlankPage.pdf");

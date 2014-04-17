@@ -14,12 +14,23 @@
     <meta name="layout" content="label">
 
     <style type="text/css">
+    /*body {*/
+        /*width: 3in;*/
+        /*margin: 1in;*/
+        /*height: 1in;*/
+        /*font-family: monospace;*/
+        /*font-size: medium;*/
+        /*padding: 0;*/
+        /*margin: 0;*/
+    /*}*/
     /*@media print {*/
     #label {
         width: 3in;
         height: 1in;
         font-family: monospace;
         font-size: medium;
+        padding: 0;
+        margin: 0;
     }
 
     #number {
