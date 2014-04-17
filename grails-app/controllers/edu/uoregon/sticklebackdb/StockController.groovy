@@ -480,6 +480,16 @@ class StockController {
         }
     }
 
+    def print2(Integer id) {
+        def stockInstance = Stock.get(id)
+        if (!stockInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'individual.label', default: 'Individual'), id])
+            redirect(action: "list")
+            return
+        }
+        render(view: "label2", model: [stockInstance: stockInstance])
+    }
+
     def print(Integer id) {
         def stockInstance = Stock.get(id)
         if (!stockInstance) {

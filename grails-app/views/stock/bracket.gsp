@@ -2,9 +2,12 @@
 <html>
 <head>
     %{--<meta http-equiv="Content-Type" content="text/html;charset=utf-8">--}%
+
     <meta name="layout" content="main">
     <title>Stock Lineage ${stockInstance.stockIDLabel}</title>
-    <script src="http://mbostock.github.com/d3/d3.v2.js"></script>
+    %{--<script src="http://mbostock.github.com/d3/d3.v2.js"></script>--}%
+    <g:javascript src="d3.v2.js"/>
+
     <style type="text/css">
 
     .node circle {

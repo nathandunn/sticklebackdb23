@@ -88,6 +88,9 @@ grails.project.dependency.resolution = {
         // plugins.shiro=1.1.4
         compile ":shiro:1.2.0"
         compile ":crypto:2.0"
+//        compile ":d3:3.4.1.0"
+
+
 
         // GWT Plugin
         runtime ":extended-dependency-manager:0.5.5"
