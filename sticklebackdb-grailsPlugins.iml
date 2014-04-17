@@ -113,8 +113,8 @@
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (sticklebackdb-grailsPlugins)">
         <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1/commons-logging-1.1.jar!/" />
+          <root url="file://$USER_HOME$/.grails/2.3.7/projects/sticklebackdb/plugins/crypto-2.0/lib" />
+          <root url="file://$USER_HOME$/.grails/2.3.7/projects/sticklebackdb/plugins/gwt-1.0/lib" />
           <root url="jar://$MAVEN_REPOSITORY$/org/jasig/cas/client/cas-client-core/3.2.1/cas-client-core-3.2.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-cas/1.2.2/shiro-cas-1.2.2.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/opensymphony/quartz/quartz/1.6.1/quartz-1.6.1.jar!/" />
@@ -151,8 +151,10 @@
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.42/tomcat-embed-logging-log4j-7.0.42.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.42/tomcat-embed-jasper-7.0.42.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina-ant/7.0.42/tomcat-catalina-ant-7.0.42.jar!/" />
-          <root url="file://$USER_HOME$/.grails/2.3.7/projects/sticklebackdb/plugins/crypto-2.0/lib" />
-          <root url="file://$USER_HOME$/.grails/2.3.7/projects/sticklebackdb/plugins/gwt-1.0/lib" />
+          <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/jempbox/1.8.4/jempbox-1.8.4.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/fontbox/1.8.4/fontbox-1.8.4.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/pdfbox/1.8.4/pdfbox-1.8.4.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -2,6 +2,11 @@ package edu.uoregon.sticklebackdb
 
 import grails.converters.JSON
 import grails.transaction.Transactional
+import org.apache.pdfbox.pdmodel.PDDocument
+import org.apache.pdfbox.pdmodel.PDPage
+import org.apache.pdfbox.pdmodel.edit.PDPageContentStream
+import org.apache.pdfbox.pdmodel.font.PDFont
+import org.apache.pdfbox.pdmodel.font.PDType1Font
 import org.codehaus.groovy.grails.web.json.JSONArray
 import org.codehaus.groovy.grails.web.json.JSONObject
 import org.springframework.dao.DataIntegrityViolationException
@@ -487,6 +492,38 @@ class StockController {
             redirect(action: "list")
             return
         }
+
+        String filename = "label"
+        PDDocument document = new PDDocument();
+
+// Create a new blank page and add it to the document
+        PDPage page = new PDPage();
+        document.addPage( page );
+
+        PDFont font = PDType1Font.HELVETICA_BOLD;
+
+// Start a new content stream which will "hold" the to be created content
+        PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+// Define a text content stream using the selected font, moving the cursor and drawing the text "Hello World"
+        contentStream.beginText();
+        contentStream.setFont( font, 12 );
+        contentStream.moveTextPositionByAmount( 100, 700 );
+        contentStream.drawString( "Hello World" );
+        contentStream.endText();
+
+// Make sure that the content stream is closed:
+        contentStream.close();
+
+
+// Save the newly created document
+        document.save("BlankPage.pdf");
+
+// finally make sure that the document is properly
+// closed.
+        document.close();
+
+
         render(view: "label2", model: [stockInstance: stockInstance])
     }
 
