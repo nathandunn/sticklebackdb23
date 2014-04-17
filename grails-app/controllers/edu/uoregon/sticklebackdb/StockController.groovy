@@ -4,12 +4,16 @@ import grails.converters.JSON
 import grails.transaction.Transactional
 import org.apache.pdfbox.pdmodel.PDDocument
 import org.apache.pdfbox.pdmodel.PDPage
+import org.apache.pdfbox.pdmodel.common.PDRectangle
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream
 import org.apache.pdfbox.pdmodel.font.PDFont
 import org.apache.pdfbox.pdmodel.font.PDType1Font
 import org.codehaus.groovy.grails.web.json.JSONArray
 import org.codehaus.groovy.grails.web.json.JSONObject
 import org.springframework.dao.DataIntegrityViolationException
+
+import javax.imageio.ImageIO
+import java.awt.image.BufferedImage
 
 class StockController {
 
@@ -485,6 +489,17 @@ class StockController {
         }
     }
 
+    def print3(Integer id) {
+        def stockInstance = Stock.get(id)
+        if (!stockInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'individual.label', default: 'Individual'), id])
+            redirect(action: "list")
+            return
+        }
+
+        render(view: "label3", model: [stockInstance: stockInstance])
+    }
+
     def print2(Integer id) {
         def stockInstance = Stock.get(id)
         if (!stockInstance) {
@@ -498,10 +513,11 @@ class StockController {
 
 // Create a new blank page and add it to the document
         PDPage page = new PDPage();
+        PDRectangle printable = new PDRectangle(300,100)
+        page.setCropBox(printable)
         document.addPage( page );
 
         PDFont font = PDType1Font.HELVETICA_BOLD;
-
 // Start a new content stream which will "hold" the to be created content
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
@@ -515,6 +531,9 @@ class StockController {
 // Make sure that the content stream is closed:
         contentStream.close();
 
+        BufferedImage bufferedImage = page.convertToImage(BufferedImage.TYPE_CUSTOM,72)
+        File outputfile = new File("saved.png");
+        ImageIO.write(bufferedImage, "png", outputfile);
 
 // Save the newly created document
         document.save("BlankPage.pdf");

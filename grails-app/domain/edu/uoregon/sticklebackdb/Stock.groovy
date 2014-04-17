@@ -181,4 +181,24 @@ class Stock {
 //            typeString + " "+
 //        }
     }
+
+    String getLabelStockName(){
+        int stockNameSize = 23
+        if(stockName?.size()>stockNameSize){
+            return stockName.substring(0,stockNameSize-3)+"..."
+        }
+        else{
+            return stockName
+        }
+    }
+
+    String getLabelComments() {
+        int commentSize = 35
+        if(comments?.size()>commentSize){
+            return comments.substring(0,commentSize-3)+"..."
+        }
+        else{
+            return comments
+        }
+    }
 }
