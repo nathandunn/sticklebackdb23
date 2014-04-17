@@ -173,7 +173,7 @@
                                                                     default="Comments"/></span>
     <g:if test="${individualInstance?.comments}">
         <span class="property-value" aria-labelledby="fishLocation-label"><g:fieldValue
-                bean="${individualInstance}" field="comments"/></span>
+                bean="${individustockIDLabeialInstance}" field="comments"/></span>
     </g:if>
     <g:else>
         <span class="property-value" aria-labelledby="comments-label">----</span>
@@ -252,7 +252,7 @@
 <g:form>
     <fieldset class="buttons">
         <g:hiddenField name="id" value="${individualInstance?.id}"/>
-        <g:link class="ui-icon-print" action="print3" id="${individualInstance?.id}"><g:message
+        <g:link class="ui-icon-print" action="printPdf" id="${individualInstance?.id}"><g:message
                 code="default.button.print.label" default="Print"/></g:link>
         <g:link class="edit" action="edit" id="${individualInstance?.id}"><g:message
                 code="default.button.edit.label" default="Edit"/></g:link>

@@ -500,7 +500,7 @@ class StockController {
         render(view: "label3", model: [stockInstance: stockInstance])
     }
 
-    def print2(Integer id) {
+    def printPdf(Integer id) {
         def stockInstance = Stock.get(id)
         if (!stockInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'individual.label', default: 'Individual'), id])
@@ -508,9 +508,6 @@ class StockController {
             return
         }
 
-
-
-        String filename = "label"
         PDDocument document = new PDDocument();
 
 // Create a new blank page and add it to the document
@@ -545,7 +542,7 @@ class StockController {
 
         contentStream.beginText()
         contentStream.setFont(font,10)
-        contentStream.moveTextPositionByAmount( 60, 45 );
+        contentStream.moveTextPositionByAmount( 85, 45 );
         contentStream.drawString( "Fert: ${g:formatDate([date:stockInstance.fertilizationDate,type:"date",dateStyle: "short"])}" );
         contentStream.endText();
 

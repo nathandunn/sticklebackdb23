@@ -1,6 +1,12 @@
 package edu.uoregon.sticklebackdb
 
 import grails.converters.JSON
+import org.apache.pdfbox.pdmodel.PDDocument
+import org.apache.pdfbox.pdmodel.PDPage
+import org.apache.pdfbox.pdmodel.common.PDRectangle
+import org.apache.pdfbox.pdmodel.edit.PDPageContentStream
+import org.apache.pdfbox.pdmodel.font.PDFont
+import org.apache.pdfbox.pdmodel.font.PDType1Font
 import org.springframework.dao.DataIntegrityViolationException
 
 class IndividualController {
@@ -260,6 +266,87 @@ class IndividualController {
         }
 
         render(view: "label3", model: [individualInstance: individual])
+    }
+
+    def printPdf(Integer id) {
+        def individual = Individual.get(id)
+        if (!individual) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'individual.label', default: 'Individual'), id])
+            redirect(action: "list")
+            return
+        }
+
+        PDDocument document = new PDDocument();
+
+// Create a new blank page and add it to the document
+        PDPage page = new PDPage();
+        //
+//        1 pt = 1/72 inch
+        PDRectangle printable = new PDRectangle(72*3,72)
+        page.setMediaBox(printable)
+        document.addPage( page );
+
+        PDFont font = PDType1Font.COURIER;
+        PDFont fontBold = PDType1Font.COURIER_BOLD;
+        Integer leftMargin = 5
+// Start a new content stream which will "hold" the to be created content
+        PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+// Define a text content stream using the selected font, moving the cursor and drawing the text "Hello World"
+        contentStream.beginText();
+        contentStream.setFont( font, 10 );
+//        contentStream.moveTextPositionByAmount( 100, 700 );
+        contentStream.moveTextPositionByAmount( leftMargin, 60 );
+//        contentStream.setTextTranslation(10,20)
+        contentStream.drawString( "Name: ${individual.stock.labelStockName}" );
+        contentStream.endText()
+
+        contentStream.beginText()
+        contentStream.setFont(fontBold,14)
+        contentStream.moveTextPositionByAmount( leftMargin, 45 );
+        contentStream.drawString( "${individual.individualIDLabel}" );
+        contentStream.endText();
+
+
+        contentStream.beginText()
+        contentStream.setFont(font,10)
+        contentStream.moveTextPositionByAmount( 85, 45 );
+        contentStream.drawString( "Fert: ${g:formatDate([date:individual.stock.fertilizationDate,type:"date",dateStyle: "short"])}" );
+        contentStream.endText();
+
+        contentStream.beginText()
+        contentStream.setFont(font,8)
+        contentStream.moveTextPositionByAmount( leftMargin, 30 );
+        String labelComments = individual.comments
+        Integer maxWidth = 40
+        if(labelComments.size()>maxWidth){
+            contentStream.drawString(labelComments.substring(0,maxWidth));
+            contentStream.endText()
+
+            contentStream.beginText()
+            contentStream.moveTextPositionByAmount( leftMargin, 20 );
+            contentStream.drawString(labelComments.substring(maxWidth,labelComments.size()));
+        }
+        else{
+            contentStream.drawString(labelComments);
+        }
+        contentStream.endText();
+
+// Make sure that the content stream is closed:
+        contentStream.close();
+
+// Save the newly created document
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        document.save(outputStream);
+//        document.save("BlankPage.pdf");
+// finally make sure that the document is properly
+// closed.
+        document.close();
+
+        String pdfFileName = "Stock${individual.individualIDLabel}Label.pdf"
+        response.addHeader("Content-Type", "application/pdf");
+        response.setHeader("Content-Disposition", "attachment;filename=$pdfFileName")
+        response.getOutputStream() << outputStream.toByteArray()
     }
 
 //    def getFormattedID(String individualID){
