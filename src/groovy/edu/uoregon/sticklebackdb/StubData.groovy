@@ -1,6 +1,7 @@
 package edu.uoregon.sticklebackdb
 
 import au.com.bytecode.opencsv.CSVReader
+import org.apache.commons.lang.RandomStringUtils
 import org.apache.log4j.Logger
 import org.apache.shiro.crypto.hash.Sha256Hash
 
@@ -108,8 +109,8 @@ class StubData {
     }
 
     String generatePassword() {
-//        return RandomStringUtils.random(10)
-        return "testpass123"
+        return RandomStringUtils.random(10)
+//        return "testpass123"
     }
 
     def addUserResearcher(String name, String email) {
