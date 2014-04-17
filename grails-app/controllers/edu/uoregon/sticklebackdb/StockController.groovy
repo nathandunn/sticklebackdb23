@@ -508,6 +508,8 @@ class StockController {
             return
         }
 
+
+
         String filename = "label"
         PDDocument document = new PDDocument();
 
@@ -568,19 +570,18 @@ class StockController {
 // Make sure that the content stream is closed:
         contentStream.close();
 
-//        BufferedImage bufferedImage = page.convertToImage(BufferedImage.TYPE_BYTE_BINARY,72)
-//        File outputfile = new File("saved.png");
-//        ImageIO.write(bufferedImage, "png", outputfile);
-
 // Save the newly created document
-        document.save("BlankPage.pdf");
-
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        document.save(outputStream);
+//        document.save("BlankPage.pdf");
 // finally make sure that the document is properly
 // closed.
         document.close();
 
-
-        render(view: "label2", model: [stockInstance: stockInstance])
+        String pdfFileName = "Stock${stockInstance.stockIDLabel}Label.pdf"
+        response.addHeader("Content-Type", "application/pdf");
+        response.setHeader("Content-Disposition", "attachment;filename=$pdfFileName")
+        response.getOutputStream() << outputStream.toByteArray()
     }
 
     def print(Integer id) {
