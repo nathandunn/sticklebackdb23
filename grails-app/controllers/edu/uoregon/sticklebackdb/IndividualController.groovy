@@ -251,6 +251,17 @@ class IndividualController {
         render (view:"label",model:[individualInstance:individualInstance])
     }
 
+    def print3(Integer id) {
+        def individual = Individual.get(id)
+        if (!individual) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'individual.label', default: 'Individual'), id])
+            redirect(action: "list")
+            return
+        }
+
+        render(view: "label3", model: [individualInstance: individual])
+    }
+
 //    def getFormattedID(String individualID){
 //        render individualID
 //    }

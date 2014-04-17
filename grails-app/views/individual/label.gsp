@@ -20,7 +20,7 @@
 %{--${individualInstance.stock.fertilizationDate}--}%
 %{--<br/>--}%
 
-<canvas id="tutorial" width="800" height="150"></canvas>
+<canvas id="tu?torial" width="800" height="150"></canvas>
 
 <script>
     var maxWidth = 250;

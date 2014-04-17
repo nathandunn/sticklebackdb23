@@ -71,4 +71,13 @@ class Individual {
     // TODO remove when deployed
     // Paternal Individual ID (column X)
 //    Integer paternalIndividualID
+    String getLabelComments() {
+        int commentSize = 35
+        if(comments?.size()>commentSize){
+            return comments.substring(0,commentSize-3)+"..."
+        }
+        else{
+            return comments
+        }
+    }
 }
