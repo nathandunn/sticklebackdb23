@@ -201,7 +201,7 @@
                                                                         default="Paternal Line"/></span>
         <g:if test="${stockInstance?.paternalStock}">
             <span class="property-value"><g:link controller="line" action="show"
-                                                 id="${stockInstance?.paternalStockID}">${stockInstance?.paternalStock?.line?.name}</g:link></span>
+                                                 id="${stockInstance?.paternalStock?.line?.id}">${stockInstance?.paternalStock?.line?.name}</g:link></span>
         </g:if>
         <g:else>
             <span class="property-value" aria-labelledby="paternalLine-label">----</span>

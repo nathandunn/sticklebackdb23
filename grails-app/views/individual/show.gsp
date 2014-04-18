@@ -53,7 +53,7 @@
                                                                              id="${individualInstance?.stock?.id}">${individualInstance?.stock?.stockIDLabel}</g:link></span>
     </g:if>
     <g:elseif test="individualInstance?.stockID">
-        <span class="property-value" aria-labelledby="stockID-label">${individualInstance?.stockID}</span>
+        <span class="property-value" aria-labelledby="stockID-label">${individualInstance?.stock?.stockID}</span>
     </g:elseif>
     <g:else>
         <span class="property-value" aria-labelledby="stockID-label">----</span>

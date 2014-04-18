@@ -95,7 +95,6 @@ class AuthController {
         log.warn "resetting forgotten password ${username}"
         Researcher user = Researcher.findByUsername(username)
         if (user) {
-            // TODO: create a new password
             // mail the password
             String randomPassword = PasswordTools.generateRandomPassword()
             user.passwordHash = new Sha256Hash(randomPassword).toHex()

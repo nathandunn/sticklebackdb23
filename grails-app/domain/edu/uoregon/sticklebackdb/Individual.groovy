@@ -51,26 +51,6 @@ class Individual {
     // Paternal individual
 //    Individual paternalIndividual
 
-
-    // TODO remove when deployed
-    // Stock ID (column S)
-    Integer stockID
-
-    // TODO remove when deployed
-    // Maternal Stock ID (column W)
-//    Integer maternalStockID
-
-    // TODO remove when deployed
-    // Maternal Individual ID (column W)
-//    Integer maternalIndividualID
-
-    // TODO remove when deployed
-    // Paternal ID (column X)
-//    Integer paternalStockID
-
-    // TODO remove when deployed
-    // Paternal Individual ID (column X)
-//    Integer paternalIndividualID
     String getLabelComments() {
         int commentSize = 35
         if(comments?.size()>commentSize){

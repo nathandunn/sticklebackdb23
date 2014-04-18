@@ -13,7 +13,6 @@ class CaptureControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
         params["comment"] = 'some type of catprue comment'
         params.captureDate = new Date()
 

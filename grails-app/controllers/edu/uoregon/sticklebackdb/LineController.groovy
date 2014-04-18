@@ -122,11 +122,6 @@ class LineController {
 
         lineInstance.properties = params
 
-//        for(capture in lineInstance.capture){
-//            // TODO: if capture belongs to other line, fix there
-//            assert false
-////            capture.save()
-//        }
 
         println "params: ${params}"
         println "lineInstance.properties: ${lineInstance.properties}"

@@ -12,17 +12,17 @@ class BootStrap {
 
 //        new StubData().stubUsers()
 
-        if (bootstrapValue) {
-            new StubData().stubAll()
-        }
-        else
-        if(Stock.count()==0)
-        {
-            new StubData().stubAll()
-        }
-        else{
-            println "not stubbing data"
-        }
+//        if (bootstrapValue) {
+//            new StubData().stubAll()
+//        }
+//        else
+//        if(Stock.count()==0)
+//        {
+//            new StubData().stubAll()
+//        }
+//        else{
+//            println "not stubbing data"
+//        }
     }
     def destroy = {
     }

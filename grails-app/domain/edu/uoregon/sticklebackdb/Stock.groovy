@@ -1,7 +1,6 @@
 package edu.uoregon.sticklebackdb
 import org.springframework.format.datetime.DateFormatter
 /**
- * TODO: implement may not have both a capture and a parent stock / individual
  */
 class Stock {
 
@@ -36,8 +35,6 @@ class Stock {
     Line line
 //    Capture capture
 
-    // TODO remove one of these
-    // TODO make stockID an Integer
     // Fish stock (column O)
     Integer stockID
 //    String stockIDLabel
@@ -70,36 +67,18 @@ class Stock {
     Date fertilizationDate
 
 
-    // TODO: REMOVE AFTER DEPLOYMENT (just create new individual)
     // Lineage, maternal Individual (from column Q)
     Individual maternalIndividual
     // Lineage, maternal stock (from column R)
     // we keep the stock in the case we don't know the Individual
     Stock maternalStock
 
-    // TODO: REMOVE AFTER DEPLOYMENT (just create new individual)
     // Lineage, paternal Individual (from column T)
     Individual paternalIndividual
     // Lineage, maternal stock (from column U)
     // we keep the stock in the case we don't know the Individual
     Stock paternalStock
 
-
-    // TODO: REMOVE AFTER DEPLOYMENT
-    // Lineage, maternal Individual ID (column Q)
-    String maternalIndividualID
-
-    // TODO: REMOVE AFTER DEPLOYMENT
-    // Lineage, maternal stock ID (column R)
-    Integer maternalStockID
-
-    // TODO: REMOVE AFTER DEPLOYMENT
-    // Lineage, paternal Individual ID (column T)
-    String paternalIndividualID
-
-    // TODO: REMOVE AFTER DEPLOYMENT
-    // Lineage, paternal stock ID (column U)
-    Integer paternalStockID
 
     @Override
     public String toString() {
