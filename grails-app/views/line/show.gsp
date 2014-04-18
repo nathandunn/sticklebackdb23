@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.sticklebackdb.Line" %>
+<%@ page import="edu.uoregon.sticklebackdb.ResearcherService; edu.uoregon.sticklebackdb.Line" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +14,10 @@
 <div class="nav" role="navigation">
     <ul>
         <li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]"/></g:link></li>
-        %{--<li><g:link class="create" action="create"><g:message code="default.new.label"--}%
-                                                              %{--args="[entityName]"/></g:link></li>--}%
+        <shiro:hasRole name="${ResearcherService.ROLE_ADMINISTRATOR}">
+            <li><g:link class="create" action="create"><g:message code="default.new.label"
+                                                                  args="[entityName]"/></g:link></li>
+        </shiro:hasRole>
     </ul>
 </div>
 
@@ -58,7 +60,7 @@
                     <ul class="nobullet">
                         <g:each var="capture" in="${lineInstance.captures}">
                             <li class="nobullet"><g:link action="show" controller="capture"
-                                        id="${capture.id}">${capture.getDisplay()}</g:link>
+                                                         id="${capture.id}">${capture.getDisplay()}</g:link>
                             </li>
                         </g:each>
                     </ul>

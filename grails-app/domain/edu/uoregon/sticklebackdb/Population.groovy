@@ -22,8 +22,8 @@ class Population {
     // includes geographic data
     String comment
 
-    Double sourceLat
-    Double sourceLong
+    String sourceLat
+    String sourceLong
     Boolean common = false
 
     String getSourceDisplay(){

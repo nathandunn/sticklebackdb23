@@ -1,4 +1,4 @@
-<%@ page import="edu.uoregon.sticklebackdb.Population" %>
+<%@ page import="edu.uoregon.sticklebackdb.ResearcherService; edu.uoregon.sticklebackdb.Population" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +14,10 @@
 <div class="nav" role="navigation">
     <ul>
         <li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]"/></g:link></li>
-        %{--<li><g:link class="create" action="create"><g:message code="default.new.label"--}%
-                                                              %{--args="[entityName]"/></g:link></li>--}%
+        <shiro:hasRole name="${ResearcherService.ROLE_ADMINISTRATOR}">
+            <li><g:link class="create" action="create"><g:message code="default.new.label"
+                                                                  args="[entityName]"/></g:link></li>
+        </shiro:hasRole>
     </ul>
 </div>
 
