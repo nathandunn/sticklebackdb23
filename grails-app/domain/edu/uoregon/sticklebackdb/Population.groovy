@@ -7,6 +7,10 @@ class Population {
 
     static constraints = {
         identification nullable: false,unique: true
+//        sourceLat nullable: true
+//        sourceLong nullable: true
+        sourceLatString nullable: true
+        sourceLongString nullable: true
     }
 
     static hasMany = [
@@ -22,13 +26,16 @@ class Population {
     // includes geographic data
     String comment
 
-    String sourceLat
-    String sourceLong
+//    Double sourceLat
+//    Double sourceLong
+    String sourceLatString
+    String sourceLongString
+
     Boolean common = false
 
     String getSourceDisplay(){
-        if(sourceLat && sourceLong){
-            return sourceLat + "," + sourceLong
+        if(sourceLatString && sourceLongString){
+            return sourceLatString + "," + sourceLongString
         }
         return 'Lat/Long not specified'
     }

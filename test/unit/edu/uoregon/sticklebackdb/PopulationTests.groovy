@@ -13,8 +13,8 @@ class PopulationTests {
     void testSomething() {
         Population population =new Population(
                 comment:'asdf'
-                ,sourceLat: 12.2
-                ,sourceLong: 13.3
+                ,sourceLatString: "12.2"
+                ,sourceLongString: "13.3"
                 ,identification: 'asdfa'
         )
         .save(failOnError: true )

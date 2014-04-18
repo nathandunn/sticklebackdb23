@@ -18,15 +18,15 @@
 	<g:textField name="identification" value="${populationInstance?.identification}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'sourceLat', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'sourceLatString', 'error')} ">
 	<label for="source">
 		<g:message code="population.source.label" default="Source" />
 		
 	</label>
     Lat:
-	<g:textField name="sourceLat" value="${populationInstance?.sourceLat}"/>
+	<g:textField name="sourceLatString" value="${populationInstance?.sourceLatString}"/>
     Long:
-    <g:textField name="sourceLong" value="${populationInstance?.sourceLong}"/>
+    <g:textField name="sourceLongString" value="${populationInstance?.sourceLongString}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: populationInstance, field: 'comment', 'error')} ">

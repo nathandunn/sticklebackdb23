@@ -114,8 +114,8 @@ class PopulationController {
                 identification: name
                 , comment: comment
                 , common: common
-                , sourceLat: latitude as Double
-                , sourceLong: longitude as Double
+                , sourceLatString: latitude
+                , sourceLongString: longitude
         ).save()
 
         Line line = new Line(

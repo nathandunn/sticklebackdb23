@@ -51,7 +51,7 @@
                                                                       default="Source (Lat/Long)"/></span>
 
             <span class="property-value" aria-labelledby="source-label">
-                <g:if test="${populationInstance?.sourceLat}">
+                <g:if test="${populationInstance?.sourceLatString}">
                     <g:fieldValue bean="${populationInstance}" field="sourceDisplay"/>
                 </g:if>
                 <g:else>
