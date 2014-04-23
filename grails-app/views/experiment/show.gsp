@@ -78,13 +78,12 @@
                             <g:each in="${m.value}" var="val">
                                 <tr>
                                     <td>
-
-                                        <g:link controller="measuredValue" action="show"
-                                                id="${val.id}">${val.value ?: "no value"}</g:link>
-                                    </td>
-                                    <td>
                                         <g:link controller="individual" action="show"
                                                 id="${val.individual.id}">${val?.individual.individualIDLabel}</g:link>
+                                    </td>
+                                    <td>
+                                        <g:link controller="measuredValue" action="show"
+                                                id="${val.id}">${val.value ?: "no value"}</g:link>
                                     </td>
                                 </tr>
                             </g:each>

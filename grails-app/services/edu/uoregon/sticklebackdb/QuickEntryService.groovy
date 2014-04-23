@@ -52,8 +52,9 @@ class QuickEntryService {
 //        println "split2 : ${strainString.split(':')[0].split('\\.')[0]}"
 //        Integer stockID = strainString.split(":")[0].split("\\.")[0] as Integer
         Integer stockID = individualString.split(":")[0].split("\\.")[0] as Integer
+        Stock stock = Stock.findByStockID(stockID)
         Integer individualID = individualString.split(":")[0].split("\\.")[1] as Integer
-        Individual individual = Individual.findByIndividualIDAndStockID(individualID,stockID)
+        Individual individual = Individual.findByIndividualIDAndStock(individualID,stock)
         Category category = Category.findByName(categoryString)
         MeasuredValue measuredValue = new MeasuredValue(
                 experiment: experiment
