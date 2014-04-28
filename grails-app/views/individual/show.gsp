@@ -172,8 +172,9 @@
     <span id="fishLocation-label" class="property-label"><g:message code="individual.comment.label"
                                                                     default="Comments"/></span>
     <g:if test="${individualInstance?.comments}">
-        <span class="property-value" aria-labelledby="fishLocation-label"><g:fieldValue
-                bean="${individustockIDLabeialInstance}" field="comments"/></span>
+        <span class="property-value" aria-labelledby="fishLocation-label">
+            ${individualInstance.comments}
+        </span>
     </g:if>
     <g:else>
         <span class="property-value" aria-labelledby="comments-label">----</span>

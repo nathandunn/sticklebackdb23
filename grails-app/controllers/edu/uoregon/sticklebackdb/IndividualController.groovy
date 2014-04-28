@@ -43,9 +43,11 @@ class IndividualController {
 
         if(query.contains(".")){
             Integer stockID = query.split("\\.")[0] as Integer
+            Stock stock = Stock.findByStockID(stockID)
+
             Integer individualID = query.split("\\.")[1] as Integer
-            List<Individual> individuals = Individual.findAllByIndividualIDAndStockID(individualID,stockID,params)
-            Integer individualCount = Individual.countByIndividualIDAndStockID(individualID,stockID)
+            List<Individual> individuals = Individual.findAllByIndividualIDAndStock(individualID,stock,params)
+            Integer individualCount = Individual.countByIndividualIDAndStock(individualID,stock)
             def model = [individualInstanceList: individuals, individualInstanceTotal: individualCount]
 
             switch (individualCount) {
