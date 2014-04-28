@@ -31,15 +31,15 @@ assert f.exists()
 // column 3 is the soma location
 int i = 0
 f.eachLine { line ->
-    if(i < 5){
-        println "line: ${line}"
+//    if(i < 5){
+//        println "line: ${line}"
         def columns = line.split(",")
-        println "${columns} and size ${columns.size()}"
+//        println "${columns} and size ${columns.size()}"
 
         String stockId = columns[0]
-        println "A: ${stockId}"
+//        println "A: ${stockId}"
         stockId = stockId.replaceAll("\\*","")
-        println "B: ${stockId}"
+//        println "B: ${stockId}"
 
         Integer stock_id = stockId.split("\\.")[0] as Integer
         Integer individual_id= stockId.split("\\.")[2] as Integer
@@ -47,20 +47,23 @@ f.eachLine { line ->
         String finClipLocation = columns[1]
         String somaLocation = columns[2]
 
-        println "stock ${stock_id} vs ${individual_id}"
-        println "fin: ${finClipLocation}"
-        println "soma: ${somaLocation}"
-//        sql.eachRow("select count(*) from stock ") { row ->
-//            answer = row[0]
-//        }
+//        println "stock ${stock_id} vs ${individual_id}"
+//        println "fin: ${finClipLocation}"
+//        println "soma: ${somaLocation}"
         def sqlString =  "update individual "
-        sqlString += " set fin_clip_location = '${finClipLocation.trim()}' "
-        sqlString += " and soma_location = '${somaLocation.trim()}' "
-        sqlString += " where stock_id = ${stock_id} "
-        sqlString += " and individual_id = ${individual_id} "
+        sqlString += " set finclip_location = '${finClipLocation.trim()}' "
+        sqlString += " , soma_location = '${somaLocation.trim()}' "
+        sqlString += " where exists ( "
+        sqlString += "   select * from stock s "
+        sqlString += "   where s.stockid = ${stock_id} "
+        sqlString += "   and stock_id=s.id "
+        sqlString += "   and individualid = ${individual_id} "
+        sqlString += " )  "
         sql.executeUpdate(sqlString)
-    }
+//    }
     ++i
 }
+
+println "${i} rows updated "
 
 
