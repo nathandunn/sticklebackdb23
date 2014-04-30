@@ -4,7 +4,7 @@ package edu.uoregon.sticklebackdb
  */
 class CategoryView {
 
-    groovy.lang.Category category
+    Category category
     LinkedHashMap<String, GroupedMeasuredValues> groupedMeasuredValuesList = new LinkedHashMap<>()
 
     def addMeasuredValue(MeasuredValue measuredValue) {

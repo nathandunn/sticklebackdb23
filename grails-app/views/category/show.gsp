@@ -68,10 +68,10 @@
                                 ${measuredValue.key}
                             </td>
                             <td>
-                                <g:each in="${measuredValue.value.strains}" var="strain">
-                                    <g:link action="show" controller="strain"
-                                            id="${strain.id}">
-                                        ${strain.name}</g:link>
+                                <g:each in="${measuredValue.value.individuals}" var="individual">
+                                    <g:link action="show" controller="individual"
+                                            id="${individual.id}">
+                                        ${individual.individualIDLabel}</g:link>
                                     &nbsp;
                                 </g:each>
                             </td>

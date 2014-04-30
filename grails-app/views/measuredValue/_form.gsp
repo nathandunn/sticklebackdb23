@@ -54,7 +54,7 @@
         <g:message code="measuredValue.individual.label" default="Individual" />
 
     </label>
-    <g:select id="individual" name="individual.id" optionValue="individualIDLabel" from="${edu.uoregon.sticklebackdb.Individual.listOrderByStockID()}" optionKey="id" value="${measuredValueInstance?.individual?.id}" class="many-to-one" noSelection="['null': '- NONE -']"/>
+    <g:select id="individual" name="individual.id" optionValue="individualIDLabel" from="${edu.uoregon.sticklebackdb.Individual.listOrderByIndividualID()}" optionKey="id" value="${measuredValueInstance?.individual?.id}" class="many-to-one" noSelection="['null': '- NONE -']"/>
     %{--<g:textField id="individual.id" name="individual.id" value="${measuredValueInstance?.individual?.individualIDLabel}"/>--}%
     <g:link action="create" controller="individual">Create Individual</g:link>
 </div>

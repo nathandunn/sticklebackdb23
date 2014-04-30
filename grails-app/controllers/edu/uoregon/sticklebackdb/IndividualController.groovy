@@ -112,8 +112,9 @@ class IndividualController {
             redirect(action: "list")
             return
         }
+        def measuredValues = MeasuredValue.findAllByIndividual(individualInstance)
 
-        [individualInstance: individualInstance]
+        [individualInstance: individualInstance,measuredValues:measuredValues]
     }
 
     def edit(Long id) {
@@ -327,7 +328,7 @@ class IndividualController {
                 contentStream.endText()
 
                 contentStream.beginText()
-                contentStream.moveTextPositionByAmount(leftMargin, 20);
+                contentStream.moveTextPositionByAmount(leftMargin, 20)
                 contentStream.drawString(labelComments.substring(maxWidth, labelComments.size()));
             } else {
                 contentStream.drawString(labelComments);

@@ -181,6 +181,33 @@
     </g:else>
 </li>
 
+<hr>
+
+%{-- ID Status --}%
+<li class="fieldcontain">
+    <span id="fishLocation-label" class="property-label">Measured Values</span>
+    <g:if test="${measuredValues}">
+        <span class="property-value" aria-labelledby="fishLocation-label">
+            <g:each in="${measuredValues}" var="measuredValue" status="loop">
+                <g:link action="show" controller="experiment" id="${measuredValue.experimentId}"
+                >${measuredValue.experiment.name}</g:link>:
+                <g:link action="show" controller="category" id="${measuredValue.categoryId}"
+                ><b>${measuredValue.category.name}</b></g:link>
+
+                <g:link action="show" controller="measuredValue" id="${measuredValue.id}"
+                >${measuredValue.value}</g:link>
+                <g:if test="${loop.intValue() < measuredValues.size()-1 }">
+                    &bull;
+                </g:if>
+            </g:each>
+        </span>
+    </g:if>
+    <g:else>
+        <span class="property-value" aria-labelledby="comments-label">----</span>
+    </g:else>
+</li>
+
+
 %{-- Maternal Stock ID --}%
 %{--<li class="fieldcontain"> --}%
 %{--<span id="maternalStockID-label" class="property-label"><g:message code="individual.maternalStockID.label" default="Maternal Stock ID" /></span>--}%

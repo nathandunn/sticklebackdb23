@@ -6,7 +6,7 @@ class GroupedMeasuredValues {
 
     String measuredValue
     List<MeasuredValue> measuredValues = new ArrayList<>()
-    List<Stock> strains = new ArrayList<>()
+    List<Individual> individuals = new ArrayList<>()
 
     boolean equals(o) {
         if (this.is(o)) return true
@@ -25,6 +25,6 @@ class GroupedMeasuredValues {
 
     def addMeasuredValue(MeasuredValue measuredValue) {
         measuredValues.add(measuredValue)
-        strains.add(measuredValue.individual)
+        individuals.add(measuredValue.individual)
     }
 }
