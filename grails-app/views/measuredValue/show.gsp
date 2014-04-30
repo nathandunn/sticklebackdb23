@@ -77,6 +77,8 @@
         </li>
 
 
+
+
         <li class="fieldcontain">
             <span id="stock-label" class="property-label"><g:message code="measuredValue.individual.label"
                                                                       default="Individual"/></span>
@@ -87,6 +89,22 @@
                 </g:link>
             </span>
 
+        </li>
+
+
+        <li class="fieldcontain">
+            <span id="note-label" class="property-label"><g:message code="measuredValue.note.label"
+                                                                    default="Note"/></span>
+
+            <span class="property-value" aria-labelledby="note-label">
+                <g:if test="${measuredValueInstance.note}">
+                ${measuredValueInstance?.note}
+                </g:if>
+                <g:else>
+                    -----------
+                </g:else>
+
+                </span>
         </li>
 
 

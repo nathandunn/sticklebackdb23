@@ -9,6 +9,9 @@ class MeasuredValue implements Serializable{
         experiment nullable: false
     }
 
+    static mapping = {
+        note type: "text"
+    }
 
     String value
 
@@ -17,6 +20,7 @@ class MeasuredValue implements Serializable{
     Individual individual
     Experiment experiment
     String type = MeasuredValueTypeEnum.TEXT
+    String note
 
     String checkValid() {
         switch (type){

@@ -58,3 +58,12 @@
     %{--<g:textField id="individual.id" name="individual.id" value="${measuredValueInstance?.individual?.individualIDLabel}"/>--}%
     <g:link action="create" controller="individual">Create Individual</g:link>
 </div>
+
+
+<div class="fieldcontain ${hasErrors(bean: measuredValueInstance, field: 'note', 'error')} ">
+    <label for="note">
+        <g:message code="measuredValue.note.label" default="Note" />
+
+    </label>
+    <g:textArea name="note" value="${measuredValueInstance.note}" note="${measuredValueInstance?.note}"/>
+</div>
