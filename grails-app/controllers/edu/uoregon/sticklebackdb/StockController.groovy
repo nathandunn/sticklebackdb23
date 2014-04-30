@@ -546,23 +546,24 @@ class StockController {
         contentStream.drawString( "Fert: ${g:formatDate([date:stockInstance.fertilizationDate,type:"date",dateStyle: "short"])}" );
         contentStream.endText();
 
-        contentStream.beginText()
-        contentStream.setFont(font,8)
-        contentStream.moveTextPositionByAmount( leftMargin, 30 );
-        String labelComments = stockInstance.comments
-        Integer maxWidth = 40
-        if(labelComments.size()>maxWidth){
-            contentStream.drawString(labelComments.substring(0,maxWidth));
-            contentStream.endText()
-
+        if(stockInstance.comments) {
             contentStream.beginText()
-            contentStream.moveTextPositionByAmount( leftMargin, 20 );
-            contentStream.drawString(labelComments.substring(maxWidth,labelComments.size()));
+            contentStream.setFont(font,8)
+            contentStream.moveTextPositionByAmount( leftMargin, 30 );
+            String labelComments = stockInstance.comments
+            Integer maxWidth = 40
+            if (labelComments.size() > maxWidth) {
+                contentStream.drawString(labelComments.substring(0, maxWidth));
+                contentStream.endText()
+
+                contentStream.beginText()
+                contentStream.moveTextPositionByAmount(leftMargin, 20);
+                contentStream.drawString(labelComments.substring(maxWidth, labelComments.size()));
+            } else {
+                contentStream.drawString(labelComments);
+            }
+            contentStream.endText()
         }
-        else{
-            contentStream.drawString(labelComments);
-        }
-        contentStream.endText();
 
 // Make sure that the content stream is closed:
         contentStream.close();
