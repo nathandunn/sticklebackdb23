@@ -51,6 +51,10 @@ class Individual {
     // Paternal individual
 //    Individual paternalIndividual
 
+    Integer getSortOrder(){
+        return stock.stockID * 10000 + individualID
+    }
+
     String getLabelComments() {
         int commentSize = 35
         if(comments?.size()>commentSize){
