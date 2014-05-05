@@ -11,7 +11,7 @@ class DnaLocationController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     static navigation = [
-            title: 'Dna', action: 'list', order: 145,
+            title: 'Dna', action: 'index', order: 145,
     ]
 
     def index(Integer max) {

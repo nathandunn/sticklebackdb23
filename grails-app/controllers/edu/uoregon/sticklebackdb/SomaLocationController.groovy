@@ -11,7 +11,7 @@ class SomaLocationController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     static navigation = [
-            title: 'Soma', action: 'list', order: 135,
+            title: 'Soma', action: 'index', order: 135,
     ]
 
     def index(Integer max) {

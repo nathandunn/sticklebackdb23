@@ -11,7 +11,7 @@ class FinclipLocationController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     static navigation = [
-            title: 'Finclip', action: 'list', order: 155,
+            title: 'Finclip', action: 'index', order: 155,
     ]
 
 

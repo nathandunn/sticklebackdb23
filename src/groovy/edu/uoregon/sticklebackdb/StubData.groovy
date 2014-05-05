@@ -433,4 +433,34 @@ class StubData {
 //        println "FINISHED stub population " + Population.count()
 //    }
 
+    def stubLocations() {
+        if(SomaLocation.count>0) return
+
+        Set<String> somaLocationList = new HashSet<>()
+        Set<String> finclipLocationList = new HashSet<>()
+        Set<String> dnaLocationList = new HashSet<>()
+
+        Individual.all.each { individual ->
+            if(individual.finclipLocation){
+                finclipLocationList.add(individual.finclipLocation)
+            }
+            if(individual.somaLocation){
+                somaLocationList.add(individual.somaLocation)
+            }
+            if(individual.dnaLocation){
+                dnaLocationList.add(individual.dnaLocation)
+            }
+        }
+
+        somaLocationList.each { it ->
+            new SomaLocation(name: it).save(insert: true ,failOnError: true,flush: true)
+
+        }
+        finclipLocationList.each { it ->
+            new FinclipLocation(name: it).save(insert: true ,failOnError: true,flush: true)
+        }
+        dnaLocationList.each { it ->
+            new DnaLocation(name: it).save(insert: true ,failOnError: true,flush: true)
+        }
+    }
 }

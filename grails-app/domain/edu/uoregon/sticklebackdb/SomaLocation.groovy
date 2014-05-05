@@ -1,7 +1,10 @@
 package edu.uoregon.sticklebackdb
 
-class SomaLocation extends Location{
+class SomaLocation {
 
     static constraints = {
+        name nullable: false, unique: true
     }
+
+    String name
 }

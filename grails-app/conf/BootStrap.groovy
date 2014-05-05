@@ -10,6 +10,8 @@ class BootStrap {
         println "bootstrapValue: " + bootstrapValue
         println "stock count: " + Stock.count()
 
+        new StubData().stubLocations()
+
 //        new StubData().stubUsers()
 
 //        if (bootstrapValue) {
