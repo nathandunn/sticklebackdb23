@@ -7,6 +7,6 @@
 		<g:message code="dnaLocation.name.label" default="Name" />
 		
 	</label>
-	<g:textField name="name" value="${dnaLocationInstance?.name}"/>
+	<g:textField name="name" value="${dnaLocationInstance?.name}" size="80"/>
 </div>
 

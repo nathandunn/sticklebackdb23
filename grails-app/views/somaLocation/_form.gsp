@@ -7,6 +7,6 @@
 		<g:message code="somaLocation.name.label" default="Name" />
 		
 	</label>
-	<g:textField name="name" value="${somaLocationInstance?.name}"/>
+	<g:textField name="name" value="${somaLocationInstance?.name}" size="80"/>
 </div>
 

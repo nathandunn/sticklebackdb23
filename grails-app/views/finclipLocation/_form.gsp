@@ -7,6 +7,6 @@
 		<g:message code="finclipLocation.name.label" default="Name" />
 		
 	</label>
-	<g:textField name="name" value="${finclipLocationInstance?.name}"/>
+	<g:textField name="name" value="${finclipLocationInstance?.name}" size="80"/>
 </div>
 
