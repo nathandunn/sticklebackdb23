@@ -156,7 +156,7 @@
         <g:message code="individual.somaLocation.label" default="Soma Location"/>
     </label>
     %{--<g:textField name="somaLocation" value="${individualInstance?.somaLocation}" size="40"/>--}%
-    <g:select name="somaLocation" from="${edu.uoregon.sticklebackdb.SomaLocation.listOrderByName()}"
+    <g:select name="somaLocation" value="${individualInstance.somaLocation}"   from="${edu.uoregon.sticklebackdb.SomaLocation.listOrderByName()}"
     optionKey="name" optionValue="name"
     />
 </div>
@@ -167,7 +167,7 @@
         <g:message code="individual.finclipLocation.label" default="Finclip Location"/>
     </label>
     %{--<g:textField name="finclipLocation" value="${individualInstance?.finclipLocation}" size="40"/>--}%
-    <g:select name="finclipLocation" from="${edu.uoregon.sticklebackdb.FinclipLocation.listOrderByName()}"
+    <g:select name="finclipLocation" value="${individualInstance.finclipLocation}" from="${edu.uoregon.sticklebackdb.FinclipLocation.listOrderByName()}"
               optionKey="name" optionValue="name"
     />
 </div>
@@ -178,7 +178,7 @@
         <g:message code="individual.dnaLocation.label" default="DNA Location"/>
     </label>
     %{--<g:textField name="dnaLocation" value="${individualInstance?.dnaLocation}" size="40"/>--}%
-    <g:select name="dnaLocation" from="${edu.uoregon.sticklebackdb.DnaLocation.listOrderByName()}"
+    <g:select name="dnaLocation" value="${individualInstance.dnaLocation}" from="${edu.uoregon.sticklebackdb.DnaLocation.listOrderByName()}"
               optionKey="name" optionValue="name"
     />
 </div>
