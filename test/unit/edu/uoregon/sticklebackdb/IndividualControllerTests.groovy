@@ -4,7 +4,7 @@ import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 
 @TestFor(IndividualController)
-@Mock([Individual,Stock,StockService])
+@Mock([Individual,Stock,StockService,MeasuredValue])
 class IndividualControllerTests {
 
     def populateValidParams(params) {

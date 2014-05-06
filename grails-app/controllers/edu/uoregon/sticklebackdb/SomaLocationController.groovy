@@ -41,13 +41,13 @@ class SomaLocationController {
 
         somaLocationInstance.save flush:true
 
-        request.withFormat {
-            form {
+//        request.withFormat {
+//            form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'somaLocationInstance.label', default: 'SomaLocation'), somaLocationInstance.id])
                 redirect somaLocationInstance
-            }
-            '*' { respond somaLocationInstance, [status: CREATED] }
-        }
+//            }
+//            '*' { respond somaLocationInstance, [status: CREATED] }
+//        }
     }
 
     def edit(SomaLocation somaLocationInstance) {
@@ -68,13 +68,13 @@ class SomaLocationController {
 
         somaLocationInstance.save flush:true
 
-        request.withFormat {
-            form {
+//        request.withFormat {
+//            form {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'SomaLocation.label', default: 'SomaLocation'), somaLocationInstance.id])
                 redirect somaLocationInstance
-            }
-            '*'{ respond somaLocationInstance, [status: OK] }
-        }
+//            }
+//            '*'{ respond somaLocationInstance, [status: OK] }
+//        }
     }
 
     @Transactional
@@ -87,22 +87,22 @@ class SomaLocationController {
 
         somaLocationInstance.delete flush:true
 
-        request.withFormat {
-            form {
+//        request.withFormat {
+//            form {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'SomaLocation.label', default: 'SomaLocation'), somaLocationInstance.id])
                 redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+//            }
+//            '*'{ render status: NO_CONTENT }
+//        }
     }
 
     protected void notFound() {
-        request.withFormat {
-            form {
+//        request.withFormat {
+//            form {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'somaLocationInstance.label', default: 'SomaLocation'), params.id])
                 redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
+//            }
+//            '*'{ render status: NOT_FOUND }
+//        }
     }
 }

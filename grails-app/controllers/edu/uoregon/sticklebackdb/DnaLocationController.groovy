@@ -41,13 +41,15 @@ class DnaLocationController {
 
         dnaLocationInstance.save flush:true
 
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'dnaLocationInstance.label', default: 'DnaLocation'), dnaLocationInstance.id])
-                redirect dnaLocationInstance
-            }
-            '*' { respond dnaLocationInstance, [status: CREATED] }
-        }
+//        request.withFormat {
+//            form {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'category.label', default: 'Dna Location'), dnaLocationInstance.name])
+                redirect(action: "show", id: dnaLocationInstance.id)
+//                flash.message = message(code: 'default.created.message', args: [message(code: 'dnaLocationInstance.label', default: 'DnaLocation'), dnaLocationInstance.id])
+//                redirect dnaLocationInstance
+//            }
+//            '*' { respond dnaLocationInstance, [status: CREATED] }
+//        }
     }
 
     def edit(DnaLocation dnaLocationInstance) {
@@ -68,13 +70,14 @@ class DnaLocationController {
 
         dnaLocationInstance.save flush:true
 
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'DnaLocation.label', default: 'DnaLocation'), dnaLocationInstance.id])
-                redirect dnaLocationInstance
-            }
-            '*'{ respond dnaLocationInstance, [status: OK] }
-        }
+//        request.withFormat {
+//            form {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'DnaLocation.label', default: 'DnaLocation'), dnaLocationInstance.name])
+                redirect(action: "show", id: dnaLocationInstance.id)
+//                redirect dnaLocationInstance
+//            }
+//            '*'{ respond dnaLocationInstance, [status: OK] }
+//        }
     }
 
     @Transactional
@@ -87,22 +90,22 @@ class DnaLocationController {
 
         dnaLocationInstance.delete flush:true
 
-        request.withFormat {
-            form {
+//        request.withFormat {
+//            form {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'DnaLocation.label', default: 'DnaLocation'), dnaLocationInstance.id])
                 redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+//            }
+//            '*'{ render status: NO_CONTENT }
+//        }
     }
 
     protected void notFound() {
-        request.withFormat {
-            form {
+//        request.withFormat {
+//            form {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'dnaLocationInstance.label', default: 'DnaLocation'), params.id])
                 redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
+//            }
+//            '*'{ render status: NOT_FOUND }
+//        }
     }
 }

@@ -42,13 +42,13 @@ class FinclipLocationController {
 
         finclipLocationInstance.save flush:true
 
-        request.withFormat {
-            form {
+//        request.withFormat {
+//            form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'finclipLocationInstance.label', default: 'FinclipLocation'), finclipLocationInstance.id])
                 redirect finclipLocationInstance
-            }
-            '*' { respond finclipLocationInstance, [status: CREATED] }
-        }
+//            }
+//            '*' { respond finclipLocationInstance, [status: CREATED] }
+//        }
     }
 
     def edit(FinclipLocation finclipLocationInstance) {
@@ -69,13 +69,13 @@ class FinclipLocationController {
 
         finclipLocationInstance.save flush:true
 
-        request.withFormat {
-            form {
+//        request.withFormat {
+//            form {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'FinclipLocation.label', default: 'FinclipLocation'), finclipLocationInstance.id])
                 redirect finclipLocationInstance
-            }
-            '*'{ respond finclipLocationInstance, [status: OK] }
-        }
+//            }
+//            '*'{ respond finclipLocationInstance, [status: OK] }
+//        }
     }
 
     @Transactional
@@ -88,22 +88,22 @@ class FinclipLocationController {
 
         finclipLocationInstance.delete flush:true
 
-        request.withFormat {
-            form {
+//        request.withFormat {
+//            form {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'FinclipLocation.label', default: 'FinclipLocation'), finclipLocationInstance.id])
                 redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+//            }
+//            '*'{ render status: NO_CONTENT }
+//        }
     }
 
     protected void notFound() {
-        request.withFormat {
-            form {
+//        request.withFormat {
+//            form {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'finclipLocationInstance.label', default: 'FinclipLocation'), params.id])
                 redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
+//            }
+//            '*'{ render status: NOT_FOUND }
+//        }
     }
 }

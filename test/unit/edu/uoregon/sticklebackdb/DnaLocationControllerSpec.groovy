@@ -11,8 +11,7 @@ class DnaLocationControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["name"] = 'someValidName'
     }
 
     void "Test the index action returns the correct model"() {
